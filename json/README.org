@@ -1,0 +1,36 @@
+* JSON parser
+  [[https://ngn.codeberg.page/][ngn/k]] has a built in [[https://www.json.org/json-en.html][json]] parser which is many times faster than this.  So why have one written in K?
+
+  First, K is interpretted and so it's fundamentally easier to modify.  Also, since K objects don't
+  match 1-1 with json objects (no symbols in json, no distinct boolean types in K, etc.) there are
+  necessarily choices made in any implementation of a parser.
+
+** API
+   All functions are created under the ~json~ namespace.  The primary API points are ~tree~ and
+   ~prs~.  ~prs~ takes a string and returns a K "object".  That is to say if the toplevel json
+   structure is a list ~prs~ returns a list and it its an "object" ~prs~ returns a dict.
+
+   ~tree~ returns a list of three items: the nodes, the parent vector and the left vector.  This
+   amounts to an array representation of a tree, which I've taken to calling [[https://github.com/tlack/atree][Apter trees]] though I
+   haven't done any scholarship as to the actual origins.  There's likely more information available
+   in [[https://scholarworks.iu.edu/dspace/handle/2022/24749][Aaron Hsu's thesis]], but I haven't been through it.
+
+   Most people will probably make use of the ~prs~ interface, but having the ~tree~ available opens
+   up possibilities for alternative traversals.
+
+** Downside
+   As mentioned above it's quite a bit slower than the built-in json parser.  When I last checked it
+   was a couple of magnitudes slower for reasonable sized json files and quite a bit slower for much
+   larger files.  This last is because it doesn't handle memory terribly efficiently.  If possible,
+   you should break up very large json files in to smaller chunks for processing.
+
+   Actually, it should be possible to turn this into a version which operates on the file in chunks,
+   but I haven't done any work in this direction.
+
+** References
+   The version of ~pr~ here was offered by [mlochbaum](https://github.com/mlochbaum) as discussed on
+   the [[http://www.jsoftware.com/pipermail/programming/2021-May/058263.html][J mailing list]].  It was quite a bit faster than the naive version I had originally.  ngn also
+   [[https://discord.com/channels/821509511977762827/821511172305846322/999258528898359296][offered a fast version]] which has the potential to be more useful for a chunked version, since it
+   uses a fold which can be resumed.  From that thread you can see contributions by @ovs and
+   @chrispsn to make other speed enhancements over the orginal version.
+

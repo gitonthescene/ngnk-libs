@@ -1,0 +1,7 @@
+* ngnk-libs
+  A collection of projects written in K.
+
+Ideally some of these would serve as a basis for collaboration to create some generally useful tools
+for [[https://ngn.codeberg.page/][ngn/k]].  As there's not a lot of this around, there aren't any standards for how this
+should/could be organized.  I've decided to put each script in a separate directory.  Eventually
+I'll include some tests and hopefully some commentary as to how it might be used.
