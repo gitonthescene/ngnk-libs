@@ -28,7 +28,7 @@
    but I haven't done any work in this direction.
 
 ** References
-   The version of ~pr~ here was offered by [mlochbaum](https://github.com/mlochbaum) as discussed on
+   The version of ~pr~ here was offered by [[https://github.com/mlochbaum][mlochbaum]] as discussed on
    the [[http://www.jsoftware.com/pipermail/programming/2021-May/058263.html][J mailing list]].  It was quite a bit faster than the naive version I had originally.  ngn also
    [[https://discord.com/channels/821509511977762827/821511172305846322/999258528898359296][offered a fast version]] which has the potential to be more useful for a chunked version, since it
    uses a fold which can be resumed.  From that thread you can see contributions by @ovs and
