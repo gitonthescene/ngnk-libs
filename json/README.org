@@ -18,6 +18,11 @@
    Most people will probably make use of the ~prs~ interface, but having the ~tree~ available opens
    up possibilities for alternative traversals.
 
+   From the tree representation, the nodes of interest will be ~"{"~, ~"["~ and ~":"~, which serve
+   as root nodes for /objects/, /lists/ and /pairs/ where an object is essentially just a list of
+   pairs.  From any object node, you can use the parent vector to find an array of pairs within it.
+   You can use the left vector to discover the default ordering of such pairs.
+
 ** Downside
    As mentioned above it's quite a bit slower than the built-in json parser.  When I last checked it
    was a couple of magnitudes slower for reasonable sized json files and quite a bit slower for much
