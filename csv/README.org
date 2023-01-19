@@ -1,0 +1,17 @@
+* CSV parser
+  A simple comma separated value parser for [[https://ngn.codeberg.page/][ngn/k]].  Currently it uses hard-coded (easily modified)
+  variables for the escape character and row and field separators.
+
+  It also currently works on the whole file as that's the typical way to interact with files in
+  ngn/k.  It shouldn't be too hard to make it work on blocks of bytes by first splitting on the
+  "true" (i.e. not quoted) row separators and parsing all but the last leaving it (possibly
+  incomplete) row to be prepended to the next chunk.
+
+  Also, it does no transformations on the data whatsoever currently.  It simply splits on rows and
+  fields while respecting quoting.  Data can be cast to appropriate types as post processing,
+  possibly with a well defined API as that [[https://code.kx.com/q/ref/file-text/#load-csv][used by kx]].
+
+** History
+   This was pretty much my first K program ever, though it's gone through a few iterations.  I
+   originally wrote this in [[https://groups.google.com/g/kona-user/c/53T4Rzt_STQ/m/UgkCxVT_CAAJ][kona]].  (You can follow the iterations in that thread.)  Later ColTim
+   [[https://discord.com/channels/821509511977762827/821511172305846322/944305697846341702][punched it up some]] after doing some performance testing on it.
