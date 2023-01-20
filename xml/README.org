@@ -1,0 +1,47 @@
+* XML parser
+  This is a very raw XML parser for [[https://ngn.codeberg.page/][ngn/k]].  More proof of concept than viable code, it may still be
+  usable for simple extraction.
+
+** API
+   In its current state possibly the only useful entry point is ~xml.parse~ which takes a string and
+   returns a pair of lists.  The first list is the [[http://nsl.com/k/tableaux/trees.k][parent vector]] and the second is list of
+   dictionaries representing the nodes.  (I'll probably revisit this representation at a later date.)
+
+   Nodes are either text nodes which look like this:
+    : `tp`loc`len`cnt!(`txt;1520;29;,(`txt;"Fri, 30 May 2003 11:06:42 GMT"))
+
+   Or tag nodes which look like this:
+    : `tp`nm`loc`len`attrs!(`tag;"/pubDate";1135;10;())
+
+** Notes
+   As I say, this is very raw.  Currently there is no attempt at substituting entity types such as
+   ~&lt;~, nor for that matter parsing a DTD whatsoever.  Some of this code could probably be used
+   for such a project though.
+
+   This does handle ~CDATA~, though as well as ~<!-- -->~ style comments.  The contents of both of
+   which are taken as raw text and not parsed in any way.
+
+   I hope to add running examples of this shortly.
+
+** Implementation
+   Parsing takes place in several phases:
+   - First comments and CDATA are identified
+   - Then quotes both single and double and tag delimiters not in either a comment or CDATA are
+     mutually quoted.  That is to say single quotes not in double quotes and double quotes not in
+     single quote and either /not/ inside a tag delimiter are treated as quoted and hence not
+     "real".
+   - What's left are real quotes and real tag delimiters which can be used to split the text.
+   - Once you've identified real tag delimiters then you know the entire structure of the text.
+     This alone is used to generate the parent vector and itself does not require splitting the
+     text.
+   - Once the nodes have been split up they can be parsed for attributes, etc.
+
+** Going forward
+   I hope to get back to this but it's been on the shelf for a while.  Some ideas:
+   - Since you know the entire structure before doing any splitting, you could present a [[https://en.wikipedia.org/wiki/Simple_API_for_XML][SAX]]
+     interface which parses as it goes.
+   - Currently the list of nodes mixes text and tag nodes which means it's not a true table.
+     Perhaps these should be separated.  Maybe with a new vector indicating node type/index into the
+     node tables.
+   - This has been on the shelf so long, I've forgotten some of my other ideas.  Adding this for the
+     [[https://en.wikipedia.org/wiki/Rule_of_three_(writing)][rule of three]].
