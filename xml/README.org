@@ -27,9 +27,8 @@
    Parsing takes place in several phases:
    - First comments and CDATA are identified
    - Then quotes both single and double and tag delimiters not in either a comment or CDATA are
-     mutually quoted.  That is to say single quotes not in double quotes and double quotes not in
-     single quote and either /not/ inside a tag delimiter are treated as quoted and hence not
-     "real".
+     mutually quoted.  That is to say single quotes in double quotes and double quotes in single
+     quote and either /not/ inside a tag delimiter are treated as quoted and hence not "real".
    - What's left are real quotes and real tag delimiters which can be used to split the text.
    - Once you've identified real tag delimiters then you know the entire structure of the text.
      This alone is used to generate the parent vector and itself does not require splitting the
