@@ -44,3 +44,9 @@
      node tables.
    - This has been on the shelf so long, I've forgotten some of my other ideas.  Adding this for the
      [[https://en.wikipedia.org/wiki/Rule_of_three_(writing)][rule of three]].
+   - Oh, just remembered!  The tricky part is the mutual quoting because you don't know what's real
+     up front, you have to iteratively go through and figure out which are real as you go.  The
+     insight is that if you're lucky enough not to have anything mutually quoted then you can simply
+     treat them all as real, thus you only need to seek out where you have potential mutual quoting.
+     If you find such a situation you have to mark what's quoted and then continue.  Currently
+     instead of "continuing" I "start all over".  I suspect this could be made more efficient.
