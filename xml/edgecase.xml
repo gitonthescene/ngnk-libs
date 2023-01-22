@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simple version="2.0">
+  <![CDATA[not a tag: </simple>]]> <![CDATA[not a comment: <!-- simple -->]]>
+  <edge1><![CDATA[also not a comment: <!-- simple -->]]></edge1>
+  <edge2><!-- <![CDATA[still not a comment: <!-- simple -->]]>--></edge2>
+  <self-closing/>
+  <!-- Not closed quote ->" -->
+  <text-quote>"This is also not closed</text-quote>
+</simple>
