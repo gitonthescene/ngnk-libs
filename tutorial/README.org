@@ -1,0 +1,31 @@
+* Simple tutorial runner
+  This tutorial runner can be used to make simple guides through [[https://ngn.codeberg.page/][ngn/k]] functionality.  It takes a
+  script with executable code and comments and prints the code/comments line by line with lines
+  being advanced by hitting return.
+
+  If instead of return some code is typed by the user then that code is executed offering an
+  opportunity for a more interactive experience.
+
+* API
+  When run from the command line, this simply takes a list scripts to be run.
+
+* Sample run:
+
+  : $ k tutorial.k tut.txt
+  :     1 + 1     / basic arithematic can be done with infix notation
+  :   2
+  : 
+  :     5 * 7
+  :   35
+  : 
+  :     2 - 4
+  :   -2
+  : 9-8    // <--- this is me typing, and then continuing
+  : 1
+  : 
+  :     3 % 2     / division is done with % since / serves other purposes like the beginning of a comment!  :D
+  :   1.5
+
+* Inspiration
+  This was written after trying a few of the excellent tutorials on the [[https://appadvice.com/app/j-programming-language/532587550][J app]] for the [[https://www.jsoftware.com/#/][J language]].
+  

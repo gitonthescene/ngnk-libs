@@ -1,0 +1,112 @@
+1 + 1     / basic arithematic can be done with infix notation
+5 * 7
+2 - 4
+3 % 2     / division is done with % since / serves other purposes like the beginning of a comment!  :D
+3 * 4 + 1       / evaluation happens from right to left.  There is no precedence between operations.
+3 * (4 + 1)
+(3 * 4) + 1     / Use parentheses when you want to control the order of evaluation
+1 2 3 + 3 0 2   / rank polymorphism means these operations work for vectors of equal length
+                / you get an error if these vectors are not equal length
+1 + 3 0 2       / by scalar extension however, you can add scalars to vectors.
+                / it's as if the scalar were repeated until the necessary length
+# 9 8 4 5       / count counts the length of a vector
+                / unlike the examples below # takes one argument.  single arguments are always taken to the right
+2 4 , 9 0 4     / concat joins two vectors
+# 2 4 , 9 0 4
+#2 4,9 0 4      / spaces around built-in functions (called verbs in the lingo) are not necessary
+                / but we'll use them here occasionally for a bit longer
+,1              / enlist puts its argument in a list
+                / this shows the meaning of "," is overloaded.  this happens a bunch in k, but often the meanings are related
+# ,1            / this is a list of length 1
+# 1             / hmm... scalars have length??  take this on faith for now that this comes in handy
+@ 1             / @ returns the type of its argument, this is an "int".
+                / oh, verbs which take one argument are called "monadic" and ones which take two "dyadic"
+@ ,1            / this is a list of ints.  Capitals indicate lists. (lists, vectors, same thing)
+,3 7 9          / You can enlist a list
+# ,3 7 9        / this is a list of length 1
+* 3 7 9         / this takes the "head" of the list.  i.e. the first element.
+                / (not related to multiplication but another case of overloading)
+*,3 7 9         / the head of an enlisted list is ... the list.  makes sense.
+(,1 2 3),(,3 5 0)    / the concat of two enlisted lists to form a list of lists
+(1 2 3;3 5 0)        / (Parens around semi-colon separated items form explicit lists)
+#(,1 2 3),(,3 5 0)   / .. of length two
+(,1 2 3), ,3 5 0     / the parentheses on the right are not necessary because of right-to-left evaluation
+(0 1 3;99;6 1)       / explicit lists need not be uniform
+@"string"            / strings are lists (capital C) of chars.
+@"s"                 / a single char is also surrounded with double quotes. (this can be a bit confusing at first)
+@,"s"                / to get a list of a single char, use enlist
+("n";"i";"c";"e")    / double quotes are just syntactic sugar to make lists of chars.
+"o","k"              / Oh yeah!  Concat can also concatenate two scalars
+"s","tring"          / ... or a scalar to a vector.  Note that scalar extension does *not* apply here.
+("o";,"k";4 9 2)     / An even more mixed array
+#'("o";,"k";4 9 2)   / verbs can be modified to perform derived functionality
+                     / here ' (called each) modifies count to perform count on each of the elements of its list argument
+,'4 5 6              / each is called an adverb and can be applied to other verbs
+                     / enlist each element of 4 5 6 to get a list of three one-element lists
+3 9 2,'-1 -4 0       / each can be applied to dyadic verbs and pairs up the elements of both args
+0,'3 4 1             / scalar extension applies to such pairing as well
+0,/:3 4 1            / but there is a more explicit way to indicate that the left argument stays the same
+                     / this adverb is called eachright
+1 0,/:3 4 1          / It's useful when scalar extension doesn't apply
+1 0,\:3 4 1          / There is an eachleft as well.
+                     / Are we having fun yet??
+                     / More verbs!
+!8                   / enumerate numbers from 0 up to (but not including) 8
+#!8
+3#!8                 / "take" the first three number of this list
+3_!8                 / "drop" the first three numbers of this list
+-3#!8                / negative numbers to take from the back of the list
+-3_!8
+9=3                  / just plain equals.  true is 1 and false is 0.
+3=3
+4=!6                 / oho! scalar extension
+0 1 2=!3             / and rank polymorphism!
+0 1 2~!3              / match.  i.e. check that the whole vector is the same
+(0;1 2 3)~(9=3;1+!3)  / even for mixed vectors
+(0;1 2 3)=(9=3;1+!3)  / rank polymorphism applies to ragged shapes as well.  shapes must match (clearly)
+3>4                   / plain old greater than
+3<4
+~3=3                  / monadic ~ is not
+~3>4                  / less than or equal to is just not greater than.
+~3>3
+@7%3                  / oh, yeah.  floats are not ints
+_7%3                  / floor strips off everything after the decimal point
+@_7%3                 / .. and converts to ints
+_7                    / floor of an int is fine
+_"Hey, Dan!"          / lower case for strings.  (similar-ish..)
+%25                   / monadic % is square root
+-35                   / this is just an integer
+-(4 8 5)              / this is the negate verb applied to a list
+-4 8 5                / this is just a list of integers
+-:4 8 5               / a colon forces this to be treated as a monadic function
+                      / (colon has many more tricks up its sleeve...)
+|-:4 8 5               / this is that list reversed
+-4|8                  / maximum of -4 and 8 (clearly no relation to the monadic reverse above)
+-4&8                  / minimum of -4 and 8
+("abc";!3)            / the "matrix" made of the rows "abc" and !3.
+                      / lists of lists of equal length can be thought of a matrices
++("abc";!3)           / flip!  The transpose of that matrix.  Again matrices must have rows of equal length.
+("car";37;1 3 4)[0]   / this long and no mention of array indexing??
+("car";37;1 3 4)[0 2] / indices can be lists
+("car";37;1 3 4)[0 0] / lists can have repeats
+1 4 9[2]              / no need for explicit list notation
+1 4 9[(0;2 1;(,1;0))] / more generally, indices can be any shape
+                      / the result matches the shape of the indices and picks out the values at the given index
+1 4 9@(0;2 1;(,1;0))  / brackets are just syntactic sugar for the @ verb (called amend)
+1 4 9[1 3]            / outdexing results in a null
+^1 4 9[1 3]           / ^ tests for null
+                      / More adverbs!
++/3 5 9               / slash as an adverb is "left fold" with the accumulator starting as the first element.
+                      / Note here that the verb + is dyadic, but the modified verb +/ is used monadically
+10+/3 5 9             / used dyadically, the left arg becomes the initial accumulator
+                      / slashes used as comments must be preceded with a space
+                      / slashes used as adverbs must *not* be preceded by a space
+|/-4 8 5              / this is "max over".  I.e. the fold of max over the list -4 8 5
+|-4 8 5               / again, this is reverse
+|:-4 8 5              / this forces | to be read as its monadic form
++\3 5 9               / the adverb scan is like fold, but produces all of its intermediate results
+10+\3 5 9             / when using an explicit initial accumulator, the inital value is not part of the results
++':9 4 2              / pairs up each element of its list with the prior element and applies the verb
+                      / the first element is left as is
+1+':9 4 2             / but you can supply a seed value to pair it with.
+1-':9 4 2             / Note that the prior element becomes the right arg of the verb
