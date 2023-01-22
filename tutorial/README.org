@@ -11,7 +11,7 @@
 
 * Sample run:
 
-  : $ k tutorial.k tut.txt
+  : $ k tutorial.k ktour.txt
   :     1 + 1     / basic arithematic can be done with infix notation
   :   2
   : 
