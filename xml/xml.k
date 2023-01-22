@@ -18,7 +18,7 @@ pt:{c:0,((#c)#0 1)+c:@/1<:\,//x[3 4]-x[0]
     (tp;loc;len;cnt):(`txt;x[0]
                       #x[1]
                       tr#+(`txt`cmt`cdata@(0,,/((#*)'x[3 4])#'1 2,\:0)@<c
-                      c_x[1],((*|c)~#x[1])#" "))
+                      c_x[1]))
     +(`tp`loc`len`cnt;(tp;loc;len;cnt))}
 ps:{!/+((pt;tp)@>/"<!"=2#x[1])x}
 cc:{cl:2+cl@'&'"-]"='x@cl:y[1;4 3]-2
