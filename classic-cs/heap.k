@@ -1,8 +1,6 @@
 \d heap
 / shift down
-sd:{$[~y<z;x
-      0<c:*>x@i:(z>)#y,-1 0+2*y+1;o[@[x;y,i[c];:;x@i[c],y];i[c];z]
-      x]}
+sd:{$[(y<z)&0<c:*>x@i:(z>)#y,-1 0+2*y+1;o[@[x;y,i[c];:;x@i[c],y];i[c];z];x]}
 
 / shift up
 su:{$[y&>/v:x@y,s:-2!y-1;o[@[x;s,y;:;v];s];x]}
