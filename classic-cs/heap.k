@@ -12,7 +12,7 @@ hp:{sd/[x;|:!c:1+-2!-2+#x;#x]}
 hi:{su[x,y;#x]}
 
 / max extract
-hx:{(*x;sd[(*|x),1_x;0;#x])}
+hx:{(*x;sd[(*|x),-1_1_x;0;#x])}
 
 / heap sort
 hs:{h:hp@x;*(-1+#x)({(sd[@[x;0,y;:;x@y,0];0;y];y-1)}.)/(h;-1+#x)}
