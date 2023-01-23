@@ -1,0 +1,10 @@
+* A Collection of classic CS algorithms
+  This is just a collection of classic CS algorithms implemented in [[https://ngn.codeberg.page/][ngn/k]].  Some may be useful in
+  actual programming contexts but the primary motivation was a mix of practice and exposition.
+
+  ngn/k is afterall interpretted and therefore can't compete with algorithms hand-crated in lower
+  level languages.  On the other hand, you don't always have the luxury to mix languages just to
+  use a particular algorithm in your project.
+
+* Index
+  Not today, but hopefully some day.
