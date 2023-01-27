@@ -1,0 +1,57 @@
+:ss:"<html><!-- comment --><body/></html>" / Sample xml text with a variety of tag types
+:ds:&'"<>"=\:ss                            / find the delimiters
+:sp:&'"!?/]-"=\:ss                         / find indices "helper" characters for (sp)ecial tag types
+                                           / this produces a list of indices for each helper character
+ss@sp+1                                    / look for the characters following a helper character
+ss@sp-1                                    / look for the characters preceding a helper character
+(sp:&'"!?/]-"=\:ss)+\:/:-1 1               / Both!!
+ds[0]?sp-1                                 / See which characters preceding helper chars are opening delimeters
+~^ds[0]?sp-1                               / We don't need to know which particular delimiter
+                                           / Just that there is one
+~^ds?'(sp:&'"!?/]-"=\:ss)+\:/:-1 1         / Both!
+&''~^ds?'(sp:&'"!?/]-"=\:ss)+\:/:-1 1      / Find the indices into the lists of special characters
+                                           / Find the indices of the actual characters (adjusting back)
+:sp:-1 1+'sp@'/:&''~^ds?'(sp:&'"!?/]-"=\:ss)+\:/:-1 1
+qs:&'"'\""=\:x                             / Find both single and double quotes
+                                           / Now to tackle comments and CDATA
+sp[1]                                      / closing special delimiters
+sp[1;4 3]                                  / find "->" and "]>"
+ss@cl:sp[1;4 3]-2                          / Look back a couple of characters
+"-]"='ss@cl                                / find "-->" and "]]>"
+cl:2+cl@'&'"-]"='ss@cl                     / Keep track of where we found this
+                                           / Now look for openers
+ss@(op:sp[0;0])+\:2+!7                     / Look for the first seven characters after "<!"
+                                           / See check which of these look like the beginning of a comment or CDATA
+("--";"[CDATA["){x~(#x)#y}/:\:ss@(op:sp[0;0])+\:2+!7
+                                           / And find the original indices
+op:op@/:&'("--";"[CDATA["){x~(#x)#y}/:\:ss@(op:sp[0;0])+\:2+!7
+                                           / Now we have candidates for opening and closing comments and CDATA
+                                           / Now we have to clean things up
+                                           / What can happen?
+:ss0:"<!-- <!-- --> -->"                   / Comments don't nest!
+                                           / Actually, this is illegal syntax. "<" must only be used to open a tag
+:ss0:"<!-- &gt;!-- --> -->"                / Nothing wrong with this, though
+                                           / The comment is closed by the first closing comment
+:tst:"(open close) close) (open close)"    / Let's make it look simpler
+:oc:&'"()"=\:tst                           / indices of open and closed characters
+(#'oc)#'1 -1                               / replace open indices with 1's and close indices with -1's
+(,/(#'oc)#'1 -1)@g:<v:,/oc                 / flatten and sort by the (flattened) indices
++\(,/(#'oc)#'1 -1)@g:<v:,/oc               / Where the sum scan dips below 0 is when we have too many close chars
+                                           / We want to throw those out, so let's focus on them
+0&\+\(,/(#'oc)#'1 -1)@g:<v:,/oc            / only spots where we're zero or lower
+0<':0&\+\(,/(#'oc)#'1 -1)@g:<v:,/oc        / lower than even the previous one so another redundant close
+                                           / These are the ones we throw out
+fm:{(v@g)@&~0<':0&\+\(,/(#'x)#'1 -1)@g:<v:,/x}
+                                           / This finds the "first match" for each opening character
+@[&#tst;fm@oc;:;1]                         / For debugging let's mark which indices we've kept
+`0:(tst;" ^"@[&#tst;fm@oc;:;1])            / And line them up with the text
+                                           / Notice that fm returns a list of indices which alternates
+                                           / open and close characters
+ev:#'/|1(2*-2!#:)'\                        / ev ensures you have a list of even length
+                                           / technically shouldn't happen, but it couldn't hurt
+
+                                           / After applying fm to open and closed comments and CDATA sequences,
+                                           / We want to ensure that comments in CDATA and vice versa are just text
+ss:"(easy)([])[()][peasy]([)[)]"           / Let's simply by making using parens a braces
+                                           / The idea is to think of each as quoting the other
+                                           / and we're looking for unquoted characters

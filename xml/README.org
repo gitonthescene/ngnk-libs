@@ -35,6 +35,10 @@
      text.
    - Once the nodes have been split up they can be parsed for attributes, etc.
 
+** Walkthrough
+   As an experiment, I've added a script walking through bits of the code which can be used with the
+   [[https://github.com/gitonthescene/ngnk-libs/tree/master/tutorial][tutorial script]].
+
 ** Going forward
    I hope to get back to this but it's been on the shelf for a while.  Some ideas:
    - Since you know the entire structure before doing any splitting, you could present a [[https://en.wikipedia.org/wiki/Simple_API_for_XML][SAX]]
