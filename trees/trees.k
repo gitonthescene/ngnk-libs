@@ -17,7 +17,7 @@ t1:{t:t@\:!|/#'t:|'(y@)\'(!#y)^y
   t:spr[x]@+/(0N;t)*~:\=':t
   c:1+(-y=!#y)+1+@[&#y;+(-1 1_\:)'.cp[y];+;1 2]
   t0:t0+6*t0<{(x|y)&y<4}\t0*|/3 4=\:t0:0^c@t
-  (sh1 0^+t0;t)}
+  (sh1 0^+t0;+t)}
 
 // depth first preordering of indices
 dfo:{<{,/{,/y,$[^(!x)?y;();o[x]'x@y]}[cp[x]]'&x=!#x}x}
