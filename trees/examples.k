@@ -6,9 +6,9 @@ R:dfo[P]
 T:(TT 3 2 1 10 4 10 2 0 7 4 2 10 9 10 2 0 7 2 0 7 3)@<R
 
 // reorder the indices based on depth first pre-ordering
-P:R@P@<R
+P:redo[P;R]
 D:#'(P@)\'!#P
 (tr;l):t1[2]@P
 tn:T@l
-`0:(tr,+tn)@<<,/(#tr)#,!2
+`0:1_(tr,+tn)@<<,/(#tr)#,!2
 `0:(sh0 t0[P;D]),'"  ",/:T
