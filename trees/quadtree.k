@@ -1,4 +1,3 @@
-
 / z-order
 ds:(0 0;0 1;1 0;1 1)
 
@@ -26,8 +25,7 @@ ex:{ex0[(0,1+&~,/x;x);(0N;!0);,y]}
 
 / ammend z to x at index y
 / Here z and x are (p;c) parent color pairs
-am:{(p;rn):x; p,:y^+/1(1*(#rn)*4*~^:)\*z
- (p;rn,*|z)}
+am:{x,'(y^+/1(1*(#*|x)*4*~^:)\*z;*|z)}
 
 / reorder color vector based on parent vector
 ro:{y@<x}
