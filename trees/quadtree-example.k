@@ -1,25 +1,8 @@
-c:0 1 0 0 2 1 1 0 3 2 1 0 1 3 1 1 1 1 1 2 1
-p1:0,p@(!#p)@&(#p:&~c)#4
-(p1;c)
-d:(p1@)\'!#p1
-s:*/'(-/1|/\#'d)#\:2
-ds:(1 0;0 0;0 1;1 1)
-rr:ds@4!ps:-1_/:d@w:&~~c
-rr:(dm:2#*s)/'+/'(s@ps)*rr
-#rr:rr+{(x*!y)+/:!y}[*s]'s@w
-`0:" .#-"dm#@[&*/dm;rr;:;2&c@w]
+\l quadtree.k
+drw@c
 
-:rr:0N 4#1_c
-1+4 4/&~rr
-:u:?,/p1
+/ extract the nodes at indices 1 and 2 and reattach
+drw@ro.(am/[(,0;,1 0 2 0);;].(2 3;ex[c]'1 2))
 
-cp0:{a:x[1;z]
-  $[#n:,/x[0]?(n0:&'~a)+\:'1+4*z
-    o[x;y,'(1+,/(4*(!#a)+#*|y)+'n0;a);n]
-    y,'(!0;a)]}
-
-cp:{cp0[(0,1+&~,/x;x);(0N;!0);y]}
-:r0:cp[rr;,1]
-:r1:r0,'+/1((4*#*|r0;0)*~^:)\cp[rr;,2]
-
-r1~cp0[(u;rr);r0,'(0N;!0);,2]
+/ ditto but attach to SE and NW nodes
+drw@ro.(am/[(,0;,0 1 2 0);;].|'(3 1;ex[c]'1 2))
