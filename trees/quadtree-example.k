@@ -1,4 +1,10 @@
 \l quadtree.k
+c:(1 0 2 0
+ 1 1 2 0
+ 2 1 1 0
+ 2 1 1 1
+ 1 1 1 2)
+ 
 drw@c
 
 / extract the nodes at indices 1 and 2 and reattach
