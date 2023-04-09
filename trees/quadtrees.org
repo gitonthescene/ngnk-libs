@@ -1,12 +1,12 @@
 * Quad trees
-  
+
   A few random thoughts on implementing [[https://en.wikipedia.org/wiki/Quadtree][quadtrees]]:  For clarity let’s describe them as representing
   pictures where each node represents a “pixel” whose size halves at each successive depth.  The
   content of a pixel can be thought to be a color.  We can pick a color (say 0) to represent pixels
   which are subdivided, i.e. represent inner nodes of the quad tree.  If we list the colors in BFS
   preorder then all the children of a given parent node are listed consecutively.  Being a quad tree
   it comes in clusters of 4.  Put this together with the coloring of parent nodes and a convention
-  for the order of the children (say NW,NE,SE,SW) then all that’s required to understand the full
+  for the order of the children (say NW,NE,SW,SE) then all that’s required to understand the full
   structure is the color vector alone.  Since the root pixel is always subdivided (assuming a
   connected tree and not a forest) it’s always color zero and always first.  We don’t really need
   it.  What’s left is clusters of children.  We can just make this an Nx4 matrix.  Converting this
