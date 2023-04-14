@@ -1,5 +1,5 @@
 // parent vector from depth vector
-p:{r:{@[x;y;:;z|x@y]}\[(!0)@&1+|/x;x;!#x];(!#x)^'r@'x-1}
+p:{r:{@[x;y;|;z]}\[(!0)@&1+|/x;x;!#x];(!#x)^'r@'x-1}
 
 // parent children lookup (excludes self-parenting)
 cp:{^'[;?x]@=x}
