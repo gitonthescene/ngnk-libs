@@ -12,7 +12,7 @@ bw:((0x5757d3d3dede~/:-2_'0N 8#)'data),\:0
 bwdata:,/(`c$0),/:(`c$2/+0N 8#)'bw
 
 / build up a b/w png
-png0:0x89504e470d0a1a0a
+png0:png.PNGHDR
 / same dimensions, but now bit-depth 1, color-type 0
 png0,:png.mkchnk["IHDR";`c$,/((4#256)\'375 375),1 0 0 0 0]
 / "compress" at level 0
