@@ -16,6 +16,6 @@
   with bits indicating if the pixel is the background color or not.  Then we use this data to
   generate a no-filtering/no-compression png by hand.
 
-* Goals of this project
+** Goals of this project
   Nothing major.  Mostly I just wanted to get at some image data to play around with some
   algorithms.  This might change.
