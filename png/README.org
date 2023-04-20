@@ -1,0 +1,21 @@
+* PNG tools
+  First swipe.  Lots of clean up to come.
+
+  ngn/k is not really built for doing decompression.  (At least not with my level of understanding
+  of compression.)  That is to say, decoding bits is very inefficient.  Currently this shells out to
+  ~zlib_decompress~ which I have on my iMac and works well enough for now.  You can replace this
+  with anything that decompresses a zlib stream to stdout.
+
+  For output, we actually avoid compression by using the "no compression" version of the [[https://datatracker.ietf.org/doc/html/rfc1950][deflate RFC]].
+
+  We also compute the [[http://www.libpng.org/pub/png/spec/iso/index-object.html#D-CRCAppendix][crc check]] though this is also a bitwise computation.  Really this should all
+  just be handed off to zlib, but it was fun to try and works well enough if your image size is
+  pretty small.
+
+  The example takes the [[https://github.com/mthom/scryer-prolog/tree/master/logo][scryer logo]] and turns it into a black and white image by replacing pixels
+  with bits indicating if the pixel is the background color or not.  Then we use this data to
+  generate a no-filtering/no-compression png by hand.
+
+* Goals of this project
+  Nothing major.  Mostly I just wanted to get at some image data to play around with some
+  algorithms.  This might change.
