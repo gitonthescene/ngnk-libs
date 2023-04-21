@@ -20,7 +20,7 @@ t1:{t:t@\:!|/#'t:|'(y@)\'(!#y)^y
   (sh1 0^+t0;+t)}
 
 // depth first preordering of indices
-dfo:{<{,/{,/y,$[^(!x)?y;();o[x]'x@y]}[cp[x]]'&x=!#x}x}
+dfo:{<,/{y,,/$[^(!x)?y;!0;o[x]'x[y]]}[cp[x]]'&x=!#x}
 
 // Change all the index references in x "under" permutation <y
 redo:{y@x@<y}
