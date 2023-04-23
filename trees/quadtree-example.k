@@ -9,8 +9,8 @@ grd:(0 0 0 0 0 0 0 0
      1 1 1 1 0 0 0 1)
 
 / quadtree from grid
-:c:0N 4#1_qt[grd;zo[3]]
- 
+:c:0N 4#1_qt[grd;8]
+
 drw@c
 
 / extract the nodes at indices 1 and 2 and reattach

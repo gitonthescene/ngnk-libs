@@ -8,7 +8,7 @@ prt:{0,p@(!#p)@&(#p:&~x)#4}
 pth:{(x@)\'!#x}
 
 / Z-order curve
-zo:{,/r+/:2*r:4/!x#2}
+zo:{,/r+/:2*r:4/2\!x}
 
 / render
 drw:{ d:#'ps:pth[prt[c:0,,/x]]  / depth, paths to root
@@ -19,7 +19,7 @@ drw:{ d:#'ps:pth[prt[c:0,,/x]]  / depth, paths to root
 
 / quad tree from (2^N)x(2^N) grid. qt[grd;zo@N]
 qt0:{(p;s):z;|((ps@&~w),\:-2!s;@[w;&w;:;1+x@ps@&w:(f-1)=-/y@1 -1_'0 1+\:ps:p+(f:s*s)*!5])}
-qt:{0,*(#*|:){(r;q):z;0 1_'z,'qt0[x;y]@**|z}[grd;+\=':0,grd:(,/x)@<y]/(();,0 4)}
+qt:{0,*(#*|:){(r;q):z;0 1_'z,'qt0[x;y]@**|z}[grd;+\=':0,grd:(,/x)@<zo[y]]/(();,0,-2!y)}
 
 ex0:{a:x[1;z]
   $[#n:,/x[0]?(n0:&'~a)+\:'1+4*z
