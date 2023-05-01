@@ -17,5 +17,5 @@ png0:png.PNGHDR
 png0,:png.mkchnk["IHDR";`c$,/((4#256)\'375 375),1 0 0 0 0]
 / "compress" at level 0
 png0,:png.mkchnk["IDAT";png.nocmp@bwdata]
-png0,:mkchnk["IEND";!0]
-"/tmp/bw.png" 1:png
+png0,:png.mkchnk["IEND";!0]
+"/tmp/bw.png" 1:png0
