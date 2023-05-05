@@ -37,9 +37,8 @@ rr:png.unfilt[3]'((*|c),\:0N)#'ii
 
 / interlace back into a single image with no filtering
 dd:,/(`c$0),/:,/'(0N,w)#(0N 3#,/,/'rr)@<<,/w#'h#png.A7
-dd1:png.cmp@dd
 png0:png.PNGHDR
 png0,:png.mkchnk["IHDR";`c$,/((4#256)\'w,h),8 2 0 0 0]
-png0,:png.mkchnk["IDAT";dd1]
+png0,:png.mkchnk["IDAT";png.cmp@dd]
 png0,:png.mkchnk["IEND";!0]
 "/tmp/testing.png" 1:png0
