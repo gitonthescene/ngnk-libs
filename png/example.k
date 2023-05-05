@@ -1,7 +1,7 @@
 \l png.k
 png:1:"scryer.png"
 (w;h):*png.ihdr@png
-idat:png.decom@png.idat@png
+idat:png.decmp@png.idat@png
 data:png.unfilt[8](h,0N)#idat
 
 / mark each pixel as either bg color or not
