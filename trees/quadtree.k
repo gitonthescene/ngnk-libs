@@ -18,7 +18,7 @@ drw:{ d:#'ps:pth[prt[c:0,,/x]]  / depth, paths to root
 }
 
 / quad tree from (2^N)x(2^N) grid. qt[grd;zo@N]
-qt0:{(p;s):z;|((ps@&~w),\:-2!s;@[w;&w;:;x@ps@&w:(f-1)=-/y@1 -1_'0 1+\:ps:p+(f:s*s)*!5])}
+qt0:{(p;s):z;|((ps@&~w),\:-2!s;@[w;&w;:;1+x@ps@&w:(f-1)=-/y@1 -1_'0 1+\:ps:p+(f:s*s)*!5])}
 qt:{0,*(#*|:){(r;q):z;0 1_'z,'qt0[x;y]@**|z}[grd;+\=':0,grd:(,/x)@<zo[y]]/(();,0,-2!y)}
 
 ex0:{a:x[1;z]
