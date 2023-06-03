@@ -14,16 +14,13 @@ cls:{1+(-x=!#x)+1+@[&#x;+(-1 1_\:)'.cp[x];+;1 2]}
 / spread out the nodes
 spr:{y@(-x)_,/(!#y),\:x#-1}
 
-/ center adjust horizontal position
-ctr:{$[^(!x)?z;y;1~c:#x@z;o[x]/[y;x@z];@[y;z;:;(-c)!+/@[y:o[x]/[y;x@z];x@z]]]}
-
 shp:-1_#'*:\
 
 // vertical tree rendering
 sh0:{,/'(" ";"┬";"─";"├";"└";"│")x}
 t0:{t:(1+^x?!#x)*+s1:(!1+|/y)=\:y
  t+:(3+|/'|0>':|\|(!#x)=/:x)*+1_s1,,0
- t+5*t<({(x|y)&4>y}\t*|/1 4=\:t)}
+ sh0 cxn[1 4;5;t]}
 
 // horizontal tree rendering
 sh1:{,/'(" ";"┬";"│";"├";"┐";"┬";"─")x}
@@ -33,12 +30,21 @@ t1:{t:spr[x]@+/(0N;t)*~:\=':t:t@\:!|/#'t:|'(y@)\'(!#y)^y
 
 sh2:{,/'(" ";"┬";"│";"┌";"┐";"┬";"─";"│";"┴";"┼")x}
 
+/ center adjust horizontal position
+ctr:{$[^(!x)?z;y;1~c:#x@z;@[y;z;:;@[y:o[x]/[y;x@z];*x@z]];@[y;z;:;(-c)!+/@[y:o[x]/[y;x@z];x@z]]]}
+
+/ center labels
+ctl:{ m:(~&/^:)''x
+  d:,/'(~(," ")~/:)#'x
+  (d@'(<>)'{((#c)#!2)@&c:,/+((-':i)-0,-1_+/1(+/1(-|0,|1_)\--2!_-0.5+)\x@i;x@i:&1&x)}'m*#''x)@\:!#*x}
+
 / mark where node splits to children
 frk:{[i;t;r;y;p]shp[t]#@[0^r[cls[y]];;:;].1(7+0 1 0N 2@-2+3^r[cls[y]]@)\1+i@?y@p}
+
 t2:{t:spr[x]@+/(0N;t)*~:\=':t:t@\:!|/#'t:|'(y@)\'(!#y)^y
   (h;d):&~^t
   p:(~^:)#,/t
-  h:ctr[cp@y]/[h@<p;0 4]
+  h:ctr[cp@y]/[h@<p;&y=!#y]
   i:(#*t)/(h;d@<p)
   r:@[,/0N+t*0;i;:;]
   (sh2@+cxn[3 4;6;frk[i;t;r;y;p]];+shp[t]#r[!#y])}

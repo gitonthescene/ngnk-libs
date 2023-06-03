@@ -8,7 +8,7 @@ T:(TT 3 2 1 10 4 10 2 0 7 4 2 10 9 10 2 0 7 2 0 7 3)@<R
 // reorder the indices based on depth first pre-ordering
 P:redo[P;R]
 D:#'(P@)\'!#P
-`0:(sh0 t0[P;D]),'"  ",/:T
+`0:t0[P;D],'"  ",/:T
 
 (tr;l):t1[2]@P
 `0:1_,/+(tr;T@l)
