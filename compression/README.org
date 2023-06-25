@@ -1,4 +1,4 @@
-* Cmpression in K
+* Compression in K
   This may end up having more stuff, but now it's just got sketch of an lz4 tool
 
 ** LZ4
