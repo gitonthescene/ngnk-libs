@@ -29,7 +29,7 @@ f0:{(r;s;l;m):0 0,16 16\**(t;b):0 1_x
   $[m=15;m:+/m,#/r:|1 tk\(2+l)_b;]
   (l;4+m;256/|b[l+!2];*r;b)}
 
-f:{ \(l;m;off;r;b):f0[*|x]
+f:{(l;m;off;r;b):f0[*|x]
      m*:lst:~l=#b
      (n,m#(-off)#n:(*x),l#b;(l+r+2*lst)_b)}
 
