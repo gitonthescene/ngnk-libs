@@ -19,7 +19,7 @@ blks:{(out;in):y
   $[0x00000000~s:|4#in;out
     0>*s;(out;""),'(4+0,256/(256!s)-128,3#0)_in
     [(b;r):(4+0,256/256!s)_in
-     (4*x`bc)_r                      / block checksum.  Just drop for now.
+     r:(4*x`bc)_r                      / block checksum.  Just drop for now.
      (out,*(#*|:)f/(sn;b);r)]]}
 
 tk:{1++/&\255=7#x}
