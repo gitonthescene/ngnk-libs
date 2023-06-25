@@ -1,0 +1,12 @@
+* Cmpression in K
+  This may end up having more stuff, but now it's just got sketch of an lz4 tool
+
+** LZ4
+   Currently just a sketch of a [[https://github.com/lz4/lz4/tree/dev][lz4]] decompression tool.  See example.
+
+*** Caveats
+  - Doesn't currently fully process all [[https://github.com/lz4/lz4/blob/dev/doc/lz4_Frame_format.md][frame options]] and hence doesn't fully process the frame
+  - The ~dcm~ function evaluates the frame descriptor and then processes the block data
+  - If there is a content checksum then it's just in the leftover data
+  - Content Size is calculated but not used
+  - Block Checksums are simply ignored
