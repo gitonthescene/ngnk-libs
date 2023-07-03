@@ -27,4 +27,4 @@ add:{(&\~:)_|add0[128]pad[x;y]}
 adds:{(|/~64>*'(x;y))_|add0[128]pads[x;y]}
 
 / unsigned multiplication
-mul:{{add/(x,0;y)}/.(add/{$[1=#x;++(0,x);x]}@+128\)'(,/*/:/d0)@=+/!#'d0:|'pad[x;y]}
+mul:{{add/(x,0;y)}/@[&1+|/i;i:+/!#'x;add;,/*\:/x:(x;y)]}
