@@ -43,3 +43,15 @@ dm0:{2#(#*|:){(i;p;d):y
     (i;(sub[*d;p]),*|d;())]}[y]/(0;!0;(0,#*y)_z)}
 
 divmod:{{$[*<+|1#:'\(*x;*|y);y;(*y;!0),'dm0[128;x;*|y]]}[x]/(!0;y)}
+
+// Faster, but does most math in host K and so has limits.
+
+\d fast
+pad:{0^x@\:!|/#:'x:|'(!0),/:(x;y)}
+str:,/|1(&~#:)\(&\~:)_
+car:{str{(x\z+*y),1_y}[0,x]/[,0;y]}
+
+add:car[128]@+/pad@
+mul0:{@[&1+m;(m:|/i)-i:+/!#'x;+;,/*\:/x:(x;y)]}
+mul:{car[128]mul0[x;y]}
+\d .
