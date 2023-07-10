@@ -27,7 +27,10 @@ addb:{(&\~:)_|add0[x]pad[y;z]}
 add:addb[128]
 
 / signed addition
-adds:{(|/~64>*'(x;y))_|add0[128]pads[x;y]}
+adds:{r:|add0[128]pads[x;y]
+  $[=/s:~64>*'(x;y)
+    (((*s)=64>*r)#(0 127@*s)),r:(*s)_r
+    _/|1(0 0~@[;!2]@)\(64>*r)_r]}
 
 / unsigned multiplication
 mul:{{add/(x,0;y)}/@[&1+|/i;i:+/!#'x;add;,/*\:/x:(x;y)]}
