@@ -41,6 +41,8 @@ ctl:{ m:(~&/^:)''x
   d:,/'(~&//'^:)#'x
   (d@'ctl0'm*#''x)@\:!#*x}
 
+pad:{p:x#/:" ",0N;p,/:'y,\:'p}
+
 / mark where node splits to children
 frk:{[i;t;r;y;p]shp[t]#@[0^r[cls[y]];;:;].1(7+0 1 0N 2@-2+3^r[cls[y]]@)\1+i@?y@p}
 

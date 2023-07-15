@@ -19,9 +19,18 @@ D:#'(P@)\'!#P
 // Generate a random depth vector with x nodes (min 2)
 rd:{0,(0|x-2){x+@/1(*1?#:)\1-&(1|-_-0.25*d),1+&d:1|x}\1}
 
-sh:{(tr;l):(t1;t2)[x-1][2]@y
+sh:{(tr;l):((t1;t2)[x-1])[2]@y
   `0:(,""),1_,/+(tr;(,/`c$97+!#y)@l)}
-P:p@rd[10]
+
+sh[1]'p'rd'10#10+!5;
+sh[2]'p'rd'10#10+!5;
+
+// Generate random length labels
+/ pad the picture to make room
+/ center the labels
+sh:{ls:`c$97+(1+(#y)?5)?\:26
+  (tr;l):pad[p]((t1;t2)[x-1])[p:2*-2!1+|/#'ls]@y
+  `0:(,""),/+(tr;ctl@ls@l)}
 
 sh[1]'p'rd'10#10+!5;
 sh[2]'p'rd'10#10+!5;
