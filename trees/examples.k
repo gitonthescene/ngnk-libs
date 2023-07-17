@@ -28,7 +28,7 @@ sh[2]'p'rd'10#10+!5;
 // Generate random length labels
 / pad the picture to make room
 / center the labels
-sh:{ls:`c$97+(1+(#y)?10)?\:26
+sh:{ls:`c$97+(1+(#y)?5)?\:26
   (tr;l):pad[p]((t1;t2)[x-1])[p:1+|/#'ls]@y
   `0:(,""),/+(tr;ctl@ls@l)}
 
