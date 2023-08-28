@@ -116,7 +116,7 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
                       / Actually here it's technically taking the *character* " ", but that works too
 "--"\"Yo--yo--yo"
 " "/("Hey"; "you")    / Join takes an array of strings as it's argument
-10\12345              / Encode represents the given string with the given base
+10\12345              / Encode represents the given number as digits with the given base
 2\13
 10/9 8 7              / Decode calculates the value of a list of digits in the given base
 2/1 0 1 1 0 1
@@ -139,7 +139,7 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
                       / Here there is 1 zero, no ones, two twos, three threes, etc.
 ?&1 0 2 3 0 4         / Monadic ? (unique) only keeps the first occurence of each element in a list
 ? 7 8 2 3 7 1 3
-7 8 2 3 7 1 3?1       / Diadic ? (find) returns the index of the first occurence of the given element in a list
+7 8 2 3 7 1 3?1       / Dyadic ? (find) returns the index of the first occurence of the given element in a list
                       / Now things get a little tricky..
                       / Some verbs behave differently when given different types of arguments.
                       / This is kind of true with reshape and cut, but the behaviors weren't too different
@@ -152,5 +152,8 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 
 
                       / Feeling refreshed?  Let's introduce a few more types...
+
+
+
 
 / FIN
