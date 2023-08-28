@@ -10,7 +10,7 @@
 1 + 3 0 2       / by scalar extension however, you can add scalars to vectors.
                 / it's as if the scalar were repeated until the necessary length
 # 9 8 4 5       / count counts the length of a vector
-                / unlike the examples below # takes one argument.  single arguments are always taken to the right
+                / unlike the previous examples, # takes one argument.  single arguments are always taken to the right
 2 4 , 9 0 4     / concat joins two vectors
 # 2 4 , 9 0 4
 #2 4,9 0 4      / spaces around built-in functions (called verbs in the lingo) are not necessary
@@ -31,7 +31,7 @@
 (1 2 3;3 5 0)        / (Parens around semi-colon separated items form explicit lists)
 #(,1 2 3),(,3 5 0)   / .. of length two
 (,1 2 3), ,3 5 0     / the parentheses on the right are not necessary because of right-to-left evaluation
-(0 1 3;99;6 1)       / explicit lists need not be uniform
+(0 1 3;99;6 1)       / explicit lists need not be uniform (neither length nor type)
 @"string"            / strings are lists (capital C) of chars.
 @"s"                 / a single char is also surrounded with double quotes. (this can be a bit confusing at first)
 @,"s"                / to get a list of a single char, use enlist
@@ -79,8 +79,9 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 -(4 8 5)              / this is the negate verb applied to a list
 -4 8 5                / this is just a list of integers
 -:4 8 5               / a colon forces this to be treated as a monadic function
+                      / Notice that this monadic function applies to each element of the list unlike count (#)
                       / (colon has many more tricks up its sleeve...)
-|-:4 8 5               / this is that list reversed
+|-:4 8 5              / this is that list reversed
 -4|8                  / maximum of -4 and 8 (clearly no relation to the monadic reverse above)
 -4&8                  / minimum of -4 and 8
 ("abc";!3)            / the "matrix" made of the rows "abc" and !3.
@@ -98,7 +99,7 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
                       / More adverbs!
 +/3 5 9               / slash as an adverb is "left fold" with the accumulator starting as the first element.
                       / Note here that the verb + is dyadic, but the modified verb +/ is used monadically
-10+/3 5 9             / used dyadically, the left arg becomes the initial accumulator
+10+/3 5 9             / used dyadically, the left arg becomes the initial value for the accumulator
                       / slashes used as comments must be preceded with a space
                       / slashes used as adverbs must *not* be preceded by a space
 |/-4 8 5              / this is "max over".  I.e. the fold of max over the list -4 8 5
@@ -106,7 +107,50 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 |:-4 8 5              / this forces | to be read as its monadic form
 +\3 5 9               / the adverb scan is like fold, but produces all of its intermediate results
 10+\3 5 9             / when using an explicit initial accumulator, the inital value is not part of the results
-+':9 4 2              / pairs up each element of its list with the prior element and applies the verb
++':9 4 2              / pairs up each element of its list with the prior element and applies the verb. ': is called each-next.
                       / the first element is left as is
 1+':9 4 2             / but you can supply a seed value to pair it with.
 1-':9 4 2             / Note that the prior element becomes the right arg of the verb
+                      / There are a couple of funky adverbs which modify non-verbs, which we'll call nouns
+" "\"Yo yo yo"        / Split takes a string and splits the argument its given by it.
+                      / Actually here it's technically taking the *character* " ", but that works too
+"--"\"Yo--yo--yo"
+" "/("Hey"; "you")    / Join takes an array of strings as it's argument
+10\12345              / Encode represents the given string with the given base
+2\13
+10/9 8 7              / Decode calculates the value of a list of digits in the given base
+2/1 0 1 1 0 1
+24 60 60/1 2 3        / The base for each digit need not be the same
+                      / Note that because of how this works, the top base is irrelevant, but needed to match the number of digits
+-2 60 60/1 2 3
+10 10\976             / For encode, if you supply a list of bases instead of a scalar,
+                      / you always get as many digits as the length of that list
+2 2 2 2 2\5
+                      / Back to verbs for a bit...
+8#1 2                 / Take can take more items than this list provided in which case it just cycles through
+5#2                   / You can even give take a scalar to simply repeat the value
+(5#2)\5               / Once again, parentheses are needed here because evaluation is from right-to-left
+6 5#1 2               / You can even use a vector with take to generate lists of lists, one row at a time
+                      / In this case it's often called "reshape" but the idea is the same
+2 5_!10               / Drop with a vector becomes "cut".  The vector is split at the given indices and the first part is dropped.
+0 3 7_!10             / To keep the first part, just make 0 the first element of the vector
+&0 0 1 0 1 1          / Given a boolean list, where (&) gives the indices of the 1's
+&1 0 2 3 0 4          / Actually, this is just a special case of "replicate" which generates a given number of repeats at the given index
+                      / Here there is 1 zero, no ones, two twos, three threes, etc.
+?&1 0 2 3 0 4         / Monadic ? (unique) only keeps the first occurence of each element in a list
+? 7 8 2 3 7 1 3
+7 8 2 3 7 1 3?1       / Diadic ? (find) returns the index of the first occurence of the given element in a list
+                      / Now things get a little tricky..
+                      / Some verbs behave differently when given different types of arguments.
+                      / This is kind of true with reshape and cut, but the behaviors weren't too different
+                      / So this next may seem a bit random ...
+15?3                  / Dyadic ? with an integer left argument is "roll".
+                      / It generates that many random numbers from 0 to the right argument
+15?"ace"              / If given a list as its right argument, it randomly picks elements from that list
+-5?5                  / Deal is like roll only it doesn't repeat
+                      / Phew!!  There's a lot here.  Grab a hot tea and let some of this sink in a bit.
+
+
+                      / Feeling refreshed?  Let's introduce a few more types...
+
+/ FIN
