@@ -115,7 +115,7 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 " "\"Yo yo yo"        / Split takes a string and splits the argument its given by it.
                       / Actually here it's technically taking the *character* " ", but that works too
 "--"\"Yo--yo--yo"
-" "/("Hey"; "you")    / Join takes an array of strings as it's argument
+" "/("Hey"; "you")    / Join takes an array of strings as its argument
 10\12345              / Encode represents the given number as digits with the given base
 2\13
 10/9 8 7              / Decode calculates the value of a list of digits in the given base
@@ -126,8 +126,10 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 10 10\976             / For encode, if you supply a list of bases instead of a scalar,
                       / you always get as many digits as the length of that list
 2 2 2 2 2\5
+0 2 2 2\134           / If the top base is zero, it just returns whatever is left over after decoding the other digits
+2/0 2 2 2\134
                       / Back to verbs for a bit...
-8#1 2                 / Take can take more items than this list provided in which case it just cycles through
+8#1 2                 / Take can take more items than the list provided in which case it just cycles through
 5#2                   / You can even give take a scalar to simply repeat the value
 (5#2)\5               / Once again, parentheses are needed here because evaluation is from right-to-left
 6 5#1 2               / You can even use a vector with take to generate lists of lists, one row at a time
@@ -152,6 +154,58 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 
 
                       / Feeling refreshed?  Let's introduce a few more types...
+(1;"a";3%2)           / so far, we've seen ints, chars and floats
+@'(1;"a";3%2)         / with scalar types `i, `c and `f
+                      / Hmm...  What is `i?
+@`i                   / A new type!  `s represents the symbol type
+@`symbol              / Symbols are basically scalar strings.  In particular are used to represent types.
+@"symbol"             / Remember ector types are represented with upper case letters.  This is a vector of `c elements.
+#`symbol
+#"symbol"
+@`i`c`f               / Vectors of symbols can be represented by listing them one after another
+                      / This is sometimes called "stranding".  Stranding is only possible for homogenous types
+@1 2 3 5              / This is why vectors of integers can simply be listed one after another
+@(`i;`c;`f)           / Of course explicit array notation is still possible
+@@'(1;"a";3%2)
+@'(1 2;"ab";3%2 1;`i`c)
+1 0.3 2               / There is some magic here and there.  Here the ints are "promoted" to floats
+1 2 3+4 5 6           / Also, it's worth explicitly noting that stranding binds tighter than any of the verbs
+(1;2;3+4;5;6)         / This is something different.
+1 2,(3+4),5 6         / You could also make this by building it up with the verb concat.
+                      / The parentheses are necessary because of right to left evaluation
+@(1;"a";3%2)          / Before we get too far away it's also worth noting that @ operates on the whole array
+                      / This is a single type known as a "mixed array" and is represented by `A
+@'(1;"a";3%2)         / "each" is needed to operate on each element
+#'(1 2;"abcd";3%2 1;`i`c`s`A`C)  / similar to length
+#(1 2;"abcd";3%2 1;`i`c`s`A`C)
+                      / Over time you get used to which functions do this and which ones "permeate".
+                      / i.e. operate on each element element naturally like + or *
+
+                      / Let's introduce one more type: dictionaries
+`a`b`c!3 4 5          / Dictionaries act like association lists and created with dyadic ! operating on two lists of equal length
+!`a`b`c!3 4 5         / Monadic ! on a dictionary returns the keys of the dictionary
+.`a`b`c!3 4 5         / Monadic . on a dictionary returns the values of the dictionary
+(`a`b`c!3 4 5)[`b]    / Indexing can be used to extract the value associated with a given key
+
+                      / It's probably best to start introducing some programming basics before moving on
+d:`a`b`c!3 4 5        / : is used for assigning to a variable  (We told you colon had more tricks!)
+d                     / See?  (This tutorial is running in a single session so this variable is still visible.)
+d[`b]                 / That looks nicer.  We've extrated the value out of the dictionary d associated with the key `b
+                      / It's probably worth noting that variables are not symbols and not strings.  They use no punctuation.
+i123:1 2 3            / You can use numbers in the name but initial character must be a letter
+i123[1]
+i123@1                / Remember that you can use @ to index into an array
+d@`c                  / Or even for looking up in a dictionary
+i123 1                / You can also just list the two next to each other!  (This is *not* stranding!)
+d`c                   / You don't even need a space when it's not ambiguous
+i123:                 / Variables don't go away, but you can (re)assign them to "nothing" if you want to free memory
+i:1 2 3               / Different variable
+i 1                   / Here we need a space because i1 would be a(n undefined!) variable name.
+d:`a`b`a!3 4 5        / Dictionaries can be weird.  You can repeat keys.
+d`a                   / Only the first one is found with lookup
+(!d;.d)               / But both original lists are still in the keys and values
+                      / BTW, there is no "iter".  Keys and values must be extracted separately
++(!d;.d)              / Remember "flip"?  This gets the list of key/value pairs
 
 
 
