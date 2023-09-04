@@ -159,7 +159,7 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
                       / Hmm...  What is `i?
 @`i                   / A new type!  `s represents the symbol type
 @`symbol              / Symbols are basically scalar strings.  In particular are used to represent types.
-@"symbol"             / Remember ector types are represented with upper case letters.  This is a vector of `c elements.
+@"symbol"             / Remember vector types are represented with upper case letters.  This is a vector of `c elements.
 #`symbol
 #"symbol"
 @`i`c`f               / Vectors of symbols can be represented by listing them one after another
@@ -206,7 +206,38 @@ d`a                   / Only the first one is found with lookup
 (!d;.d)               / But both original lists are still in the keys and values
                       / BTW, there is no "iter".  Keys and values must be extracted separately
 +(!d;.d)              / Remember "flip"?  This gets the list of key/value pairs
+(.d)(!d)?`a           / This is basically what dictionary lookups do...
+(!d)?`a               / This extracts the keys and then uses "find" to find the index of the key
+(.d)@(!d)?`a          / This extracts the values and uses the previously found index to index into the array
+(.d)(!d)?`a           / But because there's no abmiguity (really!) you don't need the @ here.  It's not stranding so it's indexing.
+                      / The parentheses are needed because of right to left evaluation.
 
+                      / More programming basics ... and a new type!  lambdas!
+f:{x}                 / Lambdas are formed with curly braces.  This takes a single arg (x) and returns it.
+(f[1];f[`a];f[3%2])   / The lambda can be applied to arguments with brackets similar to array indexing
+(f@1;f@`a;f@3%2)      / Or with @ ..
+(f 1;f`a;f 3%2)       / Or even just juxtaposition ..
+f'(1;`a;3&2)          / lambdas take adverbs just like verbs do
+{x+y}[2;3]            / Brackets are (generally) necessary when supplying more than one arg
+f                     / Also, lambdas don't have to be assigned to a variable the way f was
+{x*y+z}[2;3;4]        / Functions can use up to three implicit arguments which have the names x, y and z
+f:{x+y}[2]            / If fewer args are supplied than required, a "projection" is formed
+@'({x};{x+y}[2])      / Projections are actually a different type, but this doesn't come up that often
+f'3 4 5               / Projections basically "curry" the supplied argument
+{[a;b;c;d]a+b*c-d}    / More than three arguments requires explicit argument declaration with brackets
+{[x;y]x+y}[2;3]       / This can get noisy for simple stuff which is why implicit args exist
+{2*y}[1;3]            / If you use an implicit y then the function takes (at least) two arguments, three if there is a z.
+{2*y}[1]              / This is a projection
+{2*y}[1]@6            / When called, passes the argument to y
+f:+                   / BTW, verbs can be assigned to variables too
+f[2;3]                / But in this form must use bracket indexing instead of infix notation
+@f                    / Verbs have a different type as well
+@f:@                  / Assignment can also happen inline.  This assigns f and then takes its type. (@ is also a verb!)
+:[123;451]            / Colon is also a (dyadic) verb which returns its second argument.
+                      / .. but is weird because it's hard to parse which of its various forms is meant in the code
+:i:1 2 3              / Here it's used monadically(??) to return the value assigned to i
+123:456               / Here it's used dyadically to return the right argument
+:i:1 2 3              / This form is often useful when debugging code.
 
 
 
