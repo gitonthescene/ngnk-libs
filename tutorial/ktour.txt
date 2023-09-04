@@ -1,66 +1,66 @@
-1 + 1     / basic arithematic can be done with infix notation
+1 + 1                 / basic arithematic can be done with infix notation
 5 * 7
 2 - 4
-3 % 2     / division is done with % since / serves other purposes like the beginning of a comment!  :D
-3 * 4 + 1       / evaluation happens from right to left.  There is no precedence between operations.
+3 % 2                 / division is done with % since / serves other purposes like the beginning of a comment!  :D
+3 * 4 + 1             / evaluation happens from right to left.  There is no precedence between operations.
 3 * (4 + 1)
-(3 * 4) + 1     / Use parentheses when you want to control the order of evaluation
-1 2 3 + 3 0 2   / rank polymorphism means these operations work for vectors of equal length
-                / you get an error if these vectors are not equal length
-1 + 3 0 2       / by scalar extension however, you can add scalars to vectors.
-                / it's as if the scalar were repeated until the necessary length
-# 9 8 4 5       / count counts the length of a vector
-                / unlike the previous examples, # takes one argument.  single arguments are always taken to the right
-2 4 , 9 0 4     / concat joins two vectors
+(3 * 4) + 1           / Use parentheses when you want to control the order of evaluation
+1 2 3 + 3 0 2         / rank polymorphism means these operations work for vectors of equal length
+                      / you get an error if these vectors are not equal length
+1 + 3 0 2             / by scalar extension however, you can add scalars to vectors.
+                      / it's as if the scalar were repeated until the necessary length
+# 9 8 4 5             / count counts the length of a vector
+                      / unlike the previous examples, # takes one argument.  single arguments are always taken to the right
+2 4 , 9 0 4           / concat joins two vectors
 # 2 4 , 9 0 4
-#2 4,9 0 4      / spaces around built-in functions (called verbs in the lingo) are not necessary
-                / but we'll use them here occasionally for a bit longer
-,1              / enlist puts its argument in a list
-                / this shows the meaning of "," is overloaded.  this happens a bunch in k, but often the meanings are related
-# ,1            / this is a list of length 1
-# 1             / hmm... scalars have length??  take this on faith for now that this comes in handy
-@ 1             / @ returns the type of its argument, this is an "int".
-                / oh, verbs which take one argument are called "monadic" and ones which take two "dyadic"
-@ ,1            / this is a list of ints.  Capitals indicate lists. (lists, vectors, same thing)
-,3 7 9          / You can enlist a list
-# ,3 7 9        / this is a list of length 1
-* 3 7 9         / this takes the "head" of the list.  i.e. the first element.
-                / (not related to multiplication but another case of overloading)
-*,3 7 9         / the head of an enlisted list is ... the list.  makes sense.
-(,1 2 3),(,3 5 0)    / the concat of two enlisted lists to form a list of lists
-(1 2 3;3 5 0)        / (Parens around semi-colon separated items form explicit lists)
-#(,1 2 3),(,3 5 0)   / .. of length two
-(,1 2 3), ,3 5 0     / the parentheses on the right are not necessary because of right-to-left evaluation
-(0 1 3;99;6 1)       / explicit lists need not be uniform (neither length nor type)
-@"string"            / strings are lists (capital C) of chars.
-@"s"                 / a single char is also surrounded with double quotes. (this can be a bit confusing at first)
-@,"s"                / to get a list of a single char, use enlist
-("n";"i";"c";"e")    / double quotes are just syntactic sugar to make lists of chars.
-"o","k"              / Oh yeah!  Concat can also concatenate two scalars
-"s","tring"          / ... or a scalar to a vector.  Note that scalar extension does *not* apply here.
-("o";,"k";4 9 2)     / An even more mixed array
-#'("o";,"k";4 9 2)   / verbs can be modified to perform derived functionality
-                     / here ' (called each) modifies count to perform count on each of the elements of its list argument
-,'4 5 6              / each is called an adverb and can be applied to other verbs
-                     / enlist each element of 4 5 6 to get a list of three one-element lists
-3 9 2,'-1 -4 0       / each can be applied to dyadic verbs and pairs up the elements of both args
-0,'3 4 1             / scalar extension applies to such pairing as well
-0,/:3 4 1            / but there is a more explicit way to indicate that the left argument stays the same
-                     / this adverb is called eachright
-1 0,/:3 4 1          / It's useful when scalar extension doesn't apply
-1 0,\:3 4 1          / There is an eachleft as well.
-                     / Are we having fun yet??
-                     / More verbs!
-!8                   / enumerate numbers from 0 up to (but not including) 8
+#2 4,9 0 4            / spaces around built-in functions (called verbs in the lingo) are not necessary
+                      / but we'll use them here occasionally for a bit longer
+,1                    / enlist puts its argument in a list
+                      / this shows the meaning of "," is overloaded.  this happens a bunch in k, but often the meanings are related
+# ,1                  / this is a list of length 1
+# 1                   / hmm... scalars have length??  take this on faith for now that this comes in handy
+@ 1                   / @ returns the type of its argument, this is an "int".
+                      / oh, verbs which take one argument are called "monadic" and ones which take two "dyadic"
+@ ,1                  / this is a list of ints.  Capitals indicate lists. (lists, vectors, same thing)
+,3 7 9                / You can enlist a list
+# ,3 7 9              / this is a list of length 1
+* 3 7 9               / this takes the "head" of the list.  i.e. the first element.
+                      / (not related to multiplication but another case of overloading)
+*,3 7 9               / the head of an enlisted list is ... the list.  makes sense.
+(,1 2 3),(,3 5 0)     / the concat of two enlisted lists to form a list of lists
+(1 2 3;3 5 0)         / (Parens around semi-colon separated items form explicit lists)
+#(,1 2 3),(,3 5 0)    / .. of length two
+(,1 2 3), ,3 5 0      / the parentheses on the right are not necessary because of right-to-left evaluation
+(0 1 3;99;6 1)        / explicit lists need not be uniform (neither length nor type)
+@"string"             / strings are lists (capital C) of chars.
+@"s"                  / a single char is also surrounded with double quotes. (this can be a bit confusing at first)
+@,"s"                 / to get a list of a single char, use enlist
+("n";"i";"c";"e")     / double quotes are just syntactic sugar to make lists of chars.
+"o","k"               / Oh yeah!  Concat can also concatenate two scalars
+"s","tring"           / ... or a scalar to a vector.  Note that scalar extension does *not* apply here.
+("o";,"k";4 9 2)      / An even more mixed array
+#'("o";,"k";4 9 2)    / verbs can be modified to perform derived functionality
+                      / here ' (called each) modifies count to perform count on each of the elements of its list argument
+,'4 5 6               / each is called an adverb and can be applied to other verbs
+                      / enlist each element of 4 5 6 to get a list of three one-element lists
+3 9 2,'-1 -4 0        / each can be applied to dyadic verbs and pairs up the elements of both args
+0,'3 4 1              / scalar extension applies to such pairing as well
+0,/:3 4 1             / but there is a more explicit way to indicate that the left argument stays the same
+                      / this adverb is called eachright
+1 0,/:3 4 1           / It's useful when scalar extension doesn't apply
+1 0,\:3 4 1           / There is an eachleft as well.
+                      / Are we having fun yet??
+                      / More verbs!
+!8                    / enumerate numbers from 0 up to (but not including) 8
 #!8
-3#!8                 / "take" the first three number of this list
-3_!8                 / "drop" the first three numbers of this list
--3#!8                / negative numbers to take from the back of the list
+3#!8                  / "take" the first three number of this list
+3_!8                  / "drop" the first three numbers of this list
+-3#!8                 / negative numbers to take from the back of the list
 -3_!8
-9=3                  / just plain equals.  true is 1 and false is 0.
+9=3                   / just plain equals.  true is 1 and false is 0.
 3=3
-4=!6                 / oho! scalar extension
-0 1 2=!3             / and rank polymorphism!
+4=!6                  / oho! scalar extension
+0 1 2=!3              / and rank polymorphism!
 0 1 2~!3              / match.  i.e. check that the whole vector is the same
 (0;1 2 3)~(9=3;1+!3)  / even for mixed vectors
 (0;1 2 3)=(9=3;1+!3)  / rank polymorphism applies to ragged shapes as well.  shapes must match (clearly)
@@ -192,6 +192,7 @@ d:`a`b`c!3 4 5        / : is used for assigning to a variable  (We told you colo
 d                     / See?  (This tutorial is running in a single session so this variable is still visible.)
 d[`b]                 / That looks nicer.  We've extrated the value out of the dictionary d associated with the key `b
                       / It's probably worth noting that variables are not symbols and not strings.  They use no punctuation.
+
 i123:1 2 3            / You can use numbers in the name but initial character must be a letter
 i123[1]
 i123@1                / Remember that you can use @ to index into an array
@@ -220,6 +221,18 @@ f:{x}                 / Lambdas are formed with curly braces.  This takes a sing
 f'(1;`a;3&2)          / lambdas take adverbs just like verbs do
 {x+y}[2;3]            / Brackets are (generally) necessary when supplying more than one arg
 f                     / Also, lambdas don't have to be assigned to a variable the way f was
+f:{x+y};f[1;2];f[3;4] / A semicolon can separate multiple statements on a line.  Only the output of the last is printed
+f:{x+y};f[1;2];       / A trailing semicolon means the last statement was an "empty statement" and so nothing is printed
+{a:x+y;2*a}[1;3]      / Multiple statements can of course be used inside a lambda as well
+                      / Kind of difficult to demonstrate in this format, but the semicolon can be replaced by a newline
+                      / only if the following line begins with at least one space.
+                      / E.g. {a:x+y
+                               2*a}
+                      / But this also means that the closing brace must be on the last line with a statement
+                      / In this example {a:x+y
+                                          2*a
+                                        }
+                      / The last line is an empty statement and so prints nothing.
 {x*y+z}[2;3;4]        / Functions can use up to three implicit arguments which have the names x, y and z
 f:{x+y}[2]            / If fewer args are supplied than required, a "projection" is formed
 @'({x};{x+y}[2])      / Projections are actually a different type, but this doesn't come up that often
@@ -238,6 +251,11 @@ f[2;3]                / But in this form must use bracket indexing instead of in
 :i:1 2 3              / Here it's used monadically(??) to return the value assigned to i
 123:456               / Here it's used dyadically to return the right argument
 :i:1 2 3              / This form is often useful when debugging code.
+@f:{x}'               / Modified lambdas are yet another type
+f(1;"a";3%2;`b)
+g:+; 5 g/1 2 3        / Modified lambdas actually can be used infix
+/g:+/; 5 g 1 2 3      / But only with explicit modifiers.  This would not work.
+g:+; 5g/1 2 3         / Actually here the space before the g here is not necessary
 
 
 
