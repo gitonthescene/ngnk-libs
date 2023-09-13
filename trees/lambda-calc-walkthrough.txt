@@ -1,0 +1,73 @@
+"Woo hoo!"                        / Let's parse lambda expressions
+:s:"(^y.z y)"                     / To keep things ASCII, we'll use a caret to denote a lambda
+                                  / spaces separate variables and for now everything will be a single character
+p:0 0 1 1 1 1 1 0                 / We're trying to produce a "parent vector"
+                                  / Here each value in this vector indicates the parent of the node at that index
++(s i;i:(1;p[1]))                 / The parent of the lambda is the open parenthesis
++(s i;i:(2;p[2]))                 / The parent of the bound variable y is the lambda, etc.
+                                  / Let's generate this from the input string
+:t:"(hey(you)(whats(new))dude)"   / But first let's parse characters at depth defined by parentheses
+{$["("=y;x+1;")"=y;x-1;x]}\[0;t]  / A simple fold like this calculates the depth
+                                  / But we want to build a parent vector ...
+                                  / The parent of any node is the index of the most recent open paren
+                                  / This means that when we reach a closed paren,
+                                  / the following nodes have the previous open paren as a parent
+                                  / Stack!
+                                  / One more thing. At each node we grow the parent vector.
+                                  / The index of the next added node is just the length
+                                  / of the parent vector before it was added, or one less after.
+{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}\[(,0;!0);t]
+                                  / We don't want a fold, but this shows how the result is constructed
+:p:*|{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}/[(,0;!0);t]
+                                  / We've generated a parent vector for the tree indicated by
+                                  / nested levels of parentheses
+p@!#p                             / This is the list of parents of all the indices
+p                                 / .. of course this is just p
+p[p]                              / Here are all the grand parents of each index, etc.
+(p@)\!#p                          / Of course with a single tree all nodes lead back to the root
+1&(p@)\!#p                        / We can make a mask out of this picture
+(1+!#p)*/:1&(p@)\!#p              / Multiply each row by the indices offset by one
+`0:(" ",t)@(1+!#p)*/:1&(p@)\!#p   / And then prepend our string with a space to represent the zeros
+                                  / And we get a nice little picture of the depth of each node
+`0:(" ",t)@(1+!#p)*/:(,1+&#p),1&(p@)\!#p
+                                  / Add a row of ones to our mask to get the original string
+                                  / Notice that the closed paren is a child of its matching open paren.
+                                  / Can you figure out why?
+                                  / We can clean that up, but it won't matter that much.
+:s:"(^y.z y)"                     / Parsing lambdas!
+:p:0 0 1 1 1 1 1 0                / The plan is to add to paren parsing, by putting everything after
+                                  / a lambda as a child of the lambda, all as siblings
+`0:(" ",s)@(1+!#p)*/:(,1+&#p),1&(p@)\!#p
+                                  / We can just toss the current index on the parent stack for "^" as well
+{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;"^"=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}\[(,0;!0);s]
+                                  / The trouble is that we only pop 1 element off the stack with each ")"
+                                  / Here we've accumulated a bunch of items which should all be popped.
+                                  / The idea is to count how many need popping and pop that count.
+\l lambda-calculus.k              / The code does exactly that.
+prs
+                                  / Going back to our earlier example for parsing just parentheses
++(t;p:*|{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}/[(,0;!0);t])
+                                  / We don't really need all the closed parens any more
+                                  / The structure is clear without them.
+                                  / But if just remove them and the corresponding indices in the parent vector
+                                  / then the indices in the parent vector will be off.
+                                  / A permutation of the indices so that all everything besides the
+                                  / closed parens are packed together, so we can just chuck the unwanted stuff
++(t;")"=t)                        / First we mark the closed parens for deletion
+:ro:<m:")"=t                      / Then we take the grade of that booleam vector
+m@ro                              / Now the 1's are all at the back
+t@ro                              / And so are the parens.  But what about the parent vector?
+p@ro                              / This puts the indices in the right place, but points to the old location
+(<ro)@p@ro                        / Picking these indices out of the reverse permutation does the trick
+:(t;p):(-#&m)_/:(t@ro;(<ro)p@ro)  / Dropping the number of 1's we had from the back does the trick
+p@t?/:"nd"                        / It may look like "newdude" is all at the same level
+                                  / but they have different parents
+                                  / All of the structure is now in the parent vector and not the list of nodes
+prn                               / prn takes a string, generates a parent vector and then prunes unneeded nodes
+&"("=t                            / Let's try to find the scope of the tree starting at third paren
+p                                 / That's at index 8. All of its immediate children have an 8 in the parent vector
+t@ \&p=8                          / But the last one starts a new group, so everything in it's scope counts too
+t@ \&p=14                         / We can do it again, now there is no "(" starting a new group.
+p?&p=14                           / Since none start a new group none are in the parent vector.
+lc                                / This is how lc finds the last leaf in the subtree under a given node
+                                  / Now for the fun part!!  Beta reduction
