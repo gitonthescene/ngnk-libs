@@ -24,7 +24,6 @@ beta:{[n;p]l:lc[p;1]
       si:(n[2]=n@)#li
       p:@[p;(~l<)#&1=p;:;0]
       (sn;sp):(*/ll:#'(1,ri;si))#/:("(";0),'(1+l)_/:(n;p)
-      off:&#/|ll
-      sp:@[(#p)+(0|sp-l)+(*ll)*off;(*ll)*!*|ll;:;p@si]
+      sp:@[(#p)+(0|sp-l)+(*ll)*(&#/|ll);(*ll)*!*|ll;:;p@si]
       (n;p):srt.((n;p),'(sn;sp)),,ro:<<,/@[&#p;si;,;(|ll)#1]
       (-#ll)_/:srt[n;p;<@[&#p;(<ro)@ll:1 2,si,ri;:;1]]}
