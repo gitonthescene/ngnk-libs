@@ -10,7 +10,7 @@ prs:{*|{(s;p):x;p,:**|s
 srt:{(x@z;(<z)@y@z)}
 
 / parse and prune unnecessary nodes
-prn:{(-#&i)_/:srt.(x;prs[x];<i:|/" .)"=\:s)}
+prn:{(-#&i)_/:srt.(x;prs[x];<i:|/" .)"=\:x)}
 
 / pleasant display of tree
 dsp:{`0:(" ",x)(1+!#x)*/:(,1+&#x),~~(y@)\!#y}
@@ -24,7 +24,7 @@ beta:{[n;p]l:lc[p;1]
       si:(n[2]=n@)#li
       p:@[p;(~l<)#&1=p;:;0]
       (sn;sp):(*/ll:#'(1,ri;si))#/:("(";0),'(1+l)_/:(n;p)
-      sp:@[0|sp-l;(*ll)*!*|ll;:;p@si]
       off:&#/|ll
-      (n;p):srt.((n;p),'(sn;(1&(*ll)!!#off)*(#p)+sp+(*ll)*off)),,ro:<<,/@[&#p;si;,;(|ll)#1]
+      sp:@[(#p)+(0|sp-l)+(*ll)*off;(*ll)*!*|ll;:;p@si]
+      (n;p):srt.((n;p),'(sn;sp)),,ro:<<,/@[&#p;si;,;(|ll)#1]
       (-#ll)_/:srt[n;p;<@[&#p;(<ro)@ll:1 2,si,ri;:;1]]}
