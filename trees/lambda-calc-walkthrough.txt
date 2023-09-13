@@ -23,7 +23,7 @@ p:0 0 1 1 1 1 1 0                 / We're trying to produce a "parent vector"
                                   / nested levels of parentheses
 p@!#p                             / This is the list of parents of all the indices
 p                                 / .. of course this is just p
-p[p]                              / Here are all the grand parents of each index, etc.
+p[p]                              / Here are all the grandparents of each index, etc.
 (p@)\!#p                          / Of course with a single tree all nodes lead back to the root
 1&(p@)\!#p                        / We can make a mask out of this picture
 (1+!#p)*/:1&(p@)\!#p              / Multiply each row by the indices offset by one
@@ -49,9 +49,9 @@ prs
 +(t;p:*|{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}/[(,0;!0);t])
                                   / We don't really need all the closed parens any more
                                   / The structure is clear without them.
-                                  / But if just remove them and the corresponding indices in the parent vector
+                                  / But if we just remove them and the corresponding indices in the parent vector
                                   / then the indices in the parent vector will be off.
-                                  / A permutation of the indices so that all everything besides the
+                                  / We need permutation of the indices so that all everything besides the
                                   / closed parens are packed together, so we can just chuck the unwanted stuff
 +(t;")"=t)                        / First we mark the closed parens for deletion
 :ro:<m:")"=t                      / Then we take the grade of that booleam vector
@@ -59,14 +59,14 @@ m@ro                              / Now the 1's are all at the back
 t@ro                              / And so are the parens.  But what about the parent vector?
 p@ro                              / This puts the indices in the right place, but points to the old location
 (<ro)@p@ro                        / Picking these indices out of the reverse permutation does the trick
-:(t;p):(-#&m)_/:(t@ro;(<ro)p@ro)  / Dropping the number of 1's we had from the back does the trick
+:(t;p):(-#&m)_/:(t@ro;(<ro)p@ro)  / Dropping the number of 1's we had from the back finishes it off
 p@t?/:"nd"                        / It may look like "newdude" is all at the same level
                                   / but they have different parents
                                   / All of the structure is now in the parent vector and not the list of nodes
 prn                               / prn takes a string, generates a parent vector and then prunes unneeded nodes
 &"("=t                            / Let's try to find the scope of the tree starting at third paren
 p                                 / That's at index 8. All of its immediate children have an 8 in the parent vector
-t@ \&p=8                          / But the last one starts a new group, so everything in it's scope counts too
+t@ \&p=8                          / But the last one starts a new group, so everything in its scope counts too
 t@ \&p=14                         / We can do it again, now there is no "(" starting a new group.
 p?&p=14                           / Since none start a new group none are in the parent vector.
 lc                                / This is how lc finds the last leaf in the subtree under a given node
