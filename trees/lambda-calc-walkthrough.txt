@@ -54,7 +54,7 @@ prs
                                   / We need permutation of the indices so that all everything besides the
                                   / closed parens are packed together, so we can just chuck the unwanted stuff
 +(t;")"=t)                        / First we mark the closed parens for deletion
-:ro:<m:")"=t                      / Then we take the grade of that booleam vector
+:ro:<m:")"=t                      / Then we take the grade of that Boolean vector
 m@ro                              / Now the 1's are all at the back
 t@ro                              / And so are the parens.  But what about the parent vector?
 p@ro                              / This puts the indices in the right place, but points to the old location
@@ -64,10 +64,39 @@ p@t?/:"nd"                        / It may look like "newdude" is all at the sam
                                   / but they have different parents
                                   / All of the structure is now in the parent vector and not the list of nodes
 prn                               / prn takes a string, generates a parent vector and then prunes unneeded nodes
-&"("=t                            / Let's try to find the scope of the tree starting at third paren
+&"("=t                            / Let's try to find the scope of the tree starting at the third paren
 p                                 / That's at index 8. All of its immediate children have an 8 in the parent vector
 t@ \&p=8                          / But the last one starts a new group, so everything in its scope counts too
 t@ \&p=14                         / We can do it again, now there is no "(" starting a new group.
 p?&p=14                           / Since none start a new group none are in the parent vector.
 lc                                / This is how lc finds the last leaf in the subtree under a given node
                                   / Now for the fun part!!  Beta reduction
+:s:"(^x.x y x y)z z (^y.z z)"     / For beta reduction we want substitute into the lambda expression
+:(n;p):prn[s]                     / We start with the pruned tree
+dsp[n;p]
+:l:lc[p;1]                        / Then we calculate the extent of the lambda expression, which starts at index 1
+(0;l+1)_!#p                       / We can split the indices of the expression between the lambda expression and the substitution
+:(li;ri):(3,l+1)_!#p              / But we're mostly interested in the body of the lambda expression
+:si:(n[2]=n@)#li                  / As well as the indices of the bound variable in the body
+:p:@[p;(~l<)#&1=p;:;0]            / Then we lift the immediate children of the lambda expression to the root.
+dsp[n;p]                          / The idea is to reuse the node the lambda is in for the result.  We'll delete unneeded stuff later
+(1+l)_/:(n;p)                     / everything after the lambda block is the substitution
+("(";0),'(1+l)_/:(n;p)            / group it because we'll be replacing a single node
+                                  / Now make as many copies as there are indices to replace
+:(sn;sp):(*/ll:#'(1,ri;si))#/:("(";0),'(1+l)_/:(n;p)
+                                  / There's some clean up to do on those indices...
+(0|sp-l)                          / Currently they include the offset of the lambda, but as an independent tree it shouldn't
+(*ll)*(&#/|ll)                    / Also later copies should be shifted by the size of earlier copies
+:idx:(#p)+(0|sp-l)+(*ll)*(&#/|ll) / But when we tack this on to the current expression, it will all need to be shifted
+:sp:@[idx;(*ll)*!*|ll;:;p@si]     / Lastly each copy needs to be hooked to the parent of the index it replaces
+(n;p),'(sn;sp)                    / Now we add these nodes onto the end of our expression
+dsp.(ap:(n;p),'(sn;sp))
+@[&#p;si;,;(|ll)#1]               / But we want them next to the indices they'll replace
+<ro:<,/@[&#p;si;,;(|ll)#1]        / Flattening and taking the inverse of the grade will put them in place
+:(n;p):srt. \(ap,,<ro)
+dsp[n;p]
+1 2,si,ri                         / Now we need to delete the substituted variables, the original substitution and lambda material
+:idx:ro@ll:1 2,si,ri              / But we need to do that for the *new* positions of those variables
+(-#ll)_/:srt[n;p;<@[&#p;idx;:;1]]
+beta.(prn[s])
+dsp.(beta.(prn[s]))
