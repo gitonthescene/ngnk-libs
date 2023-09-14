@@ -13,17 +13,22 @@ srt:{(x@z;(<z)@y@z)}
 prn:{(-#&i)_/:srt.(x;prs[x];<i:|/" .)"=\:x)}
 
 / pleasant display of tree
-dsp:{`0:(" ",x)(1+!#x)*/:(,1+&#x),1_~~(y@)\!#y}
+dsp:{`0:(" ",x)(1+!#x)*/:(,1+&#x),~~(y@)\!#y}
 
 / last child of a given node in a given parent vector
 lc:{(c;r):(-1+#x;|x)
  *|-1_(c-r?)\y}
 
-beta:{[n;p]l:lc[p;1]
-      (li;ri):(3,l+1)_!#p
-      si:(n[2]=n@)#li
-      p:@[p;(~l<)#&1=p;:;0]
-      (sn;sp):(*/ll:#'(1,ri;si))#/:("(";0),'(1+l)_/:(n;p)
+
+copy:{[n;p;si;ri;l;ll]
+      (sn;sp):(*/ll)#/:("(";0),'(1+l)_/:(n;p)
       sp:@[(#p)+(0|sp-l)+(*ll)*(&#/|ll);(*ll)*!*|ll;:;p@si]
-      (n;p):srt.((n;p),'(sn;sp)),,<ro:<,/@[&#p;si;,;(|ll)#1]
+      (sn;sp)}
+
+beta:{[n;p]l:lc[p;1]
+      (si;ri):(3,l+1)_!#p
+      si:(n[2]=n@)#si
+      p:@[p;(~l<)#&1=p;:;0]
+      ll:#'(1,ri;si)
+      (n;p):srt.((n;p),'copy[n;p;si;ri;l;ll]),,<ro:<,/@[&#p;si;,;(|ll)#1]
       (-#ll)_/:srt[n;p;<@[&#p;ro@ll:1 2,si,ri;:;1]]}
