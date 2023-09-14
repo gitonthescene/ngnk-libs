@@ -29,11 +29,12 @@ p[p]                              / Here are all the grandparents of each index,
 (1+!#p)*/:1&(p@)\!#p              / Multiply each row by the indices offset by one
 `0:(" ",t)@(1+!#p)*/:1&(p@)\!#p   / And then prepend our string with a space to represent the zeros
                                   / And we get a nice little picture of the depth of each node
-                                  / Replace the top row with all 1's in the mask so we get all of the original string
-`0:(" ",t)@(1+!#p)*/:(,1+&#p),1_1&(p@)\!#p
+                                  / Add a top row with all 1's in the mask so we also get the original string
+`0:(" ",t)@(1+!#p)*/:(,1+&#p),1&(p@)\!#p
                                   / Notice that the closed paren is a child of its matching open paren.
                                   / Can you figure out why?
                                   / We can clean that up, but it won't matter that much.
+dsp
 :s:"(^y.z y)"                     / Parsing lambdas!
 :p:0 0 1 1 1 1 1 0                / The plan is to add to paren parsing by putting everything after
                                   / a lambda as a child of the lambda, all as siblings
@@ -61,7 +62,7 @@ p@ro                              / This puts the indices in the right place, bu
 (<ro)@p@ro                        / Picking these indices out of the reverse permutation does the trick
 :(t;p):(-#&m)_/:(t@ro;(<ro)p@ro)  / Dropping the number of 1's we had from the back finishes it off
 p@t?/:"nd"                        / It may look like "newdude" is all at the same level
-                                  / but they have different parents
+dsp[t;p]                          / but they have different parents
                                   / All of the structure is now in the parent vector and not the list of nodes
 prn                               / prn takes a string, generates a parent vector and then prunes unneeded nodes
 &"("=t                            / Let's try to find the scope of the tree starting at the third paren
