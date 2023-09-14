@@ -29,13 +29,13 @@ p[p]                              / Here are all the grandparents of each index,
 (1+!#p)*/:1&(p@)\!#p              / Multiply each row by the indices offset by one
 `0:(" ",t)@(1+!#p)*/:1&(p@)\!#p   / And then prepend our string with a space to represent the zeros
                                   / And we get a nice little picture of the depth of each node
-`0:(" ",t)@(1+!#p)*/:(,1+&#p),1&(p@)\!#p
-                                  / Add a row of ones to our mask to get the original string
+                                  / Replace the top row with all 1's in the mask so we get all of the original string
+`0:(" ",t)@(1+!#p)*/:(,1+&#p),1_1&(p@)\!#p
                                   / Notice that the closed paren is a child of its matching open paren.
                                   / Can you figure out why?
                                   / We can clean that up, but it won't matter that much.
 :s:"(^y.z y)"                     / Parsing lambdas!
-:p:0 0 1 1 1 1 1 0                / The plan is to add to paren parsing, by putting everything after
+:p:0 0 1 1 1 1 1 0                / The plan is to add to paren parsing by putting everything after
                                   / a lambda as a child of the lambda, all as siblings
 `0:(" ",s)@(1+!#p)*/:(,1+&#p),1&(p@)\!#p
                                   / We can just toss the current index on the parent stack for "^" as well
@@ -51,7 +51,7 @@ prs
                                   / The structure is clear without them.
                                   / But if we just remove them and the corresponding indices in the parent vector
                                   / then the indices in the parent vector will be off.
-                                  / We need permutation of the indices so that all everything besides the
+                                  / We need a permutation of the indices so that everything besides the
                                   / closed parens are packed together, so we can just chuck the unwanted stuff
 +(t;")"=t)                        / First we mark the closed parens for deletion
 :ro:<m:")"=t                      / Then we take the grade of that Boolean vector
