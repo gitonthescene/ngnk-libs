@@ -1,3 +1,6 @@
+//  --
+//  --   Currently out of date.  Will update.
+//  --
 "Woo hoo!"                        / Let's parse lambda expressions
 :s:"(^y.z y)"                     / To keep things ASCII, we'll use a caret to denote a lambda
                                   / spaces separate variables and for now everything will be a single character

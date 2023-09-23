@@ -1,24 +1,78 @@
 \l lambda-calculus.k
-para:{`0:""}
+para:{`0:x,""}
 
-`0:"lambda expression:"
-`0:,s:"(^x.x y x y)z z (^y.z z)"
-para[]
+para"lambda expression:"
+para s:"(^x.x y x y)z z (^y.z z)"
+para""
 
-`0:"parsed into a tree"
+para"parsed into a tree"
 :p:prs[s]
-para[]
+para""
 
-`0:"displayed in a friendly way"
+para"displayed in a friendly way"
 dsp[s;p]
-para[]
+para""
 
-`0:"pruned of excess nodes"
+para"pruned of excess nodes"
 :(n;p):prn[s]
 dsp[n;p]
-para[]
+para""
 
-`0:"beta reduced"
+para"beta reduced"
 :(n;p):beta.(prn[s])
 dsp[n;p]
-para[]
+para""
+
+para"beta reduced (using currying)"
+dsp/beta/prn s
+para""
+
+para"alpha conversion"
+:(n;p):alpha/prn \"((^x.xxx)(^x.xxx))"
+para""
+
+para"add back in closing parentheses"
+dspf[n;p]
+para""
+
+para"actually two trees"
+para"  node at index 8 is its own parent and thus a root"
+:(n;p):(s;prs \s:"(^x.xxx)(^x.xxx)")
+para""
+
+para"displays funny (for now)"
+dsp[s;prs s]
+para""
+dspf[s;prs s]
+para"..."
+para""
+
+para"remove redundant parentheses"
+dspf/(n;p):prn "(((^x.(x(x)x))(^x.(xxx))"
+dspf/rrp/(n;p)
+para""
+
+para"some expressions"
+para"zero: ",z:"(^f.^x.x)"
+para"successor: ",sc:"(^n.^f.^x.f(nfx))"
+para"one!: ",one:sc,z
+para""
+
+para"alpha convert, do one reduction"
+para"  note that beta reduction automatically adds a root node"
+dspf/alpha/prn one
+dspf/alpha/beta/alpha/prn one
+para""
+
+para"converge..."
+dspf/alpha/(beta/alpha/)/prn one
+para""
+
+para"more ints"
+:i:{"(",y,x,")"}\(,z),5#,sc
+para""
+
+para"reduce three showing steps"
+para"  three applications of a ..."
+dspf/'alpha/'(beta/alpha/)\prn i[3]
+para""
