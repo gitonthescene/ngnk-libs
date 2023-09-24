@@ -53,7 +53,8 @@ para""
 
 para"actually two trees"
 para"  node at index 8 is its own parent and thus a root"
-:(n;p):(s;prs \s:"(^x.xxx)(^x.xxx)")
+tbl[s;,prs \s:"(^x.xxx)(^x.xxx)"]
+
 para""
 
 para"displays funny (for now)"
