@@ -18,6 +18,22 @@ para"pruned of excess nodes"
 dsp[n;p]
 para""
 
+para" .. as a table"
+tbl[n;,p]
+para""
+
+para"table showing where parens are"
+tbl[n;(p;"("=n)]
+para""
+
+para"different table showing where parens are"
+tblb[n;"("=n]
+para""
+
+para"table showing where z's are in last lambda"
+tblmb[n;(m;("z"=n)*m:p=*|&"^"=n)]
+para""
+
 para"beta reduced"
 :(n;p):beta.(prn[s])
 dsp[n;p]
@@ -60,8 +76,11 @@ para""
 
 para"alpha convert, do one reduction"
 para"  note that beta reduction automatically adds a root node"
-dspf/alpha/prn one
+dspf/alpha/prn "(",one,")"
+dspf/beta/alpha/prn one
+para"  canonaclize names"
 dspf/alpha/beta/alpha/prn one
+
 para""
 
 para"converge..."
