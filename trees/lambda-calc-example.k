@@ -94,5 +94,16 @@ para""
 
 para"reduce three showing steps"
 para"  three applications of a ..."
-dspf/'alpha/'(beta/alpha/)\prn i[3]
+dspf/'rr:alpha/'(beta/alpha/)\alpha/prn i[3]
+para""
+
+\d t
+\l trees.k
+\d .
+
+para"pictures!"
+para"  we don't canoncialize here (not needed) for clarity"
+rr:beta/\alpha/prn i[3]
+shw:{(tr;lb):t.pad[pd]t.t2[pd:|/#'x]y; `0:,/+(tr;t.ctl@x@lb)}
+shw/'rr;
 para""
