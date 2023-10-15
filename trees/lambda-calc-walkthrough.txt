@@ -1,6 +1,3 @@
-//  --
-//  --   Currently out of date.  Will update.
-//  --
 "Woo hoo!"                        / Let's parse lambda expressions
 :s:"(^y.z y)"                     / To keep things ASCII, we'll use a caret to denote a lambda
                                   / spaces separate variables and for now everything will be a single character
@@ -19,7 +16,7 @@ p:0 0 1 1 1 1 1 0                 / We're trying to produce a "parent vector"
                                   / One more thing. At each node we grow the parent vector.
                                   / The index of the next added node is just the length
                                   / of the parent vector before it was added, or one less after.
-{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}\[(,0;!0);t]
+`0:`k'{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}\[(,0;!0);t]
                                   / We don't want a fold, but this shows how the result is constructed
 :p:*|{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}/[(,0;!0);t]
                                   / We've generated a parent vector for the tree indicated by
@@ -27,9 +24,9 @@ p:0 0 1 1 1 1 1 0                 / We're trying to produce a "parent vector"
 p@!#p                             / This is the list of parents of all the indices
 p                                 / .. of course this is just p
 p[p]                              / Here are all the grandparents of each index, etc.
-(p@)\!#p                          / Of course with a single tree all nodes lead back to the root
-1&(p@)\!#p                        / We can make a mask out of this picture
-(1+!#p)*/:1&(p@)\!#p              / Multiply each row by the indices offset by one
+`0:`k'(p@)\!#p                    / Of course with a single tree all nodes lead back to the root
+`0:`k'1&(p@)\!#p                  / We can make a mask out of this picture
+`0:`k'(1+!#p)*/:1&(p@)\!#p        / Multiply each row by the indices offset by one
 `0:(" ",t)@(1+!#p)*/:1&(p@)\!#p   / And then prepend our string with a space to represent the zeros
                                   / And we get a nice little picture of the depth of each node
                                   / Add a top row with all 1's in the mask so we also get the original string
@@ -37,27 +34,38 @@ p[p]                              / Here are all the grandparents of each index,
                                   / Notice that the closed paren is a child of its matching open paren.
                                   / Can you figure out why?
                                   / We can clean that up, but it won't matter that much.
+:t:"(hey)(you)"                   / Here's a different "tree" and its parent
+:p:*|{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}/[(,0;!0);t]
++(t i;i:(5;p[5]))                 / Small problem here..  The second set of parens is not actually a child of the first.
+                                  / This is actually a "forest" and not a tree.  Each trees root should be it's own parent
+                                  / The fix is first to not default to 0 as the initial root.
+                                  / Instead we use null to represent "to be determined"
+:p:*|{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}/[(,0N;!0);t]
+                                  / And then we replace the nulls with the index in which they occur
+                                  / since root nodes should be their own parents
+:p:^'/|1(*/1(!#:)\^:)\*|{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}/[(,0N;!0);t]
+\l lambda-calculus.k
 dsp
+dsp[t;p]
 :s:"(^y.z y)"                     / Parsing lambdas!
 :p:0 0 1 1 1 1 1 0                / The plan is to add to paren parsing by putting everything after
-                                  / a lambda as a child of the lambda, all as siblings
-`0:(" ",s)@(1+!#p)*/:(,1+&#p),1&(p@)\!#p
+dsp[s;p]                          / a lambda as a child of the lambda, all as siblings
                                   / We can just toss the current index on the parent stack for "^" as well
-{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;"^"=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}\[(,0;!0);s]
+`0:`k'{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;"^"=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}\[(,0;!0);s]
                                   / The trouble is that we only pop 1 element off the stack with each ")"
                                   / Here we've accumulated a bunch of items which should all be popped.
                                   / The idea is to count how many need popping and pop that count.
-\l lambda-calculus.k              / The code does exactly that.
-prs
+prs                               / The code does exactly that.
                                   / Going back to our earlier example for parsing just parentheses
-+(t;p:*|{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}/[(,0;!0);t])
+(t;p:*|{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}/[(,0;!0);t:"(hey(you)(whats(new))dude)"])
                                   / We don't really need all the closed parens any more
                                   / The structure is clear without them.
                                   / But if we just remove them and the corresponding indices in the parent vector
                                   / then the indices in the parent vector will be off.
                                   / We need a permutation of the indices so that everything besides the
                                   / closed parens are packed together, so we can just chuck the unwanted stuff
-+(t;")"=t)                        / First we mark the closed parens for deletion
+tblb[t;")"=t]                     / First we mark the closed parens for deletion
+tblb                              / (tblb just prints a string with pointers according to a boolean mask)
 :ro:<m:")"=t                      / Then we take the grade of that Boolean vector
 m@ro                              / Now the 1's are all at the back
 t@ro                              / And so are the parens.  But what about the parent vector?
@@ -67,40 +75,112 @@ p@ro                              / This puts the indices in the right place, bu
 p@t?/:"nd"                        / It may look like "newdude" is all at the same level
 dsp[t;p]                          / but they have different parents
                                   / All of the structure is now in the parent vector and not the list of nodes
-prn                               / prn takes a string, generates a parent vector and then prunes unneeded nodes
+prn                               / prn takes a lambda expression, generates a parent vector and then prunes unneeded nodes
+srt
+prn t:"(^x.x)(^y.y)"
+dsp/prn t:"(^x.x)(^y.y)"
+:t:"(hey(you)(whats(new))dude)"   / Going back to our simpler example...
+:p:^'/|1(*/1(!#:)\^:)\*|{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}/[(,0N;!0);t]
+:(t;p):(-#&m)_/:(t@ro;(<ro)p@ro)
 &"("=t                            / Let's try to find the scope of the tree starting at the third paren
-p                                 / That's at index 8. All of its immediate children have an 8 in the parent vector
+tbl[t;("("=t;p)]                  / That's at index 8. All of its immediate children have an 8 in the parent vector
+tbl                               / (tbl just lines up the columns of several lists with a row of indexes at the top)
 t@ \&p=8                          / But the last one starts a new group, so everything in its scope counts too
 t@ \&p=14                         / We can do it again, now there is no "(" starting a new group.
-p?&p=14                           / Since none start a new group none are in the parent vector.
+&p=17                             / Since none start a new group none are in the parent vector.
 lc                                / This is how lc finds the last leaf in the subtree under a given node
+lc[p;8]
                                   / Now for the fun part!!  Beta reduction
-:s:"(^x.x y x y)z z (^y.z z)"     / For beta reduction we want substitute into the lambda expression
-:(n;p):prn[s]                     / We start with the pruned tree
+:s:"(^x.x y x y)(z z)(^y.z z)"    / For beta reduction we want substitute into the lambda expression
+                                  / Big picture:
+dsp/ \(n;p):prn[s:s/"()"]         / We start with the pruned tree.  (Forced to a tree by surrounding with parens)
+rdx[n;p]                          / Look for "redexes"
+rrp[n;p]                          / If we find none, we simply remove redundant parens in the expression and return
+                                  / Otherwise we use the first redex to beta reduce the expression
+tblb[s;"^"=s]                     / A redex is a reducible expression, which means an application beginning with a "lambda"
+tblb[n]'(p=/:p@p@)l:&"^"=n;       / This is simply a sibling of a lambda...  (Here we show the siblings of each.)
+sb@'&'l<sb:(&'p=/:p@p@)l:&"^"=n   / ... which comes after the lambda
+tblb[n]'@[&#p;;:;1]'sb@'&'l<sb:(&'p=/:p@p@)l:&"^"=n;
+tbl[n;,p]
+rdx[n;p]                          / We return a list of indices of lambdas paired with their first sibling
+rdx
+s0:"((((^x.((xx))))((^y.y))))"    / Let's remove redundant parens from this expression
+dsp/(n0;p0):prn s0
+tblb[n0;@[&#p0;&2>#'g:=p0;:;1]]   / We start by finding which nodes have only a single child
+                                  / (i.e. have only one child in the parent vector)
+:rm:(,/"^"=n0@g@)_&2>#'g:=p0      / Then we drop those whose child is just a lambda
+                                  / since these always have only one child but are necessary
+:rm:("("=n0@)#rm                   / Then we make sure that these nodes are actually parentheses
+                                  / We'd like to simply drop them like before, but then we'll have nodes whose parents have been removed.
+                                  / So we need to find the new parent before dropping the old parent.
+                                  / In the easiest case we just lift the parent to its parent.
+                                  / But this might be being removed as well, so we have to keep moving up.
+                                  / Since the first child of any node is always one index greater than its parent,
+                                  / We can simply backup the index until we find a parent not being removed.
+:w:(&|/0,rm=\:p0)^rm              / we first find all children of nodes being removed (exclude those being removed)
+tblb[n0;@[&#p0;w;:;1]]
+(-/1(~^rm?p0@)\)/w                / Then we iteratively test if its parent is being removed and stop when it isn't
+:np:p0@(-/1(~^rm?p0@)\)/w         / The new parent is that final parent.
+tbl[n0;,p0]
+tbl[n0;,p0:@[p0;w;:;np:p0@(-/1(~^rm?p0@)\)/w]]
+                                  / Then we remove the redundant parentheses
+:(n0;p0):(-#rm)_/:srt[n0;p0;<@[&#p0;rm;:;1]]
+$[2=+/~p0;1_/:(n0;0|p0-1);(n0;p0)] / The last niggling bit is that since the root is self parenting it will never have only one child
+                                  / So when it's redundant the algorithm above won't find it.  We just shift off the parent in this case.
+:rrp[n0;p0]
+rrp
+dsp[n;p]                          / Finally we're ready for beta reduction
+:(n;p):("(",n;0,(~p=!#p)*1+p)     / We start by shifting on a root node just in case we're not given a tree
+:rd:rdx[n;p]                      / Then we see if we have any redexes, and if we do we call the main function with the first redex
+:off:*rd                          / Here rd contains the index of the lambda and of its next sibling
+:(l;e):0 1+lc[p]'off              / We find the extent of each of these nodes (add one to the end of the end of the sibling to make math easier)
+:idx:off+!e-off:*off              / Now we find all the indices in range for the substitution
+:idx:(2;1+idx?l)_idx              / And split them at the end of the lambda expression
+n@idx                             / lopping off the lambda and the variable leaving only the lambda body
+tbl[n;,p]                         / Then we lift all immediate children of the lambda to its parent
+tblb[n;@[&#p;(off=p@)#*idx;:;1]]  / Since we'll be removing the lambda, we want the each child to end up in the group
+:p:@[p;(off=p@)#*idx;:;p[off]]
+tbl[n;,p]
+:idx[0]:(n[off+1]=n@)#idx[0]      / From here on we only need to track references to the bound variable in the body of the lambda
+:l:1 0+#'|idx                     / Now we take the lengths of each of these lists, reverse it and add one
+                                  / to the length of the body of the sibling.  i.e. argument to the lambda
+                                  / This is because we're going to add a group to this to make sure it's a tree with a root
+`0:`k'@[&#p;*idx;,;(|l)#1]        / We prepare for reshuffling by assembling a grade to insert the substitition after each
+                                  / reference to a bound variable.  (i.e. idx[0])
+:ro:<,/@[&#p;*idx;,;(|l)#1]       / We take the inverse of this grade because we want to splice in nodes added at the back
+copy[n;p;e;l]                     / The copy function makes one copy of the substitution for each reference to the bound variable
+                                  / This leaves us with a copy of the argument tree for each occurence of the bound variable
+                                  / Each root is left with a null parent at its root to be filled in with where it is spliced in
+e                                 / Remember that e is the end of the argument
+l                                 / and l has the length of the argument + 1 and the count of bound variables
+(-*l-1)#/:e#/:(n;p)               / This chops off the argument section of both the node and parent vectors
+:rr:("(";0),'(-*l-1)#/:e#/:(n;p)  / And this prepends a root node for us to hook into where the corresponding bound variable was
+(*l;#'rr)                         / Now *l should match the length of this constructed substitution
+*/l                               / We want *|l copies of this, which amounts to collection */l of each of n and p
+:(sn;sp):(*/l)#/:rr
+                                  / But the parent vectors refer to the old location of this tree, this needs adjusting
+#/|l                              / This is the length of each copy
+&#/|l                             / This tags each character of each copy
+(*l)*&#/|l                        / This turns the tags into offsets for each character since each copy is *l long
+e-*l                              / This is the original index of substitution (the + 1 is already factored in)
+0|sp-e-*l                         / This shifts down the parent vector values accordingly
+:rr:(#p)+(0|sp-e-*l)+(*l)*&#/|l   / Finally we find their new position when we append to the original vectors
+(*l)*!*|l                         / This is the position of the start of each copy
+:sp:@[rr;(*l)*!*|l;:;0N]          / We turn this roots into nulls to be replaced when we're splicing them in
+copy
+:(n;p):(n;p),'copy[n;p;e;l]       / Now we append this onto the original vectors
+:p:@[p;&^p;:;p@*idx]              / And swap in the indices of the parent each bound index to the root of the copies
+                                  / i.e. we make each copy a sibling of its respective bound variable
+:(n;p):srt[n;p;<ro]               / .. and use the previously constructed grade to move these copies into place
+tbl[n;,p]
 dsp[n;p]
-:l:lc[p;1]                        / Then we calculate the extent of the lambda expression, which starts at index 1
-(0;l+1)_!#p                       / We can split the indices of the expression between the lambda expression and the substitution
-:(li;ri):(3,l+1)_!#p              / But we're mostly interested in the body of the lambda expression
-:si:(n[2]=n@)#li                  / As well as the indices of the bound variable in the body
-:p:@[p;(~l<)#&1=p;:;0]            / Then we lift the immediate children of the lambda expression to the root.
-dsp[n;p]                          / The idea is to reuse the node the lambda is in for the result.  We'll delete unneeded stuff later
-(1+l)_/:(n;p)                     / everything after the lambda block is the substitution
-("(";0),'(1+l)_/:(n;p)            / group it because we'll be replacing a single node
-                                  / Now make as many copies as there are indices to replace
-:(sn;sp):(*/ll:#'(1,ri;si))#/:("(";0),'(1+l)_/:(n;p)
-                                  / There's some clean up to do on those indices...
-(0|sp-l)                          / Currently they include the offset of the lambda, but as an independent tree it shouldn't
-(*ll)*(&#/|ll)                    / Also later copies should be shifted by the size of earlier copies
-:idx:(#p)+(0|sp-l)+(*ll)*(&#/|ll) / But when we tack this on to the current expression, it will all need to be shifted
-:sp:@[idx;(*ll)*!*|ll;:;p@si]     / Lastly each copy needs to be hooked to the parent of the index it replaces
-(n;p),'(sn;sp)                    / Now we add these nodes onto the end of our expression
-dsp.(ap:(n;p),'(sn;sp))
-@[&#p;si;,;(|ll)#1]               / But we want them next to the indices they'll replace
-<ro:<,/@[&#p;si;,;(|ll)#1]        / Flattening and taking the inverse of the grade will put them in place
-:(n;p):srt. \(ap,,<ro)
-dsp[n;p]
-1 2,si,ri                         / Now we need to delete the substituted variables, the original substitution and lambda material
-:idx:ro@ll:1 2,si,ri              / But we need to do that for the *new* positions of those variables
-(-#ll)_/:srt[n;p;<@[&#p;idx;:;1]]
-beta.(prn[s])
-dsp.(beta.(prn[s]))
+:l:(off+!2),,/idx                 / These are the *original* indices of all of the stuff no longer needed
+ro@l                              / And here's where they are after the shuffle
+(-#l)_/:srt[n;p;<@[&#p;ro@l;:;1]] / We then remove these indices as before
+beta0
+beta
+dsp/(n;p):prn s
+dsp/beta/(n;p)
+
+
+/ FIN
