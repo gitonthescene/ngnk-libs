@@ -1,5 +1,4 @@
 \l lambda-calculus.k
-para:{`0:x,""}
 
 para"lambda expression:"
 para s:"(^x.x y x y)z z (^y.z z)"
@@ -14,7 +13,7 @@ dsp[s;p]
 para""
 
 para"pruned of excess nodes"
-:(n;p):prn[s]
+:(n;p):alpha/prn[s]
 dsp[n;p]
 para""
 
@@ -35,7 +34,7 @@ tblmb[n;(m;("z"=n)*m:p=*|&"^"=n)]
 para""
 
 para"beta reduced"
-:(n;p):beta.(prn[s])
+:(n;p):beta/prn[s]
 dsp[n;p]
 para""
 
@@ -44,7 +43,8 @@ dsp/beta/prn s
 para""
 
 para"alpha conversion"
-:(n;p):alpha/prn \"((^x.xxx)(^x.xxx))"
+:(n;p):prn \"((^x.xxx)(^x.xxx))"
+alpha[n;p]
 para""
 
 para"add back in closing parentheses"
@@ -55,13 +55,6 @@ para"actually two trees"
 para"  node at index 8 is its own parent and thus a root"
 tbl[s;,prs \s:"(^x.xxx)(^x.xxx)"]
 
-para""
-
-para"displays funny (for now)"
-dsp[s;prs s]
-para""
-dspf[s;prs s]
-para"..."
 para""
 
 para"remove redundant parentheses"
