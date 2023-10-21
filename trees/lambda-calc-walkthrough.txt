@@ -17,7 +17,7 @@ p:0 0 1 1 1 1 1 0                 / We're trying to produce a "parent vector"
                                   / The index of the next added node is just the length
                                   / of the parent vector before it was added, or one less after.
 `0:`k'{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}\[(,0;!0);t]
-                                  / We don't want a fold, but this shows how the result is constructed
+                                  / We don't want a scan, but this shows how the result is constructed
 :p:*|{(s;p):x;p,:*|s;$["("=y;s,:-1+#p;")"=y;s:-1_s;];(s;p)}/[(,0;!0);t]
                                   / We've generated a parent vector for the tree indicated by
                                   / nested levels of parentheses
