@@ -78,7 +78,7 @@ alpha:{[n;p]((+(,n),,@/|1(4+!1+|/)\?/|1?:\i*m)@'m:(~ LP n)*~^i:*'(~:)_'+i*n=/:(N
 ALPHA:Cs,`c$"a"+!26
 TONUM:{[n;p](2_?/|1?:\"(^",n;p)}
 prn0:prn
-prn:TONUM/prn@
+prn:TONUM/prn0@
 
 (P;L;C;D;N):(=)@/:(Pc;Lc;Cc;Dc;Nc):Cs?(Pc;Lc;Cc;Dc;Nc)
 Nc:0N
