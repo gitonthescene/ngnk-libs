@@ -7,7 +7,7 @@ p:0 0 1 1 1 1 1 0                 / We're trying to produce a "parent vector"
 +(s i;i:(2;p[2]))                 / The parent of the bound variable y is the lambda, etc.
                                   / Let's generate this from the input string
 :t:"(hey(you)(whats(new))dude)"   / But first let's parse characters at depth defined by parentheses
-{$["("=y;x+1;")"=y;x-1;x]}\[0;t]  / A simple fold like this calculates the depth
+{$["("=y;x+1;")"=y;x-1;x]}\[0;t]  / A simple scan like this calculates the depth
                                   / But we want to build a parent vector ...
                                   / The parent of any node is the index of the most recent open paren
                                   / This means that when we reach a closed paren,

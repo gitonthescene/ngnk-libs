@@ -1,3 +1,5 @@
+imp:{(.0#`)`$(x,(1&#x)#"."),/:y}
+
 (P;L;C;D;N):(=)@/:(Pc;Lc;Cc;Dc;Nc):Cs:"(^). "
 LP:|/"^("=\:
 
@@ -69,21 +71,37 @@ la:{[n;p]g:-1_'g@!d:(#p)+=(P n@)#&(0<)#-2+#'g:^'[;?p]@=p0:p
     srt[n;p;ro]}
 \
 
-// COPY to same namespace to use integers instead of characters //
-
-/
 / Leave as numbers
+
+\d numerical
+imp:(.0#`)`imp
+
+(Pc;Lc;Cc;Dc;Nc;Cs;prn):imp[""]@$`Pc`Lc`Cc`Dc`Nc`Cs`prn
 alpha:{[n;p]((+(,n),,@/|1(4+!1+|/)\?/|1?:\i*m)@'m:(~ LP n)*~^i:*'(~:)_'+i*n=/:(Nc,n)@(2+i)*L n@i:(p@)\!#p;p)}
 
 ALPHA:Cs,`c$"a"+!26
-TONUM:{[n;p](2_?/|1?:\"(^",n;p)}
+TONUM:{[n;p](ALPHA?n;p)}
 prn0:prn
 prn:TONUM/prn0@
 
 (P;L;C;D;N):(=)@/:(Pc;Lc;Cc;Dc;Nc):Cs?(Pc;Lc;Cc;Dc;Nc)
 Nc:0N
 LP:|/(Pc;Lc)=\:
-\
+\d .
+
+loadNumerical:{ (Pc0;Lc0;Cc0;Dc0;Nc0;Cs0):imp["numerical";$`Pc`Lc`Cc`Dc`Nc`Cs]
+ (ALPHA0;alpha0;prn0;P0;L0):imp["numerical";$`ALPHA`alpha`prn`P`L]
+ Pc::Pc0
+ Lc::Lc0
+ Cc::Cc0
+ Dc::Dc0
+ Nc::Nc0
+ Cs::Cs0
+ ALPHA::ALPHA0
+ alpha::alpha0
+ prn::prn0
+ P::P0
+ L::L0 }
 
 para:{`0:x}
 tbl:{`0:,/'$/|1(-:1+|/#',/)\$(!#x;x),y}
