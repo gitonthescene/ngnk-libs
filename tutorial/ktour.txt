@@ -1,4 +1,4 @@
-1 + 1                 / basic arithematic can be done with infix notation
+1 + 1                 / basic arithmetic can be done with infix notation
 5 * 7
 2 - 4
 3 % 2                 / division is done with % since / serves other purposes like the beginning of a comment!  :D
@@ -9,7 +9,7 @@
                       / you get an error if these vectors are not equal length
 1 + 3 0 2             / by scalar extension however, you can add scalars to vectors.
                       / it's as if the scalar were repeated until the necessary length
-# 9 8 4 5             / count counts the length of a vector
+# 9 8 4 5             / length counts the length of a vector
                       / unlike the previous examples, # takes one argument.  single arguments are always taken to the right
 2 4 , 9 0 4           / concat joins two vectors
 # 2 4 , 9 0 4
@@ -40,7 +40,7 @@
 "s","tring"           / ... or a scalar to a vector.  Note that scalar extension does *not* apply here.
 ("o";,"k";4 9 2)      / An even more mixed array
 #'("o";,"k";4 9 2)    / verbs can be modified to perform derived functionality
-                      / here ' (called each) modifies count to perform count on each of the elements of its list argument
+                      / here ' (called each) modifies length to perform length on each of the elements of its list argument
 ,'4 5 6               / each is called an adverb and can be applied to other verbs
                       / enlist each element of 4 5 6 to get a list of three one-element lists
 3 9 2,'-1 -4 0        / each can be applied to dyadic verbs and pairs up the elements of both args
@@ -73,13 +73,14 @@
 _7%3                  / floor strips off everything after the decimal point
 @_7%3                 / .. and converts to ints
 _7                    / floor of an int is fine
+-_-7%3                / There is no ceiling, but this emoji does the trick
 _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 %25                   / monadic % is square root
 -35                   / this is just an integer
 -(4 8 5)              / this is the negate verb applied to a list
 -4 8 5                / this is just a list of integers
 -:4 8 5               / a colon forces this to be treated as a monadic function
-                      / Notice that this monadic function applies to each element of the list unlike count (#)
+                      / Notice that this monadic function applies to each element of the list unlike length (#)
                       / (colon has many more tricks up its sleeve...)
 |-:4 8 5              / this is that list reversed
 -4|8                  / maximum of -4 and 8 (clearly no relation to the monadic reverse above)
@@ -96,9 +97,10 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 1 4 9@(0;2 1;(,1;0))  / brackets are just syntactic sugar for the @ verb (called amend)
 1 4 9[1 3]            / outdexing results in a null
 ^1 4 9[1 3]           / ^ tests for null
+99^1 4 9[1 3]         / With a value to the left fills all nulls with that value
                       / More adverbs!
 +/3 5 9               / slash as an adverb is "left fold" with the accumulator starting as the first element.
-                      / Note here that the verb + is dyadic, but the modified verb +/ is used monadically
+                      / Note here that the verb + is dyadic, but the derived verb +/ is used monadically
 10+/3 5 9             / used dyadically, the left arg becomes the initial value for the accumulator
                       / slashes used as comments must be preceded with a space
                       / slashes used as adverbs must *not* be preceded by a space
@@ -139,7 +141,7 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 &0 0 1 0 1 1          / Given a boolean list, where (&) gives the indices of the 1's
 &1 0 2 3 0 4          / Actually, this is just a special case of "replicate" which generates a given number of repeats at the given index
                       / Here there is 1 zero, no ones, two twos, three threes, etc.
-?&1 0 2 3 0 4         / Monadic ? (unique) only keeps the first occurence of each element in a list
+?&1 0 2 3 0 4         / Monadic ? (distinct) only keeps the first occurence of each element in a list
 ? 7 8 2 3 7 1 3
 7 8 2 3 7 1 3?1       / Dyadic ? (find) returns the index of the first occurence of the given element in a list
                       / Now things get a little tricky..
@@ -150,6 +152,7 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
                       / It generates that many random numbers from 0 to the right argument
 15?"ace"              / If given a list as its right argument, it randomly picks elements from that list
 -5?5                  / Deal is like roll only it doesn't repeat
+?5                    / As a monadic function ? returns values from a uniform distribution
                       / Phew!!  There's a lot here.  Grab a hot tea and let some of this sink in a bit.
 
 
@@ -210,7 +213,7 @@ d`a                   / Only the first one is found with lookup
 (.d)(!d)?`a           / This is basically what dictionary lookups do...
 (!d)?`a               / This extracts the keys and then uses "find" to find the index of the key
 (.d)@(!d)?`a          / This extracts the values and uses the previously found index to index into the array
-(.d)(!d)?`a           / But because there's no abmiguity (really!) you don't need the @ here.  It's not stranding so it's indexing.
+(.d)(!d)?`a           / But because there's no ambiguity (really!) you don't need the @ here.  It's not stranding so it's indexing.
                       / The parentheses are needed because of right to left evaluation.
 
                       / More programming basics ... and a new type!  lambdas!
@@ -251,11 +254,66 @@ f[2;3]                / But in this form must use bracket indexing instead of in
 :i:1 2 3              / Here it's used monadically(??) to return the value assigned to i
 123:456               / Here it's used dyadically to return the right argument
 :i:1 2 3              / This form is often useful when debugging code.
-@f:{x}'               / Modified lambdas are yet another type
+@f:{x}'               / Derived lambdas are yet another type
 f(1;"a";3%2;`b)
-g:+; 5 g/1 2 3        / Modified lambdas actually can be used infix
+g:+; 5 g/1 2 3        / Derived lambdas actually can be used infix
 g:+/; 5 g 1 2 3       / But only with explicit modifiers.  This doesn't work.
 g:+; 5g/1 2 3         / Actually here the space before the g here is not necessary
+
+                      / What haven't we covered?...
+<"hello world"        / grade! grade returns the indices in an order which sorts the input
+s@<s:"hello world"    / (Remember we can do assignment inline)
+s@>s                  / Actually that was grade up, grade down gives the indices which sort the other direction
+                      / One subtle point is that this is a "stable ordering"
+> 3 17 9 17           / i.e. indices which point to the same value remain in the same relative order
+< 3 17 9 17           / so grade down is not simply the reverse of grade up
+::("a";98)            / :: is the identity function but can be fiddly because of the many uses of :
+(::)"same"            / Often it's safest to simply put it in parentheses
+::                    / It has the unique property that when it's the final value on a line it prints nothing
+                      / Similarly, empty values are replaced with the identity
+iden:;iden "me"       / Here iden is assigned an "empty" value, which simply means the identity function
+"happy";              / This amounts to the nitty gritty behind trailing semicolons inhibiting output
+="hello world"        / With a list = returns a dictionary
+                      / whose keys are the distinct elements and values are indices where that element occurs
+=5                    / With a single integer = returns an identity matrix of that size
+{~x}_3 0 4 0 0 6 7    / _ becomes "weed out" with a left argument
+{~x}@3 0 4 0 0 6 7    / If we apply the function to the *whole* right argument we see which elements are removed
+(~:)_3 0 4 0 0 6 7    / We don't actually need a lambda, but a few extra considerations pop up without one
+                      / First we need to surround the verb with parentheses
+                      / to ensure that we're not trying to apply it
+                      / Technically this makes a *noun* out of the *verb* which is why it isn't applied
+                      / Also, we need to make sure that the function is applied monadically, so we use :
+(~:)@3 0 4 0 0 6 7    / Can still test to see which items will be removed
+                      / Here we need @ because its left arg is a noun.
+                      / This is all pretty heady.  Mostly you just get used to the pattern.
+(~#:)@(,"I";"";"am")  / Just to emphasize, the filter function is applied to the *whole* right arg
+(~#:')@(,"I";"";"am") / For length, which doesn't "permeate" like not, we'll need each
+(~#:')_(,"I";"";"am") /   to filter out empty strings
+(~~#:')#(,"I";"";"am")  / With # (replicate) you can specify which items to keep instead of to remove
+(3!)@1+!9             / Only replicate behaves differently when the function returns non-Booleans
+(3!)#1+!9             / In this case it replicates each value according to the corresponding integer
+&(3!)@1+!9            / This is just like where's (&) behavior, except where acts on indices
+l@&(3!)@l:1+!9
+(3!)_1+!9             / Such replication doesn't make sense with weed out
+
+!4 3                  / With a list on the right enumerate becomes "odometer".
+                      / Essentially cyclically count up the bottom row and "tick" each row
+                      / when the row beneath "turns over"
++!4 3                 / Alternatively, the transpose lists all possible "samples" of !:'(4;3)
+4 3#+!4 3             /   or lists all coordinates of a matrix of shape 4 3
+
+                      / Coming round the final turn!!
+$(123;`happy)         / Monadic $ stringifies its argument.  Note this is pervasive.
+                      / i.e. that it converts at the element level and not the array level
+4$$(123;`happy)       / With an integer left argument limits to that length, padding on the right as necessary
+-4$$(123;`happy)      / A negative number pads/chops on the left
+`s$"happy"            / With a symbol on the left converts the right argument to that type when possible
+`s$123                / This errors when it's not possible
+`c$104 97 112 112 121
+`i$"happy"
+0+"happy"             / Characters actually naturally convert to ints when used in an int context.  The value is the ASCII code.
+`I$"-123"             / Use capital `I to convert the entire string to an integer rather than individual characters.
+
 
 
 
