@@ -11,13 +11,16 @@ setup:{l:(w:&0<y[1])-*+&^y[1];f:.[y[1];]'+w;pk[x],pres[(l;f)], y[0]}
 specs:!/+(("floyd-steinberg"
   (16;(0  0N  7
        3  5   1)))
- ("sierraTwo"
-  (16;(0   0   0N  4   3
-       1   2   3   2   1)))
  ("sierra"
   (32;(0   0   0N  5   3
        2   4   5   4   2
        0   2   3   2   0)))
+ ("sierraTwo"
+  (16;(0   0   0N  4   3
+       1   2   3   2   1)))
+ ("sierraLite"
+  (4;(0   0N  2
+      1   1   0)))
  ("burkes"
   (32;(0   0   0N  8   4
        2   4   8   4   2)))
@@ -25,9 +28,6 @@ specs:!/+(("floyd-steinberg"
   (42;(0   0   0N  8   4
        2   4   8   4   2
        1   2   4   2   1)))
- ("sierraLite"
-  (4;(0   0N  2
-      1   1   0)))
  ("jarvis"
   (48;(0   0   0N  7   5
        3   5   7   5   3
@@ -45,7 +45,7 @@ relative to the location of 0N.
 
 Each row is then scanned, collecting both output and errors
 (i.e. difference between the calculated input and the output).  Error
-accumulated from the a single previous row is calculated by pre.  The
+accumulated from a single previous row is calculated by pre.  The
 function pres returns both a function which collects error for the
 current row and one which aggregates the calculated accumulated error
 for each previous row.
