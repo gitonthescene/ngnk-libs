@@ -43,10 +43,11 @@ relative to the location of 0N.
 
 Each row is then scanned, collecting both output and errors
 (i.e. difference between the calculated input and the output).  Error
-accumulated from the current row is calculated by pre during fldrow
-which folds across a row.  Error from previous rows is calculated per
-relevant previous row and summed in pres.
+accumulated from the a single previous row is calculated by pre.  The
+function pres returns both a function which collects error for the
+current row and one which aggregates the calculated accumulated error
+for each previous row.
 
-Both pre and pres change depending on the spec and are configured with
-setup.  The first argument to setup is the range of output values the
-second is the spec which is parsed to produce pre and pres.
+The behavior of pres change depending on the spec and are configured
+with setup.  The first argument to setup is the range of output values
+the second is the spec which is parsed to produce pre and pres.
