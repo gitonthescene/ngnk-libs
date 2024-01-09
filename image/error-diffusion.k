@@ -35,7 +35,7 @@ specs:!/+(("floyd-steinberg"
 
 /
 
-Inspired by [[https://github.com/0racle][0racle]] this is an
+Inspired by [[https://gist.github.com/0racle/f48586b6b2c05d13e3abbcb046e91dfb][0racle]] this is an
 implementation of several error diffusion dithering algorithms.
 
 Each spec is a divisor along with a distribution of the errors
