@@ -35,8 +35,10 @@ specs:!/+(("floyd-steinberg"
 
 /
 
-Inspired by [[https://gist.github.com/0racle/f48586b6b2c05d13e3abbcb046e91dfb][0racle]] this is an
-implementation of several error diffusion dithering algorithms.
+Inspired by
+[[https://gist.github.com/0racle/f48586b6b2c05d13e3abbcb046e91dfb][0racle]]
+this is an implementation of several error diffusion dithering
+algorithms.
 
 Each spec is a divisor along with a distribution of the errors
 relative to the location of 0N.
@@ -48,6 +50,6 @@ function pres returns both a function which collects error for the
 current row and one which aggregates the calculated accumulated error
 for each previous row.
 
-The behavior of pres change depending on the spec and are configured
+The behavior of pres changes depending on the spec and are configured
 with setup.  The first argument to setup is the range of output values
 the second is the spec which is parsed to produce pre and pres.
