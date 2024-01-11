@@ -2,6 +2,8 @@
 
 / [[https://github.com/mthom/scryer-prolog/tree/master/logo]]
 png:1:"scryer.png"
+$[~png.ispng[png];`err"Not a png file"]
+
 (w;h):*png.ihdr@png
 idat:png.decmp@png.idat@png
 data:png.unfilt[8](h,0N)#idat
@@ -25,6 +27,8 @@ png0,:png.mkchnk["IEND";!0]
 / bottom image
 / [[https://www.w3.org/Graphics/PNG/Inline-img.html]]
 png:1:"test.png"
+$[~png.ispng[png];`err"Not a png file"]
+
 (w;h):*png.ihdr@png
 idat:png.decmp@png.idat@png
 

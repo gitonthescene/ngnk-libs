@@ -26,7 +26,6 @@ ihdr:{(w;h;f):256!0 4 8_x@16+!13;(256/+(w;h);f)}
 paeth:{(x;y;z)@*<{x|-x}((x+y)-z)-/:(x;y;z)}
 
 unnone:{z}
-/unsub:{x_{y,z+y@(#y)-x}[x]/[x#0;z]}
 unsub:{,/+\(0N,x)#z}
 unup:{y+z}
 unavg:{x_{[x;a;b;c]a,256!c+-2!b+a@(#a)-x}[x]/[x#0;y;z]}
