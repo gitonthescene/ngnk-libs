@@ -36,7 +36,7 @@ unfilt:{`c${(t;r):0 1_z;256!(*(unnone;unsub;unup;unavg;unpaeth)t)[x;y;r]}[x]\[(-
 
 / sizes of interleaved images
 iszs0:{(-8!({x,y}/#''='x)*((!7)!7-(|/,/&')'(!7)=\:x)+y)}
-iszs:{(w;h):(x;y);(iszs0.'+((A7;+A7);(w;h)))@\:!7}
+iszs:{[w;h](iszs0.'+((A7;+A7);(w;h)))@\:!7}
 
 / Manual "compression".  (Just use tools above.)
 (CMF;FLG):120 1
@@ -54,3 +54,6 @@ crctbl:(8{$[*|x;~P=-1_0,x;-1_0,x]}/(32#2)\)'!256
 mkchnk:{(`c$(4#256)\#y),,/1 crc\x,y}
 
 \d .
+
+/
+SPEC: https://www.w3.org/TR/png/

@@ -16,7 +16,7 @@ bwdata:,/(`c$0),/:(`c$2/+0N 8#)'bw
 / build up a b/w png
 png0:png.PNGHDR
 / same dimensions, but now bit-depth 1, color-type 0
-png0,:png.mkchnk["IHDR";`c$,/((4#256)\'375 375),1 0 0 0 0]
+png0,:png.mkchnk["IHDR";`c$,/((4#256)\'w,h),1 0 0 0 0]
 / "compress" at level 0
 png0,:png.mkchnk["IDAT";png.nocmp@bwdata]
 png0,:png.mkchnk["IEND";!0]
@@ -29,14 +29,16 @@ png:1:"test.png"
 idat:png.decmp@png.idat@png
 
 / Pull out the interlaced images
-c:png.iszs[800;400]
-ii:(-1_+\0,(*|c)+3**/c)_idat
+c:png.iszs[w;h]
+
+PIXELWIDTH:3
+ii:(-1_+\0,(*|c)+PIXELWIDTH**/c)_idat
 
 / Unfilter each separately
-rr:png.unfilt[3]'((*|c),\:0N)#'ii
+rr:png.unfilt[PIXELWIDTH]'((*|c),\:0N)#'ii
 
 / interlace back into a single image with no filtering
-dd:,/(`c$0),/:,/'(0N,w)#(0N 3#,/,/'rr)@<<,/w#'h#png.A7
+dd:,/(`c$0),/:,/'(0N,w)#((0N,PIXELWIDTH)#,/,/'rr)@<<,/w#'h#png.A7
 png0:png.PNGHDR
 png0,:png.mkchnk["IHDR";`c$,/((4#256)\'w,h),8 2 0 0 0]
 png0,:png.mkchnk["IDAT";png.cmp@dd]
