@@ -15,9 +15,6 @@ mk:{(x#0)@[;;:;1]'1?/:#/x}
 / total number of elements in full matrix
 */+ds
 
-sml:sp@ml
-smr:sp@mr
-
 / sparse matrix multiply
 (w;v):smm.(sp'(ml;mr))
 
