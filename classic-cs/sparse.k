@@ -9,7 +9,7 @@ cr:{(rws;@[;1])@\:x}                         / rows/columns
 cx:+,/,/,/:\:'/                              / match elements
 enc:{b:1+|/'x;(b;b/x)}                       / encode
 
-mm:{(l;r):cr'(x;y)
-    j:*|e:enc@cx(l[0];r[1])@'w:ci[l[1];r[0]]
+mm:{(l;r):`row`col!/:cr'(x;y)
+    j:*|e:enc@cx(l`row;r`col)@'w:ci[l`col;r`row]
     c:*/cx((x;y)@\:0)@'w
     (e[0]\'w;v@w:&~~:v:@[;;+;]/[&1+|/j;j;c])}
