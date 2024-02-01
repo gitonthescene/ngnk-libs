@@ -14,7 +14,7 @@ para"By convention the first class is . representing \"everything else\"."
     "QQ.E"
     "EQQQ")
 
-para"\nParse table to generate the class classification table and transition matrix."
+para"\nParse table to generate the classification table and transition matrix."
 :(C;TT):sm[G;Q]
 
 para"\nSome text:"
