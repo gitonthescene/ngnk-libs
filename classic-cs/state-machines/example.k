@@ -44,12 +44,12 @@ para"Each sub-state machine declares its internal states and classes"
 
 :T:mrg[-2#G;((Q;"QE";"QS");(C;"WC";"SNW"))]
 
-:s:1_*+T
-:c:".",G[1]
+s:1_*+T
+c:".",G[1]
 para"\nMake a comment:"
 `0:txt:"This is \"text\" with \"quotes\" and an / escaped escape \"here\\\\\" but not here: \\\\"
 
-P:prs[ \(CC;TT):sm[2#G;T]; \s?"."]
+P:prs[sm[2#G;T];s?"."]
 para"\nParse"
 `0:pp:s@P@txt
 `0:txt
