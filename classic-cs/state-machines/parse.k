@@ -5,8 +5,7 @@ prs:{y{x[y;z]}[x[1]]\x[0]@z}     / parse text z with state machine x and initial
 
 spl:{(,x[0]),1_+(+y)@(*y)?x[1]}  / split character classes using a mapping
 
-mrg0:{f:&'"."=r:@/1(&~^z[1]?*:')\1_z[0]@\:1^(*z[0])?x  / preparse sub-state machine for merging
-      @[;;:;]'[r;f;y@f:f^\:x?z[2]]}
+mrg0:{f:&'"."=r:@/1(&^" ."?*:')\1_z[0]@\:1^(*z[0])?x  / preparse sub-state machine for merging
+      @[;;:;]'[r;f;y@f:f^\:x?z[1]]}
 
-mrg:{cs:" .",x[0];(,cs),,/mrg0[cs;x[1]]'y,,((cs;x[1]);,".";,".")}
-
+mrg:{cs:" .",x[0];((,cs),,/mrg0[cs;x[1]]'y),,x[1]}

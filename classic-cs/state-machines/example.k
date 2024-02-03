@@ -40,9 +40,10 @@ para"Comments start at slash and end at newlines, but must be preceded by whites
 
 para"To aggregate, need the order of the classes in the aggregate table"
 para"and which states to transition to from the generic class ."
-para"Each sub-state machine declares its internal states and classes"
+para"Each sub-state machine declares which classes it handles explicitly."
+para"(i.e. which classes don't default to handling as a generic class.)"
 
-:T:mrg[-2#G;((Q;"QE";"QS");(C;"WC";"SNW"))]
+:T:mrg[-2#G;((Q;,"Q");(C;""))]
 
 s:1_*+T
 c:".",G[1]
