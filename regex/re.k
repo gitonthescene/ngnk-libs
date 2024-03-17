@@ -37,8 +37,8 @@ step:{branch[,1],(, @[nul;n;:;2+&#n:,/x]),,nul}
 
 maybe: {branch[1,#x],1+x}
 seq:{,/(+\0,-1+#'x)+(-1_'x),,,nul}
-rep: {x[,final x;non],: ,0, #x;  x,,nul}
-rep1:seq@1(rep@)\
+rep1: {x[,final x;non],: ,0, #x;  x,,nul}
+rep:maybe@rep@
 re:seq@step'
 
 comb: {?y,,//x@y}
