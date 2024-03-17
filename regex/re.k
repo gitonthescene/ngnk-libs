@@ -23,8 +23,8 @@ cmp:{(e;t):prs x
           n="?"+0;maybe@o[x;y]@*y[z]
           n="*"+0;rep@o[x;y]@*y[z]
           n="+"+0;rep1@o[x;y]@*y[z]
-          n~"("+0;seq@(~#:')_o[x;y]'y[z]
-          n~"|"+0;seq@(~#:')_o[x;y]'y[z]
+          n~"("+0;seq@o[x;y]'y[z]
+          n~"|"+0;seq@o[x;y]'y[z]
           n~"["+0;step@,x@y[z];x@z]}[e;=0N,1_t]@0
      fix s}
 
