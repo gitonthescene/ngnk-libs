@@ -9,7 +9,7 @@ chkds:{$[&/1,"\""=x[y]@-1+&":"=x[y];;`err@"keys are strings"]} / ")]} emacs :(
 
 / pairs have objects as parents
 / children of objects are pairs
-chko:{$[(&/1,"{"=x@y@z@&":"=x@y)&&/1,":"=x@y@(~:)_?^z^z^&"{"=x@y;;`err@"malformed object"]}
+chko:{$[(&/1,"{"=x@y@z@&":"=x@y)&&/1,":"=x@y@(~:)_&"{"=x@y@z;;`err@"malformed object"]}
 
 pr:{(g;p):0 2\<((2*#x)#!2)+{2}#x;f:&~p;(g@(|\p*!#p)@f)@<g@f};dp:{+/~~,/(x@)\,!#x}
 
