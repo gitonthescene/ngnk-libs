@@ -5,11 +5,11 @@ ws:~^"\t\n\r "?
 chkb:{$[(,2)~?(2!!#:)#-':,/x@@[y;]#'=z;;`err@"mismatched brackets"]}
 
 / make sure that keys to dictionaries are strings
-chkds:{$[&/1,"\""=x[y]@-1+&":"=x[y];;`err@"keys are strings"]} / ")]} emacs :(
+chkds:{$[~&/1,"\""=x@-1+&":"=x;`err@"keys are strings";]} / ")]} emacs :(
 
 / pairs have objects as parents
 / children of objects are pairs
-chko:{$[(&/1,"{"=x@y@z@&":"=x@y)&&/1,":"=x@y@(~:)_&"{"=x@y@z;;`err@"malformed object"]}
+chko:{$[(~&/1,"{"=x@y@&":"=x)&&/1,":"=x@y@(~:)_&"{"=x@y;`err@"malformed object";]}
 
 pr:{(g;p):0 2\<((2*#x)#!2)+{2}#x;f:&~p;(g@(|\p*!#p)@f)@<g@f};dp:{+/~~,/(x@)\,!#x}
 
@@ -23,11 +23,11 @@ tree:{ $[~#x:trm[x;#x]#x;:(!0;!0);]
        $[~#s:(+/1(ws@x@)\)/&|':m<|/w:"{[]},:"=\:x;:(0;(,0)!trm[x;#x]);]
        d:(-|/2#w)++\+/1 1 -1 -1*w:4#w>\:m
        chkb[x;|/w;d]
-       chkds[x;s]
+       chkds[x s]
        end:!/|+1_,':s,#x
        s:@[s;|w;:;s@w:-1 0+\:&":"=x@s]
        s@:&~|/",]}"=\:x@s
-       chko[x;s;p:prn[x;s;d]]
+       chko[x s;p:prn[x;s;d]]
        (p;trm[x]'s#end) }
 
 hx:16/+/1(-39*~:10>)\-48+_: / to hex
