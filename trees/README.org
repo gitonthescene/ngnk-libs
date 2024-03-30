@@ -70,7 +70,7 @@
 *** Depth vectors
     Above we basically eyeballed the parent vector.  How do we generate a parent vector more generally?
 	This of course depends on the information we're given, but often it's easiest to first shoot for a
-	slightly different representation first.  That is a depth vector.
+	slightly different representation.  That is a depth vector.
 
 	The depth vector is simply the length of each path from a leaf up to the parent.
 
@@ -98,7 +98,7 @@
    But what if we did want to walk the tree?  That's still an option.  We just need to find children of
    each parent vector.  We can use "group" to do that ~=p~.  Here, having the root being self-parenting
    can be a bit of pain since we want to recurse to proper children and not enter an infinite loop.
-   With simply trees like this we can just do =~0N,1_p~ to effectively make our parent a child of some
+   With simply trees like this we can just do ~=0N,1_p~ to effectively make our parent a child of some
    /other node/ we'll never refer to.  There's also another little trick to get a useful prototype.
    Let's use ~chld:(=0N,1_p),(,0N)!,!0~ as our map from parents to children.  Then ~chld[0]~1 3~ and
    ~chld[2]~ is ~!0~.
