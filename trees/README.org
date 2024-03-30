@@ -29,7 +29,7 @@
 
    : While each node can have multiple children, each node (except the root) has only /one/ parent.
 
-   This if we have a tree such as ~(15;(12 9;18 2))~, then the parent of the leaf ~9~ is ~12~ and the parent
+   Thus if we have a tree such as ~(15;(12 9;18 2))~, then the parent of the leaf ~9~ is ~12~ and the parent
    of the ~12~ is ~15~.  Note that even here there's a bit of awkwardness.  Is ~12~ a node or is it a value?
    Similarly for ~9~.
 
@@ -98,7 +98,7 @@
    But what if we did want to walk the tree?  That's still an option.  We just need to find children of
    each parent vector.  We can use "group" to do that ~=p~.  Here, having the root being self-parenting
    can be a bit of pain since we want to recurse to proper children and not enter an infinite loop.
-   With simply trees like this we can just do ~=0N,1_p~ to effectively make our root a child of some
+   With simple trees like this we can just do ~=0N,1_p~ to effectively make our root a child of some
    /other node/ we'll never refer to.  There's also another little trick to get a useful prototype.
    Let's use ~chld:(=0N,1_p),(,0N)!,!0~ as our map from parents to children.  Then ~chld[0]~1 3~ and
    ~chld[2]~ is ~!0~.
@@ -111,5 +111,140 @@
    :  ((12;,(9;()));(18;,(2;()))))
 
    (Here leaves have empty children, but this is simply an example of what's possible.)
+
+
+*** Sure, but why?
+    Fair question.  Well posed.  My motivation was mostly to see what's possible with a data structure
+	I wasn't familiar with, but if you keep your eye out for it similar structures pop up in other
+	domains.  The motivation is usually that by using vectors you get the benefit of data locality.
+	I.e. you're likely to have related items accessed together hot in the cache.  On the negative side,
+	as is common with vector structures, modifying them means moving them in bulk to ensure that they're
+	in contiguous memory.  Thus they really shine when the size of the structure is relatively stable.
+
+	Weighing the benefits in not unlike comparing linked lists to arrays.  Each node in a linked list
+	might be stable in memory at the expense of data locality whereas you may need to moved arrays around
+	if you need to ensure data locality.
+
+	Apter trees may not be right for your application, but in my experience they have their good points.
+	To my mind separating the structure from the content reduces some mental load.  I find it easier to
+	picture the kind of manipulations that are possible and how to accomplish them.
+
+	If you're still curious at this point, read on...
+
+*** Applications
+    Obviously, Apter trees being trees means they're useful whereever trees are useful.  But let's
+	explore a few examples, starting with the string parsing above.
+
+	This algorithm for finding the [[https://dl.acm.org/doi/pdf/10.1145/800136.804466][depth of parenthesization]] is a classic.  I first read about it in a
+	quote from Alan Perlis speaking about how he was amazed that APL could do something so useful with
+	so few characters.  Let's have a look at it again.
+
+	:  +\-/"()"=\:"(a(bc(d)ef))"
+	: 1 1 2 2 2 3 3 2 2 2 1 0
+
+	It may be easier to match each character with it's depth:
+
+	:  +(txt;+\-/"()"=\:txt:"(a(bc(d)ef))")
+	: (("(";1)
+	:  ("a";1)
+	:  ("(";2)
+	:  ("b";2)
+	:  ("c";2)
+	:  ("(";3)
+	:  ("d";3)
+	:  (")";2)
+	:  ("e";2)
+	:  ("f";2)
+	:  (")";1)
+	:  (")";0))
+
+	One thing to notice, is the matching close parenthesis for each open parenthesis one deeper.
+	Another thing to notice is that each opening parenthesis is at the same depth as its contents.
+	This is more than likely not what you want, but is easily fixable.
+
+	:  +(txt;(-*ps)++\-/ps:"()"=\:txt:"(a(bc(d)ef))")
+	: (("(";0)
+	:  ("a";1)
+	:  ("(";1)
+	:  ("b";2)
+	:  ("c";2)
+	:  ("(";2)
+	:  ("d";3)
+	:  (")";2)
+	:  ("e";2)
+	:  ("f";2)
+	:  (")";1)
+	:  (")";0))
+
+	For simple compilers and parsers, this basic idea forms the baseline of the parsing process.
+	As above, the step from a depth vector to a parent vector and thus to a tree structure is not
+	very far.
+
+	Doing this again with something more recognizable:
+
+	:  +(txt;d:(-*ps)++\-/ps:"()"=\:txt:"(3*(4+9))-7")
+	: (("(";0)
+	:  ("3";1)
+	:  ("*";1)
+	:  ("(";1)
+	:  ("4";2)
+	:  ("+";2)
+	:  ("9";2)
+	:  (")";1)
+	:  (")";0)
+	:  ("-";0)
+	:  ("7";0))
+	:  d
+	: 0 1 1 1 2 2 2 1 0 0 0
+	:  {|/0,&x=-1+*|x}',\d
+	: 0 0 0 0 3 3 3 0 0 0 0
+
+    Notice that the open parentheses become parent (i.e. interior) nodes and that everything else
+	is a leaf.  Thinking about it a little bit more, we only really needed the close parentheses
+	as a marker of where the corresponding open parentheses end.  They act sort of like how null
+	characters act at the end of C strings.  Now that we have that structure in the parent vector,
+	we no longer need these nodes.
+
+	In general removing items from the parent vector could throw off the indices in that vector.
+	Consider ~(1+3)*(4+6)~.  There is a trick for doing this, but more straightforward here is
+	to edit the depth vector.  Because closed parentheses don't interupt the "closest index to the
+	left at depth one less than ours", removing them doesn't effect the parent vector we'll
+	generate from it.
+
+	:   +(txt;d):(txt;d:(-*ps)++\-/ps)@\:&~*|ps:"()"=\:txt:"(3*(4+9))-7"
+	: (("(";0)
+	:  ("3";1)
+	:  ("*";1)
+	:  ("(";1)
+	:  ("4";2)
+	:  ("+";2)
+	:  ("9";2)
+	:  ("-";0)
+	:  ("7";0))
+
+	It's this sort of thinking about trees that I enjoy about Apter trees.  It's as much like
+	painting as it is like programming.  Note that here we're considering ~txt~ to be the values
+	vector and we make our adjustments to both the depth vector and the values vector in parallel.
+
+	Another thing to notice here is that we have several nodes at depth ~0~.  We probably want a
+	single root, though.  We could fix this by adjusting he original text and adding a set of
+	parentheses around the whole thing, or we can edit this post processed tree.
+
+	:  +("(",txt;0,1+d)
+	: (("(";0)
+	:  ("(";1)
+	:  ("3";2)
+	:  ("*";2)
+	:  ("(";2)
+	:  ("4";3)
+	:  ("+";3)
+	:  ("9";3)
+	:  ("-";1)
+	:  ("7";1))
+
+	You might be asking yourself at this point "where is this going?"  The answer is "nowhere!".
+	We're just playing around to see the kind of thinking that goes into working with these
+	structures.
+
 
 * More ramblings to come...
