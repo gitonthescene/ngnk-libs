@@ -41,7 +41,7 @@
 
    Note that there's nothing really special about using depth first preorder.  If we shuffled the indices,
    we'd simply need to shuffle the indices of each parent to point to its new location.  What /is/ important
-   is that the parent vector and the values vector be in the same order.  Any ordering would faithfully
+   is that the parent vector and the values vector be in the /same order/.  Any ordering would faithfully
    represent the tree, but conventions are useful.
 
    Let's give these names ~p:0N 0 1 0 3~ and ~n:15 12 9 18 2~.  So the value of our node at index ~2~ is
@@ -50,7 +50,14 @@
    all the indices simultaneously. ~p[!#p]~0N 0 1 0 3~ and ~p[p[!#p]]~0N 0N 0 0N 0~.  This last could also
    be written ~2(p@)/!#p~.
 
-   We could also look at the fixed point scan: ~(p@)\!#p~ which gives a matrix whose columns give paths
+   We could also look at the fixed point scan which gives a matrix whose columns give paths.
+
+	:  (p@)\!#p
+	: (0 1 2 3 4
+	:  0 0 1 0 3
+	:  0 0 0 0 0)
+
+
    from each index up to the /parent/ of the root, which is currently marked with ~0N~.  While this works
    well enough for many circumstances its more useful to stop at the root.  To make this happen we make
    the root /self-parenting/.  I.e. we define our parent vector to be ~p:0 0 1 0 3~.
@@ -60,7 +67,13 @@
 	This of course depends on the information we're given, but often it's easiest to first shoot for a
 	slightly different representation first.  That is a depth vector.
 
-	The depth vector is simply the length of each path from a leaf up to the parent.  I.e. ~+/1&(p@)\!#p:0^p~.
+	The depth vector is simply the length of each path from a leaf up to the parent.
+
+	I.e.
+
+	 :  +/1&(p@)\!#p:0^p
+	 : 0 1 2 1 2
+
 	Generally it's easier to generate a depth vector than to directly generate a parent vector.  For
 	instance ~d:{$[`i=@y;x;,/x,o[x+1]'y 1]}[0;(15;(12 9;18 2))]~ or ~+\-/"()"=\:"(a(bc(d)ef))"~.  (We'll
 	talk more about this second in a bit.)
@@ -70,8 +83,8 @@
 	parent is at the index /"closest to the left at depth one less than ours"/.  This is calculable!  There
 	are different approaches to doing this calculation, but let's start with the easiest.
 
-	: {|/0,&x=-1+*|x}',\d
-
+	:  {|/0,&x=-1+*|x}',\d
+    : 0 0 1 0 3
 
    Okay so now let's say we have a parent vector and a node vector, what can we do with them?  Well, we
    can do things like ask which index is the parent of the node with value ~9~?  We can simply do ~p[n?9]~.
@@ -87,7 +100,11 @@
 
    Now we can do the following to descend the tree:
 
-   : {(x@z;o[x;y]'y@z)}[n;chld]0
+   :  chld:(=0N,1_p),(,0N)!,!0
+   :  {(x@z;o[x;y]'y@z)}[n;chld]0
+   : (15
+   :  ((12;,(9;()));(18;,(2;()))))
 
+   (Here leaves have empty children, but this is simply an example of what's possible.)
 
 * More ramblings to come...
