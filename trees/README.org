@@ -50,7 +50,8 @@
    all the indices simultaneously. ~p[!#p]~0N 0 1 0 3~ and ~p[p[!#p]]~0N 0N 0 0N 0~.  This last could also
    be written ~2(p@)/!#p~.
 
-   We could also look at the fixed point scan which gives a matrix whose columns give paths.
+   We could also look at the fixed point scan which gives a matrix whose columns give paths from each index
+   up to the /parent/ of the root, which is currently marked with ~0N~
 
 	:  (p@)\!#p
 	: (0 1 2 3 4
@@ -58,9 +59,8 @@
 	:  0N 0N 0 0N 0
 	:  0N 0N 0N 0N 0N)
 
-   from each index up to the /parent/ of the root, which is currently marked with ~0N~.  While this works
-   well enough for many circumstances its more useful to stop at the root.  To make this happen we make
-   the root /self-parenting/.  I.e. we define our parent vector to be ~p:0 0 1 0 3~.
+   While this works well enough for many circumstances its more useful to stop at the root.  To make this
+   happen we make the root /self-parenting/.  I.e. we define our parent vector to be ~p:0 0 1 0 3~.
 
 	:  (p@)\!#p
 	: (0 1 2 3 4
