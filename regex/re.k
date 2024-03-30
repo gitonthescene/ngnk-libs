@@ -46,5 +46,8 @@ comb: {?y,,//x@y}
 tc: {comb[x;]'/x}
 fix: {comb[tc x[;non];]''x}
 
-next: {?,/x[y;z]}
-match: {final[x]=|/x[0;non]next[x]/y}
+next: {?,/x[0][y;x[1]z]}
+match:{final[x]=|/x[0;non]next[(x;"",y)]/!#y}
+
+search:{f:{(&final[x]=|/'x[0;non]next[(x;"",y)]\(1+z[1])_!#y;z[1]+1)}
+        $[0<#*r:{(~#y[0])&x>y[1]+1}[#y]f[x;y]/(!0;-1);1(|/r[0]+1+)\r[1];0N]}
