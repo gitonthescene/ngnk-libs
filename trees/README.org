@@ -53,42 +53,42 @@
    We could also look at the fixed point scan which gives a matrix whose columns give paths from each index
    up to the /parent/ of the root, which is currently marked with ~0N~
 
-	:  (p@)\!#p
-	: (0 1 2 3 4
-	:  0N 0 1 0 3
-	:  0N 0N 0 0N 0
-	:  0N 0N 0N 0N 0N)
+    :  (p@)\!#p
+    : (0 1 2 3 4
+    :  0N 0 1 0 3
+    :  0N 0N 0 0N 0
+    :  0N 0N 0N 0N 0N)
 
    While this works well enough for many circumstances its more useful to stop at the root.  To make this
    happen we make the root /self-parenting/.  I.e. we define our parent vector to be ~p:0 0 1 0 3~.
 
-	:  (p@)\!#p
-	: (0 1 2 3 4
-	:  0 0 1 0 3
-	:  0 0 0 0 0)
+    :  (p@)\!#p
+    : (0 1 2 3 4
+    :  0 0 1 0 3
+    :  0 0 0 0 0)
 
 *** Depth vectors
     Above we basically eyeballed the parent vector.  How do we generate a parent vector more generally?
-	This of course depends on the information we're given, but often it's easiest to first shoot for a
-	slightly different representation.  That is a depth vector.
+    This of course depends on the information we're given, but often it's easiest to first shoot for a
+    slightly different representation.  That is a depth vector.
 
-	The depth vector is simply the length of each path from a leaf up to the parent.
+    The depth vector is simply the length of each path from a leaf up to the parent.
 
-	I.e.
+    I.e.
 
-	 :  +/1&(p@)\!#p:0^p
-	 : 0 1 2 1 2
+     :  +/1&(p@)\!#p:0^p
+     : 0 1 2 1 2
 
-	Generally it's easier to generate a depth vector than to directly generate a parent vector.  For
-	instance ~d:{$[`i=@y;x;,/x,o[x+1]'y 1]}[0;(15;(12 9;18 2))]~ or ~+\-/"()"=\:"(a(bc(d)ef))"~.  (We'll
-	talk more about this second in a bit.)
+    Generally it's easier to generate a depth vector than to directly generate a parent vector.  For
+    instance ~d:{$[`i=@y;x;,/x,o[x+1]'y 1]}[0;(15;(12 9;18 2))]~ or ~+\-/"()"=\:"(a(bc(d)ef))"~.  (We'll
+    talk more about this second in a bit.)
 
-	Okay, let's assume depth vectors are easy to come by.  How does this help us create a parent vector?
-	Here's where conventions help out.  If our depth vector is depth first preorder then we know that our
-	parent is at the index /"closest to the left at depth one less than ours"/.  This is calculable!  There
-	are different approaches to doing this calculation, but let's start with the easiest.
+    Okay, let's assume depth vectors are easy to come by.  How does this help us create a parent vector?
+    Here's where conventions help out.  If our depth vector is depth first preorder then we know that our
+    parent is at the index /"closest to the left at depth one less than ours"/.  This is calculable!  There
+    are different approaches to doing this calculation, but let's start with the easiest.
 
-	:  {|/0,&x=-1+*|x}',\d
+    :  {|/0,&x=-1+*|x}',\d
     : 0 0 1 0 3
 
    Okay so now let's say we have a parent vector and a node vector, what can we do with them?  Well, we
@@ -115,183 +115,220 @@
 
 *** Sure, but why?
     Fair question.  Well posed.  My motivation was mostly to see what's possible with a data structure
-	I wasn't familiar with, but if you keep your eye out for it similar structures pop up in other
-	domains.  The motivation is usually that by using vectors you get the benefit of data locality.
-	I.e. you're likely to have related items accessed together hot in the cache.  On the negative side,
-	as is common with vector structures, modifying them means moving them in bulk to ensure that they're
-	in contiguous memory.  Thus they really shine when the size of the structure is relatively stable.
+    I wasn't familiar with, but if you keep your eye out for it similar structures pop up in other
+    domains.  The motivation is usually that by using vectors you get the benefit of data locality.
+    I.e. you're likely to have related items accessed together hot in the cache.  On the negative side,
+    as is common with vector structures, modifying them means moving them in bulk to ensure that they're
+    in contiguous memory.  Thus they really shine when the size of the structure is relatively stable.
 
-	Weighing the benefits is not unlike comparing linked lists to arrays.  Each node in a linked list
-	might be stable in memory at the expense of data locality whereas you may need to move arrays around
-	if you need to ensure data locality.
+    Weighing the benefits is not unlike comparing linked lists to arrays.  Each node in a linked list
+    might be stable in memory at the expense of data locality whereas you may need to move arrays around
+    if you need to ensure data locality.
 
-	Apter trees may not be right for your application, but in my experience they have their good points.
-	To my mind separating the structure from the content reduces some mental load.  I find it easier to
-	picture the kind of manipulations that are possible and how to accomplish them.
+    Apter trees may not be right for your application, but in my experience they have their good points.
+    To my mind separating the structure from the content reduces some mental load.  I find it easier to
+    picture the kind of manipulations that are possible and how to accomplish them.
 
-	If you're still curious at this point, read on...
+    If you're still curious at this point, read on...
 
 *** Applications
     Obviously, Apter trees being trees means they're useful wherever trees are useful.  But let's
-	explore a few examples, starting with the string parsing above.
+    explore a few examples, starting with the string parsing above.
 
-	This algorithm for finding the [[https://dl.acm.org/doi/pdf/10.1145/800136.804466][depth of parenthesization]] is a classic.  I first read about it in a
-	quote from Alan Perlis speaking about how he was amazed that APL could do something so useful with
-	so few characters.  Let's have a look at it again.
+    This algorithm for finding the [[https://dl.acm.org/doi/pdf/10.1145/800136.804466][depth of parenthesization]] is a classic.  I first read about it in a
+    quote from Alan Perlis speaking about how he was amazed that APL could do something so useful with
+    so few characters.  Let's have a look at it again.
 
-	:  +\-/"()"=\:"(a(bc(d)ef))"
-	: 1 1 2 2 2 3 3 2 2 2 1 0
+    :  +\-/"()"=\:"(a(bc(d)ef))"
+    : 1 1 2 2 2 3 3 2 2 2 1 0
 
-	It may be easier to match each character with it's depth:
+    It may be easier to match each character with it's depth:
 
-	:  +(txt;+\-/"()"=\:txt:"(a(bc(d)ef))")
-	: (("(";1)
-	:  ("a";1)
-	:  ("(";2)
-	:  ("b";2)
-	:  ("c";2)
-	:  ("(";3)
-	:  ("d";3)
-	:  (")";2)
-	:  ("e";2)
-	:  ("f";2)
-	:  (")";1)
-	:  (")";0))
+    :  +(txt;+\-/"()"=\:txt:"(a(bc(d)ef))")
+    : (("(";1)
+    :  ("a";1)
+    :  ("(";2)
+    :  ("b";2)
+    :  ("c";2)
+    :  ("(";3)
+    :  ("d";3)
+    :  (")";2)
+    :  ("e";2)
+    :  ("f";2)
+    :  (")";1)
+    :  (")";0))
 
-	One thing to notice, is the matching close parenthesis for each open parenthesis is one deeper.
-	Another thing to notice is that each opening parenthesis is at the same depth as its contents.
-	This is more than likely not what you want, but is easily fixable.
+    One thing to notice, is the matching close parenthesis for each open parenthesis is one deeper.
+    Another thing to notice is that each opening parenthesis is at the same depth as its contents.
+    This is more than likely not what you want, but is easily fixable.
 
-	:  +(txt;(-*ps)++\-/ps:"()"=\:txt:"(a(bc(d)ef))")
-	: (("(";0)
-	:  ("a";1)
-	:  ("(";1)
-	:  ("b";2)
-	:  ("c";2)
-	:  ("(";2)
-	:  ("d";3)
-	:  (")";2)
-	:  ("e";2)
-	:  ("f";2)
-	:  (")";1)
-	:  (")";0))
+    :  +(txt;(-*ps)++\-/ps:"()"=\:txt:"(a(bc(d)ef))")
+    : (("(";0)
+    :  ("a";1)
+    :  ("(";1)
+    :  ("b";2)
+    :  ("c";2)
+    :  ("(";2)
+    :  ("d";3)
+    :  (")";2)
+    :  ("e";2)
+    :  ("f";2)
+    :  (")";1)
+    :  (")";0))
 
-	For simple compilers and parsers, this basic idea forms the baseline of the parsing process.
-	As above, the step from a depth vector to a parent vector and thus to a tree structure is not
-	very far.
+    For simple compilers and parsers, this basic idea forms the baseline of the parsing process.
+    As above, the step from a depth vector to a parent vector and thus to a tree structure is not
+    very far.
 
-	Doing this again with something more recognizable:
+    Doing this again with something more recognizable:
 
-	:  +(txt;d:(-*ps)++\-/ps:"()"=\:txt:"(3*(4+9))-7")
-	: (("(";0)
-	:  ("3";1)
-	:  ("*";1)
-	:  ("(";1)
-	:  ("4";2)
-	:  ("+";2)
-	:  ("9";2)
-	:  (")";1)
-	:  (")";0)
-	:  ("-";0)
-	:  ("7";0))
-	:  d
-	: 0 1 1 1 2 2 2 1 0 0 0
-	:  {|/0,&x=-1+*|x}',\d
-	: 0 0 0 0 3 3 3 0 0 0 0
+    :  +(txt;d:(-*ps)++\-/ps:"()"=\:txt:"(3*(4+9))-7")
+    : (("(";0)
+    :  ("3";1)
+    :  ("*";1)
+    :  ("(";1)
+    :  ("4";2)
+    :  ("+";2)
+    :  ("9";2)
+    :  (")";1)
+    :  (")";0)
+    :  ("-";0)
+    :  ("7";0))
+    :  d
+    : 0 1 1 1 2 2 2 1 0 0 0
+    :  {|/0,&x=-1+*|x}',\d
+    : 0 0 0 0 3 3 3 0 0 0 0
 
     Notice that the open parentheses become parent (i.e. interior) nodes and that everything else
-	is a leaf.  Thinking about it a little bit more, we only really needed the close parentheses
-	as a marker of where the corresponding open parentheses end.  They act sort of like how null
-	characters act at the end of C strings.  Now that we have that structure in the parent vector,
-	we no longer need these nodes.
+    is a leaf.  Thinking about it a little bit more, we only really needed the close parentheses
+    as a marker of where the corresponding open parentheses end.  They act sort of like how null
+    characters act at the end of C strings.  Now that we have that structure in the parent vector,
+    we no longer need these nodes.
 
-	In general removing items from the parent vector could throw off the indices in that vector.
-	Consider ~(1+3)*(4+6)~.  There is a trick for doing this, but more straightforward here is
-	to edit the depth vector.  Because closed parentheses don't interupt the "closest index to the
-	left at depth one less than ours", removing them doesn't effect the parent vector we'll
-	generate from it.
+    In general removing items from the parent vector could throw off the indices in that vector.
+    Consider ~(1+3)*(4+6)~.  There is a trick for doing this, but more straightforward here is
+    to edit the depth vector.  Because closed parentheses don't interupt the "closest index to the
+    left at depth one less than ours", removing them doesn't effect the parent vector we'll
+    generate from it.
 
-	:   +(txt;d):(txt;d:(-*ps)++\-/ps)@\:&~*|ps:"()"=\:txt:"(3*(4+9))-7"
-	: (("(";0)
-	:  ("3";1)
-	:  ("*";1)
-	:  ("(";1)
-	:  ("4";2)
-	:  ("+";2)
-	:  ("9";2)
-	:  ("-";0)
-	:  ("7";0))
+    :   +(txt;d):(txt;d:(-*ps)++\-/ps)@\:&~*|ps:"()"=\:txt:"(3*(4+9))-7"
+    : (("(";0)
+    :  ("3";1)
+    :  ("*";1)
+    :  ("(";1)
+    :  ("4";2)
+    :  ("+";2)
+    :  ("9";2)
+    :  ("-";0)
+    :  ("7";0))
 
-	It's this sort of thinking about trees that I enjoy about Apter trees.  It's as much like
-	painting as it is like programming.  Note that here we're considering ~txt~ to be the values
-	vector and we make our adjustments to both the depth vector and the values vector in parallel.
+    It's this sort of thinking about trees that I enjoy about Apter trees.  It's as much like
+    painting as it is like programming.  Note that here we're considering ~txt~ to be the values
+    vector and we make our adjustments to both the depth vector and the values vector in parallel.
 
-	Another thing to notice here is that we have several nodes at depth ~0~.  We probably want a
-	single root, though.  We could fix this by adjusting he original text and adding a set of
-	parentheses around the whole thing, or we can edit this postprocessed tree.
+    Another thing to notice here is that we have several nodes at depth ~0~.  We probably want a
+    single root, though.  We could fix this by adjusting he original text and adding a set of
+    parentheses around the whole thing, or we can edit this postprocessed tree.
 
-	:  +(txt;d):("(",txt;0,1+d)
-	: (("(";0)
-	:  ("(";1)
-	:  ("3";2)
-	:  ("*";2)
-	:  ("(";2)
-	:  ("4";3)
-	:  ("+";3)
-	:  ("9";3)
-	:  ("-";1)
-	:  ("7";1))
+    :  +(txt;d):("(",txt;0,1+d)
+    : (("(";0)
+    :  ("(";1)
+    :  ("3";2)
+    :  ("*";2)
+    :  ("(";2)
+    :  ("4";3)
+    :  ("+";3)
+    :  ("9";3)
+    :  ("-";1)
+    :  ("7";1))
 
-	You might be asking yourself at this point "where is this going?"  The answer is "nowhere!".
-	We're just playing around to see the kind of thinking that goes into working with these
-	structures.
+    You might be asking yourself at this point "where is this going?"  The answer is "nowhere!".
+    We're just playing around to see the kind of thinking that goes into working with these
+    structures.
 
-	But as long as we're playing around with something familiar, we probably want these (infix)
-	operators to be parents of the things they're operating on.  We could try to manipulate the
-	depth vector, but if we keep the order the same, we'll not be in DFS preorder.  Let's instead
-	make a parent vector and rewire it.
+    But as long as we're playing around with something familiar, we probably want these (infix)
+    operators to be parents of the things they're operating on.  We could try to manipulate the
+    depth vector, but if we keep the order the same, we'll not be in DFS preorder.  Let's instead
+    make a parent vector and rewire it.
 
-	:  :p:{|/0,&x=-1+*|x}',\d
-	: 0 0 1 1 1 4 4 4 0 0
-	:  txt@=p
-	: !/+((0;"((-7")
-	:     (1;"3*(")
-	:     (4;"4+9"))
+    :  :p:{|/0,&x=-1+*|x}',\d
+    : 0 0 1 1 1 4 4 4 0 0
+    :  txt@=p
+    : !/+((0;"((-7")
+    :     (1;"3*(")
+    :     (4;"4+9"))
 
-	Currently, each infix operator is a sibling of the element to the left and the right.  Instead,
-	we'd like to have each node to the left and the right of an infix operator have the infix
-	operator as its parent.  Note that these are the indices to the left and the right /among its
-	siblings/.  This means we'll have to do this per grouping.
+    Currently, each infix operator is a sibling of the element to the left and the right.  Instead,
+    we'd like to have each node to the left and the right of an infix operator have the infix
+    operator as its parent.  Note that these are the indices to the left and the right /among its
+    siblings/.  This means we'll have to do this per grouping.
 
-	:  =p
-	: !/+((0;0 1 8 9)
-	:     (1;2 3 4)
-	:     (4;5 6 7))
-	:  {y@(0;-1 1)+/:&~^"+*-%"?x@y}[txt]'.=p
-	: !/+((0;,(8;1 9))
-	:     (1;,(3;2 4))
-	:     (4;,(6;5 7)))
-	:  |+,/{y@(0;-1 1)+/:&~^"+*-%"?x@y}[txt]'.=p
-	: ((1 9;2 4;5 7)
-	:  8 3 6)
-	:  :p:@[p;;:;].|+,/{y@(0;-1 1)+/:&~^"+*-%"?x@y}[txt]'.=p
-	: 0 8 3 1 3 6 4 6 0 8
+    :  =p
+    : !/+((0;0 1 8 9)
+    :     (1;2 3 4)
+    :     (4;5 6 7))
+    :  {y@(0;-1 1)+/:&~^"+*-%"?x@y}[txt]'.=p
+    : !/+((0;,(8;1 9))
+    :     (1;,(3;2 4))
+    :     (4;,(6;5 7)))
+    :  |+,/{y@(0;-1 1)+/:&~^"+*-%"?x@y}[txt]'.=p
+    : ((1 9;2 4;5 7)
+    :  8 3 6)
+    :  :p:@[p;;:;].|+,/{y@(0;-1 1)+/:&~^"+*-%"?x@y}[txt]'.=p
+    : 0 8 3 1 3 6 4 6 0 8
 
-	This isn't great for visualizing.  Let's use something like the depth from parent calculation
-	above.
+    This isn't great for visualizing.  Let's use something like the depth from parent calculation
+    above.
 
-	:  `0:(" ",txt)@(1+!#txt)*/:-1+2*~=':(p@)\!#p
-	: ((3*(4+9-7
-	:  (3*(4+9-7
-	:  (3*(4+9 7
-	:   3*(4+9  
-	:   3 (4+9  
-	:      4+9  
-	:      4 9  
+    :  `0:(" ",txt)@(1+!#txt)*/:-1+2*~=':(p@)\!#p
+    : ((3*(4+9-7
+    :  (3*(4+9-7
+    :  (3*(4+9 7
+    :   3*(4+9  
+    :   3 (4+9  
+    :      4+9  
+    :      4 9  
 
-	Okay, maybe not the best rendering, but it'll do in a pinch.  We can see that the operators are
-	now a level up from the things they're operating on, but we're no longer in DFS preorder.  Does
-	this matter?  Not necessarily.  We can still iterate through the tree.  In fact, we can iterate
-	through the tree to generate the DFS preorder.
+    Okay, maybe not the best rendering, but it'll do in a pinch.  We can see that the operators are
+    now a level up from the things they're operating on, but we're no longer in DFS preorder.  Does
+    this matter?  Not necessarily.  We can still iterate through the tree.  In fact, we can iterate
+    through the tree to generate the DFS preorder.
+
+    :  chld:(=0N,1_p),(,0N)!,!0
+    :  g:{,/x[z],o[x;y]'y@z}[!#p;chld]0
+    : 0 8 1 3 2 4 6 5 7 9
+
+    Just to be clear, DFS preorder /is important/ for the algorithm that converts depth vectors to
+    parent vectors, but is /not necessarily important/ for the parent vectors themselves.
+
+    This is the order we'd like the indices to be in (the grade).  Rearranging the values vector
+    according to this grade is pretty easy:
+
+    :   txt@:g
+    : "(-(*3(+497"
+
+    But as alluded to above, rearranging the parent vector is a little trickier.  We first reorder
+    the parent vector just as we do the values vector:
+
+    :  p@g
+    : 0 0 8 1 3 3 4 6 6 8
+
+    These are now in the right order, but we're still pointing to the old indices.  What we need to
+    point to is the new location, which amounts to the grade of the grade.
+
+    :  :p:(<g)@p@g
+    : 0 0 1 2 3 3 5 6 6 1
+    :  `0:(" ",txt)@(1+!#txt)*/:-1+2*~=':(p@)\!#p
+    : (-(*3(+497
+    :  -(*3(+497
+    :   (*3(+497
+    :    *3(+49 
+    :     3(+49 
+    :       +49 
+    :        49 
+
+    Notice that this is basically reversed Polish notation with parens being explicit about which
+    values go with which operators.
+
 
 * More ramblings to come...
