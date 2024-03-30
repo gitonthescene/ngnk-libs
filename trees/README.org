@@ -54,13 +54,18 @@
 
 	:  (p@)\!#p
 	: (0 1 2 3 4
-	:  0 0 1 0 3
-	:  0 0 0 0 0)
-
+	:  0N 0 1 0 3
+	:  0N 0N 0 0N 0
+	:  0N 0N 0N 0N 0N)
 
    from each index up to the /parent/ of the root, which is currently marked with ~0N~.  While this works
    well enough for many circumstances its more useful to stop at the root.  To make this happen we make
    the root /self-parenting/.  I.e. we define our parent vector to be ~p:0 0 1 0 3~.
+
+	:  (p@)\!#p
+	: (0 1 2 3 4
+	:  0 0 1 0 3
+	:  0 0 0 0 0)
 
 *** Depth vectors
     Above we basically eyeballed the parent vector.  How do we generate a parent vector more generally?
