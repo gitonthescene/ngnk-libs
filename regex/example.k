@@ -1,14 +1,22 @@
 \d re
 \l re.k
 \d .
+para:`0:
 
-:rex:"[\\+-]?[0123456789]+(.[0123456789]+)?([Ee][\\+-]?[0123456789]+)?"
-rx:re.match[re.cmp rex]
-rx"1"
-rx"-3.1415e0"
-rx"-.1415e0"
-rx"-3.1415e"
-rx"dog"
+para"regex: ", rex:"[\\+-]?[0123456789]+(.[0123456789]+)?([Ee][\\+-]?[0123456789]+)?"
+/rx:re.match[re.cmp rex]
+rx:re.match[rex]
+{para"match: ",x;`0:$rx x}'("1";"-3.1415e0";"-.1415e0";"-3.1415e";"dog");
+
+cases:("abc";"xxxabc";"abcyyy";"xxxabcyyy")
+testcases:{para"search ",z;`0:$x z;para"match ",z;`0:$y z}
+
+test:{para"---";para"regex: ", x;testcases[re.search[x];re.match[x]]'y;}
+
+test["ab+c";cases]
+test["^ab+c";cases]
+test["ab+c$";cases]
+test["^ab+c$";cases]
 
 /
 /  [[https://github.com/gitonthescene/ngnk-libs/tree/master/trees]]
