@@ -349,7 +349,7 @@
     : 0 0 0 0 0 0 0 0
 
     Now how would we rewire this to do say right to left evaluation?  That is we want "long right"
-    precedence.  If we did add parens it should look like "(1+(2+(3+4".  One option is to simply add
+    precedence.  If we did add parens it should look like ~(1+(2+(3+4~.  One option is to simply add
     a paren after each operator and use the parser above.  Another is not note that each operator has
     two children:  Its left (leaf) sibling and the next operator to the right.
 
