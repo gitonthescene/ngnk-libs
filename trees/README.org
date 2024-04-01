@@ -295,7 +295,7 @@
     through the tree to generate the DFS preorder.
 
     :  chld:(=0N,1_p),(,0N)!,!0
-    :  g:{,/x[z],o[x;y]'y@z}[!#p;chld]0
+    :  :g:{,/x[z],o[x;y]'y@z}[!#p;chld]0
     : 0 8 1 3 2 4 6 5 7 9
 
     Just to be clear, DFS preorder /is important/ for the algorithm that converts depth vectors to
@@ -304,7 +304,7 @@
     This is the order we'd like the indices to be in (the grade).  Rearranging the values vector
     according to this grade is pretty easy:
 
-    :   txt@:g
+    :  :txt@:g
     : "(-(*3(+497"
 
     But as alluded to above, rearranging the parent vector is a little trickier.  We first reorder
@@ -328,7 +328,53 @@
     :        49 
 
     Notice that this is basically reversed Polish notation with parens being explicit about which
-    values go with which operators.
+    values go with which operators.  Also, since the original expression was fully parenthezised,
+    each parenthesized node has a single child.  Given this, evaluating this expression as a tree
+    isn't too bad.
 
+    : chld:(=0N,1_p),(,0N)!,!0
+    :  {(n;c):(x;y)@\:z;$[~#c;.n;"("~n;o[x;y]@*c;(.n)/o[x;y]'c]}[txt;chld]0
+    : 32
+
+    We simply descend the tree, passing through each parenthesis node to it's child and evaluating
+    the operator on each of its children.  Leaves are simply eval-ed.
+
+    Let's try something else.  Say we had an simple expression that wasn't parenthesized, like
+    ~1+2+3+4~.  How do we express this as a tree?  For starters, since there is no depth, we can
+    add a dummy root and make the parent vector all zeros.  If that's not immediately obvious, it's
+    worth taking a minute to contemplate why this must be the case.
+
+    :  :p:&# \txt:"(","1+2+3+4"
+    : "(1+2+3+4"
+    : 0 0 0 0 0 0 0 0
+
+    Now how would we rewire this to do say right to left evaluation?  That is we want "long right"
+    precedence.  If we did add parens it should look like "(1+(2+(3+4".  One option is to simply add
+    a paren after each operator and use the parser above.  Another is not note that each operator has
+    two children:  Its left (leaf) sibling and the next operator to the right.
+
+    :  :p:@[p;;:;].(+(-1+;1_,[;-1+#txt]@)@\:op;op:&"+"=txt)
+    : 0 2 0 4 2 6 4 6
+    :  `0:(" ",txt)@(1+!#txt)*/:-1+2*~=':(p@)\!#p
+    : (1+2+3+4
+    :  1+2+3+4
+    :  1 2+3+4
+    :    2 3+4
+    :      3 4
+
+    You could apply something similar to each set of siblings for a partially parenthesized expression
+    such as "(2*8*4)+(2*(3+4+6))".
+
+    Now is this the way you want to go about creating a general expression parser?  Maybe not.
+    It's not immediately clear how to handle monadic operators like negation going down this path.
+    But then again, maybe it's not so bad.  The point of this exercise is to introduce new ways of
+    thinking about tree construction.  I personally have found this "rector set" approach pretty
+    fruitul, using it to implement a [[https://github.com/gitonthescene/ngnk-libs/blob/master/json/json.k][json parser]] and a parser of [[https://github.com/gitonthescene/ngnk-libs/blob/master/regex/re.k][regular expressions]] as well as
+    [[https://github.com/gitonthescene/ngnk-libs/blob/master/trees/lambda-calculus.k][lambda calculus evaluator]].
+
+    This last might be a good example of the shortcomings of this approach mentioned above.  It's
+    basically a term rewriting exercise.  Which means a lot of frequent updates to the tree and
+    frequent changes in the size of the trees, which means a lot of copying of the vectors
+    involved as described above.  It works, but perhaps is not the best fit.
 
 * More ramblings to come...
