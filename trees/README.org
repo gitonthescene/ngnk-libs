@@ -258,10 +258,11 @@
     :     (1;"3*(")
     :     (4;"4+9"))
 
-    Currently, each infix operator is a sibling of the element to the left and the right.  Instead,
-    we'd like to have each node to the left and the right of an infix operator have the infix
-    operator as its parent.  Note that these are the indices to the left and the right /among its
-    siblings/.  This means we'll have to do this per grouping.
+    Currently, each infix operator is a sibling of the element to the left and the right.  A
+	sibling which is an open parenthesis represents the subexpression (i.e. subtree).  Instead,
+	we'd like to have each node to the left and the right of an infix operator have the infix
+	operator as its parent.  Note that these are the indices to the left and the right /among its
+	siblings/.  This means we'll have to do this per grouping.
 
     :  =p
     : !/+((0;0 1 8 9)
@@ -308,7 +309,7 @@
     : "(-(*3(+497"
 
     But as alluded to above, rearranging the parent vector is a little trickier.  We first reorder
-    the parent vector just as we do the values vector:
+    the parent vector just as we do the values vector so that they're in the same order:
 
     :  p@g
     : 0 0 8 1 3 3 4 6 6 8
