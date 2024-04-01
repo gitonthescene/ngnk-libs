@@ -227,7 +227,7 @@
     vector and we make our adjustments to both the depth vector and the values vector in parallel.
 
     Another thing to notice here is that we have several nodes at depth ~0~.  We probably want a
-    single root, though.  We could fix this by adjusting he original text and adding a set of
+    single root, though.  We could fix this by adjusting the original text and adding a set of
     parentheses around the whole thing, or we can edit this postprocessed tree.
 
     :  +(txt;d):("(",txt;0,1+d)
@@ -290,10 +290,15 @@
     :      4+9  
     :      4 9  
 
-    Okay, maybe not the best rendering, but it'll do in a pinch.  We can see that the operators are
-    now a level up from the things they're operating on, but we're no longer in DFS preorder.  Does
-    this matter?  Not necessarily.  We can still iterate through the tree.  In fact, we can iterate
-    through the tree to generate the DFS preorder.
+    Okay, maybe not the best rendering, but it'll do in a pinch.  Actually, let's take a second to
+	appreciate this.  This may not be the tree redering you're used to, but you can visualize the
+	shape of the tree from the depth of the nodes.  Moreover it's pretty cheap to render from the
+	scan of the parent vector.  With a list based tree, the inner nodes are sort of buried in
+	there and harder to get your hands on.
+
+	We can see that the operators are now a level up from the things they're operating on, but
+    we're no longer in DFS preorder.  Does this matter?  Not necessarily.  We can still iterate
+    through the tree.  In fact, we can iterate through the tree to generate the DFS preorder.
 
     :  chld:(=0N,1_p),(,0N)!,!0
     :  :g:{,/x[z],o[x;y]'y@z}[!#p;chld]0
