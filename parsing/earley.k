@@ -21,7 +21,7 @@ add:{n:(z[1],(i;dot[x]@z[1]))@\:&((!#i)=i?i)&w:^(y[z 0;3])?i:id[x]@z[1]
 
 rec0:{{(d;st;s):$[n:#**|x 1;(x[0];x[1],,empty,(!0;"");1+x 2);:x]
        ({y stp[x]/(pred;scan;comp)}[s]/(d;st)),s}/(x;,,/1((id[x];dot[x])@\:)\y;-1)}
-rec1:{s:++(&=/1*:\3#x[`t]x`p;0;0);rec0[x;s]}
+rec1:{s:++(&=/1*:\x[`t]x`p;0;0);rec0[x;s]}
 rec:{-1_rec1 data[x;y]}
 
 cmbos:{!/:/({y,x[y]?z}[x].'!y;1_'(,0N){,/x,/:\:,'y}/y)}
