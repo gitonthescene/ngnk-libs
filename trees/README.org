@@ -410,8 +410,8 @@
     [[https://github.com/gitonthescene/ngnk-libs/blob/master/trees/lambda-calculus.k][lambda calculus evaluator]].
 
     This last might be a good example of the shortcomings of this approach mentioned above.  It's
-    basically a term rewriting exercise.  Which means a lot of frequent updates to the tree and
-    frequent changes in the size of the trees, which means a lot of copying of the vectors
-    involved as described above.  It works, but perhaps is not the best fit.
+    basically a term rewriting exercise.  Which means a lot of updates to the tree and thus
+    changes in the size of the tree, which means a lot of copying of the vectors involved as
+    described above.  It works, but perhaps is not the best fit.
 
 * More ramblings to come...
