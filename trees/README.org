@@ -345,6 +345,37 @@
     We simply descend the tree, passing through each parenthesis node to it's child and evaluating
     the operator on each of its children.  Leaves are simply eval-ed.
 
+	Before moving on, let's take a look at this last attempt to visualize the tree. Let's remove
+	the duplicates and space it out a bit.
+
+	:  `0:" "/'(" ",txt)@(1+!#txt)*/:-1+2*1_>':,/1(,1+&#*:)\=':(p@)\!#p
+	: (
+	:   -
+	:     (             7
+	:       *
+	:         3 (
+	:             +
+	:               4 9
+
+	If you stare at this for a bit, you start to want to add some characters.
+
+	:    (
+	:    │
+	:    -
+	:    ├───────────┐
+	:    (           7
+	:    │
+	:    *
+	:    ├───┐
+	:    3   (
+	:        │
+	:        +
+	:        ├───┐
+	:        4   9
+
+	We won't go into details, but it should be fairly clear that the graph we actually had isn't
+	too far off from something more traditional looking.
+
     Let's try something else.  Say we had an simple expression that wasn't parenthesized, like
     ~1+2+3+4~.  How do we express this as a tree?  For starters, since there is no depth, we can
     add a dummy root and make the parent vector all zeros.  If that's not immediately obvious, it's
