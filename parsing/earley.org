@@ -1,0 +1,330 @@
+* Earley parsing (first draft)
+  [[https://en.wikipedia.org/wiki/Earley_parser][Earley parsing]] is a method for parsing strings according to a given grammar.  It
+  accomplishes something similar to other parsing algorithms like the [[https://en.wikipedia.org/wiki/LR_parser][LR]] and [[https://en.wikipedia.org/wiki/LL_parser][LL]] families
+  of parsers but with a wider range of applicability at the cost of some performance.
+
+  We'll go into some detail below about how they work but spend most of our time talking
+  about implementing this algorithm in an [[https://en.wikipedia.org/wiki/Array_programming][array language]], specifically [[https://ngn.codeberg.page][ngn/k]].
+
+  There are obviously [[https://loup-vaillant.fr/tutorials/earley-parsing/][other well-written expositions]] on the topic worth pursuing if your
+  interest is piqued.
+
+** Acknowledgments
+  I first became aware of Earley parsers when @effbiae [[https://codeberg.org/effbiae/earley][posted his]] on an [[https://matrix.to/#/#ngnk:matrix.org][ngn/k chat board]].
+  My version was inspired by his.
+
+** How it works
+  The goal is to take an expression like ~7+(2+3)*9~ and to turn it into a parser tree
+  such as the one below.
+
+  :                         ┬
+  :                        exp
+  :                         │
+  :                         +
+  :         ┌───────────────┴────────────────┐
+  :         7                                *
+  :                               ┌──────────┴───────────┐
+  :                              grp                     9
+  :                               │
+  :                               +
+  :                           ┌───┴────┐
+  :                           2        3
+
+  Here, we have a tree rooted at the entire expression with sub nodes for grouping and
+  each operation.
+
+  The basic idea of an Earley parser is to attack the problem with [[https://en.wikipedia.org/wiki/Dynamic_programming][dynamic programming]].
+  That is to recursively break the larger problem down to solving similar smaller problems
+  and assembling them into results.  In this case that amounts to breaking down the
+  parsing of the full expression into the parsing of subexpressions.  The neat part is
+  that the larger problem and the smaller problems are all handled /simultaneously/ during
+  a single pass of the input.
+
+  As many dynamic programming problems are handled with tables, using an array language
+  for this task feels like a good fit.
+
+  We'll be using the following grammar taken from [[https://loup-vaillant.fr/tutorials/earley-parsing/][@Loup's excellent tutorial]].
+
+  : Sum     -> Sum     [+-] Product
+  : Sum     -> Product
+  : Product -> Product [*/] Factor
+  : Product -> Factor
+  : Factor  -> '(' Sum ')'
+  : Factor  -> Number
+  : Number  -> [0-9] Number
+  : Number  -> [0-9]
+
+  Actually, we'll simplify it a bit by replacing all numbers with a single terminal
+  representing their role in the grammar and only handle addition and multiplication.  The
+  first is usually handled by a lexing stage which generates tokens having both a type and
+  a value and only considering the type during parsing.  As is traditional in array
+  language we'll also be parsimonious about the length of our token names.
+
+  : e:s|p
+  : s:p|s+p
+  : p:f|p*f
+  : f:(s)
+  : f:N
+
+  In this grammar we use the convention that ~:~ is used to separate a non-terminal from
+  its production, ~|~ is used to separate alternative productions, non-terminals are
+  lower-case letters and anything else is a terminal character.  So ~+~ and ~*~ are
+  terminals but so is ~N~ as well.  To futher simply the discussion let's split out
+  alternatives into separate productions wtihout alternatives.
+
+  : e:s
+  : e:p
+  : s:p
+  : s:s+p
+  : p:f
+  : p:p*f
+  : f:(s)
+  : f:N
+
+  Let's jump to the end for a bit to have a better look at what we're shooting for.
+
+  : Table of items
+  : 0         N         e:.s/0    e:.p/0    s:.p/0    s:.s+p/0  p:.f/0    p:.p*f/0  f:.(s)/0  f:.N/0
+  : 1         +         f:N./0    p:f./0    e:p./0    s:p./0    p:p.*f/0  e:s./0    s:s.+p/0
+  : 2         (         s:s+.p/0  p:.f/2    p:.p*f/2  f:.(s)/2  f:.N/2
+  : 3         N         f:(.s)/2  s:.p/3    s:.s+p/3  p:.f/3    p:.p*f/3  f:.(s)/3  f:.N/3
+  : 4         +         f:N./3    p:f./3    s:p./3    p:p.*f/3  f:(s.)/2  s:s.+p/3
+  : 5         N         s:s+.p/3  p:.f/5    p:.p*f/5  f:.(s)/5  f:.N/5
+  : 6         )         f:N./5    p:f./5    s:s+p./3  p:p.*f/5  f:(s.)/2  s:s.+p/3
+  : 7         *         f:(s)./2  p:f./2    s:s+p./0  p:p.*f/2  e:s./0    s:s.+p/0
+  : 8         N         p:p*.f/2  f:.(s)/8  f:.N/8
+  : 9         -         f:N./8    p:p*f./2  s:s+p./0  p:p.*f/2  e:s./0    s:s.+p/0
+
+  This is the dynamic programming table we're trying to produce.  Let's break it down.
+
+  As we said, we're going to do a single pass of the input.  The first column is how much
+  of the input we've completed considering, the second column is the input item being
+  considered for that row and the rest tracks how much of each subtask we've completed
+  with what are called "Earley items".
+
+  Each Earley item is a production rule with a couple of extra decorations.  The first is
+  a dot to indicate how much of this production we've seen in the input.  So the very
+  first Earley item in the first row is ~e:.s/0~ which corresponds to the production
+  ~e:s~.  The dot here indicates that this subtask has parsed any of its input up to
+  this point.  Looking at row ~8~ the first item in that row is ~p:p*.f/2~ which indicates
+  that this subtask has parsed the input so far as a non-terminal ~p~ and a terminal ~*~,
+  but is still waiting to parse the non-terminal ~f~ in the input to come.
+
+  The final decoration is a trailing integer following a slash which indicates from which
+  stage this particular subtask was originally spawned.  This will make more sense in a
+  second when we describe where these Earley items come from.
+
+  The algorithm starts by creating Earley items for each production of our starting
+  non-terminal, with "dot position" set to zero.  I.e. nothing has been completed for
+  these initial Earley items.  So starting out the items are the following
+
+  : e:.s/0    e:.p/0
+
+  Now to make progress we spawn Earley items repeatedly until we have consumed all the
+  input.  If we fail to consume all the input, then this is an incompleted parse.
+  Similarly, if we consume all the input but don't have any completed Earley items
+  (i.e. items for producing our start symbol whose dot positions are at the very end) then
+  we have an incomplete parse.  Thus for starters our algorithm will determine if there is
+  a complete parse of the input.  If we stop here we have an Earley /recognizer/ which
+  seeks to do this and no more.  A /parser/ will produce a tree showing which steps lead
+  to a complete parse.
+
+  We spawn Earley items in stages, making as much progress we can with the input so far
+  before moving on.  There are three ways to spawn subtasks which move us forward.  If the
+  next thing for us to complete is a non-terminal, (i.e. the thing immediately after our
+  dot position is a non-terminal), we can spawn a new task which attempts produce that
+  non-terminal starting with the current input.  If the token after our dot is a terminal
+  object which matches the current input then we make a new task which advances our dot
+  position and starting from /the following/ input.  If there's nothing left for our
+  current task to complete, we can look back at the items which were waiting on us and
+  advance /their/ dot position starting from the /current/ input.
+
+  These types of task spawning routines are each respectively called a "predictor",
+  "scanner" and "completor".  It's worth taking a second to make sure you understand why
+  each of these actually do advance our cause.
+
+  The algorithm has us perform each of these in sequence repeatedly until nothing more can
+  be done with the current input.  For this to work, we need the output to represent
+  "sets" of Earley items.  That is, a second application of a predictor shouldn't produce
+  more items identical to the those produced by the first application.  When we have sets
+  we should expect the list of items to settle eventually.  These sets for each stage of
+  the input are sometimes called "state sets".
+
+  Walking through the example above and applying the predictor to our initial items we get
+  the following:
+
+  : e:.s/0    e:.p/0    s:.p/0    s:.s+p/0  p:.f/0    p:.p*f/0
+
+  All of the new productions have their dot positions equal to 0 because they were just
+  created and have their origins equal to 0 because that is the stage in which they were
+  spawned.
+
+  None of the items at the current dot position are non-terminals nor at the end and so
+  the scanner and completor applications produce no new items, but cycling back to the
+  predictor, we see that all the items point to non-terminals, but only one points a /new/
+  non-terminal, namely ~p:.f/0~, and so we produce two more items.
+
+  : e:.s/0    e:.p/0    s:.p/0    s:.s+p/0  p:.f/0    p:.p*f/0  f:.(s)/0  f:.N/0
+
+  Now these new items do point to non-terminals, but only the last points to the current
+  input, so we produce a new item for the /next/ stage ready to consume /more/ input.
+  Namely, ~f:N./0~.  At this point none of the items at this stage are completed, nor
+  point to new non-terminals, nor produce any new items using the current input and so
+  this stage has stabilized.  We then move on to the next stage which starts out as the
+  following:
+
+  : 1         +         f:N./0
+
+  I.e. we're at stage 1, the current input is now ~+~ and we have a single Earley item to
+  consider.  Let's walk through just a couple of more items so we can see an example of a
+  completor spawn items.  This single item has its dot position at the end and so neither
+  the predictor nor scanner apply, but the completor /does/ apply.  We need to look back
+  at the stage that began this subtask, i.e. stage 0 and find all items that were waiting
+  on the completed non-terminal.  Here this is only one: ~p:.f/0~.  Because we've
+  completed ~f~ we can advance the dot position to ~p:f./0~ and we add it to the current
+  stage because now it's ready to wait on more input.  Notice that the origin of this
+  remains ~0~.  This is not a new subtask, but rather the advancement of an earlier task.
+  (No pun intended.)
+
+  At this point feel free to work through the rest of the table to verify that at stage 9
+  we do end up with a stable set of items having consumed all of the input.  Further
+  notice that there is an item whose origin is 0 and is a production of our start symbol
+  which is completed.  Namely, ~e:s./0~.  This means that this was a successful parse.
+
+  So somehow through this process we've made it to the end, but in our wake we've left a
+  forest of Earley items.  (Apologies for the mixed metaphor.)  We'd like to figure out
+  /how/ we made it to the end.  In order to do that we'll need to keep track of /how/ we
+  advanced by saving "back pointers".
+
+  It turns out that it suffices to track how both the scanner and completor created items.
+  That's because we're really only interested in how dot positions are advanced.  Starting
+  with ~e:s./0~ at stage 9, we ask "how did we get here?".  Moving the dot position back
+  we see that we advanced past a non-terminal which must mean that there is some item at
+  the same stage which completes that a production of that non-terminal.  If we look at
+  the first item at stage 1 above and ask how we ended up there, we see that we advanced
+  some item from the previous stage because it was waiting on the input at that stage.
+
+  So scanners advance items when an item's current dot position matches the current input
+  and completors advance items from an earlier stage because some item in the current
+  stage represents the completion of the non-terminal at the dot position of the former
+  item.  That is, for scanners we keep track of which item was advanced to which item and
+  for completors we track in addition which item caused that advancement.
+
+  By back-tracking each of the advancements we can follow the history of an item and
+  recursively track the history of items which caused the advancement we can map out the
+  parsing of that subexpression.
+
+  Okay, maybe more detail than I thought I'd get through but this is the basic lay of the
+  land.  Let's move on to how we code this up.
+
+** The code
+  Moving dots through a string representation of a production is a great way to visualize
+  how this process works but for coding this up we really only need to track the position
+  of the dot through a given production, thus we'll represent an Earley item with a triple:
+
+  : (production number; dot position; origin state set)
+
+  To this basic triple we'll add two derived items: a unique integer identifier and the
+  actual item at the current dot position because we'll be using this for checking whether
+  this item is a terminal or not and looking up whether it matches a completed current
+  item.
+
+  Each stage will be represented by an array of such five-tuples and the full table will
+  be a collection of such arrays.  As is common in array programming, instead of keeping
+  arrays of (mixed) tuples we'll actually be keeping five-tuples of (heterogeneous) arrays.
+
+  In perhaps an excessive flourish we keep all the productions in a single string and note
+  which portions of that string represent which productions.  We detect reaching the end
+  of a production by testing if the start of the production plus our dot position point to
+  the next production.  Actually, since a 0 dot position is represented as being before
+  any part of the prodution is completed, we start out pointing at the non-terminal being
+  produced and then use the dot position to advance through the actual production tokens.
+
+  Our parsing stage is comprised with a set of base data including the back pointers and
+  the table we're producing.  The former is threaded through the program as a dictionary.
+
+  : data:{R:,/',/+'((*:;1_"|"\"|",)@'":"\)'" "\x
+  :      `p`t`i`bp!(+\0,#'R;,/R;y,"\0";(,0N 0N)!,())}
+
+  Here ~`p~ is the list of pointers into the string of all the productions as a list of
+  tokens ~`t~.  We also save the input at ~`i~ and back pointers at ~`bp~.
+
+  To produce a unique id we note that there are a finite number of productions and that
+  neither the dot position nor the origin can be bigger than length of the input plus one.
+  This allows us to see the original triple as a mixed base number.
+
+  For the current token we use the calculation from the production index and dot position
+  mentioned above and replace anything at the end position with a blank character.
+
+  Here are our id and current token functions:
+
+  : id:{(1+#'x`p`i`i)/y}
+  : dot:{@[x[`t]@n;&x[`p;1+y[0]]=n:1+y[1]+x[`p;y[0]];:;" "]}
+
+  We use the convention that the start token is the non-terminal of the first production
+  and look for all productions sharing that start token.  Our initial data starts with
+  each of these at dot position and stage 0.
+
+  : s:++(&=/1*:\x[`t]x`p;0;0)
+
+  The core of the algorithm is a fold over each of the step types wrapped in two nested
+  fixed point computations.  The outer fixed point iterates over a triple of the following
+  form:
+
+  : (program state; table; current stage index)
+
+  and bumps the current stage index and adds an empty state set to our list of state sets
+  as long as the last state set is not empty and just returns the input if it is empty.
+
+  The inner fixed point keeps the stage index fixed and iterates over the pair of program
+  state and table and calls the fold over each of the step types in turn until it
+  stabilizes.
+
+  Each step type is wrapped in a function which prepares the input as a set of relevant
+  items, namely the program state, the current state index, the current tokens of all
+  items at the current state and the full table.  This wrapper also takes care of ensuring
+  we don't have duplicates by degating the table update to another function which both
+  checks the ids of the proposed items against the current items and appends the derived
+  data.
+
+  : stp:{add[y 0;y 1]@z[y 0;x;y[1;x;4];y 1]}
+  : add:{n:(z[1],(i;dot[x]@z[1]))@\:&((!#i)=i?i)&w:^(y[z 0;3])?i:id[x]@z[1]
+  :      $[~#*|nxt:(+(z[0];i); z[2]);;x[`bp]:{@[x;y;?,;,z]}/[x`bp].nxt]
+  :      (x;@[y;z 0;,';n])}
+
+  The predictor is very straightforward.  We simply look for anything in the current state
+  set whose current token is on the left hand of a production and create a new item with
+  the corresponding production rule and dot position set to zero and origin equal to the
+  current state.  We have no need for back pointers in this case.
+
+  The scanner is might be even simpler since we're comparing the current tokens against a
+  single token.  In this case we create a new item which is effectively a duplicate of the
+  original with it's dot position bumped up by one.  This is added to /the succeding/
+  state.  We also take note of the items that were copied and store them as back pointers
+  for the corresponding new items.
+
+  The most complicated of the three is the completor because we have to do a more
+  sophisticated lookup.  First we have to find the completed items.  Because of our
+  implementation of the current token function, these are simply the items whose current
+  token is a blank character.  Next for each completed item we need to lookup /that
+  item's/ origin state set and compare the completed non-terminal against the current
+  tokens of that origin state set.  Since we're using an array language we can do this for
+  all completed items simultaneously.  One wrinkle is that the items we find will be in
+  various state sets.  We have to take care to note which came from which both to produce
+  new items and to store back pointers.  We create the new items as a fold over pairs of
+  state set indices and indices into that state set, starting with an empty set and
+  repeatedly adding copies of the original indicated item with their dot position bumped
+  up by one.  For back pointers, we take note of both which item is copied and which item
+  prompted the copy.
+
+  Here are each of those:
+
+  : pred:{[d;s;c;t]w:&(-1_d[`t]d[`p])=/:?c;(s;++(*|w;0;s+&#*w);!0)}
+  : scan:{[d;s;c;t]w:&d[`i;s]=/:c;(s+1;@[3#t[s]@\:w;1;+;1];,'s,/:w)}
+  : comp:{[d;s;c;t]$[~#c:&^c;:(s;empty;!0);]
+  :       f:(f@;::)@'w:&(d[`t;d[`p;t[s;0;c]]])=t[;4]f:t[s;2;c]
+  :       (s;{[x;y;z;w]y,'@[3#x[z;;w];1;+;1]}[t]/[empty].f;+(+f;s,/:c@w 0))}
+
+  And that's basically it for the recognizer.  All that's left is to use the back pointers
+  to assemble the parse tree should we have a complete parse.
+
