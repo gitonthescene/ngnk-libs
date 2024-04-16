@@ -4,7 +4,7 @@
 SC:50
 HZ:440
 sw:,/HZ#,_128*`sin@(2*pi*!SC)%SC
-wav:mkchnk["RIFF"]@,/("WAVE";mkfmt pcm[1;22000;1];mkchnk["data";`c$sw])
+wav:mkchnk["RIFF"]@,/("WAVE";mkfmt pcm[1;SC*HZ;1];mkchnk["data";`c$sw])
 
 / WARNING:  Be cautious with the volume while testing!!
 
