@@ -3,12 +3,11 @@
 \d .
 para:`0:
 
-para"regex: ", rex:"[\\+-]?[0123456789]+(.[0123456789]+)?([Ee][\\+-]?[0123456789]+)?"
-/rx:re.match[re.cmp rex]
+para"regex: ", rex:"[\\+-]?[0-9]+(.[0-9]+)?([Ee][\\+-]?[0-9]+)?"
 rx:re.match[rex]
 {para"match: ",x;`0:$rx x}'("1";"-3.1415e0";"-.1415e0";"-3.1415e";"dog");
 
-cases:("abc";"xxxabc";"abcyyy";"xxxabcyyy")
+cases:("abc";"xxxabbc";"abbbcyyy";"xxxabbbbcyyy")
 testcases:{para"search ",z;`0:$x z;para"match ",z;`0:$y z}
 
 test:{para"---";para"regex: ", x;testcases[re.search[x];re.match[x]]'y;}

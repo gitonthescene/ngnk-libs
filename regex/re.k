@@ -10,6 +10,10 @@ dp:{d:(-x<"|"=y)+2*(-*t)++\-/t:x</:"()"=\:y
       |/0,~^"()"?y@&x<dd;`err@"bad character class";]
     d+dd}
 
+cls:{$[3>#x;x
+       |/0>r:-/i:x@-1 0++1_,':&~|':<\"-"=x," ";`err@"bad class"
+       ,/`c$i[1]+!'1+r]}
+
 prs:{ t:dp[m:msk e] e:exp x
       (e;t;m):(e;t;m)@\:&~|/m</:"])"=\:e
       (e;t;m):(e;t;m)@\:&~"\\"~/:e
@@ -25,7 +29,7 @@ cmp:{(e;t):prs x
           n="+"+0;rep1@o[x;y]@*y[z]
           n~"("+0;or@o[x;y]'y[z]
           n~"|"+0;seq@o[x;y]'y[z]
-          n~"["+0;step@,x@y[z];x@z]}[e;=0N,1_t]@0
+          n~"["+0;step@,cls@x@y[z];x@z]}[e;=0N,1_t]@0
      fix s}
 
 non:256
@@ -35,9 +39,9 @@ final: {(#x)-1}
 branch:{,@[nul;non;:;,/x]}
 step:{branch[,1],(, @[nul;n;:;2+&#n:,/x]),,nul}
 
-maybe: {branch[1,#x],1+x}
+maybe:{branch[1,#x],1+x}
 seq:{,/(+\0,-1+#'x)+(-1_'x),,,nul}
-rep1: {x[,final x;non],: ,0, #x;  x,,nul}
+rep1:{x[,final x;non],:,0,#x; x,,nul}
 rep:maybe@rep1@
 or:{branch[m],(,/+/(*|n;x)*~:\(m+c-1)=x+:m:-1_n:+\1,c:#'x),,nul}
 re:seq@step'
@@ -52,4 +56,4 @@ match:{x:cmp x;final[x]=|/x[0;non]next[(x;"",y)]/!#y}
 srch:{x:cmp x;f:{(&final[x]=|/'x[0;non]next[(x;"",y)]\(1+z[1])_!#y;z[1]+1)}
       $[0<#*r:{(~#y[0])&x>y[1]+1}[#y]f[x;y]/(!0;-1);1(|/r[0]+1+)\r[1];0N]}
 
-search:{r:srch[x:x{y_x}/1 -1*a:"^$"=*'1|:\x]y; $[0N~r;r;a~a&r=0,#y]}
+search:{r:srch[x{y_x}/1 -1*a:"^$"=*'1|:\x]y; $[0N~r;r;a~a&r=0,#y]}
