@@ -37,7 +37,7 @@ nul:(non+1)#,!0
 final: {(#x)-1}
 
 branch:{,@[nul;non;:;,/x]}
-step:{branch[,1],(, @[nul;n;:;2+&#n:,/x]),,nul}
+step:{branch[,1],(, @[nul;,/x;:;2]),,nul}
 
 maybe:{branch[1,#x],1+x}
 seq:{,/(+\0,-1+#'x)+(-1_'x),,,nul}
