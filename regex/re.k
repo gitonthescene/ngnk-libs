@@ -29,7 +29,8 @@ cmp:{(e;t):prs x
           n="+"+0;rep1@o[x;y]@*y[z]
           n~"("+0;or@o[x;y]'y[z]
           n~"|"+0;seq@o[x;y]'y[z]
-          n~"["+0;step@,cls@x@y[z];x@z]}[e;=0N,1_t]@0
+          n~"["+0;$["^"=*c:x@y[z];nstep@,cls@1_c;step@,cls@c]
+          x@z]}[e;=0N,1_t]@0
      fix s}
 
 non:256
@@ -38,6 +39,7 @@ final: {(#x)-1}
 
 branch:{,@[nul;non;:;,/x]}
 step:{branch[,1],(, @[nul;,/x;:;2]),,nul}
+nstep:{branch[,1],(, @[nul;(!non)^,/x;:;2]),,nul}
 
 maybe:{branch[1,#x],1+x}
 seq:{,/(+\0,-1+#'x)+(-1_'x),,,nul}
