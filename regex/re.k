@@ -53,9 +53,7 @@ tc: {comb[x;]'/x}
 fix: {comb[tc x[;non];]''x}
 
 next: {?,/x[0][y;x[1]z]}
-match:{x:cmp x;final[x]=|/x[0;non]next[(x;"",y)]/!#y}
+match:{x:cmp x;n:next[(x;"",y)]
+       final[x]=|/*(&/#:'){(a;b):y;(x[a;*b];1_b)}[n]/(x[0;non];!#y)}
 
-srch:{x:cmp x;f:{(&final[x]=|/'x[0;non]next[(x;"",y)]\(1+z[1])_!#y;z[1]+1)}
-      $[0<#*r:{(~#y[0])&x>y[1]+1}[#y]f[x;y]/(!0;-1);1(|/r[0]+1+)\r[1];0N]}
-
-search:{r:srch[x{y_x}/1 -1*a:"^$"=*'1|:\x]y; $[0N~r;r;a~a&r=0,#y]}
+search:{match[(x{y_x}/1 -1*a)/("[^]*";"")@a:"^$"=*'1|:\x;y]}
