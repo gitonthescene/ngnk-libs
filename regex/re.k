@@ -62,5 +62,5 @@ nfa2dfa:{c:1((@/1<:\?:)','/x@)\;r:{y,,/(x'(~#:')_^[;*+y]@?*|:)'y}[c]/,c x[0;re.n
          (&|/'~^(,re.final[x])?*r;0^?/r:+r)}
 
 nfacmp:nfa2dfa@cmp@
-nfascmp:{ncmp@(x{y_x}/1 -1*a)/("[^]*";"")@a:"^$"=*'1|:\x}
+nfascmp:{nfacmp@(x{y_x}/1 -1*a)/("[^]*";"")@a:"^$"=*'1|:\x}
 nfamatch:{~^x[0]?0{x[y;z]}[x[1]]/y}
