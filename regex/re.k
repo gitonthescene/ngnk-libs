@@ -53,14 +53,14 @@ tc: {comb[x;]'/x}
 fix: {comb[tc x[;non];]''x}
 
 next: {?,/x[0][y;x[1]z]}
-match:{x:cmp x;n:next[(x;"",y)]
+match:{n:next[(x;"",y)]
        final[x]=|/*(&/#:'){(a;b):y;(x[a;*b];1_b)}[n]/(x[0;non];!#y)}
 
-search:{match[(x{y_x}/1 -1*a)/("[^]*";"")@a:"^$"=*'1|:\x;y]}
+scmp:{cmp@(x{y_x}/1 -1*a)/("[^]*";"")@a:"^$"=*'1|:\x}
 
-/
 nfa2dfa:{c:1((@/1<:\?:)','/x@)\;r:{y,,/(x'(~#:')_^[;*+y]@?*|:)'y}[c]/,c x[0;re.non]
          (&|/'~^(,re.final[x])?*r;0^?/r:+r)}
 
-match:{(a;t):nfa2dfa@cmp x;~^a?0{x[y;z]}[t]/y}
-search:{mtch[(x{y_x}/1 -1*a)/("[^]*";"")@a:"^$"=*'1|:\x;y]}
+nfacmp:nfa2dfa@cmp@
+nfascmp:{ncmp@(x{y_x}/1 -1*a)/("[^]*";"")@a:"^$"=*'1|:\x}
+nfamatch:{~^x[0]?0{x[y;z]}[x[1]]/y}
