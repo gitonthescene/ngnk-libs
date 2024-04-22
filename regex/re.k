@@ -18,7 +18,7 @@ prs:{ t:dp[m:msk e] e:exp x
       (e;t;m):(e;t;m)@\:&~|/m</:"])"=\:e
       (e;t;m):(e;t;m)@\:&~"\\"~/:e
       t:pr t
-      e:@[e;?(t,&|/"*+?"=\:e)^&m;`i$]
+      e:@[e;?(t,&|/"*+?."=\:e)^&m;`i$]
       t:@[t;;:;].,'/{|y@1(-1+)\&|/x[y]~\:/:"?*+"+0}[e]'=t
       (e;t)}
 
@@ -30,6 +30,7 @@ cmp:{(e;t):prs x
           n~"("+0;or@o[x;y]'y[z]
           n~"|"+0;seq@o[x;y]'y[z]
           n~"["+0;$["^"=*c:x@y[z];nstep@,cls@1_c;step@,cls@c]
+          n~"."+0;nstep@,!0
           x@z]}[e;=0N,1_t]@0
      fix s}
 
