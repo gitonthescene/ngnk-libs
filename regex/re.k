@@ -18,7 +18,7 @@ prs:{ t:dp[m:msk e] e:exp x
       (e;t;m):(e;t;m)@\:&~|/m</:"])"=\:e
       (e;t;m):(e;t;m)@\:&~<\"\\"~/:e
       t:pr t
-      e:@[e;?(t,&|/"*+?."=\:e)^&m;`i$]
+      e:@[e;?(t,&|/"*+?.|"=\:e)^&m;`i$]
       t:@[t;;:;].,'/{|y@1(-1+)\&|/x[y]~\:/:"?*+"+0}[e]'=t
       (e;t)}
 
@@ -31,7 +31,7 @@ cmp:{(e;t):prs x
           n~"|"+0;seq@o[x;y]'y[z]
           n~"["+0;$["^"=*c:x@y[z];nstep@,cls@1_c;step@,cls@c]
           n~"."+0;nstep@,!0
-          x@z]}[e;=0N,1_t]@0
+          x@z]}[e;(=0N,1_t),(,0N)!,!0]@0
      fix s}
 
 non:256
@@ -43,10 +43,10 @@ step:{branch[,1],(, @[nul;,/x;:;2]),,nul}
 nstep:{branch[,1],(, @[nul;(!non)^,/x;:;2]),,nul}
 
 maybe:{branch[1,#x],1+x}
-seq:{,/(+\0,-1+#'x)+(-1_'x),,,nul}
+seq:{.[,/(+\0,-1+#'x)+(-1_'x),,,nul;0,non;,;(~#x)#1]}
 rep1:{x[,final x;non],:,0,#x; x,,nul}
 rep:maybe@rep1@
-or:{branch[m],(,/+/(*|n;x)*~:\(m+c-1)=x+:m:-1_n:+\1,c:#'x),,nul}
+or:{branch[m],(,/+/(*|n;x)*1~:\(m+c-1)=x+:m:-1_n:+\1,c:#'x),,nul}
 re:seq@step'
 
 comb: {?y,,//x@y}
@@ -57,7 +57,7 @@ next: {?,/x[0][y;x[1]z]}
 match:{n:next[(x;"",y)]
        final[x]=|/*(&/#:'){(a;b):y;(x[a;*b];1_b)}[n]/(x[0;non];!#y)}
 
-scmp:{cmp@((x{y_x}/1 -1*a)/"()")/("[^]*";"")@a:"^$"=*'1|:\x}
+scmp:{cmp@((x{y_x}/1 -1*a)/"()")/(".*";"")@a:"^$"=*'1|:\x}
 
 nfa2dfa:{c:1((@/1<:\?:)','/x@)\;r:{y,,/(x'(~#:')_^[;*+y]@?*|:)'y}[c]/,c x[0;re.non]
          (&|/'~^(,re.final[x])?*r;0^?/r:+r)}
