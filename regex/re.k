@@ -7,7 +7,8 @@ exp:{@[@/r;&=':*|r:1(&1+x<"("=)\y/,'"()";:;"|"]}
 msk:{-1_0,<\"\\"=x}
 dp:{d:(-x<"|"=y)+2*(-*t)++\-/t:x</:"()"=\:y
     $[1<|/dd:(-*t)++\-/t:x</:"[]"=\:y;`err@"bad character class"
-      |/0,~^"()"?y@&x<dd;`err@"bad character class";]
+      |/0,~^"()"?y@&x<dd;`err@"bad character class"
+      |/dd<0;`err@"bad character class";]
     d+dd}
 
 cls:{$[3>#x;x
