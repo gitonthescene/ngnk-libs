@@ -1,12 +1,26 @@
 \l wav.k
 
-/ sine wave: 50 samples for one cycle, 440 cycles for 22000 samples per second
-SC:50
-HZ:440
-sw:,/HZ#,_128*`sin@(2*pi*!SC)%SC
-wav:mkchnk["RIFF"]@,/("WAVE";mkfmt pcm[1;SC*HZ;1];mkchnk["data";`c$sw])
+/ Think DSP [[https://greenteapress.com/wp/think-dsp/]]
+
+/ sine wave: 25 samples for one cycle, 440 cycles for 11000 samples per second
+FR:11025          / framerate
+HZ:880            / frequency
+AMP:0.5           / amplitude
+DR:0.5            / duration
+WIDTH:2           / sample width in bytes
+rng:2/~!8*WIDTH   / quantization range
+
+ts:(!_FR*DR)%FR
+
+sin:{`sin 2*pi*x*y}  / [HZ;ts]
+qnt:{_(x*y)*AMP}     / [rng;AMP;ys]
+
+ys:qnt[rng]sin[HZ;ts]
+
+data:,/+|`c$(WIDTH#256)\ys
+
+wav:mkchnk["RIFF"]@,/("WAVE";mkfmt pcm[1;FR;2];mkchnk["data";data])
 
 / WARNING:  Be cautious with the volume while testing!!
 
 "test.wav" 1:wav
-
