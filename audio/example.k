@@ -12,12 +12,15 @@ rng:2/~!8*WIDTH   / quantization range
 
 ts:(!_FR*DR)%FR
 
-sin:{y*`sin 2*pi*x*z}  / [HZ;AMP;ts]
+sin:{[f;a;s;t]a*`sin s+2*pi*f*t}  / [HZ;AMP;ts]
+cos:{[f;a;s;t]a*`cos s+2*pi*f*t}  / [HZ;AMP;ts]
 qnt:{_x*y}     / [rng;ys]
+nrm:{x*y%|/{x|-x}(|/;&/)@\:y}
 
-ys:qnt[rng]sin[HZ;AMP;ts]
+ys:sin[HZ;AMP;0;ts]
+ys:nrm[1.0]ys+cos[440;1.0;0;ts]
 
-data:,/+|`c$(WIDTH#256)\ys
+data:,/+|`c$(WIDTH#256)\qnt[rng] ys
 
 wav:mkchnk["RIFF"]@,/("WAVE";mkfmt pcm[1;FR;WIDTH];mkchnk["data";data])
 
