@@ -19,7 +19,7 @@ ys:qnt[rng]sin[HZ;ts]
 
 data:,/+|`c$(WIDTH#256)\ys
 
-wav:mkchnk["RIFF"]@,/("WAVE";mkfmt pcm[1;FR;2];mkchnk["data";data])
+wav:mkchnk["RIFF"]@,/("WAVE";mkfmt pcm[1;FR;WIDTH];mkchnk["data";data])
 
 / WARNING:  Be cautious with the volume while testing!!
 
