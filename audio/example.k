@@ -12,10 +12,10 @@ rng:2/~!8*WIDTH   / quantization range
 
 ts:(!_FR*DR)%FR
 
-sin:{`sin 2*pi*x*y}  / [HZ;ts]
-qnt:{_(x*y)*AMP}     / [rng;AMP;ys]
+sin:{y*`sin 2*pi*x*z}  / [HZ;AMP;ts]
+qnt:{_x*y}     / [rng;ys]
 
-ys:qnt[rng]sin[HZ;ts]
+ys:qnt[rng]sin[HZ;AMP;ts]
 
 data:,/+|`c$(WIDTH#256)\ys
 
