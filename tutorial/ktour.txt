@@ -6,7 +6,7 @@
 3 * (4 + 1)
 (3 * 4) + 1           / Use parentheses when you want to control the order of evaluation
 1 2 3 + 3 0 2         / rank polymorphism means these operations work for vectors of equal length
-                      / you get an error if these vectors are not equal length
+1 2 + 3 0 2           / you get an error if these vectors are not equal length
 1 + 3 0 2             / by scalar extension however, you can add scalars to vectors.
                       / it's as if the scalar were repeated until the necessary length
 # 9 8 4 5             / length counts the length of a vector
@@ -97,7 +97,7 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 1 4 9@(0;2 1;(,1;0))  / brackets are just syntactic sugar for the @ verb (called amend)
 1 4 9[1 3]            / outdexing results in a null
 ^1 4 9[1 3]           / ^ tests for null
-99^1 4 9[1 3]         / With a value to the left fills all nulls with that value
+99^1 4 9[1 3]         / With a value (atom/scalar) to the left fills all nulls with that value
                       / More adverbs!
 +/3 5 9               / slash as an adverb is "left fold" with the accumulator starting as the first element.
                       / Note here that the verb + is dyadic, but the derived verb +/ is used monadically
@@ -114,7 +114,7 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 1+':9 4 2             / but you can supply a seed value to pair it with.
 1-':9 4 2             / Note that the prior element becomes the right arg of the verb
                       / There are a couple of funky adverbs which modify non-verbs, which we'll call nouns
-" "\"Yo yo yo"        / Split takes a string and splits the argument its given by it.
+" "\"Yo yo yo"        / Split takes a string and splits the argument it's given by it.
                       / Actually here it's technically taking the *character* " ", but that works too
 "--"\"Yo--yo--yo"
 " "/("Hey"; "you")    / Join takes an array of strings as its argument
@@ -144,6 +144,8 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 ?&1 0 2 3 0 4         / Monadic ? (distinct) only keeps the first occurence of each element in a list
 ? 7 8 2 3 7 1 3
 7 8 2 3 7 1 3?1       / Dyadic ? (find) returns the index of the first occurence of the given element in a list
+7 8 2 3 7 1 3?6       / If not found you get back a null
+
                       / Now things get a little tricky..
                       / Some verbs behave differently when given different types of arguments.
                       / This is kind of true with reshape and cut, but the behaviors weren't too different
@@ -182,7 +184,7 @@ _"Hey, Dan!"          / lower case for strings.  (similar-ish..)
 #'(1 2;"abcd";3%2 1;`i`c`s`A`C)  / similar to length
 #(1 2;"abcd";3%2 1;`i`c`s`A`C)
                       / Over time you get used to which functions do this and which ones "permeate".
-                      / i.e. operate on each element element naturally like + or *
+                      / i.e. operate on each element naturally like + or *
 
                       / Let's introduce one more type: dictionaries
 `a`b`c!3 4 5          / Dictionaries act like association lists and created with dyadic ! operating on two lists of equal length
@@ -221,7 +223,7 @@ f:{x}                 / Lambdas are formed with curly braces.  This takes a sing
 (f[1];f[`a];f[3%2])   / The lambda can be applied to arguments with brackets similar to array indexing
 (f@1;f@`a;f@3%2)      / Or with @ ..
 (f 1;f`a;f 3%2)       / Or even just juxtaposition ..
-f'(1;`a;3&2)          / lambdas take adverbs just like verbs do
+f'(1;`a;3%2)          / lambdas take adverbs just like verbs do
 {x+y}[2;3]            / Brackets are (generally) necessary when supplying more than one arg
 f                     / Also, lambdas don't have to be assigned to a variable the way f was
 f:{x+y};f[1;2];f[3;4] / A semicolon can separate multiple statements on a line.  Only the output of the last is printed
@@ -309,13 +311,14 @@ $(123;`happy)         / Monadic $ stringifies its argument.  Note this is pervas
 -4$$(123;`happy)      / A negative number pads/chops on the left
 `s$"happy"            / With a symbol on the left converts the right argument to that type when possible
 `s$123                / This errors when it's not possible
+`s$"@123="            / (Note you can make symbols of arbitrary strings by using quotes.)
 `c$104 97 112 112 121
 `i$"happy"
 0+"happy"             / Characters actually naturally convert to ints when used in an int context.  The value is the ASCII code.
 `I$"-123"             / Use capital `I to convert the entire string to an integer rather than individual characters.
 
                       / I/O!
-0 1:"carpark"         / with a left arg prints bytes to the left arg.  Here 0 is the file descriptor for stdout
+1 1:"carpark"         / with a left arg prints bytes to the left arg.  Here 1 is the file descriptor for stdout
 `1:"carpark"          / An empty symbol is equivalent to stdout
                       / See help for other options including printing to a file
 `0:("happy";"dog")    / 0: can take a list of strings as its right argument
@@ -343,12 +346,12 @@ disp@4 3#+!4 3
 @[!5;1 1;+;3 7]       / Remember repeat indices are fine.
 @[!5;(1;,1);+;(3;,7)] / As are odd structures as long as the shapes match.
                       / The function is applied at the leaves when descending the structure.
-disp @[=5;1 2]       / Remembering that matrixes are lists of lists, @ simply picks out elements at that top-level list.
-disp m:4 3#!*/4 3    / But sometimes you want to dig deeper than the top-level list
+disp @[=5;1 2]        / Remembering that matrixes are lists of lists, @ simply picks out elements at that top-level list.
+disp m:4 3#!*/4 3     / But sometimes you want to dig deeper than the top-level list
 .[m;2 1]              / Applied like this . becomes "drill", which picks out elements at the given coordinates
-.[m;2 1;-:]           / Drill can also take a third argument
-.[m;2 1;*;3]          / Or a fourth
-.[m;(3 1;0 2)]        / Unlike @, when the second argument is a list, coordinates are generated by taking the Cartesian product
+disp.[m;2 1;-:]       / Drill can also take a third argument
+disp.[m;2 1;*;3]      / Or a fourth
+disp.[m;(3 1;0 2)]    / Unlike @, when the second argument is a list, coordinates are generated by taking the Cartesian product
 disp 3 1,/:\:0 2
 .[m;,3 1]             / If this is a singleton list, this is the same as @
 @[m;3 1]
