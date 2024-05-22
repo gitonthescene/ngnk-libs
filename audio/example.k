@@ -16,7 +16,7 @@ ts:(!_FR*DR)%FR
 nt:note[12]       / twelve tone system
 hz:16*HZ          / Base note
 
-chrd:{+/1(+\12*<':)\+/(0 2 3 5 7 8 9;-1 0 1)@'("abcdefg";"b #")?'+(" "\x)@/:\:0 1}
+chrd:{+/1(+\12*<':)\+/(+\0 2 1 2 2 1 2;-1 0 1)@'("abcdefg";"b #")?'+(" "\x)@/:\:0 1}
 
 ys:+/sin[;AMP;0;ts]'hz*nt[chrd "c eb g# bb"]
 ys:nrm[1-1e-15]ys
