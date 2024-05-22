@@ -8,17 +8,17 @@ FR:11025          / framerate
 HZ:27.5           / frequency
 AMP:1.0           / amplitude
 DR:1.0            / duration
-WIDTH:1           / sample width in bytes
+WIDTH:2           / sample width in bytes
 rng:2/~!8*WIDTH   / quantization range
 
 ts:(!_FR*DR)%FR
 
-nt:note[12]                       / twelve tone system
-hz:8*HZ
+nt:note[12]       / twelve tone system
+hz:16*HZ          / Base note
 
-ys:sin[hz:_nt[0]*hz;AMP;0;ts]
-ys+:sin[hz:_nt[3]*hz;AMP;0;ts]
-ys+:sin[hz:_nt[7]*hz;AMP;0;ts]
+chrd:{+/1(+\12*<':)\+/(0 2 3 5 7 8 9;-1 0 1)@'("abcdefg";"b #")?'+(" "\x)@/:\:0 1}
+
+ys:+/sin[;AMP;0;ts]'hz*nt[chrd "c eb g# bb"]  / minor triad
 ys:nrm[1-1e-15]ys
 
 data:,/+|`c$(WIDTH#256)\qnt[rng] apo[0.015]ys
