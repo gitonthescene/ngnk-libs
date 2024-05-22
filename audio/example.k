@@ -29,7 +29,7 @@ data:,/+|`c$(WIDTH#256)\qnt[rng] apo[0.015]ys
 "test1.wav" 1:mkchnk["RIFF"]@,/("WAVE";mkfmt pcm[1;FR;WIDTH];mkchnk["data";data])
 
 hz*:2
-ys:,/{apo[0.05;sin[hz*nt x;AMP;0]y],&_0.15*#y}.'+(10 10 10 5 7 3 15;ph[FR]'0.85*dur"e q q e q h q")
+ys:,/{apo[0.05;sin[hz*nt x;AMP;0]y],&_0.15*#y}.'+(10 10 10 5 7 3 15;ph[FR]'0.85*dur"e q q e q h e.")
 ys:AMP*nrm[1-1e-15]ys
 
 data:,/+|`c$(WIDTH#256)\qnt[rng] apo[0.015]ys
