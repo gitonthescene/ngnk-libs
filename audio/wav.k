@@ -18,11 +18,12 @@ alawinv:{s:1 -1@0>y;a:1+`ln x;s*$[1>r:s*y*a;r;`exp@-1+r]%x}
 
 apo:{@[y;+i;*;%[;s]@*i:1((#y)-1+)\!s:_x*#y]}
 
-sin:{[f;a;s;t]a*`sin s+pi2*f*t}  / [HZ;AMP;ts]
-cos:{[f;a;s;t]a*`cos s+pi2*f*t}  / [HZ;AMP;ts]
+sin:{[f;a;s;t]a*`sin s+pi2*f*t}  / [HZ;AMP;off;ts]
+cos:{[f;a;s;t]a*`cos s+pi2*f*t}  / [HZ;AMP;off;ts]
 
 qnt:{_x*y+~x>128}                / [rng;ys]
 nrm:{x*y%|/{x|-x}(|/;&/)@\:y}
+ser:{,/+|`c$(x#256)\y}           / [WIDTH;qnt data]
 
 
 / [[https://en.wikipedia.org/wiki/Equal_temperament]]
