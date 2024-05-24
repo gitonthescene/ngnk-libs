@@ -21,9 +21,10 @@ apo:{@[y;+i;*;%[;s]@*i:1((#y)-1+)\!s:_x*#y]}
 sin:{[f;a;s;t]a*`sin s+pi2*f*t}  / [HZ;AMP;off;ts]
 cos:{[f;a;s;t]a*`cos s+pi2*f*t}  / [HZ;AMP;off;ts]
 
-qnt:{_x*y+~x>128}                / [rng;ys]
+qnt:{_x*y+~x>128}                / [rng;ys] quantization
+ph:{(!_x*y)%x}                   / [FR;dur] phases
 nrm:{x*y%|/{x|-x}(|/;&/)@\:y}
-ser:{,/+|`c$(x#256)\y}           / [WIDTH;qnt data]
+ser:{,/+|`c$(x#256)\y}           / [WIDTH;qnt data] serialize
 
 
 / [[https://en.wikipedia.org/wiki/Equal_temperament]]
