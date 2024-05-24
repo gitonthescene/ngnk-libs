@@ -1,7 +1,8 @@
 \l wav.k
 
-/ Think DSP [[https://greenteapress.com/wp/think-dsp/]]
-/ See also [[http://arlyle.sdf.org/k/sound.k]]
+/ Think DSP           [[https://greenteapress.com/wp/think-dsp/]]
+/ Mathematics of DFT  [[https://ccrma.stanford.edu/~jos/mdft/]]
+/ See also            [[http://arlyle.sdf.org/k/sound.k]]
 
 / sine wave: 25 samples for one cycle, 440 cycles for 11000 samples per second
 FR:11025          / framerate
