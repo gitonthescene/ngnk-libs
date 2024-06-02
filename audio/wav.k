@@ -8,7 +8,7 @@ pi2:2*pi
 
 fspec:`t`nc`ss`abs`ba`bs`es`vb`cm`sf!2 2 4 4 2 2 2 2 4 16
 fmt:{((#r)#!fspec)!r:256/'256!|'-1_(<[#x;]_+\0,.fspec)_x}
-prsfmt:{((#c)#!fspec)!256/'|'(c:0,((#x)>)#+\.fspec)_x}
+prsfmt:{((#c)#!fspec)!256/'256!|'(c:0,((#x)>)#+\.fspec)_x}
 
 pcm:{[c;r;l]`t`nc`ss`abs`ba`bs!(1;c;r;r*l*c;l*c;8*l)}
 mkfmt:{mkchnk["fmt ";,/(256+&'fspec@!v){|`c$x\y}'v:(^:)_k!x@k:!fspec]}
