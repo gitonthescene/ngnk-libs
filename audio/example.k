@@ -69,7 +69,7 @@ para"data length"
 \l abc.k
 \d .
 
-t:"G/GGD/EC3/4Z//Zc3/4"
+t:"G/GGD/EC3/4z//zc3/4"
 ys:,/tone[0.65].'+(abc.mel@;ph[FR]'0.65*0.25*abc.ds@)@\:t
 
 para"Play a tune: ",wav:"test4.wav"
