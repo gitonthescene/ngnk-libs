@@ -70,7 +70,8 @@ para"data length"
 \d .
 
 t:"G/GGD/EC3/4z//zc3/4"
-ys:,/tone[0.65].'+(abc.mel@;ph[FR]'0.65*0.25*abc.ds@)@\:t
+key:("c";0)
+ys:,/tone[s].'+(abc.mel[key]@;ph[FR]'(s:0.65)*0.25*abc.ds@)@\:t
 
 para"Play a tune: ",wav:"test4.wav"
 mkpcm[(1;FR;WIDTH);ser[WIDTH]qnt[rng]apo[0.015]AMP*nrm[1-1e-15]ys;wav]
