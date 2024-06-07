@@ -33,7 +33,7 @@ hz*:2
 tune:("g g g d e c  r r + c"
       "e q q e q e. s q   e.")
 
-tone:{$[^y;&#z;apo[0.05;sin[hz*nt y;AMP;0]z]],&_(1-x)*#z}
+tone:{$[^y;&#z;apo[0.05;sin[hz*nt y;AMP;0]z]],&_(1-x)*(1%x)*#z}
 
 ys:,/tone[0.65].'+(mel@;ph[FR]'0.65*dur@)@'tune
 
