@@ -19,10 +19,10 @@ as:{(-/1(~^:)\"_=^"?*a;2*=/a:x@is[x]-/:1 2)}                               / acc
 /ds t
 key:0 2 3 5 7 8 10
 scale:0 2 2 1 2 2 2
-sig:{r:-/(y+key[b]+\scale;12/(::;key@)@'g:7 7\(!7)+b:("abcdefg")?x);r@<*|g}
+range:"cdefgab"
+sig:{r:-/(y+key[b]+\scale;12/(::;key@)@'g:7 7\(!7)+b:range?x);r@<*|g}  / adjustments to notes by key signature
 
-mel:{s:sig.(x);(n;m):1(~^:)\key@b:"abcdefg"?_y@is[y];a:*as[y]
-     n+m*(12*os[y])+0^{x,z^y+y*y*z}/[();*as[y];s@b]}
-
+mel:{s:sig.(x);(n;m):1(~^:)\key@b:range?_y@is[y];a:*as[y]              / calculate melody from notes,
+     n+m*(12*os[y])+0^{x,z^y+y*y*z}/[();*as[y];s@b]}                   /   accidentals and signature
 
 / Plenty of room for nonsensical input.
