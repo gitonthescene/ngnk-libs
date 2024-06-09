@@ -33,7 +33,7 @@ hz*:2
 tune:("g g g d e c  r r + c"
       "e q q e q e. s q   e.")
 
-tone:{$[^y;&#z;apo[0.05;sin[hz*nt y;AMP;0]z]],&_(1-x)*(1%x)*#z}
+tone:{$[^y;&#z;apo[0.05;sin[hz*nt y+2;AMP;0]z]],&_(1-x)*(1%x)*#z}
 
 ys:,/tone[0.65].'+(mel@;ph[FR]'0.65*dur@)@'tune
 
@@ -69,10 +69,7 @@ para"data length"
 \l abc.k
 \d .
 
-t:"G/GGD/EC3/4z//zc3/4"
-key:("c";0)
-ys:,/tone[s].'+(abc.mel[key]@;ph[FR]'(s:0.65)*0.25*abc.ds@)@\:t
+mktun:{ ys:,/tone[s].'+(abc.mel[y]@;ph[FR]'(s:0.65)*0.25*/(abc.ds;abc.tpl)@\:)@\:z
+ mkpcm[(1;FR;WIDTH);ser[WIDTH]qnt[rng]apo[0.015]AMP*nrm[1-1e-15]ys;x]}
 
-para"Play a tune: ",wav:"test4.wav"
-mkpcm[(1;FR;WIDTH);ser[WIDTH]qnt[rng]apo[0.015]AMP*nrm[1-1e-15]ys;wav]
-para""
+mktun["test4.wav";("c";-1)]"G/GGD/EC/>>z/zc/>z/"
