@@ -1,0 +1,23 @@
+diff --git a/makefile b/makefile
+index bd93acfa..e76d84c6 100644
+--- a/makefile
++++ b/makefile
+@@ -1,8 +1,9 @@
+ MAKE:=$(MAKE) MAKEFLAGS=-j8
+ M=mkdir -p $(@D)
+ 0:;$(MAKE) k && $(MAKE) t #default target
+-k:;$(MAKE) a N=$@ R=k O='-O3 -march=native' L='-lm -ldl' #for calling k from dynamic libs, add: L='... -Wl,-E'
+-libk.so:;$(MAKE) a N=$@ R=$@ O='-fPIC -Dshared -fvisibility=hidden' L='-lm -ldl -shared'
++k:;$(MAKE) a N=$@ R=k O='-g -march=native' L='-lm -ldl' #for calling k from dynamic libs, add: L='... -Wl,-E'
++libk.so:;$(MAKE) a N=$@ R=$@ O='-g -fPIC -Dshared -fvisibility=hidden' L='-lm -ldl -shared'
++libk.dylib:;$(MAKE) a N=$@ R=$@ O='-fPIC -Dshared -fvisibility=hidden' L='-lm -ldl -dynamiclib -install_name $@'
+ libk.a:;$(MAKE) b N=$@ R=$@ O='-O3 -march=native -ffreestanding -lm -ldl -Dldstatic'
+ o/$N/%.o:%.c *.h;$M;$(CC) @opts $O -o $@ -c $<
+ o/$N/bin:$(patsubst %.c,o/$N/%.o,$(wildcard *.c));$(CC) $O -o $@ $^ @lopts $L # ;$(STRIP) -R .comment $@ -R '.note*'
+@@ -54,5 +55,5 @@ t21:k;l/runparts.k aoc/21  ;echo t21 done
+ t22:k;l/runparts.k aoc/22  ;echo t22 done
+ t23:k;l/runparts.k aoc/23  ;echo t23 done
+ 
+-c:;rm -rf o k libk.so libk.a #clean
++c:;rm -rf o k libk.dylib libk.a #clean
+ .PHONY: 0 c k w h a t tu td tg te te0 te1 te2 ta t15 t16 t17 t18 t19 t20 t21 t22 t23

@@ -1,0 +1,37 @@
+* Foreign function interface
+  [[https://codeberg.org/ngn/k][ngn/k]] supports a foreign function interface for using functions
+  written in C from within the interpretter.  There is a basic example
+  of such [[https://codeberg.org/ngn/k/src/branch/master/x][an extension]] in the distributed source code, but it's fairly bare.
+
+  The API was designed to be able to share extensions with [[https://github.com/ktye/i][kyte/i]] by
+  supporting a common header file.  (The file [[https://codeberg.org/ngn/k/src/branch/master/k.h][k.h]] in ngn/k refers to
+  the one in ktye/i.)  There are more extensive examples in ktye/i but
+  some small changes are required to accomodate actual differences in
+  the languages.  For instance, ngn/k requires using ~,:~ to indicate
+  the use of monadic enlist rather than dyadic join whereas ktye is
+  able to disambiguate.
+
+  This project provides a makefile and a couple of diffs to make those
+  extensions compatible with ngn/k.  This is mostly for demonstration
+  purposes and to provide more examples of ngn/k's ffi capabilities.
+
+  Note that I built this for OSX and so dynamic libs are ~.dylib~
+  files.  ~make.diff~ is a diff to ngn/k's makefile to accommodate
+  this.  Also, the reference to the libraries points at dylib files.
+  It shouldn't be hard to adapt this for linux.
+
+  ~ext.diff~ is a diff file to the four extensions in ktye/i that were
+  available at the time of writing.  That is ~sqlite~, ~mat~, ~draw~
+  and ~ray~.  You should sync those directories into this project
+  before running ~make~.  Then you should be able to run all of the
+  ~.k~ files with ngn/k from this directory or any directory after
+  properly setting up ~LD_LIBRARY_PATH~.
+
+  This example uses ngn/k's ~2:~ function to dynamically load
+  extensions into a running instance of the interpretter.  Other
+  approachrs are possible including linking the extensions into the
+  binary at build time or using ~LD_PRELOAD~ or some similar mechanism
+  to load them into the interpretter at startup.  This last might
+  require a change to call ~kinit()~ from within the "load" function
+  to insure the interpretter has been properly instantiated before
+  loading the extension.
