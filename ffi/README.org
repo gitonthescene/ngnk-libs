@@ -29,9 +29,15 @@
 
   This example uses ngn/k's ~2:~ function to dynamically load
   extensions into a running instance of the interpretter.  Other
-  approachrs are possible including linking the extensions into the
+  approaches are possible including linking the extensions into the
   binary at build time or using ~LD_PRELOAD~ or some similar mechanism
   to load them into the interpretter at startup.  This last might
   require a change to call ~kinit()~ from within the "load" function
   to insure the interpretter has been properly instantiated before
   loading the extension.
+
+  Finally, just to hammer the point home, the ffi /makes it possible/
+  to use functions written in C from within the interpretter, but it's
+  not free.  You can't load arbitrary C functions.  You need to write
+  a wrapper to allow the interpretter to interact with the various
+  types.  These files serve as examnples such wrappers.
