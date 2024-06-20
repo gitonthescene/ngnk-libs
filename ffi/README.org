@@ -40,4 +40,4 @@
   to use functions written in C from within the interpretter, but it's
   not free.  You can't load arbitrary C functions.  You need to write
   a wrapper to allow the interpretter to interact with the various
-  types.  These files serve as examnples such wrappers.
+  types.  These files serve as examples such wrappers.
