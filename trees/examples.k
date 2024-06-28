@@ -51,8 +51,6 @@ prstree:{ (T;D;L):+{$[`A~t:@y;((t;x;`);(`;x+1;*y)),,/o[x+1]'1_y;,(t;x;y)]}[0]`p@
   (D@(!#D)^1+w; L@:(!#L)^w; T@:(!#T)^w:&`A=T)}
 
 k:{$[`c~_@x;x;`k@x]}
-shw:{(tr;lb):pad[pd]t2[pd:|/#'x]y
- `0:,/+(tr;ctl@x@lb)}
 
 `0:"\n -- render parse tree --\n"
 (D;L;T):prstree C

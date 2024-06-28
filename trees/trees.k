@@ -79,3 +79,7 @@ flc:!/1(1+)\?:
 // first right child.         assumes dfs preorder
 / (*|)'cp[x]
 frc:{(?x)!(rfp[x]@)/1+?x}
+
+/ simple interface to printing
+shw:{(tr;lb):pad[pd]t2[pd:|/#'x]y
+ `0:,/+(tr;ctl@x@lb)}
