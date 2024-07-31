@@ -5,7 +5,7 @@ zo:{,/r+/:2*r:4/2\!x}
 pc:0,@/1(&#/|4,#:)\&~0,,/
 
 / Calculate the parent vector from a grid
-pt0:{(x[0],,@[1+&4;i;:;0];(1_x 1),d@i:&|/'0<*:''d:1_/:'@/1(=*:')\x[1;0])}
+pt0:{(x[0],,@[1+&4;i;:;0];(1_x 1),d@i:&|/'1&#'(&/'~:)_/:d:1_/:'@/1(=*:')\x[1;0])}
 pt:{pc@*(#*|:)pt0/(();,+4\&~=':(,/x)@<zo@#x)}
 
 / calculate the coordinates of each cell from a parent vector
@@ -30,6 +30,3 @@ ex:{ex0[(0,1+&~,/x;x);(0N;!0);,y]}
 / amend z to x at index y
 / Here z and x are (p;c) parent color pairs
 am:{x,'(y^+/1(1*(#*|x)*4*~^:)\*z;*|z)}
-
-/ reorder color vector based on parent vector
-ro:{y@<x}
