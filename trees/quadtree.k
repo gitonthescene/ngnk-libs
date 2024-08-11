@@ -20,7 +20,6 @@ ct:{0N 4#1_@[(,/x)@(<zo@#x)@4/+0^@[;!sz@#x]@/:ix[p];?p:pt x;:;0]}
 drw:{(2#x)#(&!/((0,/y)@i;d:(4*)/[;1]'l-#'ii)@\:<0^@[;!l:sz x]@/:ii:ix[p]@i:(!#p)^p:pc y)@zo@x}
 
 / Facing cell
-f0:{(~x[0]=(|':&\=':).|1*:\x 0;x 1)}
 f0:{$[*|r:(&\=':).|1*:\x 0;x;(~x[0]=|':r;x 1)]}
 fv:{|2/f0@2 2\|x}   / facing vertically
 fh:{|2/|f0@|2 2\|x} / facing horizontally
