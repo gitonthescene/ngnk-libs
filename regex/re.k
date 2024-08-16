@@ -17,7 +17,7 @@ cls:{$[3>#x;x
 
 prs:{ t:dp[m:msk e] e:exp[0,msk[x],0;x]
       (e;t;m):(e;t;m)@\:&~|/m</:"])"=\:e
-      (e;t;m):(e;t;m)@\:&~<\"\\"~/:e
+      (e;t;m):(e;t;m)@\:&~m<<\"\\"~/:e
       t:pr t
       e:@[e;?(t,&|/"*+?.|^$"=\:e)^&m;`i$]
       t:@[t;;:;].,'/{|y@1(-1+)\&|/x[y]~\:/:"?*+"+0}[e]'=t
@@ -26,9 +26,9 @@ prs:{ t:dp[m:msk e] e:exp[0,msk[x],0;x]
 cmp0:{[e;t] d:(~e[t]~\:"["+0)&|/e~\:/:"^$"+0
       (e;t):(-+/d)_/:(::;(<g)@)@'(e;t)@\:g:<d
       s:{$[`c~_@n:x@z;step@n
-      n="?"+0;maybe@o[x;y]@*y[z]
-      n="*"+0;rep@o[x;y]@*y[z]
-      n="+"+0;rep1@o[x;y]@*y[z]
+      n~"?"+0;maybe@o[x;y]@*y[z]
+      n~"*"+0;rep@o[x;y]@*y[z]
+      n~"+"+0;rep1@o[x;y]@*y[z]
       n~"("+0;or@o[x;y]'y[z]
       n~"|"+0;seq@o[x;y]'y[z]
       n~"["+0;$["^"=*c:x@y[z];nstep@,cls@1_c;step@,cls@c]
