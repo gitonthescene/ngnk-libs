@@ -17,6 +17,7 @@ spr:{y@(-x)_,/(!#y),\:x#-1}
 shp:-1_#'*:\
 
 // vertical tree rendering
+/ This is basically a reimplementation of this algorithm [[https://ktye.github.io/kweb/compile.html]]
 sh0:{,/'(" ";"┬";"─";"├";"└";"│")x}
 t0:{t:(1+^x?!#x)*+s1:(!1+|/y)=\:y
  t+:(3+|/'|0>':|\|(!#x)=/:x)*+1_s1,,0
