@@ -84,3 +84,7 @@ frc:{(?x)!(rfp[x]@)/1+?x}
 / simple interface to printing
 shw:{(tr;lb):pad[pd]t2[pd:|/#'x]y
  `0:,/+(tr;ctl@x@lb)}
+
+/ lazy aligning of interfaces.  Should fix t0
+shwv:{ (x;y):(::;(<g)@)@'(x;y)@\:g:<dfo y
+  `0:t0[y;#'(y@)\'!#y],'"   ",/:x}
