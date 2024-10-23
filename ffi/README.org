@@ -41,3 +41,11 @@
   not free.  You can't load arbitrary C functions.  You need to write
   a wrapper to allow the interpretter to interact with the various
   types.  These files serve as examples such wrappers.
+
+* Notes
+** Limited number of arguments
+   Lambdas in ngn/k take a maximum of eight arguments, foreign
+   functions however are limited to [[https://codeberg.org/ngn/k/src/branch/master/a.c#L52][fewer arguments]].  The ~ext~
+   function switches on the arity of the foreign function and then
+   calls it with the passed arguments.  This could be extended.  You'd
+   need to add more [[https://codeberg.org/ngn/k/src/branch/master/a.h#L68][function types]].
