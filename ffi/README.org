@@ -1,3 +1,22 @@
+* QUICK START
+  - Clone this repository
+  - Install the necessary packages (cairo, sqlite3, lapack, and raylib)
+  - cd into ~+~ and run the following:
+	: $ make -f ../makefile
+
+  This should apply the patches for these extensions (described below),
+  build each of the extensions and then run them each in turn.
+
+  NOTE: that this should work as is on OSX presuming you've installed
+  the necessary packages and fixed up the paths in the makefile
+  accordingly.  Fixing it up to work on other operating systems
+  shouldn't be too hard but is beyond the scope of this project.  This
+  is intended for demonstration purposes.
+
+  Also note that the source under ~+~ was originally in ktye/i but has
+  since been removed.  It's kept exactly as it was for historical
+  purposes.
+  
 * Foreign function interface
   [[https://codeberg.org/ngn/k][ngn/k]] supports a foreign function interface for using functions
   written in C from within the interpretter.  There is a basic example
