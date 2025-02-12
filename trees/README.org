@@ -373,7 +373,7 @@
 	:        ├───┐
 	:        4   9
 
-	We won't go into details, but it should be fairly clear that the graph we actually had isn't
+	We won't go into details, but it should be fairly clear that the picture we actually had isn't
 	too far off from something more traditional looking.
 
     Let's try something else.  Say we had an simple expression that wasn't parenthesized, like
