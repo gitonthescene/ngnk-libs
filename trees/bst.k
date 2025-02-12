@@ -1,3 +1,5 @@
+/ More info on BST's [[https://adtinfo.org]]
+
 e:(,0N)!,!0
 
 ch:{$[z~r:c@*y@x[1] c:x[0;z],z;0N;r]}   / (lf;rg):ch[(^'[;?p]@=p;n)]@/:(<:;>:)
