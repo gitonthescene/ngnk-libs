@@ -1,4 +1,5 @@
 /  ABC music notation [[https://abcnotation.com/wiki/abc:standard:v2.1]]
+/ [[https://michaeleskin.com/abctools/userguide.html]]
 
 /t:"C,^a2/3(3__d>G'=Z4c''A128e//f/3"
 is:{&(x="z")|~0 8'-"a"-x:_x}                                               / index of base note
