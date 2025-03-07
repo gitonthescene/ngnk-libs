@@ -105,7 +105,7 @@
   Each Earley item is a production rule with a couple of extra decorations.  The first is
   a dot to indicate how much of this production we've seen in the input.  So the very
   first Earley item in the first row is ~e:.s/0~ which corresponds to the production
-  ~e:s~.  The dot here indicates that this subtask has parsed any of its input up to
+  ~e:s~.  The dot here indicates that this subtask hasn't parsed any of its input up to
   this point.  Looking at row ~8~ the first item in that row is ~p:p*.f/2~ which indicates
   that this subtask has parsed the input so far as a non-terminal ~p~ and a terminal ~*~,
   but is still waiting to parse the non-terminal ~f~ in the input to come.
@@ -159,14 +159,14 @@
   created and have their origins equal to 0 because that is the stage in which they were
   spawned.
 
-  None of the items at the current dot position are non-terminals nor at the end and so
+  None of the items at the current dot position are terminals nor at the end and so
   the scanner and completor applications produce no new items, but cycling back to the
   predictor, we see that all the items point to non-terminals, but only one points a /new/
   non-terminal, namely ~p:.f/0~, and so we produce two more items.
 
   : e:.s/0    e:.p/0    s:.p/0    s:.s+p/0  p:.f/0    p:.p*f/0  f:.(s)/0  f:.N/0
 
-  Now these new items do point to non-terminals, but only the last points to the current
+  Now these new items do point to terminals, but only the last points to the current
   input, so we produce a new item for the /next/ stage ready to consume /more/ input.
   Namely, ~f:N./0~.  At this point none of the items at this stage are completed, nor
   point to new non-terminals, nor produce any new items using the current input and so
