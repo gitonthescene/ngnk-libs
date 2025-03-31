@@ -5,6 +5,9 @@ bits:2/~!1+
 lcg:1_{bits[x]{[x;y;z;w]bits[x]!z+y*w}[x;y 0;y 1]\y 2}@
 
 shftpcg16:{bits[8]!-[bb:bits'[6--[bits 14]!x]]!'x}
+rot:{+/(bits[x-y];1)*(-:\bits[y])!\:z}
+
+rotpcg16:{(-[bits 14]!x)rot[8;]'bits[8]!-[bits 6]!x}
 
 / randograms
 / [[https://www.pcg-random.org/paper.html]]
