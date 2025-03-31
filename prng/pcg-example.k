@@ -6,6 +6,7 @@ hi:-[bits 8]!rs              / high bits
 
 prs:bits[8]/+0N 2#
 
+/ Generate PBM's (greyscale) of various plots [[https://en.wikipedia.org/wiki/Netpbm#File_formats]]
 rando1["lcg.pbm";16;prs hi]             / high bits
 rando1["pcg.pbm";16;prs shftpcg16[rs]]  / 8-bit output function
 
