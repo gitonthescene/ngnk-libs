@@ -10,7 +10,6 @@ prs:bits[8]/+0N 2#
 rando1["lcg.pbm";16;prs hi]             / high bits
 rando1["pcg.pbm";16;prs shftpcg16[rs]]  / 8-bit output function
 
-rando1["lcg8.pbm";16;prs bits[8]!-[bits 8]!rs]             / bits 8-15
 rando1["lcg7.pbm";16;prs bits[8]!-[bits 7]!rs]             / bits 7-14
 rando1["lcg6.pbm";16;prs bits[8]!-[bits 6]!rs]             / bits 6-13
 rando1["lcg5.pbm";16;prs bits[8]!-[bits 5]!rs]             / bits 5-12
