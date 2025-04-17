@@ -3,7 +3,7 @@
 ESC:`c$27
 RNG:512
 
-ex:{s:x@{x+1+!'y-x+2}.'e@0 1+/:&"P"=x@e:1+/:&""=x;(1+s?\:"q")_'s}       / extract streams
+ex:{s:x@{x+1+!'y-x+2}.'e@0 1+/:&"P"=x@e:1+/:&ESC=x;(1+s?\:"q")_'s}        / extract streams
 
 md:{(-1+&>':n;&<':n;ns:.x(~n:~"0:"'x)'" ")}                               / metadata
 tb:{y[2]@{(";"=x@y[1;]@)(1+)\z}[x;y]'(&/,[z;";"]=x@y[0 1]@\:)#i:&z=x@*y}  / data tables
@@ -19,6 +19,6 @@ prs:{d:md x;t:tb[x;d]'"#\"";x:rl[x;d]
   sixel to bitmap
   ---------------
 \
-rr:{(c;s):(RNG;128)\x;+c*(2+&6)\'s}                                    / render row
+rr:{(c;s):(RNG;128)\x;+c*(2+&6)\'s}                                       / render row
 ren:{,/||'{$[~#y;:x;];r:rr[y];$[z=27;(,+/r,\:'&'0|-:1-:\-/#'*'r:(*x;r)),1_x;(,r),x]}/[();x;y]}
 m2rbg:{!/(*'x;_0.5+255*%[;100]2_/:x)}
