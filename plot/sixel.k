@@ -9,7 +9,7 @@ ex:{s:x@{x+1+!'y-x+2}.'e@0 1+/:&"P"=x@e:1+/:&ESC=x;(1+s?\:"q")_'s}        / extr
 md:{(-1+&>':n;&<':n;ns:.x(~n:~"0:"'x)'" ")}                               / metadata
 tb:{y[2]@{(";"=x@y[1;]@)(1+)\z}[x;y]'(&/,[z;";"]=x@y[0 1]@\:)#i:&z=x@*y}  / data tables
 rl:{?[;;]/[x;+0 1+y[0 1;]@\:i;y[2;i]#'x[y[1;i:|&"!"=x@*y]]]}              / run length encoding
-prs:{d:md x;t:tb[x;d]'"#\"";x:rl[x;d]
+prs:{d:md x;t:tb[x;d]'"#\"";x:rl[x;d]                                     / " emacs :|
  i:(~&/"#;"=x@d[0 1]@\:)#&"#"=x@*d:md x
  m:(0,d[2;i])@+\@[&#x;d[0;i];:;1]                                         / color mask
  x:(RNG;2;64)/(m;~0 64's;63&{x|-x}s:x-63)
@@ -23,3 +23,18 @@ prs:{d:md x;t:tb[x;d]'"#\"";x:rl[x;d]
 rr:{(c;s):(RNG;128)\x;+c*(2+&6)\'s}                                       / render row
 ren:{,/||'{$[~#y;:x;];r:rr[y];$[z=27;(,+/r,\:'&'0|-:1-:\-/#'*'r:(*x;r)),1_x;(,r),x]}/[();x;y]}
 m2rbg:{!/(*'x;_0.5+255*%[;100]2_/:x)}
+
+
+/
+Example:
+
+g:1:"my.sixel"     / load file
+s:ex g             / find sixel pics in file (possibly more than one)
+(s;f;c;d):prs@*s   / parse the first pic
+img:ren[s;f]       / render the image using the sixels and line feed info
+(w;h):-2#d         / grab the height and width (if given)
+img:w#/:h#img      / crop using the given dimensions (if given)
+mp:m2rbg[m]        / generate RBG from color map info
+img:mp@img         / apply color map to the image.  Now you basically have a bitmap.
+                   
+
