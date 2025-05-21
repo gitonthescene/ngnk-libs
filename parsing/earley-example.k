@@ -1,4 +1,6 @@
-\l earley.k
+."\\l ",`env[]`KINIT            / [[https://github.com/gitonthescene/ngnk-libs/tree/master/projectmanagement]]
+imp.ort[`tree;"trees/trees.k"]  / [[https://github.com/gitonthescene/ngnk-libs/tree/master/trees]]
+imp.ort[`;"earley.k"]
 
 para:`0:
 T:(("S:aS|b";"aab")
@@ -32,4 +34,10 @@ para""
 para"trees"
 `0:`k'ts:?trees[d;t;itms]
 para""
+
+para"Apter trees"
+`0:`k'at:apt'ts
+tree.shw/'at;
+para""
+
 para"More explanation to come ..."
