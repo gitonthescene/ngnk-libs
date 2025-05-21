@@ -13,7 +13,7 @@ T:(("S:aS|b";"aab")
 para"parse grammar \"",p[0], "\" with input \"",((p:T 1)1),"\""
 para""
 
-(d;t):rec. p
+(d;t):dfix/rec. p
 para"result table"
 t
 para""
