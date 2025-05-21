@@ -1,0 +1,67 @@
+* Project Organization
+  As projects get larger, you tend to want to break them up into
+  smaller digestable pieces.  This helps both increase focus on
+  individual concepts as well as encourage reuse.
+
+  Currently K provides a couple of mechanisms for managing this.
+    1. You can load other files with the ~\l~ load directive.  (This
+       can can be turned into a statement by evalauating the directive
+       expressed as a string.)
+	2. You can use scoping of the names you use with the ~\d~
+       namespace directive.  This automatically adds a prefix to the
+       names to avoid collision with items in other namespaces.  To
+       get back to the default namespace use the following:
+
+	   : \d .
+
+  These are pretty raw tools.  For one, namespaces don't nest.  You
+  simply switch from one to another.  For another, the load diretive
+  requires you supply the entire file name either as an absolute file
+  name or (implicitly) relative to the current directory.
+
+  This project aims to provide workarounds pending changes to the
+  language for better support.
+
+** Usage:
+  Point the environment variable ~KINIT~ to ~import.k~ in this
+  directory and build up ~KPATH~ to include all the places to search
+  for code.
+
+  Then in your project use something like the following:
+
+  : imp.ort[`ns;"mydir/myfile.k"]
+
+  Then for each colon separated item in ~KPATH~, ~mydir/myfile.k~ will
+  be searced for relative to that item and the first found file will
+  be loaded into the supplied namespace.
+  
+** How it works
+   We implement an import function, which generates the appropriate
+   directives to load files within a given namespace.  Further we
+   search for such files in a path supplied by an environment variable
+   `KPATH`.
+
+   So you do something like the following:
+   : imp.ort[`json;"json.k"]
+
+   And you import the functionality in ~json.k~ found in the path into
+   the namespace ~json~.  For example ~json.prs[...]~.
+
+   Further this function takes care of returning you to the namespace
+   whence it was invoked.
+
+   Obviously, you need to have this function available to be able to
+   use it.  Searching for it in the path is just a chicken/egg
+   problem.  So instead we use a separate environment variable ~KINIT~
+   to point at the implementation of this import function and we
+   import it with the following magic incantation:
+
+   : ."\\l ",`env[]`KINIT
+
+   Of course, you could also simply copy the implementation of `imp`
+   whereever you need it but that feels like overkill.
+
+   Fortunately you only need this incantation once in your project
+   before you do any imports.  The reason for this is that namespace
+   qualified identifiers are always taken as is rather than relative
+   to the namespace.
