@@ -36,13 +36,14 @@ dsp:{[d;t]rules:{?[x[`t]y+!z;1;":"]}[d].'+-1 1_'1(-':)\d[`p]
      itms:{x[z;1]{?[y;2+x;"."]}'y@x[z;0]}[t;rules]'!-1+#t
      (rules;itms,''"/",/:/:$-1_t[;2])}
 
-dfix:{[d;t]f:{((^t)+0>t)'[`c$t;x@-1-t:y]};(@[d;`t`i;:;f[*'d`T]'d`t`i];{@[z;-1+#z;x[y]]}[f;*'d`T]'t)}
+dfix:{[d;t]f:{((^t)+0>t)'[`c$t;x@-1-t:y]};(@[d;`t`i;:;f[?*'d`T]'d`t`i];{@[z;-1+#z;x[y]]}[f;?*'d`T]'t)}
 
 tree:{$[^*z;:0N;]
       ls:.[y[0];]'-1_c:1_|(*x@)\z
       (y[1]. z;(c~'0N)'[c:o[x;y]'*'1_'x@1_c;ls])}
 
-trees:{?,/(cmbos[y[;3]]x[`bp]_0N 0N)tree[;(y[;4];z);]/:\:lst,/:&~y[lst:-2+#y;2]}
+cmp:{[d;t]w:&~t[lst:-2+#t;2];lst,/:w@&{&/(*[x[`t]]=x[`t]r;=/(1+z+r:x[`p]y;x[`p]y+1))}[d]/t[lst;0 1;w]}
+trees:{?,/(cmbos[y[;3]]x[`bp]_0N 0N)tree[;(y[;4];z);]/:\:cmp[x;y]}
 
 apt:{(dp;nd):+{$[~`A~@y;,(x;y);(,(x;*y)),,/o[x+1]'y 1]}[0;x];(nd;tree.p@dp)}
 

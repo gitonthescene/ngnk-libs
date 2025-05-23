@@ -10,7 +10,8 @@ T:(("S:aS|b";"aab")
    ("E:ER|2|3|4 R:+E|*E";"2+3*4")
    ("e:s|p s:p|s+p p:f|p*f f:(s) f:N"; "N+(N+N)*N"))
 
-para"parse grammar \"",p[0], "\" with input \"",((p:T 1)1),"\""
+p:T 1
+para"parse grammar \"",p[0], "\" with input \"",(p 1),"\""
 para""
 
 (d;t):dfix/rec. p
