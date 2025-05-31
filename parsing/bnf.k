@@ -6,7 +6,7 @@ ls:1_/:_/|1(&<\^:)\" ::=   | \n * + ( ) [ ]"
 g:+":"\',/" "\'bnfg:("s:r s:rs r:nw0wef w:1w w:"
                    "e:lw2we e:lf2we e:l f:w3f f:w3 l:twl l:t"
                    "g:6wew7 o:8wew9 t:g t:g4 t:g5 t:o t:i t:i4 t:i5 t:n t:n4 t:n5")
-k:"SsrwefFltin"!`start`syntax`rule`whitespace`expression`eol`eols`list`term`literal`name
+k:"SsrwefFltinog"!`start`syntax`rule`whitespace`expression`eol`eols`list`term`literal`name`option`group
 +(*:';::)@'{(x)'[y;z]}''[^''i;i:k@g;ls@g-"0"]
 
 cxn:{r+y*r<{(y|z)&z<x}[*|x]\r*|/x=\:r:z}
