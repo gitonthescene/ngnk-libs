@@ -21,7 +21,6 @@ msg:{x}
 
 ie:{err[(x["id"];`null)[y];ec`InvalidRequest;,("message";"invalid request")]}
 
-/ accomodate for parser by forcing symbols and flooring ints
 vld:{$[~*c:~^(!x)?("jsonrpc";"id";"method");0
        (~c[2])|~`C~@x"jsonrpc";0
        c[1]&^`i`C`s?t:@x"id";0
@@ -31,10 +30,11 @@ err0:{`err@"WHOOPS",`k@x}
 
 LKUP:(,"dummy")!{}
 
-nme:{z;err[(x"id";`null)@*^(!x)?,"id";ec`MethodNotFound;,("message";"method \"",(x"method"),"\" not found")]}
+nme:{y;err[(x"id";`null)@*^(!x)?,"id";ec`MethodNotFound;,("message";"method \"",(x"method"),"\" not found")]}
 
 lkup:{$[mth:.[.:;`$x"method";{::}];mth;~^(!LKUP)?x"method";LKUP@x"method";nme[x]]}
 hdl:{$[~vld[x];:ie[x;*^(!x)?,"id"];];res:(lkup[x])[x"params"];$[^*(!x)?,"id";res;rpl[x"id";res]]}
 
 / Maybe wrap in try and return `InternalError on errors that bubble up?
 recv:{$[(::)~r:.[json.prs;,x;{::}];pe[x];~/1_:\@r;msg@,hdl@r;msg@hdl'r]}
+flsh:{}
