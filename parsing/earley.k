@@ -19,7 +19,7 @@ comp:{[d;s;c;t]$[~#c:&^c;:(s;empty;!0);]
 
 stp:{add[y 0;y 1]@[z[y 0;x;y[1;x;4];y 1];1;aug[y 0]]}
 add:{n:(z[1])@\:&((!#i)=i?i)&w:^(y[z 0;3])?i:z[1;3]
-     $[~#*|nxt:(+(z[0];i); z[2]);;x[`bp]:{[w;x;y;z]@[x;(0,w)/|y;?,;,(0,w)/|+z]}[#x`i]/[x`bp].nxt]
+     $[~#*|nxt:(+(z[0];i); z[2]);;x[`bp]:{[w;x;y;z]@[x;w/|y;?,;,(w:0,1+#w`i)/|+z]}[x]/[x`bp].nxt]
      (x;@[y;z 0;,';n])}
 
 rec0:{{(d;st;s):$[n:#**|x 1;(x[0];x[1],,empty,(!0;"");1+x 2);:x]
@@ -33,6 +33,7 @@ dsp:{[d;t]rules:{?[x[`t]y+!z;1;":"]}[d].'+-1 1_'1(-':)\d[`p]
      itms:{x[z;1]{?[y;2+x;"."]}'y@x[z;0]}[t;rules]'!-1+#t
      (rules;itms,''"/",/:/:$-1_t[;2])}
 
+shw:{?[?[x[`t]@+/(!--)\x[`p]0 1+y 0;1;":"],"/";2+y 1;"."],$y 2}
 dfix:{[d;t]f:{((^t)+0>t)'[`c$t;x@-1-t:y]};(@[d;`t`i;:;f[?*'d`T]'d`t`i];{@[z;-1+#z;x[y]]}[f;?*'d`T]'t)}
 
 tree:{$[^*z;:0N;]
@@ -40,7 +41,7 @@ tree:{$[^*z;:0N;]
       (y[1]. z;(c~'0N)'[c:o[x;y]'*'1_'x@1_c;ls])}
 
 cmp:{[d;t]w:&~t[lst:-2+#t;2];lst,/:w@&{&/(*[x[`t]]=x[`t]r;=/(1+z+r:x[`p]y;x[`p]y+1))}[d]/t[lst;0 1;w]}
-trees:{dc:+|(0,#x`i)\;?,/(cmbos[y[;3]](dc@!d)!dc''.d:x[`bp]_0N)tree[;(y[;4];z);]/:\:cmp[x;y]}
+trees:{dc:+|(0,1+#x`i)\;?,/(cmbos[y[;3]](dc@!d)!dc''.d:x[`bp]_0N)tree[;(y[;4];z);]/:\:cmp[x;y]}
 
 apt:{(dp;nd):+{$[~`A~@y;,(x;y);(,(x;*y)),,/o[x+1]'y 1]}[0;x];(nd;tree.p@dp)}
 
