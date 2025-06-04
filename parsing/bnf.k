@@ -32,7 +32,6 @@ fn:t[-1+#d`i]
 bp:1_({x,t[x;3]?y}/'!d[`bp])!.d`bp
 :rs:(-1+#d`i),/:&~fn[2]
 
-/ New construction of a the tree given that the grammar is unambiguous
 chs:*: / disambiguate
 
 bp:(0,1+#d`i)/'(+{(x[;3;].|y;y[1])}[t]'+(0,1+#d`i)\)'bp:chs'd[`bp]_0N
@@ -49,15 +48,6 @@ n:@[n;(4=*(d[`B],1+#d`i)\n@)_(!#p)^p;:;-1]
 nn:(n<0)'[sh n;((,""),tks)@+\n<0]
 i:((d[`B],1+#d`i)\n)0
 
-/ delete structural nodes
-w:@[&#n;&n<0;:;|/tks~\:/:,'"()[]|"]
-(nn;n;p;i):(-+/w)_/:(nn@g;n@g;tree.redo[p;<g];i@g:<w)
-
-/ clear whitespace
-px:@[p;w;:;w:&~^"wf"?d[`t]d[`p]i]
-w:1&(px@)/px
-(nn;n;p;i):(-+/w)_/:(nn@g;n@g;tree.redo[p;<g];i@g:<w)
-
 / collect all rules into a single list
 s:"s"=d[`t]d[`p]i
 p:@[p;&-1_0,s;:;0]
@@ -73,12 +63,18 @@ p:@[p;w;:;(px@)/w:&"l"=d[`t]d[`p]i]
 t:&"t"=d[`t]d[`p]i
 p:@[p;t;:;p@p@t]
 
-/ delete structural nodes
-w:"l"=d[`t]d[`p]i
-(nn;n;p;i):(-+/w)_/:(nn@g;n@g;tree.redo[p;<g];i@g:<w)
-
 / unchain the expressions
 e:&"e"=d[`t]d[`p]i
 p:@[p;e;:;p@{("e"=d[`t]d[`p]i@p)'[y;p:x@y]}[p]/e]
+
+/ delete structural nodes
+w:@[&#n;&n<0;:;|/tks~\:/:,'"()[]|"]
+w|:"l"=d[`t]d[`p]i
+(nn;n;p;i):(-+/w)_/:(nn@g;n@g;tree.redo[p;<g];i@g:<w)
+
+/ clear whitespace
+px:@[p;w;:;w:&~^"wf"?d[`t]d[`p]i]
+w:1&(px@)/px
+(nn;n;p;i):(-+/w)_/:(nn@g;n@g;tree.redo[p;<g];i@g:<w)
 
 tree.shwv[nn;p]
