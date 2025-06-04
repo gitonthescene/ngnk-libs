@@ -19,54 +19,66 @@ tok:{e:<\"\\"=x;$[+/e>c:~=\~q:e<"\""=x;`err@"stray escape";]
 
 abc:1:"abc_subset_bnf.txt" / [[https://web.mit.edu/6.005/www/fa08/projects/abcPlayer/assignment_files/abc_subset_bnf.txt]]
 
-ts:(";"=*:')_{x@y+!'z-y}[abc;;].tok abc
-i:{$[|/"\n"=x;"3";|/~^" \t"?x;"1";~^w:ls?x;*$w;"\""=*x;"i";"n"]}'ts
+tks:(";"=*:')_{x@y+!'z-y}[abc;;].tok abc
+i:{$[|/"\n"=x;"3";|/~^" \t"?x;"1";~^w:ls?x;*$w;"\""=*x;"i";"n"]}'tks
 lnl:+/&\"3"=i / number of leading newlines
+(tks;i):lnl_/:(tks;i)
 
-/\t (d;t):dfix/(dd;tt):rec[" "/bnfg;#/|1(1+*&"3"=)\lnl_i]
-\t (d;t):dfix/(dd;tt):rec[" "/bnfg;lnl_i]
+/\t (d;t):dfix/(dd;tt):rec[" "/bnfg;#/|1(1+*&"3"=)\i]
+\t (d;t):dfix/(dd;tt):rec[" "/bnfg;i]
 
 (rules;itms):dsp[d;t]
-#t
 fn:t[-1+#d`i]
 bp:1_({x,t[x;3]?y}/'!d[`bp])!.d`bp
-(-1+#d`i),/:&~fn[2]
+:rs:(-1+#d`i),/:&~fn[2]
 
-\t trs:trees[d;t;itms]
-\t as:apt'trs
-a:as[0]
-/lvs:("w"=_*'a[0]@)_(!#a[1])^a[1]
-lvs:(1<#:'a[0]@)_(!#a[1])^a[1]
-a[0]:@[a[0];lvs;:;lnl_ts]
+/ New construction of a the tree given that the grammar is unambiguous
+chs:*: / disambiguate
 
-/ chuck whitespace
-p:@[a[1];w;:;w:&|/("wf",\:":")~/:\:2#/:a[0]]
-wh:1&(p@)/p
-g:<wh
-(nn;pp):(-+/wh)_/:(a[0]@g;tree.redo[a[1];<g])
+bp:(0,1+#d`i)/'(+{(x[;3;].|y;y[1])}[t]'+(0,1+#d`i)\)'bp:chs'd[`bp]_0N
+r:(0,1+#d`i)/(t[;3;].rs[0];rs[0;0])
+sibs:{|1_-1_{(x y 0)}[x]\(y;y)}[bp]
 
-/ collect all rules into a single list
-ss:"s:"~/:2#/:nn
-pp:@[pp;&-1_0,ss;:;0]
-g:<@[ss;0;:;0]
-(nn;pp):(--1+/ss)_/:(nn@g;tree.redo[pp;<g])
+bp1:+*|{(q;s):y;$[~#q;:y;2>#*q;:(1_q;s);]b:sibs@q[0;1];(b,1_q;(,(q[0;1];*'|'b)),s)}[bp]/(,(r;r);())
 
-/ collect expressions into lists
-es:&"e:"~/:2#/:nn
-px:@[pp;es;:;es]
-pp:@[pp;w;:;(px@)/w:&"l:"~/:2#/:nn]
+nn:{y,/o[x]'x y}[bp2:!/bp1]r
 
-/ lift terms to the containing expressions
-ts:&"t:"~/:2#/:nn
-pp:@[pp;ts;:;pp@pp@ts]
+sh:shw[d]'+(d[`B],1+#d`i)\*/1(~0>)\
+(n;p):(nn@<g;tree.redo[p]g:tree.dfo p:@[0N+&#nn;nn?(r;.bp2);:;nn?(r;!bp2)])
+n:@[n;(4=*(d[`B],1+#d`i)\n@)_(!#p)^p;:;-1]
+nn:(n<0)'[sh n;((,""),tks)@+\n<0]
+i:((d[`B],1+#d`i)\n)0
 
 / delete structural nodes
-wh:(|/nn~\:/:,'"()[]|")|"l:"~/:2#/:nn
-g:<wh
-(nn;pp):(-+/wh)_/:(nn@g;tree.redo[pp;<g])
+w:@[&#n;&n<0;:;|/tks~\:/:,'"()[]|"]
+(nn;n;p;i):(-+/w)_/:(nn@g;n@g;tree.redo[p;<g];i@g:<w)
+
+/ clear whitespace
+px:@[p;w;:;w:&~^"wf"?d[`t]d[`p]i]
+w:1&(px@)/px
+(nn;n;p;i):(-+/w)_/:(nn@g;n@g;tree.redo[p;<g];i@g:<w)
+
+/ collect all rules into a single list
+s:"s"=d[`t]d[`p]i
+p:@[p;&-1_0,s;:;0]
+g:<@[s;0;:;0]
+(nn;n;p;i):(--1+/s)_/:(nn@g;n@g;tree.redo[p;<g];i@g)
+
+/ collect expressions into lists
+e:&"e"=d[`t]d[`p]i
+px:@[p;e;:;e]
+p:@[p;w;:;(px@)/w:&"l"=d[`t]d[`p]i]
+
+/ lift terms to the containing expressions
+t:&"t"=d[`t]d[`p]i
+p:@[p;t;:;p@p@t]
+
+/ delete structural nodes
+w:"l"=d[`t]d[`p]i
+(nn;n;p;i):(-+/w)_/:(nn@g;n@g;tree.redo[p;<g];i@g:<w)
 
 / unchain the expressions
-es:&"e:"~/:2#/:nn
-pp:@[pp;es;:;pp@{("e:"~/:2#/:nn@p)'[x;p:pp@x]}/es]
+e:&"e"=d[`t]d[`p]i
+p:@[p;e;:;p@{("e"=d[`t]d[`p]i@p)'[y;p:x@y]}[p]/e]
 
-tree.shwv[nn;pp]
+tree.shwv[nn;p]
