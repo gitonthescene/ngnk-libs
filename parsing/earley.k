@@ -45,6 +45,12 @@ trees:{dc:+|(0,1+#x`i)\;?,/(cmbos[y[;3]](dc@!d)!dc''.d:x[`bp]_0N)tree[;(y[;4];z)
 
 apt:{(dp;nd):+{$[~`A~@y;,(x;y);(,(x;*y)),,/o[x+1]'y 1]}[0;x];(nd;tree.p@dp)}
 
+chs:*: / disambiguate
+
+bp:{bp:(0,1+#x`i)/'(+{(x[;3;].|y;y[1])}[y]'+(0,1+#x`i)\)'bp:chs'x[`bp]_0N
+    sibs:{|1_-1_{(x y 0)}[x]\(y;y)}[bp]
+    !/+*|{(q;s):y;$[~#q;:y;2>#*q;:(1_q;s);]b:x@q[0;1];(b,1_q;(,(q[0;1];*'|'b)),s)}[sibs]/(,(z;z);())}
+
 /
 / back pointers:
 / gives all possible choices of back pointers

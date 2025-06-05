@@ -29,22 +29,17 @@ lnl:+/&\"3"=i / number of leading newlines
 
 (rules;itms):dsp[d;t]
 fn:t[-1+#d`i]
-bp:1_({x,t[x;3]?y}/'!d[`bp])!.d`bp
 :rs:(-1+#d`i),/:&~fn[2]
-
-chs:*: / disambiguate
-
-bp:(0,1+#d`i)/'(+{(x[;3;].|y;y[1])}[t]'+(0,1+#d`i)\)'bp:chs'd[`bp]_0N
 r:(0,1+#d`i)/(t[;3;].rs[0];rs[0;0])
-sibs:{|1_-1_{(x y 0)}[x]\(y;y)}[bp]
 
-bp1:+*|{(q;s):y;$[~#q;:y;2>#*q;:(1_q;s);]b:sibs@q[0;1];(b,1_q;(,(q[0;1];*'|'b)),s)}[bp]/(,(r;r);())
-
-nn:{y,/o[x]'x y}[bp2:!/bp1]r
+bps:bp[d;t;r]
+nn:{y,/o[x]'x y}[bps]r
 
 sh:shw[d]'+(d[`B],1+#d`i)\*/1(~0>)\
-(n;p):(nn@<g;tree.redo[p]g:tree.dfo p:@[0N+&#nn;nn?(r;.bp2);:;nn?(r;!bp2)])
+
+(n;p):(nn@<g;tree.redo[p]g:tree.dfo p:@[0N+&#nn;nn?(r;.bps);:;nn?(r;!bps)])
 n:@[n;(4=*(d[`B],1+#d`i)\n@)_(!#p)^p;:;-1]
+n*:1+*/1(-1+\)\n<0
 nn:(n<0)'[sh n;((,""),tks)@+\n<0]
 i:((d[`B],1+#d`i)\n)0
 
@@ -60,16 +55,20 @@ px:@[p;e;:;e]
 p:@[p;w;:;(px@)/w:&"l"=d[`t]d[`p]i]
 
 / lift terms to the containing expressions
-t:&"t"=d[`t]d[`p]i
-p:@[p;t;:;p@p@t]
+tm:&"t"=d[`t]d[`p]i
+p:@[p;tm;:;p@p@tm]
 
 / unchain the expressions
 e:&"e"=d[`t]d[`p]i
 p:@[p;e;:;p@{("e"=d[`t]d[`p]i@p)'[y;p:x@y]}[p]/e]
 
+/ lift terms
+tm:&"t"=d[`t]d[`p]i@p
+p:@[p;tm;:;2(p@)/tm]
+
 / delete structural nodes
-w:@[&#n;&n<0;:;|/tks~\:/:,'"()[]|"]
-w|:"l"=d[`t]d[`p]i
+w:@[&#n;&n<0;:;|/tks~\:/:(,"::="),,'"()[]|"]
+w|:|/"lt"=\:d[`t]d[`p]i
 (nn;n;p;i):(-+/w)_/:(nn@g;n@g;tree.redo[p;<g];i@g:<w)
 
 / clear whitespace
@@ -77,4 +76,27 @@ px:@[p;w;:;w:&~^"wf"?d[`t]d[`p]i]
 w:1&(px@)/px
 (nn;n;p;i):(-+/w)_/:(nn@g;n@g;tree.redo[p;<g];i@g:<w)
 
+/ lift adverbs
+pm:-&'(,'"+*")~/:\:(,""),tks
+p:@[p;-1+w;:;w:,/pm:n?pm]
+
+chld:^'[;?p]@=p
+
 tree.shwv[nn;p]
+
+/ top level rules:
+rules:,/(,/:/(*:;chld@)@')'0 1_/:chld@w:&"r"=d[`t]d[`p]i
+
+/ + rules
+rules,:,/1_/:,\'+(pm[0];chld@pm[0];pm[0])
+
+/ * rules
+rules,:,/,\'+(pm[1];chld@pm[1])
+
+/ groups
+rules,:,/w,/:'(chld@)'chld@w:&"g"=d[`t]d[`p]i
+
+/ options
+rules,:,/,\',/w,/:','(chld@)'chld@w:&"o"=d[`t]d[`p]i
+
+`0:{" "/(x[0];"::="),1_x}'@'[''(0>n@rules)&^(,/pm)?rules;$rules;nn@rules]
