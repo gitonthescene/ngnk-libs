@@ -100,3 +100,9 @@ rules,:,/w,/:'(chld@)'chld@w:&"g"=d[`t]d[`p]i
 rules,:,/,\',/w,/:','(chld@)'chld@w:&"o"=d[`t]d[`p]i
 
 `0:{" "/(x[0];"::="),1_x}'@'[''(0>n@rules)&^(,/pm)?rules;$rules;nn@rules]
+
+/ consolidate identical rules
+idl:*.!/(!d;.d)@\:&.1<#'d:=pm[0]#!/(*'rules;nn@1_/:rules)
+/rls:@'[''^s;s:(#[idl]#*idl)@idl?rls;rls]
+rls:@'[''^idl?rls;*idl;rls:(~^(1_idl)?*:')_rules]
+`0:{" "/(x[0];"::="),1_x}'@'[''(0>n@rls)&^(,/pm)?rls;$rls;nn@rls]
