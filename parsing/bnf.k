@@ -12,9 +12,9 @@ k:"SsrwefFltinog"!`start`syntax`rule`whitespace`expression`eol`eols`list`term`li
 cxn:{r+y*r<{(y|z)&z<x}[*|x]\r*|/x=\:r:z}
 tok:{e:<\"\\"=x;$[+/e>c:~=\~q:e<"\""=x;`err@"stray escape";]
      q|:c;c|:q|2*c<~^" \t\n"?x
-     c|:3*~^1 3?cxn[1 2;3;+/1 2*q</:";\n"=\:x]
-     c|:(<\d)+4*d:|/q</:"()[]"=\:x
-     c|:(<\d)+6*d:|/q</:"+*"=\:x
+     c|:m:3*~^1 3?cxn[1 2;3;+/1 2*q</:";\n"=\:x]
+     c|:(<\d)+4*d:m<q<|/"()[]"=\:x
+     c|:(<\d)+6*d:m<q<|/"+*"=\:x
      |+1_,':(&~=':c),#c}
 
 abc:1:"abc_subset_bnf.txt" / [[https://web.mit.edu/6.005/www/fa08/projects/abcPlayer/assignment_files/abc_subset_bnf.txt]]
