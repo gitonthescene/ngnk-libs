@@ -102,7 +102,9 @@ rules,:,/,\',/w,/:','(chld@)'chld@w:&"o"=d[`t]d[`p]i
 `0:{" "/(x[0];"::="),1_x}'@'[''(0>n@rules)&^(,/pm)?rules;$rules;nn@rules]
 
 / consolidate identical rules
-idl:*.!/(!d;.d)@\:&.1<#'d:=pm[0]#!/(*'rules;nn@1_/:rules)
-/rls:@'[''^s;s:(#[idl]#*idl)@idl?rls;rls]
-rls:@'[''^idl?rls;*idl;rls:(~^(1_idl)?*:')_rules]
+idl:(1<#:')#.*''rules@d[0]@=nn@rules[;1]@*|d:+.pm[0]#=*'rules
+rls:rules{@'[''^y?r;*y;r:(~^(1_y)?*:')_x]}/idl
 `0:{" "/(x[0];"::="),1_x}'@'[''(0>n@rls)&^(,/pm)?rls;$rls;nn@rls]
+
+/ tokens
+`0:" "/'$/|1(|/#',/)\0N 10#?,/nn@rules@'&'^@[nn;*'rules]?nn@rules
