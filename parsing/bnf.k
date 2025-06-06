@@ -99,12 +99,14 @@ rules,:,/w,/:'(chld@)'chld@w:&"g"=d[`t]d[`p]i
 / options
 rules,:,/,\',/w,/:','(chld@)'chld@w:&"o"=d[`t]d[`p]i
 
-`0:{" "/(x[0];"::="),1_x}'@'[''(0>n@rules)&^(,/pm)?rules;$rules;nn@rules]
-
 / consolidate identical rules
 idl:(1<#:')#.*''rules@d[0]@=nn@rules[;1]@*|d:+.pm[0]#=*'rules
-rls:rules{@'[''^y?r;*y;r:(~^(1_y)?*:')_x]}/idl
-`0:{" "/(x[0];"::="),1_x}'@'[''(0>n@rls)&^(,/pm)?rls;$rls;nn@rls]
+rules:rules{@'[''^y?r;*y;r:(~^(1_y)?*:')_x]}/idl
+
+idl:(1<#:')#.*''rules@d[0]@=nn@rules[;1]@*|d:+.pm[1]#=*'rules
+rules:rules{@'[''^y?r;*y;r:(~^(1_y)?*:')_x]}/idl
+
+`0:{" "/(x[0];"::="),1_x}'@'[''(0>n@rules)&^(,/pm)?rules;$rules;nn@rules]
 
 / tokens
 `0:" "/'$/|1(|/#',/)\0N 10#?,/nn@rules@'&'^@[nn;*'rules]?nn@rules
