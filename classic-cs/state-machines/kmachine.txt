@@ -1,0 +1,86 @@
+T0: strings
+
+ .QE
+QQqE
+EQQQ
+q...
+
+
+T1: single line comments
+
+ .N
+CC.
+
+
+B0: beginning of newline
+
+ .NS
+n.nc
+
+
+B1: start of block comment
+
+ .N
+cCf
+
+
+B2: escape from block comment
+
+ .NE
+ffgf
+gffe
+ef.f
+
+
+Z: zero dispatch
+
+ .ZxDn
+h.didm
+
+
+H0: hex
+
+ .ZxD
+i.j.j
+j.j.j
+
+
+N0: numbers
+
+ .Dd
+d.dF
+F.F.
+
+
+M: null
+
+ .
+m.
+
+
+I0: identifiers
+
+ .ADd
+I.III
+
+
+E: errors
+
+ .
+XX
+
+
+S0: symbols
+
+ .AQED
+srupr.
+u.u..u
+ppprtp
+tppppp
+r.....
+
+
+W: whitespace
+
+ .S
+b.C
