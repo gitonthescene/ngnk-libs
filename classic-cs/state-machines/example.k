@@ -1,4 +1,4 @@
-\l parse.k
+\l lex.k
 
 para:`0:
 para"Make a state machine that parses quoted strings handline escapes"
@@ -23,7 +23,7 @@ para"\nSome text:"
 para"\nParse text using config and start state."
 s:1_*+Q
 c:1_*Q
-P:prs[(C;TT);s?"."]
+P:lex[(C;TT);s?"."]
 
 s@P@txt
 
@@ -50,7 +50,7 @@ c:".",G[1]
 para"\nMake a comment:"
 `0:txt:"This is \"text\" with \"quotes\" and an / escaped escape \"here\\\\\" but not here: \\\\"
 
-P:prs[sm[2#G;T];s?"."]
+P:lex[sm[2#G;T];s?"."]
 para"\nParse"
 `0:pp:s@P@txt
 `0:txt

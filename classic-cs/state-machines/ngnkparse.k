@@ -1,4 +1,4 @@
-\l parse.k
+\l lex.k
 txt:1:"kmachine.txt"
 (N;S;T):+0 1 2_/:"\n"\'"\n\n\n"\txt
 M:(`$2*:/'":"\''N)!+(T;*'S)
