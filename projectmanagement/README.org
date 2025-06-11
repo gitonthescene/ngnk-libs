@@ -65,3 +65,8 @@
    before you do any imports.  The reason for this is that namespace
    qualified identifiers are always taken as is rather than relative
    to the namespace.
+
+** TODO Resource management
+   It would be nice to have well organized way to do resource
+   management as well.  That is have a decently organized way of
+   handling non-source files.
