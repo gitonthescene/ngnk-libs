@@ -1,6 +1,5 @@
-."\\l ",`env[]`KINIT /[[https://github.com/gitonthescene/ngnk-libs/tree/master/projectmanagement]]
 imp.ort[`tree;"trees/trees.k"] / [[https://github.com/gitonthescene/ngnk-libs/tree/master/trees]]
-imp.ort[`e;"earley.k"]
+imp.ort[`e;"parsing/earley.k"]
 
 ls:1_/:_/|1(&<\^:)\" ::=   | \n * + ( ) [ ]"
 g:+":"\',/" "\'bnfg:1_(""
@@ -22,12 +21,14 @@ tok:{e:<\"\\"=x;$[+/e>c:~=\~q:e<"\""=x;`err@"stray escape";]
 
 ser:{$[|/"\n"=x;"3";|/~^" \t"?x;"1";~^w:ls?x;*$w;"\""=*x;"i";"n"]} / serialize tokens into a byte stream
 
+sh:{e.shw[x]'+(x[`B],1+#x`i)\*/1(~0>)\y}
+
 tr:{[x;y;z;w]bp:e.bp[x;y;w]                   / tr[dta;tbl;tks;r]
     nn:{y,/o[x]'x y}[bp]w
     (n;p):(nn@<g;tree.redo[p]g:tree.dfo p:@[0N+&#nn;nn?(w;.bp);:;nn?(w;!bp)])
     n:@[n;(4=*(x[`B],1+#x`i)\n@)_(!#p)^p;:;-1]
     n*:1+*/1(-1+\)\n<0
-    nn:(n<0)'[sh n;((,""),z)@+\n<0]
+    nn:(n<0)'[sh[x] n;((,""),z)@+\n<0]
     i:x[`t]x[`p]((x[`B],1+#x`i)\n)0
     (nn;n;p;i)}
 
@@ -42,10 +43,10 @@ ref0:{[nn;n;p;i]p:@[p;&-1_0,w:"s"=i;:;0] / collect all the rules
       (nn;n;p;i)}
 
 ref1:{[nn;n;p;i](nn;n;p;i):ref0[nn;n;p;i]
-      w:@[&#n;&n<0;:;|/tks~\:/:(,"::="),,'"()[]|"]  / delete structural terminals
-      w|:|/"lts"=\:i                                / delete structural non-terminals
-      (nn;n;p;i):prn[(nn;n;p;i);@[w;0;:;0]]         / preserve the root (as structural)
-      px:@[p;w;:;w:&~^"wf"?i]                       / delete whitespace nodes
+      w:@[&#n;&n<0;:;|/nn[&n<0]~\:/:(,"::="),,'"()[]|"] / delete structural terminals
+      w|:|/"lts"=\:i                                    / delete structural non-terminals
+      (nn;n;p;i):prn[(nn;n;p;i);@[w;0;:;0]]             / preserve the root (as structural)
+      px:@[p;w;:;w:&~^"wf"?i]                           / delete whitespace nodes
       w:1&(px@)/px
       prn[(nn;n;p;i);w]}
 
@@ -54,40 +55,33 @@ ref:{[nn;n;p;i](nn;n;p;i):ref1[nn;n;p;i]
       (nn;n;p;i)}
 
 chld:^'/(=:;?:)@\:
-rls1:{i:(1<#:')#.*''x@d[0]@=nn@x[;1]@*|d:+.y#=*'x  / consolidate identical +/* rules
-      x{@'[''^y?r;*y;r:(~^(1_y)?*:')_x]}/i}
+rls1:{i:(1<#:')#.*''y@d[0]@=x@y[;1]@*|d:+.z#=*'y  / consolidate identical +/* rules
+      y{@'[''^y?r;*y;r:(~^(1_y)?*:')_x]}/i}
 
 rls:{chld:chld[y 2]                                / rls[d;(nn;n;p)]
      a:pm/2#y
-     i:x[`t]x[`p]((x[`B],1+#x`i)\n)0
+     i:x[`t]x[`p]((x[`B],1+#x`i)\y 1)0
      r:,/(,/:/(*:;chld@)@')'0 1_/:chld@w:&"r"=i    / top level rules
      r,:,/1_/:,\'+(a[0];chld@a[0];a[0])            / + rules
      r,:,/,\'+(a[1];chld@a[1])                     / * rules
      r,:,/w,/:'(chld@)'chld@w:&"g"=i               / groups
      r,:,/,\',/w,/:','(chld@)'chld@w:&"o"=i        / options
-     r rls1/a}
+     r rls1[y 0]/a}
 
-abc:1:"abc_subset_bnf.txt" / [[https://ocw.mit.edu/courses/6-005-elements-of-software-construction-fall-2008/b79cb7dff427fb8ed9c1b1696cd49c99_MIT6_005f08_project02.pdf]]
+grm0:{tks:(";"=*:')_{x@y+!'z-y}[x;;].p.tok x
+      i:p.ser'tks
+      (tks;i):(+/&\"3"=i)_/:(tks;i)
+      (dta;tbl):e.dfix/(dd;tt):e.rec[" "/p.bnfg;i]
+      (rules;itms):e.dsp[dta;tbl]
+      fn:tbl[-1+#dta`i]
+      rs:(-1+#dta`i),/:&~fn[2]
+      r:(0,1+#dta`i)/(tbl[;3;].rs[0];rs[0;0])
+      (dta;p.tr[dta;tbl;tks;r])}
 
-tks:(";"=*:')_{x@y+!'z-y}[abc;;].tok abc
-i:ser'tks
-(tks;i):(+/&\"3"=i)_/:(tks;i)
+grm:{(dta;(nn;n;p;i)):grm0[x]
+     (nn;n;p;i):p.ref[nn;n;p;i]
+     (p.rls[dta;(nn;n;p)];nn;n)}
 
-\t (dta;tbl):e.dfix/(dd;tt):e.rec[" "/bnfg;i]
-
-(rules;itms):e.dsp[dta;tbl]
-fn:tbl[-1+#dta`i]
-:rs:(-1+#dta`i),/:&~fn[2]
-r:(0,1+#dta`i)/(tbl[;3;].rs[0];rs[0;0])
-
-sh:e.shw[dta]'+(dta[`B],1+#dta`i)\*/1(~0>)\
-
-(nn;n;p;i):tr[dta;tbl;tks;r]
-(nn;n;p;i):ref[nn;n;p;i]
-tree.shwv[nn;p]
-
-rules:rls[dta;(nn;n;p)]
-`0:{" "/(x[0];"::="),1_x}'@'[''(0>n@rules)&^(,/pm[nn;n])?rules;$rules;nn@rules]
-
-/ tokens
-`0:(,"")," "/'$/|1(|/#',/)\0N 10#?,/nn@rules@'&'^@[nn;*'rules]?nn@rules
+/
+Next ABNF
+[[https://web.archive.org/web/20120730085339/http://www.ietf.org/rfc/rfc2234.txt]]
