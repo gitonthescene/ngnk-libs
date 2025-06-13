@@ -23,12 +23,12 @@ para"result internal data"
 d
 para""
 
-(rules;itms):dsp[d;t]
 para"List of productions"
-rules
+?[;1;"."]'d`T
 para""
 
 para"Table of items"
+itms:shw[d]''+'-1_/:-1_t
 `0:,/'$/|1(2+|/#',/)\($!#itms),'((-1_d[`i]),"-"),'itms
 para""
 

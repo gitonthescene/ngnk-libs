@@ -31,10 +31,6 @@ rec:{-1_rec1 data[x;y]}
 
 cmbos:{!/:/({y,x[y]?z}[x].'!y;1_'(,0N){,/x,/:\:,'y}/y)}
 
-dsp:{[d;t]rules:{?[x[`t]y+!z;1;":"]}[d].'+-1 1_'1(-':)\d[`p]
-     itms:{x[z;1]{?[y;2+x;"."]}'y@x[z;0]}[t;rules]'!-1+#t
-     (rules;itms,''"/",/:/:$-1_t[;2])}
-
 shw:{?[?[x[`t]@+/(!--)\x[`p]0 1+y 0;1;":"],"/";2+y 1;"."],$y 2}
 dfix:{[d;t]f:{((^t)+0>t)'[`c$t;x@-1-t:y]};(@[d;`t`i;:;f[?*'d`T]'d`t`i];{@[z;-1+#z;x[y]]}[f;?*'d`T]'t)}
 
@@ -48,7 +44,6 @@ trees:{dc:+|(0,1+#x`i)\;?,/(cmbos[y[;3]](dc@!d)!dc''.d:x[`bp]_0N)tree[;(y[;4];z)
 apt:{(dp;nd):+{$[~`A~@y;,(x;y);(,(x;*y)),,/o[x+1]'y 1]}[0;x];(nd;tree.p@dp)}
 
 chs:*: / disambiguate
-
 bp:{bp:(0,1+#x`i)/'(+{(x[;3;].|y;y[1])}[y]'+(0,1+#x`i)\)'bp:chs'x[`bp]_0N
     sibs:{|1_-1_{(x y 0)}[x]\(y;y)}[bp]
     !/+*|{(q;s):y;$[~#q;:y;2>#*q;:(1_q;s);]b:x@q[0;1];(b,1_q;(,(q[0;1];*'|'b)),s)}[sibs]/(,(z;z);())}
@@ -60,6 +55,4 @@ bp:{bp:(0,1+#x`i)/'(+{(x[;3;].|y;y[1])}[y]'+(0,1+#x`i)\)'bp:chs'x[`bp]_0N
 cmbos[r[1;;3]]r[0;`bp]_0N 0N
 
 / display
-
-dsp[d;t]
 tree[bp;start]
