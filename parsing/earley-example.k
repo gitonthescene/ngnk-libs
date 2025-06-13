@@ -1,6 +1,6 @@
 ."\\l ",`env[]`KINIT            / [[https://github.com/gitonthescene/ngnk-libs/tree/master/projectmanagement]]
 imp.ort[`tree;"trees/trees.k"]  / [[https://github.com/gitonthescene/ngnk-libs/tree/master/trees]]
-imp.ort[`;"earley.k"]
+imp.ort[`e;"earley.k"]
 
 para:`0:
 T:(("S:aS|b";"aab")
@@ -14,7 +14,7 @@ p:T 1
 para"parse grammar \"",p[0], "\" with input \"",(p 1),"\""
 para""
 
-(d;t):dfix/rec. p
+(d;t):e.dfix/e.rec. p
 para"result table"
 t
 para""
@@ -28,16 +28,16 @@ para"List of productions"
 para""
 
 para"Table of items"
-itms:shw[d]''+'-1_/:-1_t
+itms:e.shw[d]''+'-1_/:-1_t
 `0:,/'$/|1(2+|/#',/)\($!#itms),'((-1_d[`i]),"-"),'itms
 para""
 
 para"trees"
-`0:`k'ts:?trees[d;t;itms]
+`0:`k'ts:?e.trees[d;t;itms]
 para""
 
 para"Apter trees"
-`0:`k'at:apt'ts
+`0:`k'at:e.apt'ts
 tree.shw/'at;
 para""
 

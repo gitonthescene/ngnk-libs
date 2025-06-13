@@ -34,13 +34,19 @@ cmbos:{!/:/({y,x[y]?z}[x].'!y;1_'(,0N){,/x,/:\:,'y}/y)}
 shw:{?[?[x[`t]@+/(!--)\x[`p]0 1+y 0;1;":"],"/";2+y 1;"."],$y 2}
 dfix:{[d;t]f:{((^t)+0>t)'[`c$t;x@-1-t:y]};(@[d;`t`i;:;f[?*'d`T]'d`t`i];{@[z;-1+#z;x[y]]}[f;?*'d`T]'t)}
 
-tree:{$[^*z;:0N;]
+tree0:{$[^*z;:0N;]
       ls:.[y[0];]'-1_c:1_|(*x@)\z
       (y[1]. z;(c~'0N)'[c:o[x;y]'*'1_'x@1_c;ls])}
 
-cmp:{[d;t]w:&~t[lst:-2+#t;2];lst,/:w@&{&/(*[x[`t]]=x[`t]r;=/(1+z+r:x[`p]y;x[`p]y+1))}[d]/t[lst;0 1;w]}
-trees:{dc:+|(0,1+#x`i)\;?,/(cmbos[y[;3]](dc@!d)!dc''.d:x[`bp]_0N)tree[;(y[;4];z);]/:\:cmp[x;y]}
+/ direct Apter tree calculation (no stack)
+tree:{[d;t]st:*cmp[d;t];r:(0,1+#d`i)/(t[;3;].st;st[0]);bp:bp[d;t;r]
+      nds:|*|{$[~#y[0];y;^y[0;0];(1_y 0;y 1);(x[y[0;0]],1_y[0];y[0;0],y[1])]}[bp]/(,r;!0)
+      prt:-1_@[&1+#nds;(#nds)^.nds?nds#bp;:;!#nds]
+      emp:nds?&~#'bp / empty nodes
+      (-+/w)_/:(nds@g;tree.redo[prt;<g:<w:@[&#nds;emp;:;1]])}
 
+cmp:{[d;t]w:&~t[lst:-2+#t;2];lst,/:w@&{&/(*[x[`t]]=x[`t]r;=/(1+z+r:x[`p]y;x[`p]y+1))}[d]/t[lst;0 1;w]}
+trees:{dc:+|(0,1+#x`i)\;?,/(cmbos[y[;3]](dc@!d)!dc''.d:x[`bp]_0N)tree0[;(y[;4];z);]/:\:cmp[x;y]}
 apt:{(dp;nd):+{$[~`A~@y;,(x;y);(,(x;*y)),,/o[x+1]'y 1]}[0;x];(nd;tree.p@dp)}
 
 chs:*: / disambiguate
