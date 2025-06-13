@@ -58,29 +58,32 @@ chld:^'/(=:;?:)@\:
 rls1:{i:(1<#:')#.*''y@d[0]@=x@y[;1]@*|d:+.z#=*'y  / consolidate identical +/* rules
       y{@'[''^y?r;*y;r:(~^(1_y)?*:')_x]}/i}
 
+rls2:{[r;chld;a]
+     r,:,/1_/:,\'+(a[0];chld@a[0];a[0])            / + rules
+     r,,/(,*:;,/3#)@\:/:+(a[1];chld@a[1])}         / * rules
+
 rls:{chld:chld[y 2]                                / rls[d;(nn;n;p)]
      a:pm/2#y
      i:x[`t]x[`p]((x[`B],1+#x`i)\y 1)0
      r:,/(,/:/(*:;chld@)@')'0 1_/:chld@w:&"r"=i    / top level rules
-     r,:,/1_/:,\'+(a[0];chld@a[0];a[0])            / + rules
-     r,:,/,\'+(a[1];chld@a[1])                     / * rules
+     r:rls2[r;chld;a]
      r,:,/w,/:'(chld@)'chld@w:&"g"=i               / groups
      r,:,/,\',/w,/:','(chld@)'chld@w:&"o"=i        / options
      r rls1[y 0]/a}
 
-grm0:{tks:(";"=*:')_{x@y+!'z-y}[x;;].p.tok x
-      i:p.ser'tks
+grm0:{tks:(";"=*:')_{x@y+!'z-y}[x;;].tok x
+      i:ser'tks
       (tks;i):(+/&\"3"=i)_/:(tks;i)
-      (dta;tbl):e.dfix/(dd;tt):e.rec[" "/p.bnfg;i]
-      (rules;itms):e.dsp[dta;tbl]
-      fn:tbl[-1+#dta`i]
-      rs:(-1+#dta`i),/:&~fn[2]
+      (dta;tbl):e.dfix/(dd;tt):e.rec[" "/bnfg;i]
+      itms:e.shw[dta]''+'-1_/:-1_tbl
+      rules:?[;1;"."]'dta`T
+      rs:e.cmp[dta;tbl]
       r:(0,1+#dta`i)/(tbl[;3;].rs[0];rs[0;0])
-      (dta;p.tr[dta;tbl;tks;r])}
+      (dta;tr[dta;tbl;tks;r])}
 
 grm:{(dta;(nn;n;p;i)):grm0[x]
-     (nn;n;p;i):p.ref[nn;n;p;i]
-     (p.rls[dta;(nn;n;p)];nn;n)}
+     (nn;n;p;i):ref[nn;n;p;i]
+     (rls[dta;(nn;n;p)];nn;n)}
 
 /
 Next ABNF
