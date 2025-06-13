@@ -23,9 +23,7 @@ ser:{$[|/"\n"=x;"3";|/~^" \t"?x;"1";~^w:ls?x;*$w;"\""=*x;"i";"n"]} / serialize t
 
 sh:{e.shw[x]'+(x[`B],1+#x`i)\*/1(~0>)\y}
 
-tr:{[x;y;z;w]bp:e.bp[x;y;w]                   / tr[dta;tbl;tks;r]
-    nn:{y,/o[x]'x y}[bp]w
-    (n;p):(nn@<g;tree.redo[p]g:tree.dfo p:@[0N+&#nn;nn?(w;.bp);:;nn?(w;!bp)])
+tr:{[x;y;z](n;p):e.tree[x;y]
     n:@[n;(4=*(x[`B],1+#x`i)\n@)_(!#p)^p;:;-1]
     n*:1+*/1(-1+\)\n<0
     nn:(n<0)'[sh[x] n;((,""),z)@+\n<0]
@@ -75,11 +73,9 @@ grm0:{tks:(";"=*:')_{x@y+!'z-y}[x;;].tok x
       i:ser'tks
       (tks;i):(+/&\"3"=i)_/:(tks;i)
       (dta;tbl):e.dfix/(dd;tt):e.rec[" "/bnfg;i]
-      itms:e.shw[dta]''+'-1_/:-1_tbl
-      rules:?[;1;"."]'dta`T
       rs:e.cmp[dta;tbl]
       r:(0,1+#dta`i)/(tbl[;3;].rs[0];rs[0;0])
-      (dta;tr[dta;tbl;tks;r])}
+      (dta;tr[dta;tbl;tks])}
 
 grm:{(dta;(nn;n;p;i)):grm0[x]
      (nn;n;p;i):ref[nn;n;p;i]
