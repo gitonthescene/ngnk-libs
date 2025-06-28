@@ -1,33 +1,33 @@
-\l bst.k
-\d tree
-\l trees.k
-\d .
+."\\l ",`env[]`KINIT
+imp.ort[`b;"trees/bst3.k"]
+imp.ort[`tree;"trees/trees.k"]
+`prng@0
 para:`0:
 
-drw:{(p;n):((<g)@;::)@'0^x[0 2]@\:g:gt.(0^x 0 1); tree.shw[$n;p]}
-dr:drw@[;1 2 2]@
+drw:{tree.shw/(x[y]@;::)@'b.dfo@y}
+dr:drw[{$:y}]
 
-data:-15?50
-t:(e;!0;!0;!0)
-rs:t ins\data
+:data:-15?25
+\t rs:b.e b.ins[<]\+1(!#:)\data
 r:*|rs
 
 para"orig"
-dr r
-drw r[1 2],,!#r[1]
-drw r 1 2 3
+
+drw[{$x[0]?y}]r
+drw[{$x[4]x[0]?y}]r
 
 para"Insertion"
-dr@/:1_rs;
+dr'rs;
 para""
 
 para"Indices"
-drw r[1 2],,!#r[1]
+drw[{$x[0]?y}]r
 para""
 
 para"Height"
-drw r[1 2 3]
+drw[{$x[4]x[0]?y}]r
 para""
 
-para"Delete middle index"
-dr del[r;1]
+para"Delete middle index: ",$r[0]i:-2!#r 0
+
+dr b.del[r; i]
