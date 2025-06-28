@@ -8,7 +8,7 @@ drw:{tree.shw/(x[y]@;::)@'b.dfo@y}
 dr:drw[{$:y}]
 
 :data:-15?25
-\t rs:b.e b.ins[<]\+1(!#:)\data
+rs:b.e b.ins[<]\+1(!#:)\data
 r:*|rs
 
 para"orig"
