@@ -1,5 +1,5 @@
 ."\\l ",`env[]`KINIT
-imp.ort[`b;"trees/bst3.k"]
+imp.ort[`b;"trees/bst.k"]
 imp.ort[`tree;"trees/trees.k"]
 `prng@0
 para:`0:
