@@ -6,26 +6,29 @@ para:`0:
 
 drw:{tree.shw/(x[y]@;::)@'b.dfo@y}
 dr:drw[{$:y}]
+di:drw[{$x[0]?y}]
+dh:drw[{$x[4]1+x[0]?y}]
 
-:data:-15?25
+data:-15?25
+
 rs:b.e b.ins[<]\+1(!#:)\data
 r:*|rs
 
 para"orig"
 
-drw[{$x[0]?y}]r
-drw[{$x[4]x[0]?y}]r
+di r
+dh r
 
 para"Insertion"
 dr'rs;
 para""
 
 para"Indices"
-drw[{$x[0]?y}]r
+di r
 para""
 
 para"Height"
-drw[{$x[4]x[0]?y}]r
+dh r
 para""
 
 para"Delete middle index: ",$r[0]i:-2!#r 0
