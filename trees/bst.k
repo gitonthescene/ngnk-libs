@@ -23,7 +23,7 @@ dfo:{d:1_(x[2]=)#!#x[2]                                         / dead nodes
 pred:{*(&/0<)(-2#,/1(x[3]@1+2**|:)\)/,x[3]2*y}                  / pred[t;idx]  / immediate predecessor
 ci:{*(y=x[3]@)#![2]+2*x[2]y}                                    / ci[t;idx]    / where we exist in the child vector
 
-del0:{.[.[x;2,y;:;y];3,ci[x;y];:;-1]{.[x;4,1+y;:;ht[x;y]]}/(x[2]@)/x[2]y}   / del0[t;idx]  / leaf
-del1:{c:*(0<)#x[3]![2]+2*y;del[.[x;(0 1;y,c);:;x[0 1;c,y]];c]}              / del1[t;idx]  / 1 child
-del2:{c:pred[x;y];del[.[x;(0 1;y,c);:;x[0 1;c,y]];c]}                       / del2[t;idx]  / 2 child
+del0:{reb[p;.[.[x;2,y;:;y];3,ci[x;y];:;-1]{.[x;4,1+y;:;ht[x;y]]}/(x[2]@)\p:x[2]y]}   / del0[t;idx]  / leaf
+del1:{c:*(0<)#x[3]![2]+2*y;del[.[x;(0 1;y,c);:;x[0 1;c,y]];c]}                       / del1[t;idx]  / 1 child
+del2:{c:pred[x;y];del[.[x;(0 1;y,c);:;x[0 1;c,y]];c]}                                / del2[t;idx]  / 2 child
 del: {(del0;del1;del2)[+/0<x[3;![2]+2*y]][x;y]}
