@@ -1,6 +1,6 @@
 ."\\l ",`env[]`KINIT            / [[https://github.com/gitonthescene/ngnk-libs/tree/master/projectmanagement]]
 imp.ort[`tree;"trees/trees.k"]  / [[https://github.com/gitonthescene/ngnk-libs/tree/master/trees]]
-imp.ort[`e;"earley.k"]
+imp.ort[`e;"parsing/earley.k"]
 
 para:`0:
 T:(("S:aS|b";"aab")
