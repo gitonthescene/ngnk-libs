@@ -13,7 +13,7 @@ insi:{$[0N~n:z[0;0]z[2];(reb[r 0;(r:@[.[z;(0;3;z[3]+2*z[1]);:;#z[0;0]];0;,'[;(y[
        n~y 0;z[0 2],0
        [d:(z[0];z[2];z[0;3;lr+2*z[2]];lr:~x[y 0;n]);o[x;y;d]]]}
 
-ins:{insi[x;z;(y;0;y[3]0;0)]}
+ins:{$[^*z;`err@"ed";];insi[x;z;(y;0;y[3]0;0)]}
 
 dfo:{d:1_(x[2]=)#!#x[2]                                         / dead nodes
      g:,//(((0>)_,/x[3]@(!2)+/:2*)\0;d)                         / left before right
