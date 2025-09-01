@@ -9,9 +9,9 @@ para""
 
 para"Currently, bst.k contains an implementation of [[AVL trees][https://en.wikipedia.org/wiki/AVL_tree]].  The
 intent was to be a basis to build other datatypes, like trees and dictionaries.  As such elements are key/value
-pairs and the tree can only contain one element per key.  Insertion returns a pair of the modified tree and the
+pairs and the tree can only contain one element per key.  Insertion returns a triple of the modified tree and the
 \"insertion index\".  If the element already existed in the tree the tree is unmodified and the index is where the
-match was found.  If not the index is the index where the insertion occurred."
+match was found.  If not the index is the index where the insertion occurred.  The final element of the triple indicates if an insertion occured or not."
 
 para""
 para"SAMPLE RUN:"
