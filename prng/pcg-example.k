@@ -19,3 +19,4 @@ rando1["lcg2.pbm";16;prs bits[8]!-[bits 2]!rs]             / bits 2-9
 rando1["lcg1.pbm";16;prs bits[8]!-[bits 1]!rs]             / bits 1-8
 
 rando1["pcgrot.pbm";16;prs rotpcg16[rs]]  / 8-bit output function
+`done
