@@ -21,24 +21,40 @@ hs:{h:hp@x;*(-1+#x)({(sd[@[x;0,y;:;x@y,0];0;y];y-1)}.)/(h;-1+#x)}
 / binomial heap
 \d hpbl
 
+E:4#,!0
+add:{$[~#*x;:y;~#*y;:x]
+    x,'y+(l;l:#x 1;0;0)}
+hi0:{add[x;+,&[3],y]}
+
 / heap insert
-hi:{mg@hi0[x;y]}
-hi0:{(r;p;d;n):x;(r,#p;p,#p;d,0;n,y)}
+hi:{cm hi0[x;y]}
+lk:{y@:~~:\</x[3;y];.[@[.[x;1,y 1;:;y 0];0;^;y 1];2,y 0;+;1]}
 
 / merge heap
-mg:{(r;p;d):-1_x
-    *{$[2>#l:*|x;x
-      ~=/x[0;2;2#l];x
-     (cm[*x;2#l];1_l)]}/(x;@/1(<d@)\r)}
+cm:{r:x[0]@<+x[2 3]@\:x[0];*{$[2>#x 1;x;=/x[0;2]r:2#x 1;(lk[x 0; r];x[1]_1);(x 0;1_x 1)]}/(x;r)}
 
-/ combine (trees)
-cm:{(r;p;d;n):x;y:@/1(<n@)\y
-    r:r_r?y@0;p[y@0]:y@1;d[y@1]+:1
-    (r;p;d;n)}
+/ min extract
+hx:{w:&x[1]= i:x[0]@*<x[3]x[0];(x[3]i;cm @[.[x;(1;w,i);:;w,0N];0;^[;i]@,;w])}
 
-/ heap extract
-hx:{(r;p;d;n):x;m:*>n@r
-    p:@[p;r@m;:;0N]
-    p:@[p;c;:;c:&p=r@m]
-    (n@r@m;mg@(c,r_m;p;d;n))}
+/ helper
+shw:{t:(-+/w)_/:((<g)@;::)@'t@\:g:<w:^:*t:x[1 3]
+     tree.shw/($:0N,t[1]@<g 1;0,(~p=!#p)*1+p:tree.redo/g:1 tree.dfo\t 0)}
+
+/ leftist heap
+\d hplf
+E:,0
+/ merge
+mrg:{$[E~x;y;E~y;x
+     ~>/(x;y)@\:1;mk[x 1;x 2;o[x 3;y]]
+     mk[y 1;y 2;o[x;y 3]]]}
+/ rank join
+mk:{(`h;y;z);$[~</r:(y;z)@\:0;(1+r 1;x;y;z)
+     (1+r 0;x;z;y)]}
+
+/ remove min
+del:{$[E~x;E;mrg/-2#x]}
+
+/ heap from list
+l2h:{*{mrg/'0N 2#x,#[2!#x;,E]}/{(1;x;E;E)}'x}
+
 \d .
