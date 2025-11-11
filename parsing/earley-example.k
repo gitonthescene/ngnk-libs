@@ -35,7 +35,7 @@ itms:-1_e.shw[d]''+'3#/:t
 para""
 
 para"Apter trees"
-ts:e.trs[d;t];
+ts:e.trs[d;t]
 tree.shw/'{(@[e.shw[x]'+1_x[`B]\y[0];![#p]^p:y[1];:;`c$-1_x`i];y 1)}[d]'ts;
 para""
 
