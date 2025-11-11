@@ -21,13 +21,12 @@ tok:{e:<\"\\"=x;$[+/e>c:~=\~q:e<"\""=x;`err@"stray escape";]
 
 ser:{$[|/"\n"=x;"3";|/~^" \t"?x;"1";~^w:ls?x;*$w;"\""=*x;"i";"n"]} / serialize tokens into a byte stream
 
-sh:{e.shw[x]'+(x[`B],1+#x`i)\*/1(~0>)\y}
-
-tr:{[x;y;z](n;p):e.tree[x;y]
-    n:@[n;(4=*(x[`B],1+#x`i)\n@)_(!#p)^p;:;-1]
+tr:{[x;y;z](n;p):*e.trs[x;y]
+    n:@[n;(4=(x[`B]\n)[1]@)_(!#p)^p;:;-1]
     n*:1+*/1(-1+\)\n<0
-    nn:(n<0)'[sh[x] n;((,""),z)@+\n<0]
-    i:x[`t]x[`p]((x[`B],1+#x`i)\n)0
+    nn:(n<0)'[e.shw[x]'+1_x[`B]\0|n;((,""),z)@+\n<0]
+    t:(^[t]|0>t)'[`c$t;(?*'x`T)@-1-t:x`t]
+    i:t@x[`p](x[`B]\n)1
     (nn;n;p;i)}
 
 prn:{(-+/y)_/:(x[0]g;x[1]g;tree.redo[x[2];<g];x[3]@g:<y)} / prn[(nn;n;p;i);msk]
@@ -62,7 +61,8 @@ rls2:{[r;chld;a]
 
 rls:{chld:chld[y 2]                                / rls[d;(nn;n;p)]
      a:pm/2#y
-     i:x[`t]x[`p]((x[`B],1+#x`i)\y 1)0
+     t:(^[t]|0>t)'[`c$t;(?*'x`T)@-1-t:x`t]
+     i:t@x[`p](x[`B]\y 1)1
      r:,/(,/:/(*:;chld@)@')'0 1_/:chld@w:&"r"=i    / top level rules
      r:rls2[r;chld;a]
      r,:,/w,/:'(chld@)'chld@w:&"g"=i               / groups
@@ -72,12 +72,17 @@ rls:{chld:chld[y 2]                                / rls[d;(nn;n;p)]
 grm0:{tks:(";"=*:')_{x@y+!'z-y}[x;;].tok x
       i:ser'tks
       (tks;i):(+/&\"3"=i)_/:(tks;i)
-      (dta;tbl):e.dfix/(dd;tt):e.rec[" "/bnfg;i]
-      rs:e.cmp[dta;tbl]
-      r:(0,1+#dta`i)/(tbl[;3;].rs[0];rs[0;0])
+      (dta;a;tbl):e.rec[" "/bnfg;i]
       (dta;tr[dta;tbl;tks])}
 
-grm:{(dta;(nn;n;p;i)):grm0[x]
+grm0:{tks:(";"=*:')_{x@y+!'z-y}[x;;].tok x
+      i:ser'tks
+      (tks;i):(+/&\"3"=i)_/:(tks;i)
+      (dta;a;tbl):e.rec[" "/bnfg;i]
+      (dta;tr[dta;tbl;tks])}
+
+grm:{(dta;t):grm0[x]
+     (nn;n;p;i):prn[t;(t[1]>0)&^p?(!#p:t 2)]              / delete empty nodes
      (nn;n;p;i):ref[nn;n;p;i]
      (rls[dta;(nn;n;p)];nn;n)}
 
