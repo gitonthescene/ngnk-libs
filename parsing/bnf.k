@@ -48,7 +48,7 @@ ref1:{[nn;n;p;i](nn;n;p;i):ref0[nn;n;p;i]
       prn[(nn;n;p;i);w]}
 
 ref:{[nn;n;p;i](nn;n;p;i):ref1[nn;n;p;i]
-      p:@[p;-1+w;:;w:,/pm[nn;n]]   / lift adverbs
+      p:@[p;s@'-1+(s:&'p=/:p[w])?'w;:;w:,/pm[nn;n]]
       (nn;n;p;i)}
 
 chld:^'/(=:;?:)@\:
