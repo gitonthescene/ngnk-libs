@@ -1,25 +1,21 @@
 imp.ort[`tree;"trees/trees.k"] / [[https://github.com/gitonthescene/ngnk-libs/tree/master/trees]]
 imp.ort[`e;"parsing/earley.k"]
 
-ls:1_/:_/|1(&<\^:)\" ::=   | \n * + ( ) [ ]"
+ls:1_/:_/|1(&<\^:)\" ::=   | \n * + ? ( ) [ ]"
 g:+":"\',/" "\'bnfg:1_(""
-"s:r s:rs r:nw0wef w:1w w:"
-"e:lw2we e:lf2we e:l f:w3f f:w3 l:twl l:t"
-"g:6wew7 o:8wew9 t:g t:g4 t:g5 t:o t:i t:i4 t:i5 t:n t:n4 t:n5")
-
-/ show the grammar grammar
-/ k:"srwefltinog"!`syntax`rule`whitespace`expression`eol`list`term`literal`name`option`group
-/ +(*:';::)@'{(x)'[y;z]}''[^''i;i:k@g;ls@g-"0"]
+"s:r s:rs r:nw=wef w:1w w:"
+"e:lw2we e:lf2we e:l f:w3f f:w3 l:twl l:t g:(wew) o:[wew]"
+"t:g t:g* t:g+ t:g? t:o t:i t:i* t:i+ t:i? t:n t:n* t:n+ t:n?")
 
 cxn:{r+y*r<{(y|z)&z<x}[*|x]\r*|/x=\:r:z}
 tok:{e:<\"\\"=x;$[+/e>c:~=\~q:e<"\""=x;`err@"stray escape";]
      q|:c;c|:q|2*c<~^" \t\n"?x
      c|:m:3*~^1 3?cxn[1 2;3;+/1 2*q</:";\n"=\:x]
      c|:(<\d)+4*d:m<q<|/"()[]"=\:x
-     c|:(<\d)+6*d:m<q<|/"+*"=\:x
+     c|:(<\d)+6*d:m<q<|/"?+*"=\:x
      |+1_,':(&~=':c),#c}
 
-ser:{$[|/"\n"=x;"3";|/~^" \t"?x;"1";~^w:ls?x;*$w;"\""=*x;"i";"n"]} / serialize tokens into a byte stream
+ser:{$[|/"\n"=x;"3";x~,"|";"2";|/~^" \t"?x;"1";~^ls?x;*|x;"\""=*x;"i";"n"]} / serialize tokens into a byte stream
 
 tr:{[x;y;z](n;p):*e.trs[x;y]
     n:@[n;(4=(x[`B]\n)[1]@)_(!#p)^p;:;-1]
@@ -32,7 +28,7 @@ tr:{[x;y;z](n;p):*e.trs[x;y]
 prn:{(-+/y)_/:(x[0]g;x[1]g;tree.redo[x[2];<g];x[3]@g:<y)} / prn[(nn;n;p;i);msk]
 lft:{[x;y;z]p:@[x;y;:;y];@[x;z;:;(p@)/z]}                 / lft[p;frm;to;lvls]
 
-pm:{w@&'(,'"+*")~/:\:x@w:&0>y}           / identify adverbs
+pm:{w@&'(,'"?+*")~/:\:x@w:&0>y}          / identify adverbs
 ref0:{[nn;n;p;i]p:@[p;&-1_0,w:"s"=i;:;0] / collect all the rules
       p:lft[p;&"e"=i;&"l"=i]             / collect all the expressions
       p:lft[p;&~"e"=i;&"e"=i]            / unchain the expressions
@@ -56,8 +52,9 @@ rls1:{i:(1<#:')#.*''y@d[0]@=x@y[;1]@*|d:+.z#=*'y  / consolidate identical +/* ru
       y{@'[''^y?r;*y;r:(~^(1_y)?*:')_x]}/i}
 
 rls2:{[r;chld;a]
-     r,:,/1_/:,\'+(a[0];chld@a[0];a[0])            / + rules
-     r,,/(,*:;,/3#)@\:/:+(a[1];chld@a[1])}         / * rules
+     r,:,/,\'+(a[0];chld@a[0])                     / ? rules
+     r,:,/1_/:,\'+(a[1];chld@a[1];a[1])            / + rules
+     r,,/(,*:;,/3#)@\:/:+(a[2];chld@a[2])}         / * rules
 
 rls:{chld:chld[y 2]                                / rls[d;(nn;n;p)]
      a:pm/2#y
