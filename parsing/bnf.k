@@ -27,23 +27,20 @@ tr:{[x;y;z](n;p):*e.trs[x;y]
 
 prn:{(-+/y)_/:(x[0]g;x[1]g;tree.redo[x[2];<g];x[3]@g:<y)} / prn[(nn;n;p;i);msk]
 lft:{[x;y;z]p:@[x;y;:;y];@[x;z;:;(p@)/z]}                 / lft[p;frm;to;lvls]
+pm:{w@&'(,'"?+*")~/:\:x@w:&0>y}                           / identify adverbs
 
-pm:{w@&'(,'"?+*")~/:\:x@w:&0>y}          / identify adverbs
-ref0:{[nn;n;p;i]p:@[p;&-1_0,w:"s"=i;:;0] / collect all the rules
-      p:lft[p;&"e"=i;&"l"=i]             / collect all the expressions
-      p:lft[p;&~"e"=i;&"e"=i]            / unchain the expressions
-      p:@[p;w;:;3(p@)/w:&"t"=i@p]        / lift the terms
-      (nn;n;p;i)}
+ref:{[nn;n;p;i]p:@[p;&-1_0,w:"s"=i;:;0]                 / collect all the rules
+      p:lft[p;&"e"=i;&"l"=i]                            / collect all the expressions
+      p:lft[p;&~"e"=i;&"e"=i]                           / unchain the expressions
+      p:@[p;w;:;3(p@)/w:&"t"=i@p]                       / lift the terms
 
-ref1:{[nn;n;p;i](nn;n;p;i):ref0[nn;n;p;i]
       w:@[&#n;&n<0;:;|/nn[&n<0]~\:/:(,"::="),,'"()[]|"] / delete structural terminals
       w|:|/"lts"=\:i                                    / delete structural non-terminals
       (nn;n;p;i):prn[(nn;n;p;i);@[w;0;:;0]]             / preserve the root (as structural)
       px:@[p;w;:;w:&~^"wf"?i]                           / delete whitespace nodes
       w:1&(px@)/px
-      prn[(nn;n;p;i);w]}
+      (nn;n;p;i):prn[(nn;n;p;i);w]
 
-ref:{[nn;n;p;i](nn;n;p;i):ref1[nn;n;p;i]
       p:@[p;s@'-1+(s:&'p=/:p[w])?'w;:;w:,/pm[nn;n]]
       (nn;n;p;i)}
 
@@ -51,17 +48,15 @@ chld:^'/(=:;?:)@\:
 rls1:{i:(1<#:')#.*''y@d[0]@=x@y[;1]@*|d:+.z#=*'y  / consolidate identical +/* rules
       y{@'[''^y?r;*y;r:(~^(1_y)?*:')_x]}/i}
 
-rls2:{[r;chld;a]
-     r,:,/,\'+(a[0];chld@a[0])                     / ? rules
-     r,:,/1_/:,\'+(a[1];chld@a[1];a[1])            / + rules
-     r,,/(,*:;,/3#)@\:/:+(a[2];chld@a[2])}         / * rules
-
 rls:{chld:chld[y 2]                                / rls[d;(nn;n;p)]
      a:pm/2#y
      t:(^[t]|0>t)'[`c$t;(?*'x`T)@-1-t:x`t]
      i:t@x[`p](x[`B]\y 1)1
      r:,/(,/:/(*:;chld@)@')'0 1_/:chld@w:&"r"=i    / top level rules
-     r:rls2[r;chld;a]
+     r,:,/,\'+(a[0];chld@a[0])                     / ? rules
+     r,:,/1_/:,\'+(a[1];chld@a[1];a[1])            / + rules
+     r,,/(,*:;,/3#)@\:/:+(a[2];chld@a[2])          / * rules
+
      r,:,/w,/:'(chld@)'chld@w:&"g"=i               / groups
      r,:,/,\',/w,/:','(chld@)'chld@w:&"o"=i        / options
      r rls1[y 0]/a}
