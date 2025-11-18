@@ -55,7 +55,7 @@ rls:{chld:chld[y 2]                                / rls[d;(nn;n;p)]
      r:,/(,/:/(*:;chld@)@')'0 1_/:chld@w:&"r"=i    / top level rules
      r,:,/,\'+(a[0];chld@a[0])                     / ? rules
      r,:,/1_/:,\'+(a[1];chld@a[1];a[1])            / + rules
-     r,,/(,*:;,/3#)@\:/:+(a[2];chld@a[2])          / * rules
+     r,:,/(,*:;,/3#)@\:/:+(a[2];chld@a[2])         / * rules
 
      r,:,/w,/:'(chld@)'chld@w:&"g"=i               / groups
      r,:,/,\',/w,/:','(chld@)'chld@w:&"o"=i        / options
