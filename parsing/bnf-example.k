@@ -19,7 +19,7 @@ rls:?/|1(?,/)\@'[''(0>n@rules)&^(,/p.pm[nn;n])?rules;$rules;nn@rules]
 
 eps:|/'~-1+#'[rls]@=*'(nr:?,/rls)?rls:rr_\:1
 fst:{,/(^*'[x]?z;0^y z)#'z,-1}[nr?rls;eps]'!#nr
-fst:{{@[y;z 0;?,/;y@(^:)_^[z[1],r@&|':&\e;#[~&/e:0^x@r:1_z;-1]]]}[x 0]/[y;x 1]}[(eps;nr?rls)]/fst
+fst:{{@[y;z 0;?,/;(^:)_/:y@^[r@&1 :':&\e;#[~&/e:0^x@1+r:(1_z),-1;-1]]]}[x 0]/[y;x 1]}[(-1,.eps;nr?rls)]/fst
 
 para s," first ",s
 +(?*'rls;(^:)_/:/:nr@fst@?nr?*'rls)
