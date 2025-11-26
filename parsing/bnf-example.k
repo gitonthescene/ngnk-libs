@@ -17,18 +17,10 @@ para s," parsed ",s
 
 rls:?/|1(?,/)\@'[''(0>n@rules)&^(,/p.pm[nn;n])?rules;$rules;nn@rules]
 
-eps:|/'~-1+#'[rls]@=*'(nr:?,/rls)?rls:rr_\:1
-fst:{,/(^*'[x]?z;0^y z)#'z,-1}[nr?rls;eps]'!#nr
-fst:{{@[y;z 0;?,/;(^:)_/:y@^[r@&1 :':&\e;#[~&/e:0^x@1+r:(1_z),-1;-1]]]}[x 0]/[y;x 1]}[(-1,.eps;nr?rls)]/fst
+nr:?,/rls:rr_\:1
 
 para s," first ",s
-+(?*'rls;(^:)_/:/:nr@fst@?nr?*'rls)
++(?*'rls;(^:)_/:/:nr@p.fst[rls]@?nr?*'rls)
 
 para s," follow ",s
-
-flw:@[#[nr]#,!0;0;:;,-1]
-epf:|/'0>fst
-flw:{{f:(t@w;f:(f@'&'1 :':'&\'1^x[1]@f:(1_)\1_t)@w:&~^x[0]?t:1_z,-1)
-      y:@[y;f 0;?,/;^'[,/'x[2]^'[f 1;-1];-1]]
-      @[y;w;?,/;#[#w:f[0]@&0>*'|'f 1;,y z 0]]}[x]/[z;y]}[(!eps;epf;fst);nr?rls]/flw
-+(?*'rls;(^:)_/:/:nr@flw@?nr?*'rls)
++(?*'rls;(^:)_/:/:nr@p.flw[rls]@?nr?*'rls)

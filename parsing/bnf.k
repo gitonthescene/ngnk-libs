@@ -67,16 +67,19 @@ grm0:{tks:(";"=*:')_{x@y+!'z-y}[x;;].tok x
       (dta;a;tbl):e.rec[" "/bnfg;i]
       (dta;tr[dta;tbl;tks])}
 
-grm0:{tks:(";"=*:')_{x@y+!'z-y}[x;;].tok x
-      i:ser'tks
-      (tks;i):(+/&\"3"=i)_/:(tks;i)
-      (dta;a;tbl):e.rec[" "/bnfg;i]
-      (dta;tr[dta;tbl;tks])}
-
 grm:{(dta;t):grm0[x]
      (nn;n;p;i):prn[t;(t[1]>0)&^p?(!#p:t 2)]              / delete empty nodes
      (nn;n;p;i):ref[nn;n;p;i]
      (rls[dta;(nn;n;p)];nn;n)}
+
+fst:{eps:.|/'~-1+#'[x]@=nr:?,/x
+ f:{,/(^*'[x]?z;0^y z)#'z,-1}[nr?x;eps]'!#nr
+ {{@[y;z 0;?,/;^[y@r@&1 :':&\e;#[~&/e:0^x@1+r:1_z;-1]]]}[x 0]/[y;x 1]}[(1,eps;nr?x)]/f}
+
+flw:{fl:@[#[nr:?,/x]#,!0;0;:;,-1]; ef:|/'0>fs:fst[x]
+  {{f:(t@w;f:(f@'&'1 :':'&\'1^x[1]@f:(1_)\1_t)@w:&~^x[0]?t:1_z,-1)
+     y:@[y;f 0;?,/;^'[,/'x[2]^'[f 1;-1];-1]]
+     @[y;w;?,/;#[#w:f[0]@&0>*'|'f 1;,y z 0]]}[x]/[z;y]}[(*'rr;ef;fs);rr:nr?x]/fl}
 
 /
 Next ABNF
