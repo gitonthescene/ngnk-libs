@@ -81,6 +81,13 @@ flw:{fl:@[#[nr:?,/x]#,!0;0;:;,-1]; ef:|/'0>fs:fst[x]
      y:@[y;f 0;?,/;^'[,/'x[2]^'[f 1;-1];-1]]
      @[y;w;?,/;#[#w:f[0]@&0>*'|'f 1;,y z 0]]}[x]/[z;y]}[(*'rr;ef;fs);rr:nr?x]/fl}
 
+/ Aho et al (2nd ed.) Algorithm 4.31
+aho431:{(fs;fl):(p.fst;p.flw)@\:x; nr:?,/x; (t;r):&'~:\^*'[x]?nr
+  w:#[t]^t?{e:&\|/'-1=r:x@1_z;,//((*[|1,e])#,y z 0;(0<)#,/r@&1 :':e)}[fs;fl]'nr?x
+  tb:{@[y;x/z 1 2;,;z 0]}[D]/[*/[D:(#r;1+#t)]#,();+(!#x;?[rr]?rr:*'nr?x;w)]
+  tb:1_/:/:D#(," "),/:x@tb
+  $/|1(|/#',/)\" "/''(,,'nr[t],"$"),tb}
+
 /
 Next ABNF
 [[https://web.archive.org/web/20120730085339/http://www.ietf.org/rfc/rfc2234.txt]]
