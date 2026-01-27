@@ -52,6 +52,6 @@ ev:#'/|1(2*-2!#:)'\                        / ev ensures you have a list of even 
 
                                            / After applying fm to open and closed comments and CDATA sequences,
                                            / We want to ensure that comments in CDATA and vice versa are just text
-ss:"(easy)([])[()][peasy]([)[)]"           / Let's simply by making using parens a braces
+ss:"(easy)([])[()][peasy]([)[)]"           / Let's simplify by using parens and braces
                                            / The idea is to think of each as quoting the other
                                            / and we're looking for unquoted characters
