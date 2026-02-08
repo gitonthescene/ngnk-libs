@@ -1,0 +1,70 @@
+* QUICK START
+  - Clone this repository
+  - Install the necessary packages (cairo, sqlite3, lapack, and raylib)
+  - cd into ~+~ and run the following:
+	: $ make -f ../makefile
+
+  This should apply the patches for these extensions (described below),
+  build each of the extensions and then run them each in turn.
+
+  NOTE: that this should work as is on OSX presuming you've installed
+  the necessary packages and fixed up the paths in the makefile
+  accordingly.  Fixing it up to work on other operating systems
+  shouldn't be too hard but is beyond the scope of this project.  This
+  is intended for demonstration purposes.
+
+  Also note that the source under ~+~ was originally in ktye/i but has
+  since been removed.  It's kept exactly as it was for historical
+  purposes.
+  
+* Foreign function interface
+  [[https://codeberg.org/ngn/k][ngn/k]] supports a foreign function interface for using functions
+  written in C from within the interpretter.  There is a basic example
+  of such [[https://codeberg.org/ngn/k/src/branch/master/x][an extension]] in the distributed source code, but it's fairly bare.
+
+  The API was designed to be able to share extensions with [[https://github.com/ktye/i][kyte/i]] by
+  supporting a common header file.  (The file [[https://codeberg.org/ngn/k/src/branch/master/k.h][k.h]] in ngn/k refers to
+  the one in ktye/i.)  There are more extensive examples in ktye/i but
+  some small changes are required to accomodate actual differences in
+  the languages.  For instance, ngn/k requires using ~,:~ to indicate
+  the use of monadic enlist rather than dyadic join whereas ktye is
+  able to disambiguate.
+
+  This project provides a makefile and a couple of diffs to make those
+  extensions compatible with ngn/k.  This is mostly for demonstration
+  purposes and to provide more examples of ngn/k's ffi capabilities.
+
+  Note that I built this for OSX and so dynamic libs are ~.dylib~
+  files.  ~make.diff~ is a diff to ngn/k's makefile to accommodate
+  this.  Also, the reference to the libraries points at dylib files.
+  It shouldn't be hard to adapt this for linux.
+
+  ~ext.diff~ is a diff file to the four extensions in ktye/i that were
+  available at the time of writing.  That is ~sqlite~, ~mat~, ~draw~
+  and ~ray~.  You should sync those directories into this project
+  before running ~make~.  Then you should be able to run all of the
+  ~.k~ files with ngn/k from this directory or any directory after
+  properly setting up ~LD_LIBRARY_PATH~.
+
+  This example uses ngn/k's ~2:~ function to dynamically load
+  extensions into a running instance of the interpretter.  Other
+  approaches are possible including linking the extensions into the
+  executable at build time or using ~LD_PRELOAD~ or some similar
+  mechanism to load them into the interpretter at startup.  This last
+  might require a change to call ~kinit()~ from within the "load"
+  function to insure the interpretter has been properly initialized
+  before loading the extension.
+
+  Finally, just to hammer the point home, the ffi /makes it possible/
+  to use functions written in C from within the interpretter, but it's
+  not free.  You can't load arbitrary C functions.  You need to write
+  a wrapper to allow the interpretter to interact with the various
+  types.  These files serve as examples of such wrappers.
+
+* Notes
+** Limited number of arguments
+   Lambdas in ngn/k take a maximum of eight arguments, foreign
+   functions however are limited to [[https://codeberg.org/ngn/k/src/branch/master/a.c#L52][fewer arguments]].  The ~ext~
+   function switches on the arity of the foreign function and then
+   calls it with the passed arguments.  This could be extended.  You'd
+   need to add more [[https://codeberg.org/ngn/k/src/branch/master/a.h#L68][function types]].
