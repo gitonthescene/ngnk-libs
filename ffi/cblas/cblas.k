@@ -3,7 +3,7 @@ imp.ort[`xml;"xml/xml.k"]
 imp.ort[`tree;"trees/trees.k"]
 todict:!/(`$;::)@'+:
 
-cblas:1:"/Users/douglasmennella/K/ngnk/ngnk-libs/ffi/cblas_new.xml"
+cblas:1:"cblas_new.xml"
 parsed:xml.parse cblas
 
 (nn;pp):|1($!#:)\tree.p parsed 0
@@ -52,6 +52,5 @@ basetyp:,/''[("_"/" "\)''(![!enum;#[#.enum;,"int"]],typemap)@`$*''(~#:')_/:_'[cu
 names:*''(~#:')_/:_'[cuts;@[;`name]'argattrs]
 tdargs:{,/(x;",";y)}''[basetyp;names]
 
-structs:{"STRUCT",(","/x)/"()"}'+(6_/:@[;`name]'todict'@[;`attrs]parsed[1]@*'fargs cb;$#'a;" "/'a:{x,y/"()"}''[{("SCA";"VEC";"MAT")0^("";"INC";"LDA")?3#x}''*''|''(~#:')_/:_'[cuts;@[;`name]'argattrs];tdargs])
+`0:structs:{"STRUCT",(","/x)/"()"}'+(6_/:@[;`name]'todict'@[;`attrs]parsed[1]@*'fargs cb;$#'a;" "/'a:{x,y/"()"}''[{("SCA";"VEC";"MAT")0^("";"INC";"LDA")?3#x}''*''|''(~#:')_/:_'[cuts;@[;`name]'argattrs];tdargs])
 /*''(~#:')_/:_'[cuts;@[;`name]'argattrs]
-`0:fnames
