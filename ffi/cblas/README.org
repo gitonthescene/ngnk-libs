@@ -1,0 +1,19 @@
+* CBLAS
+
+This is an extension for [[https://growler.codeberg.page][growler/k]] to be able to interface with CBLAS,
+the C interface to [[https://www.netlib.org/blas/][BLAS]].
+
+There are many implementations of CBLAS, but this was developed based
+on OSX's [[https://developer.apple.com/documentation/accelerate/blas/][Accelerate]] framework, though the signatures are mostly
+standardized across implementations.  Similarly, changes to the makefile
+to make this work on other OS's should be minimal.
+
+Most of the code was generated using the ~cblas.k~ script in this
+directory.  The ~cblas_new.h~ header was converted to an XML file
+using [[https://github.com/CastXML/CastXML][CastXML]] and the resultant XML file was parsed with a native K
+[[https://github.com/gitonthescene/ngnk-libs/tree/master/xml][XML parser]].  The output of ~cblas.k~ is generated as a list of calls
+to (to be defined) [[https://en.wikipedia.org/wiki/C_preprocessor][cpp]] macros and dumped to a file (~struct.h~).  The
+macros in ~cblas_macros.h~ were used to generate both ~cblas_impl.h~
+and ~cblas_impl.c~.  The former was (mostly) left as is and the latter
+needed to be hand edited to account for the various ways that return
+values are passed back.
