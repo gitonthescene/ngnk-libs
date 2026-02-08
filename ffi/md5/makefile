@@ -1,4 +1,4 @@
-K= # path to k source where you've built libk.dylib
+K=$(HOME)/K/ngnk/growler/k  # path to k source where you've built libk.dylib
 MDINC=/opt/local/include/libmd
 MDLIB=/opt/local/lib
 
@@ -6,4 +6,4 @@ MDLIB=/opt/local/lib
 	DYLD_LIBRARY_PATH=$(K):$(MDLIB) k test.k
 
 libmd5.dylib:md5.c
-	$(CC) -I$(K) -I$(MDINC) -L$(K) -L$(MDLIB) -install_name $@ -dynamiclib -fPIC $^ -o $@ -lk -lmd
+	$(CC) -I$(K) -I$(MDINC) -L$(K) -L$(MDLIB) -install_name $@ -dynamiclib -fPIC $^ -o $@ -lmd -Dshared -undefined dynamic_lookup
