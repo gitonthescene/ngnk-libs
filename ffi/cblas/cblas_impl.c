@@ -293,10 +293,11 @@ K Fcb_dznrm2(K x) {ref(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(srot_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  srot_sig* in = chk_srot_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  K y=(K)in->Y.arr.arr; y=mut(ref(y)); */
-/*  cblas_srot(in->N, (float*)in->X.arr.arr, in->X.inc, (float*)y, in->Y.inc, *(float*)in->C.arr, *(float*)in->S.arr); */
+/*  K a=(K)in->X.arr.arr, b=(K)in->Y.arr.arr; a=mut(ref(a)); b=mut(ref(b)); */
+/*  cblas_srot(in->N, (float*)a, in->X.inc, (float*)b, in->Y.inc, *(float*)in->C.arr, *(float*)in->S.arr); */
 /*  unref(xs); unref(x); */
-/*  return y; */
+/*  K r[2]={a,b}; */
+/*  return KL(r,2); */
 /*  } */
 
 K Fcb_drot(K x) {ref(x);
@@ -304,21 +305,23 @@ K Fcb_drot(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(drot_sig) + 1 ) { unref(xs); unref(x); return 0; }
  drot_sig* in = chk_drot_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- K y=(K)in->Y.arr.arr; y=mut(ref(y));
- cblas_drot(in->N, (double*)in->X.arr.arr, in->X.inc, (double*)y, in->Y.inc, *(double*)in->C.arr, *(double*)in->S.arr);
+ K a=(K)in->X.arr.arr, b=(K)in->Y.arr.arr; a=mut(ref(a)); b=mut(ref(b));
+ cblas_drot(in->N, (double*)a, in->X.inc, (double*)b, in->Y.inc, *(double*)in->C.arr, *(double*)in->S.arr);
  unref(xs); unref(x);
- return y;
+ K r[2]={a,b};
+ return KL(r,2);
  }
 
-/* K Fcb_csrot(K x) {ref(x); */
+/* K Fcsb_csrot(K x) {ref(x); */
 /*  K xs = ser2(Ki(1),x); */
 /*  if( TK(xs)!=9 || NK(xs) != SZ(csrot_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  csrot_sig* in = chk_csrot_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  K y=(K)in->Y.arr.arr; y=mut(ref(y)); */
-/*  cblas_csrot(in->N, (float complex*)in->X.arr.arr, in->X.inc, (float complex*)y, in->Y.inc, *(float*)in->C.arr, *(float*)in->S.arr); */
+/*  K a=(K)in->X.arr.arr, b=(K)in->Y.arr.arr; a=mut(ref(a)); b=mut(ref(b)); */
+/*  cblas_csrot(in->N, (float complex*)a, in->X.inc, (float complex*)b, in->Y.inc, *(float complex*)in->C.arr, *(float complex*)in->S.arr); */
 /*  unref(xs); unref(x); */
-/*  return y; */
+/*  K r[2]={a,b}; */
+/*  return KL(r,2); */
 /*  } */
 
 K Fcb_zdrot(K x) {ref(x);
@@ -326,10 +329,11 @@ K Fcb_zdrot(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(zdrot_sig) + 1 ) { unref(xs); unref(x); return 0; }
  zdrot_sig* in = chk_zdrot_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- K y=(K)in->Y.arr.arr; y=mut(ref(y));
- cblas_zdrot(in->N, (double complex*)in->X.arr.arr, in->X.inc, (double complex*)y, in->Y.inc, *(double*)in->C.arr, *(double*)in->S.arr);
+ K a=(K)in->X.arr.arr, b=(K)in->Y.arr.arr; a=mut(ref(a)); b=mut(ref(b));
+ cblas_zdrot(in->N, (double complex*)a, in->X.inc, (double complex*)b, in->Y.inc, *(double complex*)in->C.arr, *(double complex*)in->S.arr);
  unref(xs); unref(x);
- return y;
+ K r[2]={a,b};
+ return KL(r,2);
  }
 
 /* K Fcb_srotg(K x) {x=mut(x); */
