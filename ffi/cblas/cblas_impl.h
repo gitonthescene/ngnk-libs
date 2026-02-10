@@ -30,10 +30,10 @@ typedef struct __attribute__((packed)) { hdr lst; C typN; L N; cb_stride X; cb_s
 typedef struct __attribute__((packed)) { hdr lst; C typN; L N; cb_stride X; cb_stride Y; arr C; arr S; } drot_sig;
 typedef struct __attribute__((packed)) { hdr lst; C typN; L N; cb_stride X; cb_stride Y; arr C; arr S; } csrot_sig;
 typedef struct __attribute__((packed)) { hdr lst; C typN; L N; cb_stride X; cb_stride Y; arr C; arr S; } zdrot_sig;
-typedef struct __attribute__((packed)) { hdr lst; arr A; arr B; arr C; arr S; } srotg_sig;
-typedef struct __attribute__((packed)) { hdr lst; arr A; arr B; arr C; arr S; } drotg_sig;
-typedef struct __attribute__((packed)) { hdr lst; arr A; arr B; arr C; arr S; } crotg_sig;
-typedef struct __attribute__((packed)) { hdr lst; arr A; arr B; arr C; arr S; } zrotg_sig;
+/* typedef struct __attribute__((packed)) { hdr lst; arr A; arr B; arr C; arr S; } srotg_sig; */
+/* typedef struct __attribute__((packed)) { hdr lst; arr A; arr B; arr C; arr S; } drotg_sig; */
+/* typedef struct __attribute__((packed)) { hdr lst; arr A; arr B; arr C; arr S; } crotg_sig; */
+/* typedef struct __attribute__((packed)) { hdr lst; arr A; arr B; arr C; arr S; } zrotg_sig; */
 typedef struct __attribute__((packed)) { hdr lst; C typN; L N; cb_stride X; cb_stride Y; arr P; } srotm_sig;
 typedef struct __attribute__((packed)) { hdr lst; C typN; L N; cb_stride X; cb_stride Y; arr P; } drotm_sig;
 typedef struct __attribute__((packed)) { hdr lst; arr D1; arr D2; arr B1; arr B2; arr P; } srotmg_sig;
@@ -176,10 +176,10 @@ srot_sig* chk_srot_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; srot_sig* in 
 drot_sig* chk_drot_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; drot_sig* in = (drot_sig*)(x+1); if( in->lst.len != 5 || (in->typN != 13) || (ART(in->X.arr.hdr) != 8) || (in->X.lst.len !=2) || (in->X.typinc != 13) || (ART(in->Y.arr.hdr) != 8) || (in->Y.lst.len !=2) || (in->Y.typinc != 13) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; }
 csrot_sig* chk_csrot_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; csrot_sig* in = (csrot_sig*)(x+1); if( in->lst.len != 5 || (in->typN != 13) || (ART(in->X.arr.hdr) != 8) || (in->X.lst.len !=2) || (in->X.typinc != 13) || (ART(in->Y.arr.hdr) != 8) || (in->Y.lst.len !=2) || (in->Y.typinc != 13) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; }
 zdrot_sig* chk_zdrot_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; zdrot_sig* in = (zdrot_sig*)(x+1); if( in->lst.len != 5 || (in->typN != 13) || (ART(in->X.arr.hdr) != 8) || (in->X.lst.len !=2) || (in->X.typinc != 13) || (ART(in->Y.arr.hdr) != 8) || (in->Y.lst.len !=2) || (in->Y.typinc != 13) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; }
-srotg_sig* chk_srotg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; srotg_sig* in = (srotg_sig*)(x+1); if( in->lst.len != 4 || (ART(in->A.hdr) != 15) || (ART(in->B.hdr) != 15) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; }
-drotg_sig* chk_drotg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; drotg_sig* in = (drotg_sig*)(x+1); if( in->lst.len != 4 || (ART(in->A.hdr) != 15) || (ART(in->B.hdr) != 15) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; }
-crotg_sig* chk_crotg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; crotg_sig* in = (crotg_sig*)(x+1); if( in->lst.len != 4 || (ART(in->A.hdr) != 15) || (ART(in->B.hdr) != 15) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; }
-zrotg_sig* chk_zrotg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; zrotg_sig* in = (zrotg_sig*)(x+1); if( in->lst.len != 4 || (ART(in->A.hdr) != 15) || (ART(in->B.hdr) != 15) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; }
+/* srotg_sig* chk_srotg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; srotg_sig* in = (srotg_sig*)(x+1); if( in->lst.len != 4 || (ART(in->A.hdr) != 15) || (ART(in->B.hdr) != 15) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; } */
+/* drotg_sig* chk_drotg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; drotg_sig* in = (drotg_sig*)(x+1); if( in->lst.len != 4 || (ART(in->A.hdr) != 15) || (ART(in->B.hdr) != 15) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; } */
+/* crotg_sig* chk_crotg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; crotg_sig* in = (crotg_sig*)(x+1); if( in->lst.len != 4 || (ART(in->A.hdr) != 15) || (ART(in->B.hdr) != 15) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; } */
+/* zrotg_sig* chk_zrotg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; zrotg_sig* in = (zrotg_sig*)(x+1); if( in->lst.len != 4 || (ART(in->A.hdr) != 15) || (ART(in->B.hdr) != 15) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; } */
 srotm_sig* chk_srotm_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; srotm_sig* in = (srotm_sig*)(x+1); if( in->lst.len != 4 || (in->typN != 13) || (ART(in->X.arr.hdr) != 8) || (in->X.lst.len !=2) || (in->X.typinc != 13) || (ART(in->Y.arr.hdr) != 8) || (in->Y.lst.len !=2) || (in->Y.typinc != 13) || (ART(in->P.hdr) != 15) || 0) { return 0; }; return in; }
 drotm_sig* chk_drotm_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; drotm_sig* in = (drotm_sig*)(x+1); if( in->lst.len != 4 || (in->typN != 13) || (ART(in->X.arr.hdr) != 8) || (in->X.lst.len !=2) || (in->X.typinc != 13) || (ART(in->Y.arr.hdr) != 8) || (in->Y.lst.len !=2) || (in->Y.typinc != 13) || (ART(in->P.hdr) != 15) || 0) { return 0; }; return in; }
 srotmg_sig* chk_srotmg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; srotmg_sig* in = (srotmg_sig*)(x+1); if( in->lst.len != 5 || (ART(in->D1.hdr) != 15) || (ART(in->D2.hdr) != 15) || (ART(in->B1.hdr) != 15) || (ART(in->B2.hdr) != 15) || (ART(in->P.hdr) != 15) || 0) { return 0; }; return in; }

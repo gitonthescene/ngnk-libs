@@ -26,5 +26,6 @@ void loadcblas(K k) {
   KR("kblas.idamax", (void*)Fcb_idamax, 1);
   KR("kblas.dasum",  (void*)Fcb_dasum,  1);
   KR("kblas.daxpy",  (void*)Fcb_daxpy,  1);
+  KR("kblas.drotg",  (void*)Fcb_drotg,  1);
   KR("kblas.dgemv",  (void*)Fcb_dgemv,  1);
 }

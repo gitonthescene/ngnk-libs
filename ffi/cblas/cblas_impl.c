@@ -332,43 +332,31 @@ K Fcb_zdrot(K x) {ref(x);
  return y;
  }
 
-/* K Fcb_srotg(K x) {ref(x); */
-/*  K xs = ser2(Ki(1),x); */
-/*  if( TK(xs)!=9 || NK(xs) != SZ(srotg_sig) + 1 ) { unref(xs); unref(x); return 0; } */
-/*  srotg_sig* in = chk_srotg_sig((char*)xs); */
-/*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  cblas_srotg((float*)in->A.arr, (float*)in->B.arr, (float*)in->C.arr, (float*)in->S.arr); */
-/*  unref(xs); */
+/* K Fcb_srotg(K x) {x=mut(x); */
+/*  if( TK(x)!=8 || NK(x) != 4 ) { unref(x); return 0; } */
+/*  float* a=(float*)x; */
+/*  cblas_drotg(a+0,a+1,a+2,a+3); */
 /*  return x; */
 /*  } */
 
-K Fcb_drotg(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(drotg_sig) + 1 ) { unref(xs); unref(x); return 0; }
- drotg_sig* in = chk_drotg_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cblas_drotg((double*)in->A.arr, (double*)in->B.arr, (double*)in->C.arr, (double*)in->S.arr);
- unref(xs);
+K Fcb_drotg(K x) {x=mut(x);
+ if( TK(x)!=8 || NK(x) != 4 ) { unref(x); return 0; }
+ F* a=(F*)x;
+ cblas_drotg(a+0,a+1,a+2,a+3);
  return x;
  }
 
-/* K Fcb_crotg(K x) {ref(x); */
-/*  K xs = ser2(Ki(1),x); */
-/*  if( TK(xs)!=9 || NK(xs) != SZ(crotg_sig) + 1 ) { unref(xs); unref(x); return 0; } */
-/*  crotg_sig* in = chk_crotg_sig((char*)xs); */
-/*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  cblas_crotg((float complex*)in->A.arr, (float complex*)in->B.arr, (float*)in->C.arr, (float complex*)in->S.arr); */
-/*  unref(xs); */
+/* K Fcb_crotg(K x) {x=mut(x); */
+/*  if( TK(x)!=8 || NK(x) != 8 ) { unref(x); return 0; } */
+/*  float* a=(float*)x; */
+/*  cblas_drotg(a+0,a+2,a+4,a+6); */
 /*  return x; */
 /*  } */
 
-K Fcb_zrotg(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(zrotg_sig) + 1 ) { unref(xs); unref(x); return 0; }
- zrotg_sig* in = chk_zrotg_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cblas_zrotg((double complex*)in->A.arr, (double complex*)in->B.arr, (double*)in->C.arr, (double complex*)in->S.arr);
- unref(xs);
+K Fcb_zrotg(K x) {x=mut(x);
+ if( TK(x)!=8 || NK(x) != 8 ) { unref(x); return 0; }
+ double* a=(double*)x;
+ cblas_drotg(a+0,a+2,a+4,a+6);
  return x;
  }
 
