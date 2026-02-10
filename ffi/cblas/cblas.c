@@ -26,8 +26,13 @@ void loadcblas(K k) {
   KR("kblas.idamax", (void*)Fcb_idamax, 1);
   KR("kblas.dasum",  (void*)Fcb_dasum,  1);
   KR("kblas.daxpy",  (void*)Fcb_daxpy,  1);
+  KR("kblas.dcopy",  (void*)Fcb_dcopy,  1);
+  KR("kblas.ddot",   (void*)Fcb_ddot,   1);
   KR("kblas.dnrm2",  (void*)Fcb_dnrm2,  1);
+  KR("kblas.dscal",  (void*)Fcb_dscal,  1);
+  KR("kblas.dswap",  (void*)Fcb_dswap,  1);
   KR("kblas.drot",   (void*)Fcb_drot,   1);
   KR("kblas.drotg",  (void*)Fcb_drotg,  1);
+  // Level 2
   KR("kblas.dgemv",  (void*)Fcb_dgemv,  1);
 }

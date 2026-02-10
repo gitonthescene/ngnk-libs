@@ -409,9 +409,10 @@ K Fcb_drotmg(K x) {ref(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(sscal_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  sscal_sig* in = chk_sscal_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  cblas_sscal(in->N, *(float*)in->ALPHA.arr, (float*)in->X.arr.arr, in->X.inc); */
-/*  unref(xs); */
-/*  return x; */
+/*  K y=(K)in->X.arr.arr; y=mut(ref(y)); */
+/*  cblas_sscal(in->N, *(float*)in->ALPHA.arr, (float*)y, in->X.inc); */
+/*  unref(xs); unref(x); */
+/*  return y; */
 /*  } */
 
 K Fcb_dscal(K x) {ref(x);
@@ -419,9 +420,10 @@ K Fcb_dscal(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(dscal_sig) + 1 ) { unref(xs); unref(x); return 0; }
  dscal_sig* in = chk_dscal_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- cblas_dscal(in->N, *(double*)in->ALPHA.arr, (double*)in->X.arr.arr, in->X.inc);
- unref(xs);
- return x;
+ K y=(K)in->X.arr.arr; y=mut(ref(y));
+ cblas_dscal(in->N, *(double*)in->ALPHA.arr, (double*)y, in->X.inc);
+ unref(xs); unref(x);
+ return y;
  }
 
 /* K Fcb_cscal(K x) {ref(x); */
@@ -429,9 +431,10 @@ K Fcb_dscal(K x) {ref(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(cscal_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  cscal_sig* in = chk_cscal_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  cblas_cscal(in->N, (float complex*)in->ALPHA.arr, (float complex*)in->X.arr.arr, in->X.inc); */
-/*  unref(xs); */
-/*  return x; */
+/*  K y=(K)in->X.arr.arr; y=mut(ref(y)); */
+/*  cblas_cscal(in->N, (float complex*)in->ALPHA.arr, (float complex*)y, in->X.inc); */
+/*  unref(xs); unref(x) */
+/*  return y; */
 /*  } */
 
 K Fcb_zscal(K x) {ref(x);
@@ -439,9 +442,10 @@ K Fcb_zscal(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(zscal_sig) + 1 ) { unref(xs); unref(x); return 0; }
  zscal_sig* in = chk_zscal_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- cblas_zscal(in->N, (double complex*)in->ALPHA.arr, (double complex*)in->X.arr.arr, in->X.inc);
- unref(xs);
- return x;
+ K y=(K)in->X.arr.arr; y=mut(ref(y));
+ cblas_zscal(in->N, (double complex*)in->ALPHA.arr, (double complex*)y, in->X.inc);
+ unref(xs); unref(x);
+ return y;
  }
 
 /* K Fcb_csscal(K x) {ref(x); */
@@ -469,9 +473,11 @@ K Fcb_zdscal(K x) {ref(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(sswap_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  sswap_sig* in = chk_sswap_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  cblas_sswap(in->N, (float*)in->X.arr.arr, in->X.inc, (float*)in->Y.arr.arr, in->Y.inc); */
-/*  unref(xs); */
-/*  return x; */
+/*  K a=(K)in->X.arr.arr, b=(K)in->Y.arr.arr; a=mut(ref(a)); b=mut(ref(b)); */
+/*  cblas_sswap(in->N, (float*)a, in->X.inc, (float*)b, in->Y.inc); */
+/*  unref(xs); unref(x); */
+/*  K r[2]={a,b}; */
+/*  return KL(r,2); */
 /*  } */
 
 K Fcb_dswap(K x) {ref(x);
@@ -479,9 +485,11 @@ K Fcb_dswap(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(dswap_sig) + 1 ) { unref(xs); unref(x); return 0; }
  dswap_sig* in = chk_dswap_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- cblas_dswap(in->N, (double*)in->X.arr.arr, in->X.inc, (double*)in->Y.arr.arr, in->Y.inc);
- unref(xs);
- return x;
+ K a=(K)in->X.arr.arr, b=(K)in->Y.arr.arr; a=mut(ref(a)); b=mut(ref(b));
+ cblas_dswap(in->N, (double*)a, in->X.inc, (double*)b, in->Y.inc);
+ unref(xs); unref(x);
+ K r[2]={a,b};
+ return KL(r,2);
  }
 
 /* K Fcb_cswap(K x) {ref(x); */
@@ -489,9 +497,11 @@ K Fcb_dswap(K x) {ref(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(cswap_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  cswap_sig* in = chk_cswap_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  cblas_cswap(in->N, (float complex*)in->X.arr.arr, in->X.inc, (float complex*)in->Y.arr.arr, in->Y.inc); */
-/*  unref(xs); */
-/*  return x; */
+/*  K a=(K)in->X.arr.arr, b=(K)in->Y.arr.arr; a=mut(ref(a)); b=mut(ref(b)); */
+/*  cblas_cswap(in->N, (float complex*)a, in->X.inc, (float complex*)b, in->Y.inc); */
+/*  unref(xs); unref(x); */
+/*  K r[2]={a,b}; */
+/*  return KL(r,2); */
 /*  } */
 
 K Fcb_zswap(K x) {ref(x);
@@ -499,9 +509,11 @@ K Fcb_zswap(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(zswap_sig) + 1 ) { unref(xs); unref(x); return 0; }
  zswap_sig* in = chk_zswap_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- cblas_zswap(in->N, (double complex*)in->X.arr.arr, in->X.inc, (double complex*)in->Y.arr.arr, in->Y.inc);
- unref(xs);
- return x;
+ K a=(K)in->X.arr.arr, b=(K)in->Y.arr.arr; a=mut(ref(a)); b=mut(ref(b));
+ cblas_zswap(in->N, (double complex*)a, in->X.inc, (double complex*)b, in->Y.inc);
+ unref(xs); unref(x);
+ K r[2]={a,b};
+ return KL(r,2);
  }
 
 /* K Fcb_sgemv(K x) {ref(x); */
