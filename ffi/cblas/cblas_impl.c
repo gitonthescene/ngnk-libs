@@ -73,7 +73,8 @@ K Fcb_dzasum(K x) {ref(x);
  dzasum_sig* in = chk_dzasum_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  double r=cblas_dzasum(in->N, (double complex*)in->X.arr.arr, in->X.inc);
- unref(xs); unref(x); return 0;
+ unref(xs); unref(x);
+ return Kf(r);
  }
 
 /* K Fcb_saxpy(K x) {ref(x); */
@@ -189,7 +190,7 @@ K Fcb_ddot(K x) {ref(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(cdotu_sub_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  cdotu_sub_sig* in = chk_cdotu_sub_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  K y=(K)in->DOTU.arr; y=mut(ref(y)); */
+/*  K y=KF(0,2); */
 /*  cblas_cdotu_sub(in->N, (float complex*)in->X.arr.arr, in->X.inc, (float complex*)in->Y.arr.arr, in->Y.inc, (float complex*)y); */
 /*  unref(xs); unref(x); */
 /*  return y; */
@@ -200,7 +201,7 @@ K Fcb_zdotu_sub(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(zdotu_sub_sig) + 1 ) { unref(xs); unref(x); return 0; }
  zdotu_sub_sig* in = chk_zdotu_sub_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- K y=(K)in->DOTU.arr; y=mut(ref(y));
+ K y=KF(0,2);
  cblas_zdotu_sub(in->N, (double complex*)in->X.arr.arr, in->X.inc, (double complex*)in->Y.arr.arr, in->Y.inc, (double complex*)y);
  unref(xs); unref(x);
  return y;
@@ -211,7 +212,7 @@ K Fcb_zdotu_sub(K x) {ref(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(cdotc_sub_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  cdotc_sub_sig* in = chk_cdotc_sub_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  K y=(K)in->DOTC.arr; y=mut(ref(y)); */
+/*  K y=KF(0,2); */
 /*  cblas_cdotc_sub(in->N, (float complex*)in->X.arr.arr, in->X.inc, (float complex*)in->Y.arr.arr, in->Y.inc, (float complex*)y); */
 /*  unref(xs); unref(x); */
 /*  return y; */
@@ -222,7 +223,7 @@ K Fcb_zdotc_sub(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(zdotc_sub_sig) + 1 ) { unref(xs); unref(x); return 0; }
  zdotc_sub_sig* in = chk_zdotc_sub_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- K y=(K)in->DOTC.arr; y=mut(ref(y));
+ K y=KF(0,2);
  cblas_zdotc_sub(in->N, (double complex*)in->X.arr.arr, in->X.inc, (double complex*)in->Y.arr.arr, in->Y.inc, (double complex*)y);
  unref(xs); unref(x);
  return y;
