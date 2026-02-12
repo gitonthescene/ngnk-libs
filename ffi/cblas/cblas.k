@@ -46,7 +46,7 @@ typemap:!/+((`"_160";"int")
     (`"_428";"double")
     (`"_158";"float complex"))
  
-cuts:({-1_(x@)\0}(+/1(!#:)\1+1_~^("LDA";"INC")?3#/:)@)'@[;`name]'argattrs
+cuts:({-1_(x@)\0}(+/1(!#:)\1+1_~^("LD";"IN")?2#/:3#/:)@)'@[;`name]'argattrs
 ptrs:("";"P")@|/''"p"=(*|)''(~#:')_/:_'[cuts;qualifiers]
 basetyp:,/''[("_"/" "\)''(![!enum;#[#.enum;,"int"]],typemap)@`$*''(~#:')_/:_'[cuts;argbase];ptrs]
 names:*''(~#:')_/:_'[cuts;@[;`name]'argattrs]
