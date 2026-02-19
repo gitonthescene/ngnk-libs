@@ -36,8 +36,8 @@ typedef struct __attribute__((packed)) { hdr lst; C typN; L N; cb_stride X; cb_s
 /* typedef struct __attribute__((packed)) { hdr lst; arr A; arr B; arr C; arr S; } zrotg_sig; */
 typedef struct __attribute__((packed)) { hdr lst; C typN; L N; cb_stride X; cb_stride Y; arr P; } srotm_sig;
 typedef struct __attribute__((packed)) { hdr lst; C typN; L N; cb_stride X; cb_stride Y; arr P; } drotm_sig;
-typedef struct __attribute__((packed)) { hdr lst; arr D1; arr D2; arr B1; arr B2; arr P; } srotmg_sig;
-typedef struct __attribute__((packed)) { hdr lst; arr D1; arr D2; arr B1; arr B2; arr P; } drotmg_sig;
+/* typedef struct __attribute__((packed)) { hdr lst; arr D1; arr D2; arr B1; arr B2; arr P; } srotmg_sig; */
+/* typedef struct __attribute__((packed)) { hdr lst; arr D1; arr D2; arr B1; arr B2; arr P; } drotmg_sig; */
 typedef struct __attribute__((packed)) { hdr lst; C typN; L N; arr ALPHA; cb_stride X; } sscal_sig;
 typedef struct __attribute__((packed)) { hdr lst; C typN; L N; arr ALPHA; cb_stride X; } dscal_sig;
 typedef struct __attribute__((packed)) { hdr lst; C typN; L N; arr ALPHA; cb_stride X; } cscal_sig;
@@ -182,8 +182,8 @@ zdrot_sig* chk_zdrot_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; zdrot_sig* 
 /* zrotg_sig* chk_zrotg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; zrotg_sig* in = (zrotg_sig*)(x+1); if( in->lst.len != 4 || (ART(in->A.hdr) != 15) || (ART(in->B.hdr) != 15) || (ART(in->C.hdr) != 15) || (ART(in->S.hdr) != 15) || 0) { return 0; }; return in; } */
 srotm_sig* chk_srotm_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; srotm_sig* in = (srotm_sig*)(x+1); if( in->lst.len != 4 || (in->typN != 13) || (ART(in->X.arr.hdr) != 8) || (in->X.lst.len !=2) || (in->X.typinc != 13) || (ART(in->Y.arr.hdr) != 8) || (in->Y.lst.len !=2) || (in->Y.typinc != 13) || (ART(in->P.hdr) != 15) || 0) { return 0; }; return in; }
 drotm_sig* chk_drotm_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; drotm_sig* in = (drotm_sig*)(x+1); if( in->lst.len != 4 || (in->typN != 13) || (ART(in->X.arr.hdr) != 8) || (in->X.lst.len !=2) || (in->X.typinc != 13) || (ART(in->Y.arr.hdr) != 8) || (in->Y.lst.len !=2) || (in->Y.typinc != 13) || (ART(in->P.hdr) != 15) || 0) { return 0; }; return in; }
-srotmg_sig* chk_srotmg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; srotmg_sig* in = (srotmg_sig*)(x+1); if( in->lst.len != 5 || (ART(in->D1.hdr) != 15) || (ART(in->D2.hdr) != 15) || (ART(in->B1.hdr) != 15) || (ART(in->B2.hdr) != 15) || (ART(in->P.hdr) != 15) || 0) { return 0; }; return in; }
-drotmg_sig* chk_drotmg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; drotmg_sig* in = (drotmg_sig*)(x+1); if( in->lst.len != 5 || (ART(in->D1.hdr) != 15) || (ART(in->D2.hdr) != 15) || (ART(in->B1.hdr) != 15) || (ART(in->B2.hdr) != 15) || (ART(in->P.hdr) != 15) || 0) { return 0; }; return in; }
+/* srotmg_sig* chk_srotmg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; srotmg_sig* in = (srotmg_sig*)(x+1); if( in->lst.len != 5 || (ART(in->D1.hdr) != 15) || (ART(in->D2.hdr) != 15) || (ART(in->B1.hdr) != 15) || (ART(in->B2.hdr) != 15) || (ART(in->P.hdr) != 15) || 0) { return 0; }; return in; } */
+/* drotmg_sig* chk_drotmg_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; drotmg_sig* in = (drotmg_sig*)(x+1); if( in->lst.len != 5 || (ART(in->D1.hdr) != 15) || (ART(in->D2.hdr) != 15) || (ART(in->B1.hdr) != 15) || (ART(in->B2.hdr) != 15) || (ART(in->P.hdr) != 15) || 0) { return 0; }; return in; } */
 sscal_sig* chk_sscal_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; sscal_sig* in = (sscal_sig*)(x+1); if( in->lst.len != 3 || (in->typN != 13) || (ART(in->ALPHA.hdr) != 15) || (ART(in->X.arr.hdr) != 8) || (in->X.lst.len !=2) || (in->X.typinc != 13) || 0) { return 0; }; return in; }
 dscal_sig* chk_dscal_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; dscal_sig* in = (dscal_sig*)(x+1); if( in->lst.len != 3 || (in->typN != 13) || (ART(in->ALPHA.hdr) != 15) || (ART(in->X.arr.hdr) != 8) || (in->X.lst.len !=2) || (in->X.typinc != 13) || 0) { return 0; }; return in; }
 cscal_sig* chk_cscal_sig(S x){ if (x[0] != 1 || x[1] != 1) return 0; cscal_sig* in = (cscal_sig*)(x+1); if( in->lst.len != 3 || (in->typN != 13) || (ART(in->ALPHA.hdr) != 15) || (ART(in->X.arr.hdr) != 8) || (in->X.lst.len !=2) || (in->X.typinc != 13) || 0) { return 0; }; return in; }

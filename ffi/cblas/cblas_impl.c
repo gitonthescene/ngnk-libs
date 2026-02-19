@@ -370,9 +370,10 @@ K Fcb_zrotg(K x) {x=mut(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(srotm_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  srotm_sig* in = chk_srotm_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  cblas_srotm(in->N, (float*)in->X.arr.arr, in->X.inc, (float*)in->Y.arr.arr, in->Y.inc, (float*)in->P.arr); */
-/*  unref(xs); */
-/*  return x; */
+/*  K a[2]={mut((K)in->X.arr.arr), mut((K)in->Y.arr.arr)}; */
+/*  cblas_srotm(in->N, (float*)a[0], in->X.inc, (float*)a[1], in->Y.inc, (float*)in->P.arr); */
+/*  unref(xs);unref(x); */
+/*  return KL(a,2); */
 /*  } */
 
 K Fcb_drotm(K x) {ref(x);
@@ -380,29 +381,27 @@ K Fcb_drotm(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(drotm_sig) + 1 ) { unref(xs); unref(x); return 0; }
  drotm_sig* in = chk_drotm_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- cblas_drotm(in->N, (double*)in->X.arr.arr, in->X.inc, (double*)in->Y.arr.arr, in->Y.inc, (double*)in->P.arr);
- unref(xs);
- return x;
+ K a[2]={mut((K)in->X.arr.arr), mut((K)in->Y.arr.arr)};
+ cblas_drotm(in->N, (double*)a[0], in->X.inc, (double*)a[1], in->Y.inc, (double*)in->P.arr);
+ unref(xs);unref(x);
+ return KL(a,2);
  }
 
-/* K Fcb_srotmg(K x) {ref(x); */
-/*  K xs = ser2(Ki(1),x); */
-/*  if( TK(xs)!=9 || NK(xs) != SZ(srotmg_sig) + 1 ) { unref(xs); unref(x); return 0; } */
-/*  srotmg_sig* in = chk_srotmg_sig((char*)xs); */
-/*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  cblas_srotmg((float*)in->D1.arr, (float*)in->D2.arr, (float*)in->B1.arr, *(float*)in->B2.arr, (float*)in->P.arr); */
-/*  unref(xs); */
-/*  return x; */
+K drp(L,K);
+/* K Fcb_srotmg(K x) {x=mut(x); */
+/*  if( TK(x)!=8 || NK(x) != 4 ) { unref(x); return 0; } */
+/*  K p = KF(0,5); float* a=(float*)x; */
+/*  cblas_drotmg(a, a+1, a+2, a[3], (float*)p); */
+/*  K r[2]={drp(-1,x),p}; */
+/*  return KL(r,2); */
 /*  } */
 
-K Fcb_drotmg(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(drotmg_sig) + 1 ) { unref(xs); unref(x); return 0; }
- drotmg_sig* in = chk_drotmg_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cblas_drotmg((double*)in->D1.arr, (double*)in->D2.arr, (double*)in->B1.arr, *(double*)in->B2.arr, (double*)in->P.arr);
- unref(xs);
- return x;
+K Fcb_drotmg(K x) {x=mut(x);
+ if( TK(x)!=8 || NK(x) != 4 ) { unref(x); return 0; }
+ K p = KF(0,5); double* a=(double*)x;
+ cblas_drotmg(a, a+1, a+2, a[3], (double*)p);
+ K r[2]={drp(-1,x),p};
+ return KL(r,2);
  }
 
 /* K Fcb_sscal(K x) {ref(x); */
