@@ -5,7 +5,7 @@
 
 K ser2(K x,K y);
 K mut(K x);
-typedef long long L;
+typedef long long L;typedef unsigned int U;
 
 typedef struct __attribute__((packed)) { char type; uint32_t len; } hdr;
 typedef struct __attribute__((packed)) { hdr hdr; void* arr; } arr;
