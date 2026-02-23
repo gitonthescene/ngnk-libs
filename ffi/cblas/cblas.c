@@ -49,4 +49,16 @@ void loadcblas(K k) {
   // Level 2
   KR("kblas.dgemv",     (void*)Fcb_dgemv,     1);
   KR("kblas.zgemv",     (void*)Fcb_zgemv,     1);
+  KR("kblas.dgbmv",     (void*)Fcb_dgbmv,     1);
+  KR("kblas.zgbmv",     (void*)Fcb_zgbmv,     1);
+  KR("kblas.dger",      (void*)Fcb_dger,      1);
+  KR("kblas.zgeru",     (void*)Fcb_zgeru,     1);
+  KR("kblas.zgerc",     (void*)Fcb_zgerc,     1);
+  KR("kblas.zhbmv",     (void*)Fcb_zhbmv,     1);
+  KR("kblas.zhemv",     (void*)Fcb_zhemv,     1);
+  KR("kblas.zher",      (void*)Fcb_zher,      1);
+  KR("kblas.zher2",     (void*)Fcb_zher2,     1);
+  KR("kblas.zhpmv",     (void*)Fcb_zhpmv,     1);
+  KR("kblas.zhpr",      (void*)Fcb_zhpr,      1);
+  KR("kblas.zhpr2",     (void*)Fcb_zhpr2,     1);
 }
