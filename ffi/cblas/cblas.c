@@ -80,4 +80,7 @@ void loadcblas(K k) {
   KR("kblas.ztrmv",     (void*)Fcb_ztrmv,     1);
   KR("kblas.dtrsv",     (void*)Fcb_dtrsv,     1);
   KR("kblas.ztrsv",     (void*)Fcb_ztrsv,     1);
+  // Level 3
+  KR("kblas.dgemm",     (void*)Fcb_dgemm,     1);
+  KR("kblas.zgemm",     (void*)Fcb_zgemm,     1);
 }
