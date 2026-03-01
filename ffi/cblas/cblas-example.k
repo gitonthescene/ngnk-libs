@@ -145,6 +145,7 @@ YZ:(,/,'/*'(Y;Yi);1)
 az:1.0 0
 bz:1.0 0
 
+Oprint "bz = ",Ovec[," ";2;bz],"(1);"
 Oprint "AZ = ",Omat["; ";2;,/'AZ 0],";"
 Oprint "XZ = ",Ovec["; ";2;XZ 0],";"
 Oprint "YZ = ",Ovec["; ";2;YZ 0],";"
