@@ -443,7 +443,7 @@ j:(ROWMAJOR;UPPER;CONJXPOS;N;sA 0;a;flat AZ;b;flat H)
 Kprint (`zherk;r:kblas.zherk[j])
 shw'(0N;N)#/:+0N 2#r;
 
-sC:sA
+sC:2#sA 1
 C:(1.0*mkmtx[10;sC];sC 1)
 Ci:(1.0*mkmtx[10;sC];sC 1)
 CZ:(,''/*'(C;Ci);sC 1)
@@ -455,7 +455,7 @@ Oprint "CZ = C+i*Ci;"
 Oprint "r = a*AZ'*CZ;"
 Oprint "RZ = r + r' + bz*H"
 
-i:(ROWMAJOR;UPPER;CONJXPOS;N;sC 1;az;flat AZ;flat CZ;bz;flat H)
+i:(ROWMAJOR;UPPER;CONJXPOS;N;sA 0;az;flat AZ;flat CZ;bz;flat H)
 Kprint (`zher2k;r:kblas.zher2k[i])
 shw'(0N;N)#/:+0N 2#r;
 
