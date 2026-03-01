@@ -1,5 +1,7 @@
 #define chkveclen(n,v,f) if((U)(v).inc * f * (U)n > NK((K)(v).arr.arr)) {return 0;}
-#define chkmtxlen(m,n,a,o,f) {U k=((U)o==CblasRowMajor)?m:n; if(f * k * (U)(a).lda > NK((K)(a).arr.arr)) {return 0;}}
+#define chkmtxlen(m,n,a,o,f) {U k=o?m:n; if(f * k * (U)(a).lda > NK((K)(a).arr.arr)) {return 0;}}
+#define chko (U)in->ORDER == CblasRowMajor
+#define chkox(a) ((U)in->ORDER == CblasRowMajor) ^ ((U)in->a == CblasRowMajor)
 // LEVEL 1
 #include "cblas_impl.h"
 /* K Fcb_isamax(K x) {ref(x); */
@@ -570,7 +572,7 @@ K Fcb_zswap(K x) {ref(x);
 /*  sgemv_sig* in = chk_sgemv_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,1);chkveclen(in->M, in->Y,1); */
-/*  chkmtxlen(in->M,in->N,in->A,in->ORDER,1) */
+/*  chkmtxlen(in->M,in->N,in->A,chko,1) */
 /*  K y=(K)in->Y.arr.arr; y=mut(ref(y)); */
 /*  cblas_sgemv(in->ORDER, in->TRANSA, in->M, in->N, *(float*)in->ALPHA.arr, (float*)in->A.arr.arr, in->A.lda, (float*)in->X.arr.arr, in->X.inc, *(float*)in->BETA.arr, (float*)y, in->Y.inc); */
 /*  unref(xs); unref(x); */
@@ -583,7 +585,7 @@ K Fcb_dgemv(K x) {ref(x);
  dgemv_sig* in = chk_dgemv_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,1);chkveclen(in->M, in->Y,1);
- chkmtxlen(in->M,in->N,in->A,in->ORDER,1)
+ chkmtxlen(in->M,in->N,in->A,chko,1)
  K y=(K)in->Y.arr.arr; y=mut(ref(y));
  cblas_dgemv(in->ORDER, in->TRANSA, in->M, in->N, *(double*)in->ALPHA.arr, (double*)in->A.arr.arr, in->A.lda, (double*)in->X.arr.arr, in->X.inc, *(double*)in->BETA.arr, (double*)y, in->Y.inc);
  unref(xs); unref(x);
@@ -596,7 +598,7 @@ K Fcb_dgemv(K x) {ref(x);
 /*  cgemv_sig* in = chk_cgemv_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,2);chkveclen(in->M, in->Y,2); */
-/*  chkmtxlen(in->M,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->M,in->N,in->A,chko,2) */
 /*  K y=(K)in->Y.arr.arr; y=mut(ref(y)); */
 /*  cblas_cgemv(in->ORDER, in->TRANSA, in->M, in->N, (float complex*)in->ALPHA.arr, (float complex*)in->A.arr.arr, in->A.lda, (float complex*)in->X.arr.arr, in->X.inc, (float complex*)in->BETA.arr, (float complex*)y, in->Y.inc); */
 /*  unref(xs); unref(x); */
@@ -609,7 +611,7 @@ K Fcb_zgemv(K x) {ref(x);
  zgemv_sig* in = chk_zgemv_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,2);chkveclen(in->M, in->Y,2);
- chkmtxlen(in->M,in->N,in->A,in->ORDER,2)
+ chkmtxlen(in->M,in->N,in->A,chko,2)
  K y=(K)in->Y.arr.arr; y=mut(ref(y));
  cblas_zgemv(in->ORDER, in->TRANSA, in->M, in->N, (double complex*)in->ALPHA.arr, (double complex*)in->A.arr.arr, in->A.lda, (double complex*)in->X.arr.arr, in->X.inc, (double complex*)in->BETA.arr, (double complex*)y, in->Y.inc);
  unref(xs); unref(x);
@@ -622,7 +624,7 @@ K Fcb_zgemv(K x) {ref(x);
 /*  sgbmv_sig* in = chk_sgbmv_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,1);chkveclen(in->M, in->Y,1); */
-/*  chkmtxlen(in->M,in->N,in->A,in->ORDER,1) */
+/*  chkmtxlen(in->M,in->N,in->A,chko,1) */
 /*  K y=(K)in->Y.arr.arr; y=mut(ref(y)); */
 /*  cblas_sgbmv(in->ORDER, in->TRANSA, in->M, in->N, in->KL, in->KU, *(float*)in->ALPHA.arr, (float*)in->A.arr.arr, in->A.lda, (float*)in->X.arr.arr, in->X.inc, *(float*)in->BETA.arr, (float*)y, in->Y.inc); */
 /*  unref(xs); unref(x); */
@@ -635,7 +637,7 @@ K Fcb_dgbmv(K x) {ref(x);
  dgbmv_sig* in = chk_dgbmv_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,1);chkveclen(in->M, in->Y,1);
- chkmtxlen(in->M,in->N,in->A,in->ORDER,1)
+ chkmtxlen(in->M,in->N,in->A,chko,1)
  K y=(K)in->Y.arr.arr; y=mut(ref(y));
  cblas_dgbmv(in->ORDER, in->TRANSA, in->M, in->N, in->KL, in->KU, *(double*)in->ALPHA.arr, (double*)in->A.arr.arr, in->A.lda, (double*)in->X.arr.arr, in->X.inc, *(double*)in->BETA.arr, (double*)y, in->Y.inc);
  unref(xs); unref(x);
@@ -648,7 +650,7 @@ K Fcb_dgbmv(K x) {ref(x);
 /*  cgbmv_sig* in = chk_cgbmv_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,2);chkveclen(in->M, in->Y,2); */
-/*  chkmtxlen(in->M,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->M,in->N,in->A,chko,2) */
 /*  K y=(K)in->Y.arr.arr; y=mut(ref(y)); */
 /*  cblas_cgbmv(in->ORDER, in->TRANSA, in->M, in->N, in->KL, in->KU, (float complex*)in->ALPHA.arr, (float complex*)in->A.arr.arr, in->A.lda, (float complex*)in->X.arr.arr, in->X.inc, (float complex*)in->BETA.arr, (float complex*)y, in->Y.inc); */
 /*  unref(xs); unref(x); */
@@ -661,7 +663,7 @@ K Fcb_zgbmv(K x) {ref(x);
  zgbmv_sig* in = chk_zgbmv_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,2);chkveclen(in->M, in->Y,2);
- chkmtxlen(in->M,in->N,in->A,in->ORDER,2)
+ chkmtxlen(in->M,in->N,in->A,chko,2)
  K y=(K)in->Y.arr.arr; y=mut(ref(y));
  cblas_zgbmv(in->ORDER, in->TRANSA, in->M, in->N, in->KL, in->KU, (double complex*)in->ALPHA.arr, (double complex*)in->A.arr.arr, in->A.lda, (double complex*)in->X.arr.arr, in->X.inc, (double complex*)in->BETA.arr, (double complex*)y, in->Y.inc);
  unref(xs); unref(x);
@@ -674,7 +676,7 @@ K Fcb_zgbmv(K x) {ref(x);
 /*  sger_sig* in = chk_sger_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->M, in->X,1);chkveclen(in->N, in->Y,1); */
-/*  chkmtxlen(in->M,in->N,in->A,in->ORDER,1) */
+/*  chkmtxlen(in->M,in->N,in->A,chko,1) */
 /*  K y=(K)in->A.arr.arr; y=mut(ref(y)); */
 /*  cblas_sger(in->ORDER, in->M, in->N, *(float*)in->ALPHA.arr, (float*)in->X.arr.arr, in->X.inc, (float*)in->Y.arr.arr, in->Y.inc, (float*)y, in->A.lda); */
 /*  unref(xs); unref(x); */
@@ -687,7 +689,7 @@ K Fcb_dger(K x) {ref(x);
  dger_sig* in = chk_dger_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->M, in->X,1);chkveclen(in->N, in->Y,1);
- chkmtxlen(in->M,in->N,in->A,in->ORDER,1)
+ chkmtxlen(in->M,in->N,in->A,chko,1)
  K y=(K)in->A.arr.arr; y=mut(ref(y));
  cblas_dger(in->ORDER, in->M, in->N, *(double*)in->ALPHA.arr, (double*)in->X.arr.arr, in->X.inc, (double*)in->Y.arr.arr, in->Y.inc, (double*)y, in->A.lda);
  unref(xs); unref(x);
@@ -700,7 +702,7 @@ K Fcb_dger(K x) {ref(x);
 /*  cgerc_sig* in = chk_cgerc_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->M, in->X,2);chkveclen(in->N, in->Y,2); */
-/*  chkmtxlen(in->M,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->M,in->N,in->A,chko,2) */
 /*  K y=(K)in->A.arr.arr; y=mut(ref(y)); */
 /*  cblas_cgerc(in->ORDER, in->M, in->N, (float complex*)in->ALPHA.arr, (float complex*)in->X.arr.arr, in->X.inc, (float complex*)in->Y.arr.arr, in->Y.inc, (float complex*)in->y, in->A.lda); */
 /*  unref(xs); unref(x); */
@@ -713,7 +715,7 @@ K Fcb_zgerc(K x) {ref(x);
  zgerc_sig* in = chk_zgerc_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->M, in->X,2);chkveclen(in->N, in->Y,2);
- chkmtxlen(in->M,in->N,in->A,in->ORDER,1)
+ chkmtxlen(in->M,in->N,in->A,chko,1)
  K y=(K)in->A.arr.arr; y=mut(ref(y));
  cblas_zgerc(in->ORDER, in->M, in->N, (double complex*)in->ALPHA.arr, (double complex*)in->X.arr.arr, in->X.inc, (double complex*)in->Y.arr.arr, in->Y.inc, (double complex*)y, in->A.lda);
  unref(xs); unref(x);
@@ -726,7 +728,7 @@ K Fcb_zgerc(K x) {ref(x);
 /*  cgeru_sig* in = chk_cgeru_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->M, in->X,2);chkveclen(in->N, in->Y,2); */
-/*  chkmtxlen(in->M,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->M,in->N,in->A,chko,2) */
 /*  K y=(K)in->A.arr.arr; y=mut(ref(y)); */
 /*  cblas_cgeru(in->ORDER, in->M, in->N, (float complex*)in->ALPHA.arr, (float complex*)in->X.arr.arr, in->X.inc, (float complex*)in->Y.arr.arr, in->Y.inc, (float complex*)y, in->A.lda); */
 /*  unref(xs); unref(x); */
@@ -739,7 +741,7 @@ K Fcb_zgeru(K x) {ref(x);
  zgeru_sig* in = chk_zgeru_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->M, in->X,2);chkveclen(in->N, in->Y,2);
- chkmtxlen(in->M,in->N,in->A,in->ORDER,2)
+ chkmtxlen(in->M,in->N,in->A,chko,2)
  K y=(K)in->A.arr.arr; y=mut(ref(y));
  cblas_zgeru(in->ORDER, in->M, in->N, (double complex*)in->ALPHA.arr, (double complex*)in->X.arr.arr, in->X.inc, (double complex*)in->Y.arr.arr, in->Y.inc, (double complex*)y, in->A.lda);
  unref(xs); unref(x);
@@ -778,7 +780,7 @@ K Fcb_zhbmv(K x) {ref(x);
 /*  chemv_sig* in = chk_chemv_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,2);chkveclen(in->M, in->Y,2); */
-/*  chkmtxlen(in->N,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->N,in->N,in->A,chko,2) */
 /*  K y=(K)in->Y.arr.arr; y=mut(ref(y)); */
 /*  cblas_chemv(in->ORDER, in->UPLO, in->N, (float complex*)in->ALPHA.arr, (float complex*)in->A.arr.arr, in->A.lda, (float complex*)in->X.arr.arr, in->X.inc, (float complex*)in->BETA.arr, (float complex*)y, in->Y.inc); */
 /*  unref(xs); unref(x); */
@@ -791,7 +793,7 @@ K Fcb_zhemv(K x) {ref(x);
  zhemv_sig* in = chk_zhemv_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,2);chkveclen(in->N, in->Y,2);
- chkmtxlen(in->N,in->N,in->A,in->ORDER,2)
+ chkmtxlen(in->N,in->N,in->A,chko,2)
  K y=(K)in->Y.arr.arr; y=mut(ref(y));
  cblas_zhemv(in->ORDER, in->UPLO, in->N, (double complex*)in->ALPHA.arr, (double complex*)in->A.arr.arr, in->A.lda, (double complex*)in->X.arr.arr, in->X.inc, (double complex*)in->BETA.arr, (double complex*)y, in->Y.inc);
  unref(xs); unref(x);
@@ -804,7 +806,7 @@ K Fcb_zhemv(K x) {ref(x);
 /*  cher_sig* in = chk_cher_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,2); */
-/*  chkmtxlen(in->N,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->N,in->N,in->A,chko,2) */
 /*  K y=(K)in->A.arr.arr; y=mut(ref(y)); */
 /*  cblas_cher(in->ORDER, in->UPLO, in->N, *(float*)in->ALPHA.arr, (float complex*)in->X.arr.arr, in->X.inc, (float complex*)y, in->A.lda); */
 /*  unref(xs); unref(x); */
@@ -817,7 +819,7 @@ K Fcb_zher(K x) {ref(x);
  zher_sig* in = chk_zher_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,2);
- chkmtxlen(in->N,in->N,in->A,in->ORDER,2)
+ chkmtxlen(in->N,in->N,in->A,chko,2)
  K y=(K)in->A.arr.arr; y=mut(ref(y));
  cblas_zher(in->ORDER, in->UPLO, in->N, *(double*)in->ALPHA.arr, (double complex*)in->X.arr.arr, in->X.inc, (double complex*)y, in->A.lda);
  unref(xs); unref(x);
@@ -829,7 +831,7 @@ K Fcb_zher(K x) {ref(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(cher2_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  cher2_sig* in = chk_cher2_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  chkmtxlen(in->M,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->M,in->N,in->A,chko,2) */
 /*  chkveclen(in->N, in->X,2);chkveclen(in->N, in->Y,2); */
 /*  K y=(K)in->Y.arr.arr; y=mut(ref(y)); */
 /*  cblas_cher2(in->ORDER, in->UPLO, in->N, (float complex*)in->ALPHA.arr, (float complex*)in->X.arr.arr, in->X.inc, (float complex*)y, in->Y.inc, (float complex*)in->A.arr.arr, in->A.lda); */
@@ -843,7 +845,7 @@ K Fcb_zher2(K x) {ref(x);
  zher2_sig* in = chk_zher2_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,2);chkveclen(in->N, in->Y,2);
- chkmtxlen(in->N,in->N,in->A,in->ORDER,2)
+ chkmtxlen(in->N,in->N,in->A,chko,2)
  K y=(K)in->A.arr.arr; y=mut(ref(y));
  cblas_zher2(in->ORDER, in->UPLO, in->N, (double complex*)in->ALPHA.arr, (double complex*)in->X.arr.arr, in->X.inc, (double complex*)in->Y.arr.arr, in->Y.inc, (double complex*)y, in->A.lda);
  unref(xs); unref(x);
@@ -1026,7 +1028,7 @@ K Fcb_dspr2(K x) {ref(x);
 /*  ssymv_sig* in = chk_ssymv_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,1);chkveclen(in->N, in->Y,1); */
-/*  chkmtxlen(in->N,in->N,in->A,in->ORDER,1) */
+/*  chkmtxlen(in->N,in->N,in->A,chko,1) */
 /*  K y=(K)in->Y.arr.arr; y=mut(ref(y)); */
 /*  cblas_ssymv(in->ORDER, in->UPLO, in->N, *(float*)in->ALPHA.arr, (float*)in->A.arr.arr, in->A.lda, (float*)in->X.arr.arr, in->X.inc, *(float*)in->BETA.arr, (float*)y, in->Y.inc); */
 /*  unref(xs); unref(x); */
@@ -1039,7 +1041,7 @@ K Fcb_dsymv(K x) {ref(x);
  dsymv_sig* in = chk_dsymv_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,1);chkveclen(in->N, in->Y,1);
- chkmtxlen(in->N,in->N,in->A,in->ORDER,1)
+ chkmtxlen(in->N,in->N,in->A,chko,1)
  K y=(K)in->Y.arr.arr; y=mut(ref(y));
  cblas_dsymv(in->ORDER, in->UPLO, in->N, *(double*)in->ALPHA.arr, (double*)in->A.arr.arr, in->A.lda, (double*)in->X.arr.arr, in->X.inc, *(double*)in->BETA.arr, (double*)y, in->Y.inc);
  unref(xs); unref(x);
@@ -1052,7 +1054,7 @@ K Fcb_dsymv(K x) {ref(x);
 /*  ssyr_sig* in = chk_ssyr_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,1); */
-/*  chkmtxlen(in->N,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->N,in->N,in->A,chko,2) */
 /*  K y=(K)in->A.arr.arr; y=mut(ref(y)); */
 /*  cblas_ssyr(in->ORDER, in->UPLO, in->N, *(float*)in->ALPHA.arr, (float*)in->X.arr.arr, in->X.inc, (float*)y, in->A.lda); */
 /*  unref(xs); unref(x); */
@@ -1065,7 +1067,7 @@ K Fcb_dsyr(K x) {ref(x);
  dsyr_sig* in = chk_dsyr_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,1);
- chkmtxlen(in->N,in->N,in->A,in->ORDER,1)
+ chkmtxlen(in->N,in->N,in->A,chko,1)
  K y=(K)in->A.arr.arr; y=mut(ref(y));
  cblas_dsyr(in->ORDER, in->UPLO, in->N, *(double*)in->ALPHA.arr, (double*)in->X.arr.arr, in->X.inc, (double*)y, in->A.lda);
  unref(xs); unref(x);
@@ -1077,7 +1079,7 @@ K Fcb_dsyr(K x) {ref(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(ssyr2_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  ssyr2_sig* in = chk_ssyr2_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
-/*  chkmtxlen(in->N,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->N,in->N,in->A,chko,2) */
 /*  chkveclen(in->N, in->X,1);chkveclen(in->N, in->Y,1); */
 /*  K y=(K)in->A.arr.arr; y=mut(ref(y)); */
 /*  cblas_ssyr2(in->ORDER, in->UPLO, in->N, *(float*)in->ALPHA.arr, (float*)in->X.arr.arr, in->X.inc, (float*)in->Y.arr.arr, in->Y.inc, (float*)y, in->A.lda); */
@@ -1091,7 +1093,7 @@ K Fcb_dsyr2(K x) {ref(x);
  dsyr2_sig* in = chk_dsyr2_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,1);chkveclen(in->N, in->Y,1);
- chkmtxlen(in->N,in->N,in->A,in->ORDER,1)
+ chkmtxlen(in->N,in->N,in->A,chko,1)
  K y=(K)in->A.arr.arr; y=mut(ref(y));
  cblas_dsyr2(in->ORDER, in->UPLO, in->N, *(double*)in->ALPHA.arr, (double*)in->X.arr.arr, in->X.inc, (double*)in->Y.arr.arr, in->Y.inc, (double*)y, in->A.lda);
  unref(xs); unref(x);
@@ -1130,7 +1132,7 @@ K Fcb_dtbmv(K x) {ref(x);
 /*  ctbmv_sig* in = chk_ctbmv_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,2); */
-/*  chkmtxlen(in->N,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->N,in->N,in->A,chko,2) */
 /*  K y=(K)in->X.arr.arr; y=mut(ref(y)); */
 /*  cblas_ctbmv(in->ORDER, in->UPLO, in->TRANSA, in->DIAG, in->N, in->K, (float complex*)in->A.arr.arr, in->A.lda, (float complex*)y, in->X.inc); */
 /*  unref(xs); unref(x); */
@@ -1304,7 +1306,7 @@ K Fcb_ztpsv(K x) {ref(x);
 /*  strmv_sig* in = chk_strmv_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,1); */
-/*  chkmtxlen(in->N,in->N,in->A,in->ORDER,1) */
+/*  chkmtxlen(in->N,in->N,in->A,chko,1) */
 /*  K y=(K)in->X.arr.arr; y=mut(ref(y)); */
 /*  cblas_strmv(in->ORDER, in->UPLO, in->TRANSA, in->DIAG, in->N, (float*)in->A.arr.arr, in->A.lda, (float*)y, in->X.inc); */
 /*  unref(xs); unref(x); */
@@ -1317,7 +1319,7 @@ K Fcb_dtrmv(K x) {ref(x);
  dtrmv_sig* in = chk_dtrmv_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,1);
- chkmtxlen(in->N,in->N,in->A,in->ORDER,1)
+ chkmtxlen(in->N,in->N,in->A,chko,1)
  K y=(K)in->X.arr.arr; y=mut(ref(y));
  cblas_dtrmv(in->ORDER, in->UPLO, in->TRANSA, in->DIAG, in->N, (double*)in->A.arr.arr, in->A.lda, (double*)y, in->X.inc);
  unref(xs); unref(x);
@@ -1330,7 +1332,7 @@ K Fcb_dtrmv(K x) {ref(x);
 /*  ctrmv_sig* in = chk_ctrmv_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,2); */
-/*  chkmtxlen(in->M,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->M,in->N,in->A,chko,2) */
 /*  K y=(K)in->X.arr.arr; y=mut(ref(y)); */
 /*  cblas_ctrmv(in->ORDER, in->UPLO, in->TRANSA, in->DIAG, in->N, (float complex*)in->A.arr.arr, in->A.lda, (float complex*)y, in->X.inc); */
 /*  unref(xs); unref(x); */
@@ -1343,7 +1345,7 @@ K Fcb_ztrmv(K x) {ref(x);
  ztrmv_sig* in = chk_ztrmv_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,2);
- chkmtxlen(in->N,in->N,in->A,in->ORDER,2)
+ chkmtxlen(in->N,in->N,in->A,chko,2)
  K y=(K)in->X.arr.arr; y=mut(ref(y));
  cblas_ztrmv(in->ORDER, in->UPLO, in->TRANSA, in->DIAG, in->N, (double complex*)in->A.arr.arr, in->A.lda, (double complex*)y, in->X.inc);
  unref(xs); unref(x);
@@ -1356,7 +1358,7 @@ K Fcb_ztrmv(K x) {ref(x);
 /*  strsv_sig* in = chk_strsv_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,1); */
-/*  chkmtxlen(in->N,in->N,in->A,in->ORDER,1) */
+/*  chkmtxlen(in->N,in->N,in->A,chko,1) */
 /*  K y=(K)in->X.arr.arr; y=mut(ref(y)); */
 /*  cblas_strsv(in->ORDER, in->UPLO, in->TRANSA, in->DIAG, in->N, (float*)in->A.arr.arr, in->A.lda, (float*)y, in->X.inc); */
 /*  unref(xs); unref(x); */
@@ -1368,7 +1370,7 @@ K Fcb_dtrsv(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(dtrsv_sig) + 1 ) { unref(xs); unref(x); return 0; }
  dtrsv_sig* in = chk_dtrsv_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- chkmtxlen(in->N,in->N,in->A,in->ORDER,1)
+ chkmtxlen(in->N,in->N,in->A,chko,1)
  chkveclen(in->N, in->X,1);
  K y=(K)in->X.arr.arr; y=mut(ref(y));
  cblas_dtrsv(in->ORDER, in->UPLO, in->TRANSA, in->DIAG, in->N, (double*)in->A.arr.arr, in->A.lda, (double*)y, in->X.inc);
@@ -1382,7 +1384,7 @@ K Fcb_dtrsv(K x) {ref(x);
 /*  ctrsv_sig* in = chk_ctrsv_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
 /*  chkveclen(in->N, in->X,2); */
-/*  chkmtxlen(in->N,in->N,in->A,in->ORDER,2) */
+/*  chkmtxlen(in->N,in->N,in->A,chko,2) */
 /*  K y=(K)in->X.arr.arr; y=mut(ref(y)); */
 /*  cblas_ctrsv(in->ORDER, in->UPLO, in->TRANSA, in->DIAG, in->N, (float complex*)in->A.arr.arr, in->A.lda, (float complex*)y, in->X.inc); */
 /*  unref(xs); unref(x); */
@@ -1395,7 +1397,7 @@ K Fcb_ztrsv(K x) {ref(x);
  ztrsv_sig* in = chk_ztrsv_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
  chkveclen(in->N, in->X,2);
- chkmtxlen(in->N,in->N,in->A,in->ORDER,2)
+ chkmtxlen(in->N,in->N,in->A,chko,2)
  K y=(K)in->X.arr.arr; y=mut(ref(y));
  cblas_ztrsv(in->ORDER, in->UPLO, in->TRANSA, in->DIAG, in->N, (double complex*)in->A.arr.arr, in->A.lda, (double complex*)y, in->X.inc);
  unref(xs); unref(x);
@@ -1408,6 +1410,7 @@ K Fcb_ztrsv(K x) {ref(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(sgemm_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  sgemm_sig* in = chk_sgemm_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
+/*  chkmtxlen(in->N,in->K,in->A,chkox(TRANSA),1)chkmtxlen(in->K,in->N,in->B,chkox(TRANSB),1) */
 /*  K y=(K)in->C.arr.arr; y=mut(ref(y)); */
 /*  cblas_sgemm(in->ORDER, in->TRANSA, in->TRANSB, in->M, in->N, in->K, *(float*)in->ALPHA.arr, (float*)in->A.arr.arr, in->A.lda, (float*)in->B.arr.arr, in->B.lda, *(float*)in->BETA.arr, (float*)y, in->C.lda); */
 /*  unref(xs); unref(x); */
@@ -1419,6 +1422,7 @@ K Fcb_dgemm(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(dgemm_sig) + 1 ) { unref(xs); unref(x); return 0; }
  dgemm_sig* in = chk_dgemm_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
+ chkmtxlen(in->N,in->K,in->A,chkox(TRANSA),1)chkmtxlen(in->K,in->N,in->B,chkox(TRANSB),1)
  K y=(K)in->C.arr.arr; y=mut(ref(y));
  cblas_dgemm(in->ORDER, in->TRANSA, in->TRANSB, in->M, in->N, in->K, *(double*)in->ALPHA.arr, (double*)in->A.arr.arr, in->A.lda, (double*)in->B.arr.arr, in->B.lda, *(double*)in->BETA.arr, (double*)y, in->C.lda);
  unref(xs); unref(x);
@@ -1430,6 +1434,7 @@ K Fcb_dgemm(K x) {ref(x);
 /*  if( TK(xs)!=9 || NK(xs) != SZ(cgemm_sig) + 1 ) { unref(xs); unref(x); return 0; } */
 /*  cgemm_sig* in = chk_cgemm_sig((char*)xs); */
 /*  if (!in) { unref(xs); unref(x); return 0; } */
+/*  chkmtxlen(in->N,in->K,in->A,chkox(TRANSA),2)chkmtxlen(in->K,in->N,in->B,chkox(TRANSB),2) */
 /*  K y=(K)in->C.arr.arr; y=mut(ref(y)); */
 /*  cblas_cgemm(in->ORDER, in->TRANSA, in->TRANSB, in->M, in->N, in->K, (float complex*)in->ALPHA.arr, (float complex*)in->A.arr.arr, in->A.lda, (float complex*)in->B.arr.arr, in->B.lda, (float complex*)in->BETA.arr, (float complex*)y, in->C.lda); */
 /*  unref(xs); unref(x); */
@@ -1441,6 +1446,7 @@ K Fcb_zgemm(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(zgemm_sig) + 1 ) { unref(xs); unref(x); return 0; }
  zgemm_sig* in = chk_zgemm_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
+ chkmtxlen(in->N,in->K,in->A,chkox(TRANSA),2)chkmtxlen(in->K,in->N,in->B,chkox(TRANSB),2)
  K y=(K)in->C.arr.arr; y=mut(ref(y));
  cblas_zgemm(in->ORDER, in->TRANSA, in->TRANSB, in->M, in->N, in->K, (double complex*)in->ALPHA.arr, (double complex*)in->A.arr.arr, in->A.lda, (double complex*)in->B.arr.arr, in->B.lda, (double complex*)in->BETA.arr, (double complex*)y, in->C.lda);
  unref(xs); unref(x);
