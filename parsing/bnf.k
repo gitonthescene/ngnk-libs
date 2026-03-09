@@ -29,15 +29,15 @@ prn:{(-+/y)_/:(x[0]g;x[1]g;tree.redo[x[2];<g];x[3]@g:<y)} / prn[(nn;n;p;i);msk]
 lft:{[x;y;z]p:@[x;y;:;y];@[x;z;:;(p@)/z]}                 / lft[p;frm;to;lvls]
 pm:{w@&'(,'"?+*")~/:\:x@w:&0>y}                           / identify adverbs
 
-ref:{[nn;n;p;i]p:@[p;&-1_0,w:"s"=i;:;0]                 / collect all the rules
-      p:lft[p;&"e"=i;&"l"=i]                            / collect all the expressions
-      p:lft[p;&~"e"=i;&"e"=i]                           / unchain the expressions
-      p:@[p;w;:;3(p@)/w:&"t"=i@p]                       / lift the terms
+ref:{[nn;n;p;i]p:@[p;&-1_0,w:"s"=i;:;0]                   / collect all the rules
+      p:lft[p;&"e"=i;&"l"=i]                              / collect all the expressions
+      p:lft[p;&~"e"=i;&"e"=i]                             / unchain the expressions
+      p:@[p;w;:;3(p@)/w:&"t"=i@p]                         / lift the terms
 
-      w:@[&#n;&n<0;:;|/nn[&n<0]~\:/:(,"::="),,'"()[]|"] / delete structural terminals
-      w|:|/"lts"=\:i                                    / delete structural non-terminals
-      (nn;n;p;i):prn[(nn;n;p;i);@[w;0;:;0]]             / preserve the root (as structural)
-      px:@[p;w;:;w:&~^"wf"?i]                           / delete whitespace nodes
+      w:@[&#n;&n<0;:;|/nn[&n<0]~\:/:(,"::="),,'"()[]|"]   / delete structural terminals
+      w|:|/"lts"=\:i                                      / delete structural non-terminals
+      (nn;n;p;i):prn[(nn;n;p;i);@[w;0;:;0]]               / preserve the root (as structural)
+      px:@[p;w;:;w:&~^"wf"?i]                             / delete whitespace nodes
       w:1&(px@)/px
       (nn;n;p;i):prn[(nn;n;p;i);w]
 
@@ -87,6 +87,28 @@ aho431:{(fs;fl):(p.fst;p.flw)@\:x; nr:?,/x; (t;r):&'~:\^*'[x]?nr
   tb:{@[y;x/z 1 2;,;z 0]}[D]/[*/[D:(#r;1+#t)]#,();+(!#x;?[rr]?rr:*'nr?x;w)]
   tb:1_/:/:D#(," "),/:x@tb
   $/|1(|/#',/)\" "/''(,,'nr[t],"$"),tb}
+
+clsr:{r:y,'1(&#:)\&|/,[;0]@x[`t][x`p]=/:x[`t]@@/(&<)\(y[1]+1;0)+x[`p]@![2]+\:y 0
+      r@\:&![#r 0]=?/2#,(0,|/#'x`T)/r}
+
+gotos:{clsr[x]/'(0 1+y)@\:/:w[1]@=x[`t]@@/w:(&<)\(1+y 1;0)+x[`p]![2]+\:y 0}
+
+slrtbl:{tr:ss?p.gotos[x]'ss:(?,/1(,/.'p.gotos[x]')\)/,p.clsr[x]/+,0 0
+  syms:?[x`t]?x`t
+  flw:p.flw x`T
+  red:+{(y@m[0];z[0])@\:&~z[0]=x[`p]'+/m:(x[`p]@;1+)@'z}[x;syms]'ss
+  red:red[1],'(?,/x`t)@flw@red[0]
+  k:?,/x`t
+  tbl:#[#k;,()]{$[`m~@z;;:y];(k;v):z;@[y;x?k;:;,'(k<0),'v]}[k]/:tr
+  tbl{$[#z;;:y]@[y;0^x?z 1;:;,'#[z 1]#,2,z 0]}[k]'red}
+
+slr:{ctx:(!/?',/'x`T`t;slrtbl x;x[`t]x`p;-:1_-1+-':x`p)
+  {s:x[1;*|y 0][![x 0]?n:*|y 2]
+    (t;s):$[#s;*s;`err "error"]
+    $[(t;s)~2 0;:y
+      t=0;:(y[0],s;y[1],x[0] n;-1_y 2);]
+    n:@[y;0 1;x[3][s]_]
+    n,'(*|*x[1;*|n 0]@.[x 0]?t;t:x[2]s;"")}[ctx]\(,0;,-1;|y,,"\0")}
 
 /
 Next ABNF
