@@ -82,7 +82,7 @@ flw:{fl:@[#[nr:?,/x]#,!0;0;:;,-1]; ef:|/'0>fs:fst[x]
      @[y;w;?,/;#[#w:f[0]@&0>*'|'f 1;,y z 0]]}[x]/[z;y]}[(*'rr;ef;fs);rr:nr?x]/fl}
 
 / Aho et al (2nd ed.) Algorithm 4.31
-aho431:{(fs;fl):(p.fst;p.flw)@\:x; nr:?,/x; (t;r):&'~:\^*'[x]?nr
+aho431:{(fs;fl):(fst;flw)@\:x; nr:?,/x; (t;r):&'~:\^*'[x]?nr
   w:#[t]^t?{e:&\|/'-1=r:x@1_z;,//((*[|1,e])#,y z 0;(0<)#,/r@&1 :':e)}[fs;fl]'nr?x
   tb:{@[y;x/z 1 2;,;z 0]}[D]/[*/[D:(#r;1+#t)]#,();+(!#x;?[rr]?rr:*'nr?x;w)]
   tb:1_/:/:D#(," "),/:x@tb
@@ -93,9 +93,9 @@ clsr:{r:y,'1(&#:)\&|/,[;0]@x[`t][x`p]=/:x[`t]@@/(&<)\(y[1]+1;0)+x[`p]@![2]+\:y 0
 
 gotos:{clsr[x]/'(0 1+y)@\:/:w[1]@=x[`t]@@/w:(&<)\(1+y 1;0)+x[`p]![2]+\:y 0}
 
-slrtbl:{tr:ss?p.gotos[x]'ss:(?,/1(,/.'p.gotos[x]')\)/,p.clsr[x]/+,0 0
+slrtbl:{tr:ss?gotos[x]'ss:(?,/1(,/.'gotos[x]')\)/,clsr[x]/+,0 0
   syms:?[x`t]?x`t
-  flw:p.flw x`T
+  flw:flw x`T
   red:+{(y@m[0];z[0])@\:&~z[0]=x[`p]'+/m:(x[`p]@;1+)@'z}[x;syms]'ss
   red:red[1],'(?,/x`t)@flw@red[0]
   k:?,/x`t
@@ -103,12 +103,14 @@ slrtbl:{tr:ss?p.gotos[x]'ss:(?,/1(,/.'p.gotos[x]')\)/,p.clsr[x]/+,0 0
   tbl{$[#z;;:y]@[y;0^x?z 1;:;,'#[z 1]#,2,z 0]}[k]'red}
 
 slr:{ctx:(!/?',/'x`T`t;slrtbl x;x[`t]x`p;-:1_-1+-':x`p)
-  {s:x[1;*|y 0][![x 0]?n:*|y 2]
+  *|{s:x[1;*|y 0][![x 0]?n:*|y 2]
     (t;s):$[#s;*s;`err "error"]
     $[(t;s)~2 0;:y
-      t=0;:(y[0],s;y[1],x[0] n;-1_y 2);]
+      t=0;:(y[0],s;y[1],x[0] n;-1_y 2;y[3],0+*|y 2);]
     n:@[y;0 1;x[3][s]_]
-    n,'(*|*x[1;*|n 0]@.[x 0]?t;t:x[2]s;"")}[ctx]\(,0;,-1;|y,,"\0")}
+    n,'(*|*x[1;*|n 0]@.[x 0]?t;t:x[2]s;"";-s+1)}[ctx]/(,0;,-1;|y,,"\0";"")}
+
+a2t:{p:*{[d;p;a;i](p 1;a);$[a<0;(@[p 0;#[c;p 1];:;i];_[c:1-#[d[`T]@-1-a];p 1],i);(p 0;p[1],i)]}[x]/[(!#y;!0);;].1(!#:)\y;(y;p)}
 
 /
 Next ABNF
