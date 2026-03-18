@@ -1,11 +1,12 @@
 imp.ort[`p;"parsing/bnf.k"]
 imp.ort[`tree;"trees/trees.k"]
 
-bool:"E:EvT|T T:T^F|F F:(E)|i|~F"
+ops:"()^v>~"
+bool:"E:EvT|T T:T^F|T>F|F F:(E)|i|~F"
 (dd;;):e.rec["\0:E ",bool;""]
 
-lex:_/|1(&~=':+/1<\\~^"()^v~"?)\(^:)_
-prs:{a:p.slr[x](^"()v^~"?x0)'[x0:*'t:lex y;"i"]
+lex:_/|1(&~=':+/1<\\~^ops?)\(^:)_
+prs:{a:p.slr[x](^ops?x0)'[x0:*'t:lex y;"i"]
   (n;p):p.a2t[x]a
   rm:(|/"()"=\:n)
   (n;p):(-+/rm)_/:(n@<g;tree.redo[p]g:<<rm)
