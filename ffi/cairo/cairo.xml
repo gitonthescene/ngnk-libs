@@ -1,0 +1,2086 @@
+<?xml version="1.0"?>
+<GCC_XML version="0.9.0" cvs_revision="1.145">
+  <Namespace id="_1" name="::" members="_2 _3 _4 _5 _6 _7 _8 _9 _10 _11 _12 _13 _14 _15 _16 _17 _18 _19 _20 _21 _22 _23 _24 _25 _26 _27 _28 _29 _30 _31 _32 _33 _34 _35 _36 _37 _38 _39 _40 _41 _42 _43 _44 _45 _46 _47 _48 _49 _50 _51 _52 _53 _54 _55 _56 _57 _58 _59 _60 _61 _62 _63 _64 _65 _66 _67 _68 _69 _70 _71 _72 _73 _74 _75 _76 _77 _78 _79 _80 _81 _82 _83 _84 _85 _86 _87 _88 _89 _90 _91 _92 _93 _94 _95 _96 _97 _98 _99 _100 _101 _102 _103 _104 _105 _106 _107 _108 _109 _110 _111 _112 _113 _114 _115 _116 _117 _118 _119 _120 _121 _122 _123 _124 _125 _126 _127 _128 _129 _130 _131 _132 _133 _134 _135 _136 _137 _138 _139 _140 _141 _142 _143 _144 _145 _146 _147 _148 _149 _150 _151 _152 _153 _154 _155 _156 _157 _158 _159 _160 _161 _162 _163 _164 _165 _166 _167 _168 _169 _170 _171 _172 _173 _174 _175 _176 _177 _178 _179 _180 _181 _182 _183 _184 _185 _186 _187 _188 _189 _190 _191 _192 _193 _194 _195 _196 _197 _198 _199 _200 _201 _202 _203 _204 _205 _206 _207 _208 _209 _210 _211 _212 _213 _214 _215 _216 _217 _218 _219 _220 _221 _222 _223 _224 _225 _226 _227 _228 _229 _230 _231 _232 _233 _234 _235 _236 _237 _238 _239 _240 _241 _242 _243 _244 _245 _246 _247 _248 _249 _250 _251 _252 _253 _254 _255 _256 _257 _258 _259 _260 _261 _262 _263 _264 _265 _266 _267 _268 _269 _270 _271 _272 _273 _274 _275 _276 _277 _278 _279 _280 _281 _282 _283 _284 _285 _286 _287 _288 _289 _290 _291 _292 _293 _294 _295 _296 _297 _298 _299 _300 _301 _302 _303 _304 _305 _306 _307 _308 _309 _310 _311 _312 _313 _314 _315 _316 _317 _318 _319 _320 _321 _322 _323 _324 _325 _326 _327 _328 _329 _330 _331 _332 _333 _334 _335 _336 _337 _338 _339 _340 _341 _342 _343 _344 _345 _346 _347 _348 _349 _350 _351 _352 _353 _354 _355 _356 _357 _358 _359 _360 _361 _362 _363 _364 _365 _366 _367 _368 _369 _370 _371 _372 _373 _374 _375 _376 _377 _378 _379 _380 _381 _382 _383 _384 _385 _386 _387 _388 _389 _390 _391 _392 _393 _394 _395 _396 _397 _398 _399 _400 _401 _402 _403 _404 _405 _406 _407 _408 _409 _410 _411 _412 _413 _414 _415 _416 _417 _418 _419 _420 _421 _422 _423 _424 _425 _426 _427 _428 _429 _430 _431 _432 _433 _434 _435 _436 _437 _438 _439 _440 _441 _442 _443 _444 _445 _446 _447 _448 _449 _450 _451 _452 _453 _454 _455 _456 _457 _458 _459 _460 _461 _462 _463 _464 _465 _466 _467 _468 _469 _470 _471 _472 _473 _474 _475 _476 _477 _478 _479 _480 _481 _482 _483 _484 _485 _486 _487 _488 _489 _490 _491 _492 _493 _494 _495 _496 _497 _498 _499 _500 _501 _502 _503 _504 _505 _506 _507 _508 _509 _510 _511 _512 _513 _514 _515 _516 _517 _518 _519 _520 _521 _522 _523 _524"/>
+  <Typedef id="_2" name="__int128_t" type="_525" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_3" name="__uint128_t" type="_526" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_4" name="__NSConstantString" type="_527" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_5" name="__Int8x8_t" type="_528" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_6" name="__Int16x4_t" type="_529" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_7" name="__Int32x2_t" type="_530" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_8" name="__Uint8x8_t" type="_531" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_9" name="__Uint16x4_t" type="_532" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_10" name="__Uint32x2_t" type="_533" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_11" name="__Float16x4_t" type="_534" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_12" name="__Float32x2_t" type="_535" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_13" name="__Poly8x8_t" type="_536" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_14" name="__Poly16x4_t" type="_537" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_15" name="__Bfloat16x4_t" type="_538" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_16" name="__Int8x16_t" type="_539" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_17" name="__Int16x8_t" type="_540" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_18" name="__Int32x4_t" type="_541" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_19" name="__Int64x2_t" type="_542" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_20" name="__Uint8x16_t" type="_543" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_21" name="__Uint16x8_t" type="_544" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_22" name="__Uint32x4_t" type="_545" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_23" name="__Uint64x2_t" type="_546" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_24" name="__Float16x8_t" type="_547" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_25" name="__Float32x4_t" type="_548" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_26" name="__Float64x2_t" type="_549" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_27" name="__Poly8x16_t" type="_550" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_28" name="__Poly16x8_t" type="_551" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_29" name="__Poly64x2_t" type="_552" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_30" name="__Bfloat16x8_t" type="_553" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_31" name="__Mfloat8x8_t" type="_554" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_32" name="__Mfloat8x16_t" type="_555" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_33" name="__SVInt8_t" type="_556" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_34" name="__SVInt16_t" type="_557" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_35" name="__SVInt32_t" type="_558" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_36" name="__SVInt64_t" type="_559" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_37" name="__SVUint8_t" type="_560" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_38" name="__SVUint16_t" type="_561" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_39" name="__SVUint32_t" type="_562" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_40" name="__SVUint64_t" type="_563" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_41" name="__SVFloat16_t" type="_564" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_42" name="__SVFloat32_t" type="_565" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_43" name="__SVFloat64_t" type="_566" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_44" name="__SVBfloat16_t" type="_567" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_45" name="__SVMfloat8_t" type="_568" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_46" name="__clang_svint8x2_t" type="_569" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_47" name="__clang_svint16x2_t" type="_570" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_48" name="__clang_svint32x2_t" type="_571" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_49" name="__clang_svint64x2_t" type="_572" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_50" name="__clang_svuint8x2_t" type="_573" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_51" name="__clang_svuint16x2_t" type="_574" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_52" name="__clang_svuint32x2_t" type="_575" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_53" name="__clang_svuint64x2_t" type="_576" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_54" name="__clang_svfloat16x2_t" type="_577" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_55" name="__clang_svfloat32x2_t" type="_578" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_56" name="__clang_svfloat64x2_t" type="_579" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_57" name="__clang_svbfloat16x2_t" type="_580" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_58" name="__clang_svmfloat8x2_t" type="_581" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_59" name="__clang_svint8x3_t" type="_582" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_60" name="__clang_svint16x3_t" type="_583" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_61" name="__clang_svint32x3_t" type="_584" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_62" name="__clang_svint64x3_t" type="_585" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_63" name="__clang_svuint8x3_t" type="_586" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_64" name="__clang_svuint16x3_t" type="_587" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_65" name="__clang_svuint32x3_t" type="_588" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_66" name="__clang_svuint64x3_t" type="_589" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_67" name="__clang_svfloat16x3_t" type="_590" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_68" name="__clang_svfloat32x3_t" type="_591" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_69" name="__clang_svfloat64x3_t" type="_592" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_70" name="__clang_svbfloat16x3_t" type="_593" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_71" name="__clang_svmfloat8x3_t" type="_594" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_72" name="__clang_svint8x4_t" type="_595" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_73" name="__clang_svint16x4_t" type="_596" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_74" name="__clang_svint32x4_t" type="_597" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_75" name="__clang_svint64x4_t" type="_598" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_76" name="__clang_svuint8x4_t" type="_599" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_77" name="__clang_svuint16x4_t" type="_600" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_78" name="__clang_svuint32x4_t" type="_601" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_79" name="__clang_svuint64x4_t" type="_602" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_80" name="__clang_svfloat16x4_t" type="_603" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_81" name="__clang_svfloat32x4_t" type="_604" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_82" name="__clang_svfloat64x4_t" type="_605" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_83" name="__clang_svbfloat16x4_t" type="_606" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_84" name="__clang_svmfloat8x4_t" type="_607" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_85" name="__SVBool_t" type="_608" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_86" name="__clang_svboolx2_t" type="_609" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_87" name="__clang_svboolx4_t" type="_610" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_88" name="__SVCount_t" type="_611" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_89" name="__mfp8" type="_612" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_90" name="__builtin_ms_va_list" type="_613" context="_1" location="f0:0" file="f0" line="0"/>
+  <Typedef id="_91" name="__builtin_va_list" type="_613" context="_1" location="f0:0" file="f0" line="0"/>
+  <Function id="_92" name="cairo_version" returns="_614" context="_1" location="f1:86" file="f1" line="86"/>
+  <Function id="_93" name="cairo_version_string" returns="_615" context="_1" location="f1:89" file="f1" line="89"/>
+  <Typedef id="_94" name="cairo_bool_t" type="_614" context="_1" location="f1:107" file="f1" line="107"/>
+  <Struct id="_95" name="_cairo" context="_1" location="f1:124" file="f1" line="124" incomplete="1"/>
+  <Typedef id="_96" name="cairo_t" type="_95" context="_1" location="f1:124" file="f1" line="124"/>
+  <Struct id="_97" name="_cairo_surface" context="_1" location="f1:153" file="f1" line="153" incomplete="1"/>
+  <Typedef id="_98" name="cairo_surface_t" type="_97" context="_1" location="f1:153" file="f1" line="153"/>
+  <Struct id="_99" name="_cairo_device" context="_1" location="f1:171" file="f1" line="171" incomplete="1"/>
+  <Typedef id="_100" name="cairo_device_t" type="_99" context="_1" location="f1:171" file="f1" line="171"/>
+  <Struct id="_101" name="_cairo_matrix" context="_1" location="f1:192" file="f1" line="192" members="_616 _617 _618 _619 _620 _621" size="384" align="64"/>
+  <Typedef id="_102" name="cairo_matrix_t" type="_101" context="_1" location="f1:196" file="f1" line="196"/>
+  <Struct id="_103" name="_cairo_pattern" context="_1" location="f1:220" file="f1" line="220" incomplete="1"/>
+  <Typedef id="_104" name="cairo_pattern_t" type="_103" context="_1" location="f1:220" file="f1" line="220"/>
+  <Typedef id="_105" name="cairo_destroy_func_t" type="_622" context="_1" location="f1:232" file="f1" line="232"/>
+  <Struct id="_106" name="_cairo_user_data_key" context="_1" location="f1:246" file="f1" line="246" members="_623" size="32" align="32"/>
+  <Typedef id="_107" name="cairo_user_data_key_t" type="_106" context="_1" location="f1:248" file="f1" line="248"/>
+  <Enumeration id="_108" name="_cairo_status" context="_1" location="f1:315" file="f1" line="315" size="32" align="32">
+    <EnumValue name="CAIRO_STATUS_SUCCESS" init="0"/>
+    <EnumValue name="CAIRO_STATUS_NO_MEMORY" init="1"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_RESTORE" init="2"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_POP_GROUP" init="3"/>
+    <EnumValue name="CAIRO_STATUS_NO_CURRENT_POINT" init="4"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_MATRIX" init="5"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_STATUS" init="6"/>
+    <EnumValue name="CAIRO_STATUS_NULL_POINTER" init="7"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_STRING" init="8"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_PATH_DATA" init="9"/>
+    <EnumValue name="CAIRO_STATUS_READ_ERROR" init="10"/>
+    <EnumValue name="CAIRO_STATUS_WRITE_ERROR" init="11"/>
+    <EnumValue name="CAIRO_STATUS_SURFACE_FINISHED" init="12"/>
+    <EnumValue name="CAIRO_STATUS_SURFACE_TYPE_MISMATCH" init="13"/>
+    <EnumValue name="CAIRO_STATUS_PATTERN_TYPE_MISMATCH" init="14"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_CONTENT" init="15"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_FORMAT" init="16"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_VISUAL" init="17"/>
+    <EnumValue name="CAIRO_STATUS_FILE_NOT_FOUND" init="18"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_DASH" init="19"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_DSC_COMMENT" init="20"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_INDEX" init="21"/>
+    <EnumValue name="CAIRO_STATUS_CLIP_NOT_REPRESENTABLE" init="22"/>
+    <EnumValue name="CAIRO_STATUS_TEMP_FILE_ERROR" init="23"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_STRIDE" init="24"/>
+    <EnumValue name="CAIRO_STATUS_FONT_TYPE_MISMATCH" init="25"/>
+    <EnumValue name="CAIRO_STATUS_USER_FONT_IMMUTABLE" init="26"/>
+    <EnumValue name="CAIRO_STATUS_USER_FONT_ERROR" init="27"/>
+    <EnumValue name="CAIRO_STATUS_NEGATIVE_COUNT" init="28"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_CLUSTERS" init="29"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_SLANT" init="30"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_WEIGHT" init="31"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_SIZE" init="32"/>
+    <EnumValue name="CAIRO_STATUS_USER_FONT_NOT_IMPLEMENTED" init="33"/>
+    <EnumValue name="CAIRO_STATUS_DEVICE_TYPE_MISMATCH" init="34"/>
+    <EnumValue name="CAIRO_STATUS_DEVICE_ERROR" init="35"/>
+    <EnumValue name="CAIRO_STATUS_INVALID_MESH_CONSTRUCTION" init="36"/>
+    <EnumValue name="CAIRO_STATUS_DEVICE_FINISHED" init="37"/>
+    <EnumValue name="CAIRO_STATUS_JBIG2_GLOBAL_MISSING" init="38"/>
+    <EnumValue name="CAIRO_STATUS_PNG_ERROR" init="39"/>
+    <EnumValue name="CAIRO_STATUS_FREETYPE_ERROR" init="40"/>
+    <EnumValue name="CAIRO_STATUS_WIN32_GDI_ERROR" init="41"/>
+    <EnumValue name="CAIRO_STATUS_TAG_ERROR" init="42"/>
+    <EnumValue name="CAIRO_STATUS_DWRITE_ERROR" init="43"/>
+    <EnumValue name="CAIRO_STATUS_LAST_STATUS" init="44"/>
+  </Enumeration>
+  <Typedef id="_109" name="cairo_status_t" type="_108" context="_1" location="f1:363" file="f1" line="363"/>
+  <Enumeration id="_110" name="_cairo_content" context="_1" location="f1:381" file="f1" line="381" size="32" align="32">
+    <EnumValue name="CAIRO_CONTENT_COLOR" init="4096"/>
+    <EnumValue name="CAIRO_CONTENT_ALPHA" init="8192"/>
+    <EnumValue name="CAIRO_CONTENT_COLOR_ALPHA" init="12288"/>
+  </Enumeration>
+  <Typedef id="_111" name="cairo_content_t" type="_110" context="_1" location="f1:385" file="f1" line="385"/>
+  <Enumeration id="_112" name="_cairo_format" context="_1" location="f1:420" file="f1" line="420" size="32" align="32">
+    <EnumValue name="CAIRO_FORMAT_INVALID" init="-1"/>
+    <EnumValue name="CAIRO_FORMAT_ARGB32" init="0"/>
+    <EnumValue name="CAIRO_FORMAT_RGB24" init="1"/>
+    <EnumValue name="CAIRO_FORMAT_A8" init="2"/>
+    <EnumValue name="CAIRO_FORMAT_A1" init="3"/>
+    <EnumValue name="CAIRO_FORMAT_RGB16_565" init="4"/>
+    <EnumValue name="CAIRO_FORMAT_RGB30" init="5"/>
+    <EnumValue name="CAIRO_FORMAT_RGB96F" init="6"/>
+    <EnumValue name="CAIRO_FORMAT_RGBA128F" init="7"/>
+  </Enumeration>
+  <Typedef id="_113" name="cairo_format_t" type="_112" context="_1" location="f1:430" file="f1" line="430"/>
+  <Typedef id="_114" name="cairo_write_func_t" type="_624" context="_1" location="f1:451" file="f1" line="451"/>
+  <Typedef id="_115" name="cairo_read_func_t" type="_625" context="_1" location="f1:473" file="f1" line="473"/>
+  <Struct id="_116" name="_cairo_rectangle_int" context="_1" location="f1:489" file="f1" line="489" members="_626 _627 _628 _629" size="128" align="32"/>
+  <Typedef id="_117" name="cairo_rectangle_int_t" type="_116" context="_1" location="f1:492" file="f1" line="492"/>
+  <Function id="_118" name="cairo_create" returns="_630" context="_1" location="f1:497" file="f1" line="497">
+    <Argument name="target" type="_631" location="f1:497" file="f1" line="497"/>
+  </Function>
+  <Function id="_119" name="cairo_reference" returns="_630" context="_1" location="f1:500" file="f1" line="500">
+    <Argument name="cr" type="_630" location="f1:500" file="f1" line="500"/>
+  </Function>
+  <Function id="_120" name="cairo_destroy" returns="_632" context="_1" location="f1:503" file="f1" line="503">
+    <Argument name="cr" type="_630" location="f1:503" file="f1" line="503"/>
+  </Function>
+  <Function id="_121" name="cairo_get_reference_count" returns="_633" context="_1" location="f1:506" file="f1" line="506">
+    <Argument name="cr" type="_630" location="f1:506" file="f1" line="506"/>
+  </Function>
+  <Function id="_122" name="cairo_get_user_data" returns="_634" context="_1" location="f1:509" file="f1" line="509">
+    <Argument name="cr" type="_630" location="f1:509" file="f1" line="509"/>
+    <Argument name="key" type="_635" location="f1:510" file="f1" line="510"/>
+  </Function>
+  <Function id="_123" name="cairo_set_user_data" returns="_109" context="_1" location="f1:513" file="f1" line="513">
+    <Argument name="cr" type="_630" location="f1:513" file="f1" line="513"/>
+    <Argument name="key" type="_635" location="f1:514" file="f1" line="514"/>
+    <Argument name="user_data" type="_634" location="f1:515" file="f1" line="515"/>
+    <Argument name="destroy" type="_105" location="f1:516" file="f1" line="516"/>
+  </Function>
+  <Function id="_124" name="cairo_save" returns="_632" context="_1" location="f1:519" file="f1" line="519">
+    <Argument name="cr" type="_630" location="f1:519" file="f1" line="519"/>
+  </Function>
+  <Function id="_125" name="cairo_restore" returns="_632" context="_1" location="f1:522" file="f1" line="522">
+    <Argument name="cr" type="_630" location="f1:522" file="f1" line="522"/>
+  </Function>
+  <Function id="_126" name="cairo_push_group" returns="_632" context="_1" location="f1:525" file="f1" line="525">
+    <Argument name="cr" type="_630" location="f1:525" file="f1" line="525"/>
+  </Function>
+  <Function id="_127" name="cairo_push_group_with_content" returns="_632" context="_1" location="f1:528" file="f1" line="528">
+    <Argument name="cr" type="_630" location="f1:528" file="f1" line="528"/>
+    <Argument name="content" type="_111" location="f1:528" file="f1" line="528"/>
+  </Function>
+  <Function id="_128" name="cairo_pop_group" returns="_636" context="_1" location="f1:531" file="f1" line="531">
+    <Argument name="cr" type="_630" location="f1:531" file="f1" line="531"/>
+  </Function>
+  <Function id="_129" name="cairo_pop_group_to_source" returns="_632" context="_1" location="f1:534" file="f1" line="534">
+    <Argument name="cr" type="_630" location="f1:534" file="f1" line="534"/>
+  </Function>
+  <Enumeration id="_130" name="_cairo_operator" context="_1" location="f1:619" file="f1" line="619" size="32" align="32">
+    <EnumValue name="CAIRO_OPERATOR_CLEAR" init="0"/>
+    <EnumValue name="CAIRO_OPERATOR_SOURCE" init="1"/>
+    <EnumValue name="CAIRO_OPERATOR_OVER" init="2"/>
+    <EnumValue name="CAIRO_OPERATOR_IN" init="3"/>
+    <EnumValue name="CAIRO_OPERATOR_OUT" init="4"/>
+    <EnumValue name="CAIRO_OPERATOR_ATOP" init="5"/>
+    <EnumValue name="CAIRO_OPERATOR_DEST" init="6"/>
+    <EnumValue name="CAIRO_OPERATOR_DEST_OVER" init="7"/>
+    <EnumValue name="CAIRO_OPERATOR_DEST_IN" init="8"/>
+    <EnumValue name="CAIRO_OPERATOR_DEST_OUT" init="9"/>
+    <EnumValue name="CAIRO_OPERATOR_DEST_ATOP" init="10"/>
+    <EnumValue name="CAIRO_OPERATOR_XOR" init="11"/>
+    <EnumValue name="CAIRO_OPERATOR_ADD" init="12"/>
+    <EnumValue name="CAIRO_OPERATOR_SATURATE" init="13"/>
+    <EnumValue name="CAIRO_OPERATOR_MULTIPLY" init="14"/>
+    <EnumValue name="CAIRO_OPERATOR_SCREEN" init="15"/>
+    <EnumValue name="CAIRO_OPERATOR_OVERLAY" init="16"/>
+    <EnumValue name="CAIRO_OPERATOR_DARKEN" init="17"/>
+    <EnumValue name="CAIRO_OPERATOR_LIGHTEN" init="18"/>
+    <EnumValue name="CAIRO_OPERATOR_COLOR_DODGE" init="19"/>
+    <EnumValue name="CAIRO_OPERATOR_COLOR_BURN" init="20"/>
+    <EnumValue name="CAIRO_OPERATOR_HARD_LIGHT" init="21"/>
+    <EnumValue name="CAIRO_OPERATOR_SOFT_LIGHT" init="22"/>
+    <EnumValue name="CAIRO_OPERATOR_DIFFERENCE" init="23"/>
+    <EnumValue name="CAIRO_OPERATOR_EXCLUSION" init="24"/>
+    <EnumValue name="CAIRO_OPERATOR_HSL_HUE" init="25"/>
+    <EnumValue name="CAIRO_OPERATOR_HSL_SATURATION" init="26"/>
+    <EnumValue name="CAIRO_OPERATOR_HSL_COLOR" init="27"/>
+    <EnumValue name="CAIRO_OPERATOR_HSL_LUMINOSITY" init="28"/>
+  </Enumeration>
+  <Typedef id="_131" name="cairo_operator_t" type="_130" context="_1" location="f1:653" file="f1" line="653"/>
+  <Function id="_132" name="cairo_set_operator" returns="_632" context="_1" location="f1:656" file="f1" line="656">
+    <Argument name="cr" type="_630" location="f1:656" file="f1" line="656"/>
+    <Argument name="op" type="_131" location="f1:656" file="f1" line="656"/>
+  </Function>
+  <Function id="_133" name="cairo_set_source" returns="_632" context="_1" location="f1:659" file="f1" line="659">
+    <Argument name="cr" type="_630" location="f1:659" file="f1" line="659"/>
+    <Argument name="source" type="_636" location="f1:659" file="f1" line="659"/>
+  </Function>
+  <Function id="_134" name="cairo_set_source_rgb" returns="_632" context="_1" location="f1:662" file="f1" line="662">
+    <Argument name="cr" type="_630" location="f1:662" file="f1" line="662"/>
+    <Argument name="red" type="_637" location="f1:662" file="f1" line="662"/>
+    <Argument name="green" type="_637" location="f1:662" file="f1" line="662"/>
+    <Argument name="blue" type="_637" location="f1:662" file="f1" line="662"/>
+  </Function>
+  <Function id="_135" name="cairo_set_source_rgba" returns="_632" context="_1" location="f1:665" file="f1" line="665">
+    <Argument name="cr" type="_630" location="f1:665" file="f1" line="665"/>
+    <Argument name="red" type="_637" location="f1:666" file="f1" line="666"/>
+    <Argument name="green" type="_637" location="f1:666" file="f1" line="666"/>
+    <Argument name="blue" type="_637" location="f1:666" file="f1" line="666"/>
+    <Argument name="alpha" type="_637" location="f1:667" file="f1" line="667"/>
+  </Function>
+  <Function id="_136" name="cairo_set_source_surface" returns="_632" context="_1" location="f1:670" file="f1" line="670">
+    <Argument name="cr" type="_630" location="f1:670" file="f1" line="670"/>
+    <Argument name="surface" type="_631" location="f1:671" file="f1" line="671"/>
+    <Argument name="x" type="_637" location="f1:672" file="f1" line="672"/>
+    <Argument name="y" type="_637" location="f1:673" file="f1" line="673"/>
+  </Function>
+  <Function id="_137" name="cairo_set_tolerance" returns="_632" context="_1" location="f1:676" file="f1" line="676">
+    <Argument name="cr" type="_630" location="f1:676" file="f1" line="676"/>
+    <Argument name="tolerance" type="_637" location="f1:676" file="f1" line="676"/>
+  </Function>
+  <Enumeration id="_138" name="_cairo_antialias" context="_1" location="f1:715" file="f1" line="715" size="32" align="32">
+    <EnumValue name="CAIRO_ANTIALIAS_DEFAULT" init="0"/>
+    <EnumValue name="CAIRO_ANTIALIAS_NONE" init="1"/>
+    <EnumValue name="CAIRO_ANTIALIAS_GRAY" init="2"/>
+    <EnumValue name="CAIRO_ANTIALIAS_SUBPIXEL" init="3"/>
+    <EnumValue name="CAIRO_ANTIALIAS_FAST" init="4"/>
+    <EnumValue name="CAIRO_ANTIALIAS_GOOD" init="5"/>
+    <EnumValue name="CAIRO_ANTIALIAS_BEST" init="6"/>
+  </Enumeration>
+  <Typedef id="_139" name="cairo_antialias_t" type="_138" context="_1" location="f1:727" file="f1" line="727"/>
+  <Function id="_140" name="cairo_set_antialias" returns="_632" context="_1" location="f1:730" file="f1" line="730">
+    <Argument name="cr" type="_630" location="f1:730" file="f1" line="730"/>
+    <Argument name="antialias" type="_139" location="f1:730" file="f1" line="730"/>
+  </Function>
+  <Enumeration id="_141" name="_cairo_fill_rule" context="_1" location="f1:759" file="f1" line="759" size="32" align="32">
+    <EnumValue name="CAIRO_FILL_RULE_WINDING" init="0"/>
+    <EnumValue name="CAIRO_FILL_RULE_EVEN_ODD" init="1"/>
+  </Enumeration>
+  <Typedef id="_142" name="cairo_fill_rule_t" type="_141" context="_1" location="f1:762" file="f1" line="762"/>
+  <Function id="_143" name="cairo_set_fill_rule" returns="_632" context="_1" location="f1:765" file="f1" line="765">
+    <Argument name="cr" type="_630" location="f1:765" file="f1" line="765"/>
+    <Argument name="fill_rule" type="_142" location="f1:765" file="f1" line="765"/>
+  </Function>
+  <Function id="_144" name="cairo_set_line_width" returns="_632" context="_1" location="f1:768" file="f1" line="768">
+    <Argument name="cr" type="_630" location="f1:768" file="f1" line="768"/>
+    <Argument name="width" type="_637" location="f1:768" file="f1" line="768"/>
+  </Function>
+  <Function id="_145" name="cairo_set_hairline" returns="_632" context="_1" location="f1:771" file="f1" line="771">
+    <Argument name="cr" type="_630" location="f1:771" file="f1" line="771"/>
+    <Argument name="set_hairline" type="_94" location="f1:771" file="f1" line="771"/>
+  </Function>
+  <Enumeration id="_146" name="_cairo_line_cap" context="_1" location="f1:785" file="f1" line="785" size="32" align="32">
+    <EnumValue name="CAIRO_LINE_CAP_BUTT" init="0"/>
+    <EnumValue name="CAIRO_LINE_CAP_ROUND" init="1"/>
+    <EnumValue name="CAIRO_LINE_CAP_SQUARE" init="2"/>
+  </Enumeration>
+  <Typedef id="_147" name="cairo_line_cap_t" type="_146" context="_1" location="f1:789" file="f1" line="789"/>
+  <Function id="_148" name="cairo_set_line_cap" returns="_632" context="_1" location="f1:792" file="f1" line="792">
+    <Argument name="cr" type="_630" location="f1:792" file="f1" line="792"/>
+    <Argument name="line_cap" type="_147" location="f1:792" file="f1" line="792"/>
+  </Function>
+  <Enumeration id="_149" name="_cairo_line_join" context="_1" location="f1:809" file="f1" line="809" size="32" align="32">
+    <EnumValue name="CAIRO_LINE_JOIN_MITER" init="0"/>
+    <EnumValue name="CAIRO_LINE_JOIN_ROUND" init="1"/>
+    <EnumValue name="CAIRO_LINE_JOIN_BEVEL" init="2"/>
+  </Enumeration>
+  <Typedef id="_150" name="cairo_line_join_t" type="_149" context="_1" location="f1:813" file="f1" line="813"/>
+  <Function id="_151" name="cairo_set_line_join" returns="_632" context="_1" location="f1:816" file="f1" line="816">
+    <Argument name="cr" type="_630" location="f1:816" file="f1" line="816"/>
+    <Argument name="line_join" type="_150" location="f1:816" file="f1" line="816"/>
+  </Function>
+  <Function id="_152" name="cairo_set_dash" returns="_632" context="_1" location="f1:819" file="f1" line="819">
+    <Argument name="cr" type="_630" location="f1:819" file="f1" line="819"/>
+    <Argument name="dashes" type="_638" location="f1:820" file="f1" line="820"/>
+    <Argument name="num_dashes" type="_614" location="f1:821" file="f1" line="821"/>
+    <Argument name="offset" type="_637" location="f1:822" file="f1" line="822"/>
+  </Function>
+  <Function id="_153" name="cairo_set_miter_limit" returns="_632" context="_1" location="f1:825" file="f1" line="825">
+    <Argument name="cr" type="_630" location="f1:825" file="f1" line="825"/>
+    <Argument name="limit" type="_637" location="f1:825" file="f1" line="825"/>
+  </Function>
+  <Function id="_154" name="cairo_translate" returns="_632" context="_1" location="f1:828" file="f1" line="828">
+    <Argument name="cr" type="_630" location="f1:828" file="f1" line="828"/>
+    <Argument name="tx" type="_637" location="f1:828" file="f1" line="828"/>
+    <Argument name="ty" type="_637" location="f1:828" file="f1" line="828"/>
+  </Function>
+  <Function id="_155" name="cairo_scale" returns="_632" context="_1" location="f1:831" file="f1" line="831">
+    <Argument name="cr" type="_630" location="f1:831" file="f1" line="831"/>
+    <Argument name="sx" type="_637" location="f1:831" file="f1" line="831"/>
+    <Argument name="sy" type="_637" location="f1:831" file="f1" line="831"/>
+  </Function>
+  <Function id="_156" name="cairo_rotate" returns="_632" context="_1" location="f1:834" file="f1" line="834">
+    <Argument name="cr" type="_630" location="f1:834" file="f1" line="834"/>
+    <Argument name="angle" type="_637" location="f1:834" file="f1" line="834"/>
+  </Function>
+  <Function id="_157" name="cairo_transform" returns="_632" context="_1" location="f1:837" file="f1" line="837">
+    <Argument name="cr" type="_630" location="f1:837" file="f1" line="837"/>
+    <Argument name="matrix" type="_639" location="f1:838" file="f1" line="838"/>
+  </Function>
+  <Function id="_158" name="cairo_set_matrix" returns="_632" context="_1" location="f1:841" file="f1" line="841">
+    <Argument name="cr" type="_630" location="f1:841" file="f1" line="841"/>
+    <Argument name="matrix" type="_639" location="f1:842" file="f1" line="842"/>
+  </Function>
+  <Function id="_159" name="cairo_identity_matrix" returns="_632" context="_1" location="f1:845" file="f1" line="845">
+    <Argument name="cr" type="_630" location="f1:845" file="f1" line="845"/>
+  </Function>
+  <Function id="_160" name="cairo_user_to_device" returns="_632" context="_1" location="f1:848" file="f1" line="848">
+    <Argument name="cr" type="_630" location="f1:848" file="f1" line="848"/>
+    <Argument name="x" type="_640" location="f1:848" file="f1" line="848"/>
+    <Argument name="y" type="_640" location="f1:848" file="f1" line="848"/>
+  </Function>
+  <Function id="_161" name="cairo_user_to_device_distance" returns="_632" context="_1" location="f1:851" file="f1" line="851">
+    <Argument name="cr" type="_630" location="f1:851" file="f1" line="851"/>
+    <Argument name="dx" type="_640" location="f1:851" file="f1" line="851"/>
+    <Argument name="dy" type="_640" location="f1:851" file="f1" line="851"/>
+  </Function>
+  <Function id="_162" name="cairo_device_to_user" returns="_632" context="_1" location="f1:854" file="f1" line="854">
+    <Argument name="cr" type="_630" location="f1:854" file="f1" line="854"/>
+    <Argument name="x" type="_640" location="f1:854" file="f1" line="854"/>
+    <Argument name="y" type="_640" location="f1:854" file="f1" line="854"/>
+  </Function>
+  <Function id="_163" name="cairo_device_to_user_distance" returns="_632" context="_1" location="f1:857" file="f1" line="857">
+    <Argument name="cr" type="_630" location="f1:857" file="f1" line="857"/>
+    <Argument name="dx" type="_640" location="f1:857" file="f1" line="857"/>
+    <Argument name="dy" type="_640" location="f1:857" file="f1" line="857"/>
+  </Function>
+  <Function id="_164" name="cairo_new_path" returns="_632" context="_1" location="f1:861" file="f1" line="861">
+    <Argument name="cr" type="_630" location="f1:861" file="f1" line="861"/>
+  </Function>
+  <Function id="_165" name="cairo_move_to" returns="_632" context="_1" location="f1:864" file="f1" line="864">
+    <Argument name="cr" type="_630" location="f1:864" file="f1" line="864"/>
+    <Argument name="x" type="_637" location="f1:864" file="f1" line="864"/>
+    <Argument name="y" type="_637" location="f1:864" file="f1" line="864"/>
+  </Function>
+  <Function id="_166" name="cairo_new_sub_path" returns="_632" context="_1" location="f1:867" file="f1" line="867">
+    <Argument name="cr" type="_630" location="f1:867" file="f1" line="867"/>
+  </Function>
+  <Function id="_167" name="cairo_line_to" returns="_632" context="_1" location="f1:870" file="f1" line="870">
+    <Argument name="cr" type="_630" location="f1:870" file="f1" line="870"/>
+    <Argument name="x" type="_637" location="f1:870" file="f1" line="870"/>
+    <Argument name="y" type="_637" location="f1:870" file="f1" line="870"/>
+  </Function>
+  <Function id="_168" name="cairo_curve_to" returns="_632" context="_1" location="f1:873" file="f1" line="873">
+    <Argument name="cr" type="_630" location="f1:873" file="f1" line="873"/>
+    <Argument name="x1" type="_637" location="f1:874" file="f1" line="874"/>
+    <Argument name="y1" type="_637" location="f1:874" file="f1" line="874"/>
+    <Argument name="x2" type="_637" location="f1:875" file="f1" line="875"/>
+    <Argument name="y2" type="_637" location="f1:875" file="f1" line="875"/>
+    <Argument name="x3" type="_637" location="f1:876" file="f1" line="876"/>
+    <Argument name="y3" type="_637" location="f1:876" file="f1" line="876"/>
+  </Function>
+  <Function id="_169" name="cairo_arc" returns="_632" context="_1" location="f1:879" file="f1" line="879">
+    <Argument name="cr" type="_630" location="f1:879" file="f1" line="879"/>
+    <Argument name="xc" type="_637" location="f1:880" file="f1" line="880"/>
+    <Argument name="yc" type="_637" location="f1:880" file="f1" line="880"/>
+    <Argument name="radius" type="_637" location="f1:881" file="f1" line="881"/>
+    <Argument name="angle1" type="_637" location="f1:882" file="f1" line="882"/>
+    <Argument name="angle2" type="_637" location="f1:882" file="f1" line="882"/>
+  </Function>
+  <Function id="_170" name="cairo_arc_negative" returns="_632" context="_1" location="f1:885" file="f1" line="885">
+    <Argument name="cr" type="_630" location="f1:885" file="f1" line="885"/>
+    <Argument name="xc" type="_637" location="f1:886" file="f1" line="886"/>
+    <Argument name="yc" type="_637" location="f1:886" file="f1" line="886"/>
+    <Argument name="radius" type="_637" location="f1:887" file="f1" line="887"/>
+    <Argument name="angle1" type="_637" location="f1:888" file="f1" line="888"/>
+    <Argument name="angle2" type="_637" location="f1:888" file="f1" line="888"/>
+  </Function>
+  <Function id="_171" name="cairo_rel_move_to" returns="_632" context="_1" location="f1:899" file="f1" line="899">
+    <Argument name="cr" type="_630" location="f1:899" file="f1" line="899"/>
+    <Argument name="dx" type="_637" location="f1:899" file="f1" line="899"/>
+    <Argument name="dy" type="_637" location="f1:899" file="f1" line="899"/>
+  </Function>
+  <Function id="_172" name="cairo_rel_line_to" returns="_632" context="_1" location="f1:902" file="f1" line="902">
+    <Argument name="cr" type="_630" location="f1:902" file="f1" line="902"/>
+    <Argument name="dx" type="_637" location="f1:902" file="f1" line="902"/>
+    <Argument name="dy" type="_637" location="f1:902" file="f1" line="902"/>
+  </Function>
+  <Function id="_173" name="cairo_rel_curve_to" returns="_632" context="_1" location="f1:905" file="f1" line="905">
+    <Argument name="cr" type="_630" location="f1:905" file="f1" line="905"/>
+    <Argument name="dx1" type="_637" location="f1:906" file="f1" line="906"/>
+    <Argument name="dy1" type="_637" location="f1:906" file="f1" line="906"/>
+    <Argument name="dx2" type="_637" location="f1:907" file="f1" line="907"/>
+    <Argument name="dy2" type="_637" location="f1:907" file="f1" line="907"/>
+    <Argument name="dx3" type="_637" location="f1:908" file="f1" line="908"/>
+    <Argument name="dy3" type="_637" location="f1:908" file="f1" line="908"/>
+  </Function>
+  <Function id="_174" name="cairo_rectangle" returns="_632" context="_1" location="f1:911" file="f1" line="911">
+    <Argument name="cr" type="_630" location="f1:911" file="f1" line="911"/>
+    <Argument name="x" type="_637" location="f1:912" file="f1" line="912"/>
+    <Argument name="y" type="_637" location="f1:912" file="f1" line="912"/>
+    <Argument name="width" type="_637" location="f1:913" file="f1" line="913"/>
+    <Argument name="height" type="_637" location="f1:913" file="f1" line="913"/>
+  </Function>
+  <Function id="_175" name="cairo_close_path" returns="_632" context="_1" location="f1:921" file="f1" line="921">
+    <Argument name="cr" type="_630" location="f1:921" file="f1" line="921"/>
+  </Function>
+  <Function id="_176" name="cairo_path_extents" returns="_632" context="_1" location="f1:924" file="f1" line="924">
+    <Argument name="cr" type="_630" location="f1:924" file="f1" line="924"/>
+    <Argument name="x1" type="_640" location="f1:925" file="f1" line="925"/>
+    <Argument name="y1" type="_640" location="f1:925" file="f1" line="925"/>
+    <Argument name="x2" type="_640" location="f1:926" file="f1" line="926"/>
+    <Argument name="y2" type="_640" location="f1:926" file="f1" line="926"/>
+  </Function>
+  <Function id="_177" name="cairo_paint" returns="_632" context="_1" location="f1:930" file="f1" line="930">
+    <Argument name="cr" type="_630" location="f1:930" file="f1" line="930"/>
+  </Function>
+  <Function id="_178" name="cairo_paint_with_alpha" returns="_632" context="_1" location="f1:933" file="f1" line="933">
+    <Argument name="cr" type="_630" location="f1:933" file="f1" line="933"/>
+    <Argument name="alpha" type="_637" location="f1:934" file="f1" line="934"/>
+  </Function>
+  <Function id="_179" name="cairo_mask" returns="_632" context="_1" location="f1:937" file="f1" line="937">
+    <Argument name="cr" type="_630" location="f1:937" file="f1" line="937"/>
+    <Argument name="pattern" type="_636" location="f1:938" file="f1" line="938"/>
+  </Function>
+  <Function id="_180" name="cairo_mask_surface" returns="_632" context="_1" location="f1:941" file="f1" line="941">
+    <Argument name="cr" type="_630" location="f1:941" file="f1" line="941"/>
+    <Argument name="surface" type="_631" location="f1:942" file="f1" line="942"/>
+    <Argument name="surface_x" type="_637" location="f1:943" file="f1" line="943"/>
+    <Argument name="surface_y" type="_637" location="f1:944" file="f1" line="944"/>
+  </Function>
+  <Function id="_181" name="cairo_stroke" returns="_632" context="_1" location="f1:947" file="f1" line="947">
+    <Argument name="cr" type="_630" location="f1:947" file="f1" line="947"/>
+  </Function>
+  <Function id="_182" name="cairo_stroke_preserve" returns="_632" context="_1" location="f1:950" file="f1" line="950">
+    <Argument name="cr" type="_630" location="f1:950" file="f1" line="950"/>
+  </Function>
+  <Function id="_183" name="cairo_fill" returns="_632" context="_1" location="f1:953" file="f1" line="953">
+    <Argument name="cr" type="_630" location="f1:953" file="f1" line="953"/>
+  </Function>
+  <Function id="_184" name="cairo_fill_preserve" returns="_632" context="_1" location="f1:956" file="f1" line="956">
+    <Argument name="cr" type="_630" location="f1:956" file="f1" line="956"/>
+  </Function>
+  <Function id="_185" name="cairo_copy_page" returns="_632" context="_1" location="f1:959" file="f1" line="959">
+    <Argument name="cr" type="_630" location="f1:959" file="f1" line="959"/>
+  </Function>
+  <Function id="_186" name="cairo_show_page" returns="_632" context="_1" location="f1:962" file="f1" line="962">
+    <Argument name="cr" type="_630" location="f1:962" file="f1" line="962"/>
+  </Function>
+  <Function id="_187" name="cairo_in_stroke" returns="_94" context="_1" location="f1:966" file="f1" line="966">
+    <Argument name="cr" type="_630" location="f1:966" file="f1" line="966"/>
+    <Argument name="x" type="_637" location="f1:966" file="f1" line="966"/>
+    <Argument name="y" type="_637" location="f1:966" file="f1" line="966"/>
+  </Function>
+  <Function id="_188" name="cairo_in_fill" returns="_94" context="_1" location="f1:969" file="f1" line="969">
+    <Argument name="cr" type="_630" location="f1:969" file="f1" line="969"/>
+    <Argument name="x" type="_637" location="f1:969" file="f1" line="969"/>
+    <Argument name="y" type="_637" location="f1:969" file="f1" line="969"/>
+  </Function>
+  <Function id="_189" name="cairo_in_clip" returns="_94" context="_1" location="f1:972" file="f1" line="972">
+    <Argument name="cr" type="_630" location="f1:972" file="f1" line="972"/>
+    <Argument name="x" type="_637" location="f1:972" file="f1" line="972"/>
+    <Argument name="y" type="_637" location="f1:972" file="f1" line="972"/>
+  </Function>
+  <Function id="_190" name="cairo_stroke_extents" returns="_632" context="_1" location="f1:976" file="f1" line="976">
+    <Argument name="cr" type="_630" location="f1:976" file="f1" line="976"/>
+    <Argument name="x1" type="_640" location="f1:977" file="f1" line="977"/>
+    <Argument name="y1" type="_640" location="f1:977" file="f1" line="977"/>
+    <Argument name="x2" type="_640" location="f1:978" file="f1" line="978"/>
+    <Argument name="y2" type="_640" location="f1:978" file="f1" line="978"/>
+  </Function>
+  <Function id="_191" name="cairo_fill_extents" returns="_632" context="_1" location="f1:981" file="f1" line="981">
+    <Argument name="cr" type="_630" location="f1:981" file="f1" line="981"/>
+    <Argument name="x1" type="_640" location="f1:982" file="f1" line="982"/>
+    <Argument name="y1" type="_640" location="f1:982" file="f1" line="982"/>
+    <Argument name="x2" type="_640" location="f1:983" file="f1" line="983"/>
+    <Argument name="y2" type="_640" location="f1:983" file="f1" line="983"/>
+  </Function>
+  <Function id="_192" name="cairo_reset_clip" returns="_632" context="_1" location="f1:987" file="f1" line="987">
+    <Argument name="cr" type="_630" location="f1:987" file="f1" line="987"/>
+  </Function>
+  <Function id="_193" name="cairo_clip" returns="_632" context="_1" location="f1:990" file="f1" line="990">
+    <Argument name="cr" type="_630" location="f1:990" file="f1" line="990"/>
+  </Function>
+  <Function id="_194" name="cairo_clip_preserve" returns="_632" context="_1" location="f1:993" file="f1" line="993">
+    <Argument name="cr" type="_630" location="f1:993" file="f1" line="993"/>
+  </Function>
+  <Function id="_195" name="cairo_clip_extents" returns="_632" context="_1" location="f1:996" file="f1" line="996">
+    <Argument name="cr" type="_630" location="f1:996" file="f1" line="996"/>
+    <Argument name="x1" type="_640" location="f1:997" file="f1" line="997"/>
+    <Argument name="y1" type="_640" location="f1:997" file="f1" line="997"/>
+    <Argument name="x2" type="_640" location="f1:998" file="f1" line="998"/>
+    <Argument name="y2" type="_640" location="f1:998" file="f1" line="998"/>
+  </Function>
+  <Struct id="_196" name="_cairo_rectangle" context="_1" location="f1:1011" file="f1" line="1011" members="_641 _642 _643 _644" size="256" align="64"/>
+  <Typedef id="_197" name="cairo_rectangle_t" type="_196" context="_1" location="f1:1013" file="f1" line="1013"/>
+  <Struct id="_198" name="_cairo_rectangle_list" context="_1" location="f1:1026" file="f1" line="1026" members="_645 _646 _647" size="192" align="64"/>
+  <Typedef id="_199" name="cairo_rectangle_list_t" type="_198" context="_1" location="f1:1030" file="f1" line="1030"/>
+  <Function id="_200" name="cairo_copy_clip_rectangle_list" returns="_648" context="_1" location="f1:1033" file="f1" line="1033">
+    <Argument name="cr" type="_630" location="f1:1033" file="f1" line="1033"/>
+  </Function>
+  <Function id="_201" name="cairo_rectangle_list_destroy" returns="_632" context="_1" location="f1:1036" file="f1" line="1036">
+    <Argument name="rectangle_list" type="_648" location="f1:1036" file="f1" line="1036"/>
+  </Function>
+  <Function id="_202" name="cairo_tag_begin" returns="_632" context="_1" location="f1:1044" file="f1" line="1044">
+    <Argument name="cr" type="_630" location="f1:1044" file="f1" line="1044"/>
+    <Argument name="tag_name" type="_615" location="f1:1044" file="f1" line="1044"/>
+    <Argument name="attributes" type="_615" location="f1:1044" file="f1" line="1044"/>
+  </Function>
+  <Function id="_203" name="cairo_tag_end" returns="_632" context="_1" location="f1:1047" file="f1" line="1047">
+    <Argument name="cr" type="_630" location="f1:1047" file="f1" line="1047"/>
+    <Argument name="tag_name" type="_615" location="f1:1047" file="f1" line="1047"/>
+  </Function>
+  <Struct id="_204" name="_cairo_scaled_font" context="_1" location="f1:1068" file="f1" line="1068" incomplete="1"/>
+  <Typedef id="_205" name="cairo_scaled_font_t" type="_204" context="_1" location="f1:1068" file="f1" line="1068"/>
+  <Struct id="_206" name="_cairo_font_face" context="_1" location="f1:1089" file="f1" line="1089" incomplete="1"/>
+  <Typedef id="_207" name="cairo_font_face_t" type="_206" context="_1" location="f1:1089" file="f1" line="1089"/>
+  <Struct id="_208" name="" context="_1" location="f1:1117" file="f1" line="1117" members="_649 _650 _651" size="192" align="64"/>
+  <Typedef id="_209" name="cairo_glyph_t" type="_208" context="_1" location="f1:1121" file="f1" line="1121"/>
+  <Function id="_210" name="cairo_glyph_allocate" returns="_652" context="_1" location="f1:1124" file="f1" line="1124">
+    <Argument name="num_glyphs" type="_614" location="f1:1124" file="f1" line="1124"/>
+  </Function>
+  <Function id="_211" name="cairo_glyph_free" returns="_632" context="_1" location="f1:1127" file="f1" line="1127">
+    <Argument name="glyphs" type="_652" location="f1:1127" file="f1" line="1127"/>
+  </Function>
+  <Struct id="_212" name="" context="_1" location="f1:1149" file="f1" line="1149" members="_653 _654" size="64" align="32"/>
+  <Typedef id="_213" name="cairo_text_cluster_t" type="_212" context="_1" location="f1:1152" file="f1" line="1152"/>
+  <Function id="_214" name="cairo_text_cluster_allocate" returns="_655" context="_1" location="f1:1155" file="f1" line="1155">
+    <Argument name="num_clusters" type="_614" location="f1:1155" file="f1" line="1155"/>
+  </Function>
+  <Function id="_215" name="cairo_text_cluster_free" returns="_632" context="_1" location="f1:1158" file="f1" line="1158">
+    <Argument name="clusters" type="_655" location="f1:1158" file="f1" line="1158"/>
+  </Function>
+  <Enumeration id="_216" name="_cairo_text_cluster_flags" context="_1" location="f1:1169" file="f1" line="1169" size="32" align="32">
+    <EnumValue name="CAIRO_TEXT_CLUSTER_FLAG_BACKWARD" init="1"/>
+  </Enumeration>
+  <Typedef id="_217" name="cairo_text_cluster_flags_t" type="_216" context="_1" location="f1:1171" file="f1" line="1171"/>
+  <Struct id="_218" name="" context="_1" location="f1:1202" file="f1" line="1202" members="_656 _657 _658 _659 _660 _661" size="384" align="64"/>
+  <Typedef id="_219" name="cairo_text_extents_t" type="_218" context="_1" location="f1:1209" file="f1" line="1209"/>
+  <Struct id="_220" name="" context="_1" location="f1:1254" file="f1" line="1254" members="_662 _663 _664 _665 _666" size="320" align="64"/>
+  <Typedef id="_221" name="cairo_font_extents_t" type="_220" context="_1" location="f1:1260" file="f1" line="1260"/>
+  <Enumeration id="_222" name="_cairo_font_slant" context="_1" location="f1:1272" file="f1" line="1272" size="32" align="32">
+    <EnumValue name="CAIRO_FONT_SLANT_NORMAL" init="0"/>
+    <EnumValue name="CAIRO_FONT_SLANT_ITALIC" init="1"/>
+    <EnumValue name="CAIRO_FONT_SLANT_OBLIQUE" init="2"/>
+  </Enumeration>
+  <Typedef id="_223" name="cairo_font_slant_t" type="_222" context="_1" location="f1:1276" file="f1" line="1276"/>
+  <Enumeration id="_224" name="_cairo_font_weight" context="_1" location="f1:1287" file="f1" line="1287" size="32" align="32">
+    <EnumValue name="CAIRO_FONT_WEIGHT_NORMAL" init="0"/>
+    <EnumValue name="CAIRO_FONT_WEIGHT_BOLD" init="1"/>
+  </Enumeration>
+  <Typedef id="_225" name="cairo_font_weight_t" type="_224" context="_1" location="f1:1290" file="f1" line="1290"/>
+  <Enumeration id="_226" name="_cairo_subpixel_order" context="_1" location="f1:1311" file="f1" line="1311" size="32" align="32">
+    <EnumValue name="CAIRO_SUBPIXEL_ORDER_DEFAULT" init="0"/>
+    <EnumValue name="CAIRO_SUBPIXEL_ORDER_RGB" init="1"/>
+    <EnumValue name="CAIRO_SUBPIXEL_ORDER_BGR" init="2"/>
+    <EnumValue name="CAIRO_SUBPIXEL_ORDER_VRGB" init="3"/>
+    <EnumValue name="CAIRO_SUBPIXEL_ORDER_VBGR" init="4"/>
+  </Enumeration>
+  <Typedef id="_227" name="cairo_subpixel_order_t" type="_226" context="_1" location="f1:1317" file="f1" line="1317"/>
+  <Enumeration id="_228" name="_cairo_hint_style" context="_1" location="f1:1343" file="f1" line="1343" size="32" align="32">
+    <EnumValue name="CAIRO_HINT_STYLE_DEFAULT" init="0"/>
+    <EnumValue name="CAIRO_HINT_STYLE_NONE" init="1"/>
+    <EnumValue name="CAIRO_HINT_STYLE_SLIGHT" init="2"/>
+    <EnumValue name="CAIRO_HINT_STYLE_MEDIUM" init="3"/>
+    <EnumValue name="CAIRO_HINT_STYLE_FULL" init="4"/>
+  </Enumeration>
+  <Typedef id="_229" name="cairo_hint_style_t" type="_228" context="_1" location="f1:1349" file="f1" line="1349"/>
+  <Enumeration id="_230" name="_cairo_hint_metrics" context="_1" location="f1:1366" file="f1" line="1366" size="32" align="32">
+    <EnumValue name="CAIRO_HINT_METRICS_DEFAULT" init="0"/>
+    <EnumValue name="CAIRO_HINT_METRICS_OFF" init="1"/>
+    <EnumValue name="CAIRO_HINT_METRICS_ON" init="2"/>
+  </Enumeration>
+  <Typedef id="_231" name="cairo_hint_metrics_t" type="_230" context="_1" location="f1:1370" file="f1" line="1370"/>
+  <Struct id="_232" name="_cairo_font_options" context="_1" location="f1:1394" file="f1" line="1394" incomplete="1"/>
+  <Typedef id="_233" name="cairo_font_options_t" type="_232" context="_1" location="f1:1394" file="f1" line="1394"/>
+  <Function id="_234" name="cairo_font_options_create" returns="_667" context="_1" location="f1:1397" file="f1" line="1397"/>
+  <Function id="_235" name="cairo_font_options_copy" returns="_667" context="_1" location="f1:1400" file="f1" line="1400">
+    <Argument name="original" type="_668" location="f1:1400" file="f1" line="1400"/>
+  </Function>
+  <Function id="_236" name="cairo_font_options_destroy" returns="_632" context="_1" location="f1:1403" file="f1" line="1403">
+    <Argument name="options" type="_667" location="f1:1403" file="f1" line="1403"/>
+  </Function>
+  <Function id="_237" name="cairo_font_options_status" returns="_109" context="_1" location="f1:1406" file="f1" line="1406">
+    <Argument name="options" type="_667" location="f1:1406" file="f1" line="1406"/>
+  </Function>
+  <Function id="_238" name="cairo_font_options_merge" returns="_632" context="_1" location="f1:1409" file="f1" line="1409">
+    <Argument name="options" type="_667" location="f1:1409" file="f1" line="1409"/>
+    <Argument name="other" type="_668" location="f1:1410" file="f1" line="1410"/>
+  </Function>
+  <Function id="_239" name="cairo_font_options_equal" returns="_94" context="_1" location="f1:1412" file="f1" line="1412">
+    <Argument name="options" type="_668" location="f1:1412" file="f1" line="1412"/>
+    <Argument name="other" type="_668" location="f1:1413" file="f1" line="1413"/>
+  </Function>
+  <Function id="_240" name="cairo_font_options_hash" returns="_669" context="_1" location="f1:1416" file="f1" line="1416">
+    <Argument name="options" type="_668" location="f1:1416" file="f1" line="1416"/>
+  </Function>
+  <Function id="_241" name="cairo_font_options_set_antialias" returns="_632" context="_1" location="f1:1419" file="f1" line="1419">
+    <Argument name="options" type="_667" location="f1:1419" file="f1" line="1419"/>
+    <Argument name="antialias" type="_139" location="f1:1420" file="f1" line="1420"/>
+  </Function>
+  <Function id="_242" name="cairo_font_options_get_antialias" returns="_139" context="_1" location="f1:1422" file="f1" line="1422">
+    <Argument name="options" type="_668" location="f1:1422" file="f1" line="1422"/>
+  </Function>
+  <Function id="_243" name="cairo_font_options_set_subpixel_order" returns="_632" context="_1" location="f1:1425" file="f1" line="1425">
+    <Argument name="options" type="_667" location="f1:1425" file="f1" line="1425"/>
+    <Argument name="subpixel_order" type="_227" location="f1:1426" file="f1" line="1426"/>
+  </Function>
+  <Function id="_244" name="cairo_font_options_get_subpixel_order" returns="_227" context="_1" location="f1:1428" file="f1" line="1428">
+    <Argument name="options" type="_668" location="f1:1428" file="f1" line="1428"/>
+  </Function>
+  <Function id="_245" name="cairo_font_options_set_hint_style" returns="_632" context="_1" location="f1:1431" file="f1" line="1431">
+    <Argument name="options" type="_667" location="f1:1431" file="f1" line="1431"/>
+    <Argument name="hint_style" type="_229" location="f1:1432" file="f1" line="1432"/>
+  </Function>
+  <Function id="_246" name="cairo_font_options_get_hint_style" returns="_229" context="_1" location="f1:1434" file="f1" line="1434">
+    <Argument name="options" type="_668" location="f1:1434" file="f1" line="1434"/>
+  </Function>
+  <Function id="_247" name="cairo_font_options_set_hint_metrics" returns="_632" context="_1" location="f1:1437" file="f1" line="1437">
+    <Argument name="options" type="_667" location="f1:1437" file="f1" line="1437"/>
+    <Argument name="hint_metrics" type="_231" location="f1:1438" file="f1" line="1438"/>
+  </Function>
+  <Function id="_248" name="cairo_font_options_get_hint_metrics" returns="_231" context="_1" location="f1:1440" file="f1" line="1440">
+    <Argument name="options" type="_668" location="f1:1440" file="f1" line="1440"/>
+  </Function>
+  <Function id="_249" name="cairo_font_options_get_variations" returns="_615" context="_1" location="f1:1443" file="f1" line="1443">
+    <Argument name="options" type="_667" location="f1:1443" file="f1" line="1443"/>
+  </Function>
+  <Function id="_250" name="cairo_font_options_set_variations" returns="_632" context="_1" location="f1:1446" file="f1" line="1446">
+    <Argument name="options" type="_667" location="f1:1446" file="f1" line="1446"/>
+    <Argument name="variations" type="_615" location="f1:1447" file="f1" line="1447"/>
+  </Function>
+  <Function id="_251" name="cairo_select_font_face" returns="_632" context="_1" location="f1:1453" file="f1" line="1453">
+    <Argument name="cr" type="_630" location="f1:1453" file="f1" line="1453"/>
+    <Argument name="family" type="_615" location="f1:1454" file="f1" line="1454"/>
+    <Argument name="slant" type="_223" location="f1:1455" file="f1" line="1455"/>
+    <Argument name="weight" type="_225" location="f1:1456" file="f1" line="1456"/>
+  </Function>
+  <Function id="_252" name="cairo_set_font_size" returns="_632" context="_1" location="f1:1459" file="f1" line="1459">
+    <Argument name="cr" type="_630" location="f1:1459" file="f1" line="1459"/>
+    <Argument name="size" type="_637" location="f1:1459" file="f1" line="1459"/>
+  </Function>
+  <Function id="_253" name="cairo_set_font_matrix" returns="_632" context="_1" location="f1:1462" file="f1" line="1462">
+    <Argument name="cr" type="_630" location="f1:1462" file="f1" line="1462"/>
+    <Argument name="matrix" type="_639" location="f1:1463" file="f1" line="1463"/>
+  </Function>
+  <Function id="_254" name="cairo_get_font_matrix" returns="_632" context="_1" location="f1:1466" file="f1" line="1466">
+    <Argument name="cr" type="_630" location="f1:1466" file="f1" line="1466"/>
+    <Argument name="matrix" type="_670" location="f1:1467" file="f1" line="1467"/>
+  </Function>
+  <Function id="_255" name="cairo_set_font_options" returns="_632" context="_1" location="f1:1470" file="f1" line="1470">
+    <Argument name="cr" type="_630" location="f1:1470" file="f1" line="1470"/>
+    <Argument name="options" type="_668" location="f1:1471" file="f1" line="1471"/>
+  </Function>
+  <Function id="_256" name="cairo_get_font_options" returns="_632" context="_1" location="f1:1474" file="f1" line="1474">
+    <Argument name="cr" type="_630" location="f1:1474" file="f1" line="1474"/>
+    <Argument name="options" type="_667" location="f1:1475" file="f1" line="1475"/>
+  </Function>
+  <Function id="_257" name="cairo_set_font_face" returns="_632" context="_1" location="f1:1478" file="f1" line="1478">
+    <Argument name="cr" type="_630" location="f1:1478" file="f1" line="1478"/>
+    <Argument name="font_face" type="_671" location="f1:1478" file="f1" line="1478"/>
+  </Function>
+  <Function id="_258" name="cairo_get_font_face" returns="_671" context="_1" location="f1:1481" file="f1" line="1481">
+    <Argument name="cr" type="_630" location="f1:1481" file="f1" line="1481"/>
+  </Function>
+  <Function id="_259" name="cairo_set_scaled_font" returns="_632" context="_1" location="f1:1484" file="f1" line="1484">
+    <Argument name="cr" type="_630" location="f1:1484" file="f1" line="1484"/>
+    <Argument name="scaled_font" type="_672" location="f1:1485" file="f1" line="1485"/>
+  </Function>
+  <Function id="_260" name="cairo_get_scaled_font" returns="_673" context="_1" location="f1:1488" file="f1" line="1488">
+    <Argument name="cr" type="_630" location="f1:1488" file="f1" line="1488"/>
+  </Function>
+  <Function id="_261" name="cairo_show_text" returns="_632" context="_1" location="f1:1491" file="f1" line="1491">
+    <Argument name="cr" type="_630" location="f1:1491" file="f1" line="1491"/>
+    <Argument name="utf8" type="_615" location="f1:1491" file="f1" line="1491"/>
+  </Function>
+  <Function id="_262" name="cairo_show_glyphs" returns="_632" context="_1" location="f1:1494" file="f1" line="1494">
+    <Argument name="cr" type="_630" location="f1:1494" file="f1" line="1494"/>
+    <Argument name="glyphs" type="_674" location="f1:1494" file="f1" line="1494"/>
+    <Argument name="num_glyphs" type="_614" location="f1:1494" file="f1" line="1494"/>
+  </Function>
+  <Function id="_263" name="cairo_show_text_glyphs" returns="_632" context="_1" location="f1:1497" file="f1" line="1497">
+    <Argument name="cr" type="_630" location="f1:1497" file="f1" line="1497"/>
+    <Argument name="utf8" type="_615" location="f1:1498" file="f1" line="1498"/>
+    <Argument name="utf8_len" type="_614" location="f1:1499" file="f1" line="1499"/>
+    <Argument name="glyphs" type="_674" location="f1:1500" file="f1" line="1500"/>
+    <Argument name="num_glyphs" type="_614" location="f1:1501" file="f1" line="1501"/>
+    <Argument name="clusters" type="_675" location="f1:1502" file="f1" line="1502"/>
+    <Argument name="num_clusters" type="_614" location="f1:1503" file="f1" line="1503"/>
+    <Argument name="cluster_flags" type="_217" location="f1:1504" file="f1" line="1504"/>
+  </Function>
+  <Function id="_264" name="cairo_text_path" returns="_632" context="_1" location="f1:1507" file="f1" line="1507">
+    <Argument name="cr" type="_630" location="f1:1507" file="f1" line="1507"/>
+    <Argument name="utf8" type="_615" location="f1:1507" file="f1" line="1507"/>
+  </Function>
+  <Function id="_265" name="cairo_glyph_path" returns="_632" context="_1" location="f1:1510" file="f1" line="1510">
+    <Argument name="cr" type="_630" location="f1:1510" file="f1" line="1510"/>
+    <Argument name="glyphs" type="_674" location="f1:1510" file="f1" line="1510"/>
+    <Argument name="num_glyphs" type="_614" location="f1:1510" file="f1" line="1510"/>
+  </Function>
+  <Function id="_266" name="cairo_text_extents" returns="_632" context="_1" location="f1:1513" file="f1" line="1513">
+    <Argument name="cr" type="_630" location="f1:1513" file="f1" line="1513"/>
+    <Argument name="utf8" type="_615" location="f1:1514" file="f1" line="1514"/>
+    <Argument name="extents" type="_676" location="f1:1515" file="f1" line="1515"/>
+  </Function>
+  <Function id="_267" name="cairo_glyph_extents" returns="_632" context="_1" location="f1:1518" file="f1" line="1518">
+    <Argument name="cr" type="_630" location="f1:1518" file="f1" line="1518"/>
+    <Argument name="glyphs" type="_674" location="f1:1519" file="f1" line="1519"/>
+    <Argument name="num_glyphs" type="_614" location="f1:1520" file="f1" line="1520"/>
+    <Argument name="extents" type="_676" location="f1:1521" file="f1" line="1521"/>
+  </Function>
+  <Function id="_268" name="cairo_font_extents" returns="_632" context="_1" location="f1:1524" file="f1" line="1524">
+    <Argument name="cr" type="_630" location="f1:1524" file="f1" line="1524"/>
+    <Argument name="extents" type="_677" location="f1:1525" file="f1" line="1525"/>
+  </Function>
+  <Function id="_269" name="cairo_font_face_reference" returns="_671" context="_1" location="f1:1530" file="f1" line="1530">
+    <Argument name="font_face" type="_671" location="f1:1530" file="f1" line="1530"/>
+  </Function>
+  <Function id="_270" name="cairo_font_face_destroy" returns="_632" context="_1" location="f1:1533" file="f1" line="1533">
+    <Argument name="font_face" type="_671" location="f1:1533" file="f1" line="1533"/>
+  </Function>
+  <Function id="_271" name="cairo_font_face_get_reference_count" returns="_633" context="_1" location="f1:1536" file="f1" line="1536">
+    <Argument name="font_face" type="_671" location="f1:1536" file="f1" line="1536"/>
+  </Function>
+  <Function id="_272" name="cairo_font_face_status" returns="_109" context="_1" location="f1:1539" file="f1" line="1539">
+    <Argument name="font_face" type="_671" location="f1:1539" file="f1" line="1539"/>
+  </Function>
+  <Enumeration id="_273" name="_cairo_font_type" context="_1" location="f1:1582" file="f1" line="1582" size="32" align="32">
+    <EnumValue name="CAIRO_FONT_TYPE_TOY" init="0"/>
+    <EnumValue name="CAIRO_FONT_TYPE_FT" init="1"/>
+    <EnumValue name="CAIRO_FONT_TYPE_WIN32" init="2"/>
+    <EnumValue name="CAIRO_FONT_TYPE_QUARTZ" init="3"/>
+    <EnumValue name="CAIRO_FONT_TYPE_USER" init="4"/>
+    <EnumValue name="CAIRO_FONT_TYPE_DWRITE" init="5"/>
+  </Enumeration>
+  <Typedef id="_274" name="cairo_font_type_t" type="_273" context="_1" location="f1:1589" file="f1" line="1589"/>
+  <Function id="_275" name="cairo_font_face_get_type" returns="_274" context="_1" location="f1:1592" file="f1" line="1592">
+    <Argument name="font_face" type="_671" location="f1:1592" file="f1" line="1592"/>
+  </Function>
+  <Function id="_276" name="cairo_font_face_get_user_data" returns="_634" context="_1" location="f1:1595" file="f1" line="1595">
+    <Argument name="font_face" type="_671" location="f1:1595" file="f1" line="1595"/>
+    <Argument name="key" type="_635" location="f1:1596" file="f1" line="1596"/>
+  </Function>
+  <Function id="_277" name="cairo_font_face_set_user_data" returns="_109" context="_1" location="f1:1599" file="f1" line="1599">
+    <Argument name="font_face" type="_671" location="f1:1599" file="f1" line="1599"/>
+    <Argument name="key" type="_635" location="f1:1600" file="f1" line="1600"/>
+    <Argument name="user_data" type="_634" location="f1:1601" file="f1" line="1601"/>
+    <Argument name="destroy" type="_105" location="f1:1602" file="f1" line="1602"/>
+  </Function>
+  <Function id="_278" name="cairo_scaled_font_create" returns="_673" context="_1" location="f1:1607" file="f1" line="1607">
+    <Argument name="font_face" type="_671" location="f1:1607" file="f1" line="1607"/>
+    <Argument name="font_matrix" type="_639" location="f1:1608" file="f1" line="1608"/>
+    <Argument name="ctm" type="_639" location="f1:1609" file="f1" line="1609"/>
+    <Argument name="options" type="_668" location="f1:1610" file="f1" line="1610"/>
+  </Function>
+  <Function id="_279" name="cairo_scaled_font_reference" returns="_673" context="_1" location="f1:1613" file="f1" line="1613">
+    <Argument name="scaled_font" type="_673" location="f1:1613" file="f1" line="1613"/>
+  </Function>
+  <Function id="_280" name="cairo_scaled_font_destroy" returns="_632" context="_1" location="f1:1616" file="f1" line="1616">
+    <Argument name="scaled_font" type="_673" location="f1:1616" file="f1" line="1616"/>
+  </Function>
+  <Function id="_281" name="cairo_scaled_font_get_reference_count" returns="_633" context="_1" location="f1:1619" file="f1" line="1619">
+    <Argument name="scaled_font" type="_673" location="f1:1619" file="f1" line="1619"/>
+  </Function>
+  <Function id="_282" name="cairo_scaled_font_status" returns="_109" context="_1" location="f1:1622" file="f1" line="1622">
+    <Argument name="scaled_font" type="_673" location="f1:1622" file="f1" line="1622"/>
+  </Function>
+  <Function id="_283" name="cairo_scaled_font_get_type" returns="_274" context="_1" location="f1:1625" file="f1" line="1625">
+    <Argument name="scaled_font" type="_673" location="f1:1625" file="f1" line="1625"/>
+  </Function>
+  <Function id="_284" name="cairo_scaled_font_get_user_data" returns="_634" context="_1" location="f1:1628" file="f1" line="1628">
+    <Argument name="scaled_font" type="_673" location="f1:1628" file="f1" line="1628"/>
+    <Argument name="key" type="_635" location="f1:1629" file="f1" line="1629"/>
+  </Function>
+  <Function id="_285" name="cairo_scaled_font_set_user_data" returns="_109" context="_1" location="f1:1632" file="f1" line="1632">
+    <Argument name="scaled_font" type="_673" location="f1:1632" file="f1" line="1632"/>
+    <Argument name="key" type="_635" location="f1:1633" file="f1" line="1633"/>
+    <Argument name="user_data" type="_634" location="f1:1634" file="f1" line="1634"/>
+    <Argument name="destroy" type="_105" location="f1:1635" file="f1" line="1635"/>
+  </Function>
+  <Function id="_286" name="cairo_scaled_font_extents" returns="_632" context="_1" location="f1:1638" file="f1" line="1638">
+    <Argument name="scaled_font" type="_673" location="f1:1638" file="f1" line="1638"/>
+    <Argument name="extents" type="_677" location="f1:1639" file="f1" line="1639"/>
+  </Function>
+  <Function id="_287" name="cairo_scaled_font_text_extents" returns="_632" context="_1" location="f1:1642" file="f1" line="1642">
+    <Argument name="scaled_font" type="_673" location="f1:1642" file="f1" line="1642"/>
+    <Argument name="utf8" type="_615" location="f1:1643" file="f1" line="1643"/>
+    <Argument name="extents" type="_676" location="f1:1644" file="f1" line="1644"/>
+  </Function>
+  <Function id="_288" name="cairo_scaled_font_glyph_extents" returns="_632" context="_1" location="f1:1647" file="f1" line="1647">
+    <Argument name="scaled_font" type="_673" location="f1:1647" file="f1" line="1647"/>
+    <Argument name="glyphs" type="_674" location="f1:1648" file="f1" line="1648"/>
+    <Argument name="num_glyphs" type="_614" location="f1:1649" file="f1" line="1649"/>
+    <Argument name="extents" type="_676" location="f1:1650" file="f1" line="1650"/>
+  </Function>
+  <Function id="_289" name="cairo_scaled_font_text_to_glyphs" returns="_109" context="_1" location="f1:1653" file="f1" line="1653">
+    <Argument name="scaled_font" type="_673" location="f1:1653" file="f1" line="1653"/>
+    <Argument name="x" type="_637" location="f1:1654" file="f1" line="1654"/>
+    <Argument name="y" type="_637" location="f1:1655" file="f1" line="1655"/>
+    <Argument name="utf8" type="_615" location="f1:1656" file="f1" line="1656"/>
+    <Argument name="utf8_len" type="_614" location="f1:1657" file="f1" line="1657"/>
+    <Argument name="glyphs" type="_678" location="f1:1658" file="f1" line="1658"/>
+    <Argument name="num_glyphs" type="_679" location="f1:1659" file="f1" line="1659"/>
+    <Argument name="clusters" type="_680" location="f1:1660" file="f1" line="1660"/>
+    <Argument name="num_clusters" type="_679" location="f1:1661" file="f1" line="1661"/>
+    <Argument name="cluster_flags" type="_681" location="f1:1662" file="f1" line="1662"/>
+  </Function>
+  <Function id="_290" name="cairo_scaled_font_get_font_face" returns="_671" context="_1" location="f1:1665" file="f1" line="1665">
+    <Argument name="scaled_font" type="_673" location="f1:1665" file="f1" line="1665"/>
+  </Function>
+  <Function id="_291" name="cairo_scaled_font_get_font_matrix" returns="_632" context="_1" location="f1:1668" file="f1" line="1668">
+    <Argument name="scaled_font" type="_673" location="f1:1668" file="f1" line="1668"/>
+    <Argument name="font_matrix" type="_670" location="f1:1669" file="f1" line="1669"/>
+  </Function>
+  <Function id="_292" name="cairo_scaled_font_get_ctm" returns="_632" context="_1" location="f1:1672" file="f1" line="1672">
+    <Argument name="scaled_font" type="_673" location="f1:1672" file="f1" line="1672"/>
+    <Argument name="ctm" type="_670" location="f1:1673" file="f1" line="1673"/>
+  </Function>
+  <Function id="_293" name="cairo_scaled_font_get_scale_matrix" returns="_632" context="_1" location="f1:1676" file="f1" line="1676">
+    <Argument name="scaled_font" type="_673" location="f1:1676" file="f1" line="1676"/>
+    <Argument name="scale_matrix" type="_670" location="f1:1677" file="f1" line="1677"/>
+  </Function>
+  <Function id="_294" name="cairo_scaled_font_get_font_options" returns="_632" context="_1" location="f1:1680" file="f1" line="1680">
+    <Argument name="scaled_font" type="_673" location="f1:1680" file="f1" line="1680"/>
+    <Argument name="options" type="_667" location="f1:1681" file="f1" line="1681"/>
+  </Function>
+  <Function id="_295" name="cairo_toy_font_face_create" returns="_671" context="_1" location="f1:1687" file="f1" line="1687">
+    <Argument name="family" type="_615" location="f1:1687" file="f1" line="1687"/>
+    <Argument name="slant" type="_223" location="f1:1688" file="f1" line="1688"/>
+    <Argument name="weight" type="_225" location="f1:1689" file="f1" line="1689"/>
+  </Function>
+  <Function id="_296" name="cairo_toy_font_face_get_family" returns="_615" context="_1" location="f1:1692" file="f1" line="1692">
+    <Argument name="font_face" type="_671" location="f1:1692" file="f1" line="1692"/>
+  </Function>
+  <Function id="_297" name="cairo_toy_font_face_get_slant" returns="_223" context="_1" location="f1:1695" file="f1" line="1695">
+    <Argument name="font_face" type="_671" location="f1:1695" file="f1" line="1695"/>
+  </Function>
+  <Function id="_298" name="cairo_toy_font_face_get_weight" returns="_225" context="_1" location="f1:1698" file="f1" line="1698">
+    <Argument name="font_face" type="_671" location="f1:1698" file="f1" line="1698"/>
+  </Function>
+  <Function id="_299" name="cairo_user_font_face_create" returns="_671" context="_1" location="f1:1704" file="f1" line="1704"/>
+  <Typedef id="_300" name="cairo_user_scaled_font_init_func_t" type="_682" context="_1" location="f1:1740" file="f1" line="1740"/>
+  <Typedef id="_301" name="cairo_user_scaled_font_render_glyph_func_t" type="_683" context="_1" location="f1:1818" file="f1" line="1818"/>
+  <Typedef id="_302" name="cairo_user_scaled_font_text_to_glyphs_func_t" type="_684" context="_1" location="f1:1888" file="f1" line="1888"/>
+  <Typedef id="_303" name="cairo_user_scaled_font_unicode_to_glyph_func_t" type="_685" context="_1" location="f1:1935" file="f1" line="1935"/>
+  <Function id="_304" name="cairo_user_font_face_set_init_func" returns="_632" context="_1" location="f1:1942" file="f1" line="1942">
+    <Argument name="font_face" type="_671" location="f1:1942" file="f1" line="1942"/>
+    <Argument name="init_func" type="_300" location="f1:1943" file="f1" line="1943"/>
+  </Function>
+  <Function id="_305" name="cairo_user_font_face_set_render_glyph_func" returns="_632" context="_1" location="f1:1946" file="f1" line="1946">
+    <Argument name="font_face" type="_671" location="f1:1946" file="f1" line="1946"/>
+    <Argument name="render_glyph_func" type="_301" location="f1:1947" file="f1" line="1947"/>
+  </Function>
+  <Function id="_306" name="cairo_user_font_face_set_render_color_glyph_func" returns="_632" context="_1" location="f1:1950" file="f1" line="1950">
+    <Argument name="font_face" type="_671" location="f1:1950" file="f1" line="1950"/>
+    <Argument name="render_glyph_func" type="_301" location="f1:1951" file="f1" line="1951"/>
+  </Function>
+  <Function id="_307" name="cairo_user_font_face_set_text_to_glyphs_func" returns="_632" context="_1" location="f1:1954" file="f1" line="1954">
+    <Argument name="font_face" type="_671" location="f1:1954" file="f1" line="1954"/>
+    <Argument name="text_to_glyphs_func" type="_302" location="f1:1955" file="f1" line="1955"/>
+  </Function>
+  <Function id="_308" name="cairo_user_font_face_set_unicode_to_glyph_func" returns="_632" context="_1" location="f1:1958" file="f1" line="1958">
+    <Argument name="font_face" type="_671" location="f1:1958" file="f1" line="1958"/>
+    <Argument name="unicode_to_glyph_func" type="_303" location="f1:1959" file="f1" line="1959"/>
+  </Function>
+  <Function id="_309" name="cairo_user_font_face_get_init_func" returns="_300" context="_1" location="f1:1964" file="f1" line="1964">
+    <Argument name="font_face" type="_671" location="f1:1964" file="f1" line="1964"/>
+  </Function>
+  <Function id="_310" name="cairo_user_font_face_get_render_glyph_func" returns="_301" context="_1" location="f1:1967" file="f1" line="1967">
+    <Argument name="font_face" type="_671" location="f1:1967" file="f1" line="1967"/>
+  </Function>
+  <Function id="_311" name="cairo_user_font_face_get_render_color_glyph_func" returns="_301" context="_1" location="f1:1970" file="f1" line="1970">
+    <Argument name="font_face" type="_671" location="f1:1970" file="f1" line="1970"/>
+  </Function>
+  <Function id="_312" name="cairo_user_font_face_get_text_to_glyphs_func" returns="_302" context="_1" location="f1:1973" file="f1" line="1973">
+    <Argument name="font_face" type="_671" location="f1:1973" file="f1" line="1973"/>
+  </Function>
+  <Function id="_313" name="cairo_user_font_face_get_unicode_to_glyph_func" returns="_303" context="_1" location="f1:1976" file="f1" line="1976">
+    <Argument name="font_face" type="_671" location="f1:1976" file="f1" line="1976"/>
+  </Function>
+  <Function id="_314" name="cairo_get_operator" returns="_131" context="_1" location="f1:1982" file="f1" line="1982">
+    <Argument name="cr" type="_630" location="f1:1982" file="f1" line="1982"/>
+  </Function>
+  <Function id="_315" name="cairo_get_source" returns="_636" context="_1" location="f1:1985" file="f1" line="1985">
+    <Argument name="cr" type="_630" location="f1:1985" file="f1" line="1985"/>
+  </Function>
+  <Function id="_316" name="cairo_get_tolerance" returns="_637" context="_1" location="f1:1988" file="f1" line="1988">
+    <Argument name="cr" type="_630" location="f1:1988" file="f1" line="1988"/>
+  </Function>
+  <Function id="_317" name="cairo_get_antialias" returns="_139" context="_1" location="f1:1991" file="f1" line="1991">
+    <Argument name="cr" type="_630" location="f1:1991" file="f1" line="1991"/>
+  </Function>
+  <Function id="_318" name="cairo_has_current_point" returns="_94" context="_1" location="f1:1994" file="f1" line="1994">
+    <Argument name="cr" type="_630" location="f1:1994" file="f1" line="1994"/>
+  </Function>
+  <Function id="_319" name="cairo_get_current_point" returns="_632" context="_1" location="f1:1997" file="f1" line="1997">
+    <Argument name="cr" type="_630" location="f1:1997" file="f1" line="1997"/>
+    <Argument name="x" type="_640" location="f1:1997" file="f1" line="1997"/>
+    <Argument name="y" type="_640" location="f1:1997" file="f1" line="1997"/>
+  </Function>
+  <Function id="_320" name="cairo_get_fill_rule" returns="_142" context="_1" location="f1:2000" file="f1" line="2000">
+    <Argument name="cr" type="_630" location="f1:2000" file="f1" line="2000"/>
+  </Function>
+  <Function id="_321" name="cairo_get_line_width" returns="_637" context="_1" location="f1:2003" file="f1" line="2003">
+    <Argument name="cr" type="_630" location="f1:2003" file="f1" line="2003"/>
+  </Function>
+  <Function id="_322" name="cairo_get_hairline" returns="_94" context="_1" location="f1:2006" file="f1" line="2006">
+    <Argument name="cr" type="_630" location="f1:2006" file="f1" line="2006"/>
+  </Function>
+  <Function id="_323" name="cairo_get_line_cap" returns="_147" context="_1" location="f1:2009" file="f1" line="2009">
+    <Argument name="cr" type="_630" location="f1:2009" file="f1" line="2009"/>
+  </Function>
+  <Function id="_324" name="cairo_get_line_join" returns="_150" context="_1" location="f1:2012" file="f1" line="2012">
+    <Argument name="cr" type="_630" location="f1:2012" file="f1" line="2012"/>
+  </Function>
+  <Function id="_325" name="cairo_get_miter_limit" returns="_637" context="_1" location="f1:2015" file="f1" line="2015">
+    <Argument name="cr" type="_630" location="f1:2015" file="f1" line="2015"/>
+  </Function>
+  <Function id="_326" name="cairo_get_dash_count" returns="_614" context="_1" location="f1:2018" file="f1" line="2018">
+    <Argument name="cr" type="_630" location="f1:2018" file="f1" line="2018"/>
+  </Function>
+  <Function id="_327" name="cairo_get_dash" returns="_632" context="_1" location="f1:2021" file="f1" line="2021">
+    <Argument name="cr" type="_630" location="f1:2021" file="f1" line="2021"/>
+    <Argument name="dashes" type="_640" location="f1:2021" file="f1" line="2021"/>
+    <Argument name="offset" type="_640" location="f1:2021" file="f1" line="2021"/>
+  </Function>
+  <Function id="_328" name="cairo_get_matrix" returns="_632" context="_1" location="f1:2024" file="f1" line="2024">
+    <Argument name="cr" type="_630" location="f1:2024" file="f1" line="2024"/>
+    <Argument name="matrix" type="_670" location="f1:2024" file="f1" line="2024"/>
+  </Function>
+  <Function id="_329" name="cairo_get_target" returns="_631" context="_1" location="f1:2027" file="f1" line="2027">
+    <Argument name="cr" type="_630" location="f1:2027" file="f1" line="2027"/>
+  </Function>
+  <Function id="_330" name="cairo_get_group_target" returns="_631" context="_1" location="f1:2030" file="f1" line="2030">
+    <Argument name="cr" type="_630" location="f1:2030" file="f1" line="2030"/>
+  </Function>
+  <Enumeration id="_331" name="_cairo_path_data_type" context="_1" location="f1:2045" file="f1" line="2045" size="32" align="32">
+    <EnumValue name="CAIRO_PATH_MOVE_TO" init="0"/>
+    <EnumValue name="CAIRO_PATH_LINE_TO" init="1"/>
+    <EnumValue name="CAIRO_PATH_CURVE_TO" init="2"/>
+    <EnumValue name="CAIRO_PATH_CLOSE_PATH" init="3"/>
+  </Enumeration>
+  <Typedef id="_332" name="cairo_path_data_type_t" type="_331" context="_1" location="f1:2050" file="f1" line="2050"/>
+  <Union id="_333" name="_cairo_path_data_t" context="_1" location="f1:2121" file="f1" line="2121" members="_686 _687 _688 _689" size="128" align="64"/>
+  <Typedef id="_334" name="cairo_path_data_t" type="_333" context="_1" location="f1:2120" file="f1" line="2120"/>
+  <Struct id="_335" name="cairo_path" context="_1" location="f1:2152" file="f1" line="2152" members="_690 _691 _692" size="192" align="64"/>
+  <Typedef id="_336" name="cairo_path_t" type="_335" context="_1" location="f1:2156" file="f1" line="2156"/>
+  <Function id="_337" name="cairo_copy_path" returns="_693" context="_1" location="f1:2159" file="f1" line="2159">
+    <Argument name="cr" type="_630" location="f1:2159" file="f1" line="2159"/>
+  </Function>
+  <Function id="_338" name="cairo_copy_path_flat" returns="_693" context="_1" location="f1:2162" file="f1" line="2162">
+    <Argument name="cr" type="_630" location="f1:2162" file="f1" line="2162"/>
+  </Function>
+  <Function id="_339" name="cairo_append_path" returns="_632" context="_1" location="f1:2165" file="f1" line="2165">
+    <Argument name="cr" type="_630" location="f1:2165" file="f1" line="2165"/>
+    <Argument name="path" type="_694" location="f1:2166" file="f1" line="2166"/>
+  </Function>
+  <Function id="_340" name="cairo_path_destroy" returns="_632" context="_1" location="f1:2169" file="f1" line="2169">
+    <Argument name="path" type="_693" location="f1:2169" file="f1" line="2169"/>
+  </Function>
+  <Function id="_341" name="cairo_status" returns="_109" context="_1" location="f1:2174" file="f1" line="2174">
+    <Argument name="cr" type="_630" location="f1:2174" file="f1" line="2174"/>
+  </Function>
+  <Function id="_342" name="cairo_status_to_string" returns="_615" context="_1" location="f1:2177" file="f1" line="2177">
+    <Argument name="status" type="_109" location="f1:2177" file="f1" line="2177"/>
+  </Function>
+  <Function id="_343" name="cairo_device_reference" returns="_695" context="_1" location="f1:2182" file="f1" line="2182">
+    <Argument name="device" type="_695" location="f1:2182" file="f1" line="2182"/>
+  </Function>
+  <Enumeration id="_344" name="_cairo_device_type" context="_1" location="f1:2215" file="f1" line="2215" size="32" align="32">
+    <EnumValue name="CAIRO_DEVICE_TYPE_DRM" init="0"/>
+    <EnumValue name="CAIRO_DEVICE_TYPE_GL" init="1"/>
+    <EnumValue name="CAIRO_DEVICE_TYPE_SCRIPT" init="2"/>
+    <EnumValue name="CAIRO_DEVICE_TYPE_XCB" init="3"/>
+    <EnumValue name="CAIRO_DEVICE_TYPE_XLIB" init="4"/>
+    <EnumValue name="CAIRO_DEVICE_TYPE_XML" init="5"/>
+    <EnumValue name="CAIRO_DEVICE_TYPE_COGL" init="6"/>
+    <EnumValue name="CAIRO_DEVICE_TYPE_WIN32" init="7"/>
+    <EnumValue name="CAIRO_DEVICE_TYPE_INVALID" init="-1"/>
+  </Enumeration>
+  <Typedef id="_345" name="cairo_device_type_t" type="_344" context="_1" location="f1:2226" file="f1" line="2226"/>
+  <Function id="_346" name="cairo_device_get_type" returns="_345" context="_1" location="f1:2229" file="f1" line="2229">
+    <Argument name="device" type="_695" location="f1:2229" file="f1" line="2229"/>
+  </Function>
+  <Function id="_347" name="cairo_device_status" returns="_109" context="_1" location="f1:2232" file="f1" line="2232">
+    <Argument name="device" type="_695" location="f1:2232" file="f1" line="2232"/>
+  </Function>
+  <Function id="_348" name="cairo_device_acquire" returns="_109" context="_1" location="f1:2235" file="f1" line="2235">
+    <Argument name="device" type="_695" location="f1:2235" file="f1" line="2235"/>
+  </Function>
+  <Function id="_349" name="cairo_device_release" returns="_632" context="_1" location="f1:2238" file="f1" line="2238">
+    <Argument name="device" type="_695" location="f1:2238" file="f1" line="2238"/>
+  </Function>
+  <Function id="_350" name="cairo_device_flush" returns="_632" context="_1" location="f1:2241" file="f1" line="2241">
+    <Argument name="device" type="_695" location="f1:2241" file="f1" line="2241"/>
+  </Function>
+  <Function id="_351" name="cairo_device_finish" returns="_632" context="_1" location="f1:2244" file="f1" line="2244">
+    <Argument name="device" type="_695" location="f1:2244" file="f1" line="2244"/>
+  </Function>
+  <Function id="_352" name="cairo_device_destroy" returns="_632" context="_1" location="f1:2247" file="f1" line="2247">
+    <Argument name="device" type="_695" location="f1:2247" file="f1" line="2247"/>
+  </Function>
+  <Function id="_353" name="cairo_device_get_reference_count" returns="_633" context="_1" location="f1:2250" file="f1" line="2250">
+    <Argument name="device" type="_695" location="f1:2250" file="f1" line="2250"/>
+  </Function>
+  <Function id="_354" name="cairo_device_get_user_data" returns="_634" context="_1" location="f1:2253" file="f1" line="2253">
+    <Argument name="device" type="_695" location="f1:2253" file="f1" line="2253"/>
+    <Argument name="key" type="_635" location="f1:2254" file="f1" line="2254"/>
+  </Function>
+  <Function id="_355" name="cairo_device_set_user_data" returns="_109" context="_1" location="f1:2257" file="f1" line="2257">
+    <Argument name="device" type="_695" location="f1:2257" file="f1" line="2257"/>
+    <Argument name="key" type="_635" location="f1:2258" file="f1" line="2258"/>
+    <Argument name="user_data" type="_634" location="f1:2259" file="f1" line="2259"/>
+    <Argument name="destroy" type="_105" location="f1:2260" file="f1" line="2260"/>
+  </Function>
+  <Function id="_356" name="cairo_surface_create_similar" returns="_631" context="_1" location="f1:2266" file="f1" line="2266">
+    <Argument name="other" type="_631" location="f1:2266" file="f1" line="2266"/>
+    <Argument name="content" type="_111" location="f1:2267" file="f1" line="2267"/>
+    <Argument name="width" type="_614" location="f1:2268" file="f1" line="2268"/>
+    <Argument name="height" type="_614" location="f1:2269" file="f1" line="2269"/>
+  </Function>
+  <Function id="_357" name="cairo_surface_create_similar_image" returns="_631" context="_1" location="f1:2272" file="f1" line="2272">
+    <Argument name="other" type="_631" location="f1:2272" file="f1" line="2272"/>
+    <Argument name="format" type="_113" location="f1:2273" file="f1" line="2273"/>
+    <Argument name="width" type="_614" location="f1:2274" file="f1" line="2274"/>
+    <Argument name="height" type="_614" location="f1:2275" file="f1" line="2275"/>
+  </Function>
+  <Function id="_358" name="cairo_surface_map_to_image" returns="_631" context="_1" location="f1:2278" file="f1" line="2278">
+    <Argument name="surface" type="_631" location="f1:2278" file="f1" line="2278"/>
+    <Argument name="extents" type="_696" location="f1:2279" file="f1" line="2279"/>
+  </Function>
+  <Function id="_359" name="cairo_surface_unmap_image" returns="_632" context="_1" location="f1:2282" file="f1" line="2282">
+    <Argument name="surface" type="_631" location="f1:2282" file="f1" line="2282"/>
+    <Argument name="image" type="_631" location="f1:2283" file="f1" line="2283"/>
+  </Function>
+  <Function id="_360" name="cairo_surface_create_for_rectangle" returns="_631" context="_1" location="f1:2286" file="f1" line="2286">
+    <Argument name="target" type="_631" location="f1:2286" file="f1" line="2286"/>
+    <Argument name="x" type="_637" location="f1:2287" file="f1" line="2287"/>
+    <Argument name="y" type="_637" location="f1:2288" file="f1" line="2288"/>
+    <Argument name="width" type="_637" location="f1:2289" file="f1" line="2289"/>
+    <Argument name="height" type="_637" location="f1:2290" file="f1" line="2290"/>
+  </Function>
+  <Enumeration id="_361" name="cairo_surface_observer_mode_t" context="_1" location="f1:2301" file="f1" line="2301" size="32" align="32">
+    <EnumValue name="CAIRO_SURFACE_OBSERVER_NORMAL" init="0"/>
+    <EnumValue name="CAIRO_SURFACE_OBSERVER_RECORD_OPERATIONS" init="1"/>
+  </Enumeration>
+  <Typedef id="_362" name="cairo_surface_observer_mode_t" type="_361" context="_1" location="f1:2304" file="f1" line="2304"/>
+  <Function id="_363" name="cairo_surface_create_observer" returns="_631" context="_1" location="f1:2307" file="f1" line="2307">
+    <Argument name="target" type="_631" location="f1:2307" file="f1" line="2307"/>
+    <Argument name="mode" type="_362" location="f1:2308" file="f1" line="2308"/>
+  </Function>
+  <Typedef id="_364" name="cairo_surface_observer_callback_t" type="_697" context="_1" location="f1:2310" file="f1" line="2310"/>
+  <Function id="_365" name="cairo_surface_observer_add_paint_callback" returns="_109" context="_1" location="f1:2315" file="f1" line="2315">
+    <Argument name="abstract_surface" type="_631" location="f1:2315" file="f1" line="2315"/>
+    <Argument name="func" type="_364" location="f1:2316" file="f1" line="2316"/>
+    <Argument name="data" type="_634" location="f1:2317" file="f1" line="2317"/>
+  </Function>
+  <Function id="_366" name="cairo_surface_observer_add_mask_callback" returns="_109" context="_1" location="f1:2320" file="f1" line="2320">
+    <Argument name="abstract_surface" type="_631" location="f1:2320" file="f1" line="2320"/>
+    <Argument name="func" type="_364" location="f1:2321" file="f1" line="2321"/>
+    <Argument name="data" type="_634" location="f1:2322" file="f1" line="2322"/>
+  </Function>
+  <Function id="_367" name="cairo_surface_observer_add_fill_callback" returns="_109" context="_1" location="f1:2325" file="f1" line="2325">
+    <Argument name="abstract_surface" type="_631" location="f1:2325" file="f1" line="2325"/>
+    <Argument name="func" type="_364" location="f1:2326" file="f1" line="2326"/>
+    <Argument name="data" type="_634" location="f1:2327" file="f1" line="2327"/>
+  </Function>
+  <Function id="_368" name="cairo_surface_observer_add_stroke_callback" returns="_109" context="_1" location="f1:2330" file="f1" line="2330">
+    <Argument name="abstract_surface" type="_631" location="f1:2330" file="f1" line="2330"/>
+    <Argument name="func" type="_364" location="f1:2331" file="f1" line="2331"/>
+    <Argument name="data" type="_634" location="f1:2332" file="f1" line="2332"/>
+  </Function>
+  <Function id="_369" name="cairo_surface_observer_add_glyphs_callback" returns="_109" context="_1" location="f1:2335" file="f1" line="2335">
+    <Argument name="abstract_surface" type="_631" location="f1:2335" file="f1" line="2335"/>
+    <Argument name="func" type="_364" location="f1:2336" file="f1" line="2336"/>
+    <Argument name="data" type="_634" location="f1:2337" file="f1" line="2337"/>
+  </Function>
+  <Function id="_370" name="cairo_surface_observer_add_flush_callback" returns="_109" context="_1" location="f1:2340" file="f1" line="2340">
+    <Argument name="abstract_surface" type="_631" location="f1:2340" file="f1" line="2340"/>
+    <Argument name="func" type="_364" location="f1:2341" file="f1" line="2341"/>
+    <Argument name="data" type="_634" location="f1:2342" file="f1" line="2342"/>
+  </Function>
+  <Function id="_371" name="cairo_surface_observer_add_finish_callback" returns="_109" context="_1" location="f1:2345" file="f1" line="2345">
+    <Argument name="abstract_surface" type="_631" location="f1:2345" file="f1" line="2345"/>
+    <Argument name="func" type="_364" location="f1:2346" file="f1" line="2346"/>
+    <Argument name="data" type="_634" location="f1:2347" file="f1" line="2347"/>
+  </Function>
+  <Function id="_372" name="cairo_surface_observer_print" returns="_109" context="_1" location="f1:2350" file="f1" line="2350">
+    <Argument name="surface" type="_631" location="f1:2350" file="f1" line="2350"/>
+    <Argument name="write_func" type="_114" location="f1:2351" file="f1" line="2351"/>
+    <Argument name="closure" type="_634" location="f1:2352" file="f1" line="2352"/>
+  </Function>
+  <Function id="_373" name="cairo_surface_observer_elapsed" returns="_637" context="_1" location="f1:2354" file="f1" line="2354">
+    <Argument name="surface" type="_631" location="f1:2354" file="f1" line="2354"/>
+  </Function>
+  <Function id="_374" name="cairo_device_observer_print" returns="_109" context="_1" location="f1:2357" file="f1" line="2357">
+    <Argument name="device" type="_695" location="f1:2357" file="f1" line="2357"/>
+    <Argument name="write_func" type="_114" location="f1:2358" file="f1" line="2358"/>
+    <Argument name="closure" type="_634" location="f1:2359" file="f1" line="2359"/>
+  </Function>
+  <Function id="_375" name="cairo_device_observer_elapsed" returns="_637" context="_1" location="f1:2362" file="f1" line="2362">
+    <Argument name="device" type="_695" location="f1:2362" file="f1" line="2362"/>
+  </Function>
+  <Function id="_376" name="cairo_device_observer_paint_elapsed" returns="_637" context="_1" location="f1:2365" file="f1" line="2365">
+    <Argument name="device" type="_695" location="f1:2365" file="f1" line="2365"/>
+  </Function>
+  <Function id="_377" name="cairo_device_observer_mask_elapsed" returns="_637" context="_1" location="f1:2368" file="f1" line="2368">
+    <Argument name="device" type="_695" location="f1:2368" file="f1" line="2368"/>
+  </Function>
+  <Function id="_378" name="cairo_device_observer_fill_elapsed" returns="_637" context="_1" location="f1:2371" file="f1" line="2371">
+    <Argument name="device" type="_695" location="f1:2371" file="f1" line="2371"/>
+  </Function>
+  <Function id="_379" name="cairo_device_observer_stroke_elapsed" returns="_637" context="_1" location="f1:2374" file="f1" line="2374">
+    <Argument name="device" type="_695" location="f1:2374" file="f1" line="2374"/>
+  </Function>
+  <Function id="_380" name="cairo_device_observer_glyphs_elapsed" returns="_637" context="_1" location="f1:2377" file="f1" line="2377">
+    <Argument name="device" type="_695" location="f1:2377" file="f1" line="2377"/>
+  </Function>
+  <Function id="_381" name="cairo_surface_reference" returns="_631" context="_1" location="f1:2380" file="f1" line="2380">
+    <Argument name="surface" type="_631" location="f1:2380" file="f1" line="2380"/>
+  </Function>
+  <Function id="_382" name="cairo_surface_finish" returns="_632" context="_1" location="f1:2383" file="f1" line="2383">
+    <Argument name="surface" type="_631" location="f1:2383" file="f1" line="2383"/>
+  </Function>
+  <Function id="_383" name="cairo_surface_destroy" returns="_632" context="_1" location="f1:2386" file="f1" line="2386">
+    <Argument name="surface" type="_631" location="f1:2386" file="f1" line="2386"/>
+  </Function>
+  <Function id="_384" name="cairo_surface_get_device" returns="_695" context="_1" location="f1:2389" file="f1" line="2389">
+    <Argument name="surface" type="_631" location="f1:2389" file="f1" line="2389"/>
+  </Function>
+  <Function id="_385" name="cairo_surface_get_reference_count" returns="_633" context="_1" location="f1:2392" file="f1" line="2392">
+    <Argument name="surface" type="_631" location="f1:2392" file="f1" line="2392"/>
+  </Function>
+  <Function id="_386" name="cairo_surface_status" returns="_109" context="_1" location="f1:2395" file="f1" line="2395">
+    <Argument name="surface" type="_631" location="f1:2395" file="f1" line="2395"/>
+  </Function>
+  <Enumeration id="_387" name="_cairo_surface_type" context="_1" location="f1:2449" file="f1" line="2449" size="32" align="32">
+    <EnumValue name="CAIRO_SURFACE_TYPE_IMAGE" init="0"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_PDF" init="1"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_PS" init="2"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_XLIB" init="3"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_XCB" init="4"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_GLITZ" init="5"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_QUARTZ" init="6"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_WIN32" init="7"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_BEOS" init="8"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_DIRECTFB" init="9"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_SVG" init="10"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_OS2" init="11"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_WIN32_PRINTING" init="12"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_QUARTZ_IMAGE" init="13"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_SCRIPT" init="14"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_QT" init="15"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_RECORDING" init="16"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_VG" init="17"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_GL" init="18"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_DRM" init="19"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_TEE" init="20"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_XML" init="21"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_SKIA" init="22"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_SUBSURFACE" init="23"/>
+    <EnumValue name="CAIRO_SURFACE_TYPE_COGL" init="24"/>
+  </Enumeration>
+  <Typedef id="_388" name="cairo_surface_type_t" type="_387" context="_1" location="f1:2475" file="f1" line="2475"/>
+  <Function id="_389" name="cairo_surface_get_type" returns="_388" context="_1" location="f1:2478" file="f1" line="2478">
+    <Argument name="surface" type="_631" location="f1:2478" file="f1" line="2478"/>
+  </Function>
+  <Function id="_390" name="cairo_surface_get_content" returns="_111" context="_1" location="f1:2481" file="f1" line="2481">
+    <Argument name="surface" type="_631" location="f1:2481" file="f1" line="2481"/>
+  </Function>
+  <Function id="_391" name="cairo_surface_write_to_png" returns="_109" context="_1" location="f1:2486" file="f1" line="2486">
+    <Argument name="surface" type="_631" location="f1:2486" file="f1" line="2486"/>
+    <Argument name="filename" type="_615" location="f1:2487" file="f1" line="2487"/>
+  </Function>
+  <Function id="_392" name="cairo_surface_write_to_png_stream" returns="_109" context="_1" location="f1:2490" file="f1" line="2490">
+    <Argument name="surface" type="_631" location="f1:2490" file="f1" line="2490"/>
+    <Argument name="write_func" type="_114" location="f1:2491" file="f1" line="2491"/>
+    <Argument name="closure" type="_634" location="f1:2492" file="f1" line="2492"/>
+  </Function>
+  <Function id="_393" name="cairo_surface_get_user_data" returns="_634" context="_1" location="f1:2497" file="f1" line="2497">
+    <Argument name="surface" type="_631" location="f1:2497" file="f1" line="2497"/>
+    <Argument name="key" type="_635" location="f1:2498" file="f1" line="2498"/>
+  </Function>
+  <Function id="_394" name="cairo_surface_set_user_data" returns="_109" context="_1" location="f1:2501" file="f1" line="2501">
+    <Argument name="surface" type="_631" location="f1:2501" file="f1" line="2501"/>
+    <Argument name="key" type="_635" location="f1:2502" file="f1" line="2502"/>
+    <Argument name="user_data" type="_634" location="f1:2503" file="f1" line="2503"/>
+    <Argument name="destroy" type="_105" location="f1:2504" file="f1" line="2504"/>
+  </Function>
+  <Function id="_395" name="cairo_surface_get_mime_data" returns="_632" context="_1" location="f1:2520" file="f1" line="2520">
+    <Argument name="surface" type="_631" location="f1:2520" file="f1" line="2520"/>
+    <Argument name="mime_type" type="_615" location="f1:2521" file="f1" line="2521"/>
+    <Argument name="data" type="_698" location="f1:2522" file="f1" line="2522"/>
+    <Argument name="length" type="_699" location="f1:2523" file="f1" line="2523"/>
+  </Function>
+  <Function id="_396" name="cairo_surface_set_mime_data" returns="_109" context="_1" location="f1:2526" file="f1" line="2526">
+    <Argument name="surface" type="_631" location="f1:2526" file="f1" line="2526"/>
+    <Argument name="mime_type" type="_615" location="f1:2527" file="f1" line="2527"/>
+    <Argument name="data" type="_700" location="f1:2528" file="f1" line="2528"/>
+    <Argument name="length" type="_669" location="f1:2529" file="f1" line="2529"/>
+    <Argument name="destroy" type="_105" location="f1:2530" file="f1" line="2530"/>
+    <Argument name="closure" type="_634" location="f1:2531" file="f1" line="2531"/>
+  </Function>
+  <Function id="_397" name="cairo_surface_supports_mime_type" returns="_94" context="_1" location="f1:2534" file="f1" line="2534">
+    <Argument name="surface" type="_631" location="f1:2534" file="f1" line="2534"/>
+    <Argument name="mime_type" type="_615" location="f1:2535" file="f1" line="2535"/>
+  </Function>
+  <Function id="_398" name="cairo_surface_get_font_options" returns="_632" context="_1" location="f1:2538" file="f1" line="2538">
+    <Argument name="surface" type="_631" location="f1:2538" file="f1" line="2538"/>
+    <Argument name="options" type="_667" location="f1:2539" file="f1" line="2539"/>
+  </Function>
+  <Function id="_399" name="cairo_surface_flush" returns="_632" context="_1" location="f1:2542" file="f1" line="2542">
+    <Argument name="surface" type="_631" location="f1:2542" file="f1" line="2542"/>
+  </Function>
+  <Function id="_400" name="cairo_surface_mark_dirty" returns="_632" context="_1" location="f1:2545" file="f1" line="2545">
+    <Argument name="surface" type="_631" location="f1:2545" file="f1" line="2545"/>
+  </Function>
+  <Function id="_401" name="cairo_surface_mark_dirty_rectangle" returns="_632" context="_1" location="f1:2548" file="f1" line="2548">
+    <Argument name="surface" type="_631" location="f1:2548" file="f1" line="2548"/>
+    <Argument name="x" type="_614" location="f1:2549" file="f1" line="2549"/>
+    <Argument name="y" type="_614" location="f1:2550" file="f1" line="2550"/>
+    <Argument name="width" type="_614" location="f1:2551" file="f1" line="2551"/>
+    <Argument name="height" type="_614" location="f1:2552" file="f1" line="2552"/>
+  </Function>
+  <Function id="_402" name="cairo_surface_set_device_scale" returns="_632" context="_1" location="f1:2555" file="f1" line="2555">
+    <Argument name="surface" type="_631" location="f1:2555" file="f1" line="2555"/>
+    <Argument name="x_scale" type="_637" location="f1:2556" file="f1" line="2556"/>
+    <Argument name="y_scale" type="_637" location="f1:2557" file="f1" line="2557"/>
+  </Function>
+  <Function id="_403" name="cairo_surface_get_device_scale" returns="_632" context="_1" location="f1:2560" file="f1" line="2560">
+    <Argument name="surface" type="_631" location="f1:2560" file="f1" line="2560"/>
+    <Argument name="x_scale" type="_640" location="f1:2561" file="f1" line="2561"/>
+    <Argument name="y_scale" type="_640" location="f1:2562" file="f1" line="2562"/>
+  </Function>
+  <Function id="_404" name="cairo_surface_set_device_offset" returns="_632" context="_1" location="f1:2565" file="f1" line="2565">
+    <Argument name="surface" type="_631" location="f1:2565" file="f1" line="2565"/>
+    <Argument name="x_offset" type="_637" location="f1:2566" file="f1" line="2566"/>
+    <Argument name="y_offset" type="_637" location="f1:2567" file="f1" line="2567"/>
+  </Function>
+  <Function id="_405" name="cairo_surface_get_device_offset" returns="_632" context="_1" location="f1:2570" file="f1" line="2570">
+    <Argument name="surface" type="_631" location="f1:2570" file="f1" line="2570"/>
+    <Argument name="x_offset" type="_640" location="f1:2571" file="f1" line="2571"/>
+    <Argument name="y_offset" type="_640" location="f1:2572" file="f1" line="2572"/>
+  </Function>
+  <Function id="_406" name="cairo_surface_set_fallback_resolution" returns="_632" context="_1" location="f1:2575" file="f1" line="2575">
+    <Argument name="surface" type="_631" location="f1:2575" file="f1" line="2575"/>
+    <Argument name="x_pixels_per_inch" type="_637" location="f1:2576" file="f1" line="2576"/>
+    <Argument name="y_pixels_per_inch" type="_637" location="f1:2577" file="f1" line="2577"/>
+  </Function>
+  <Function id="_407" name="cairo_surface_get_fallback_resolution" returns="_632" context="_1" location="f1:2580" file="f1" line="2580">
+    <Argument name="surface" type="_631" location="f1:2580" file="f1" line="2580"/>
+    <Argument name="x_pixels_per_inch" type="_640" location="f1:2581" file="f1" line="2581"/>
+    <Argument name="y_pixels_per_inch" type="_640" location="f1:2582" file="f1" line="2582"/>
+  </Function>
+  <Function id="_408" name="cairo_surface_copy_page" returns="_632" context="_1" location="f1:2585" file="f1" line="2585">
+    <Argument name="surface" type="_631" location="f1:2585" file="f1" line="2585"/>
+  </Function>
+  <Function id="_409" name="cairo_surface_show_page" returns="_632" context="_1" location="f1:2588" file="f1" line="2588">
+    <Argument name="surface" type="_631" location="f1:2588" file="f1" line="2588"/>
+  </Function>
+  <Function id="_410" name="cairo_surface_has_show_text_glyphs" returns="_94" context="_1" location="f1:2591" file="f1" line="2591">
+    <Argument name="surface" type="_631" location="f1:2591" file="f1" line="2591"/>
+  </Function>
+  <Function id="_411" name="cairo_image_surface_create" returns="_631" context="_1" location="f1:2596" file="f1" line="2596">
+    <Argument name="format" type="_113" location="f1:2596" file="f1" line="2596"/>
+    <Argument name="width" type="_614" location="f1:2597" file="f1" line="2597"/>
+    <Argument name="height" type="_614" location="f1:2598" file="f1" line="2598"/>
+  </Function>
+  <Function id="_412" name="cairo_format_stride_for_width" returns="_614" context="_1" location="f1:2601" file="f1" line="2601">
+    <Argument name="format" type="_113" location="f1:2601" file="f1" line="2601"/>
+    <Argument name="width" type="_614" location="f1:2602" file="f1" line="2602"/>
+  </Function>
+  <Function id="_413" name="cairo_image_surface_create_for_data" returns="_631" context="_1" location="f1:2605" file="f1" line="2605">
+    <Argument name="data" type="_701" location="f1:2605" file="f1" line="2605"/>
+    <Argument name="format" type="_113" location="f1:2606" file="f1" line="2606"/>
+    <Argument name="width" type="_614" location="f1:2607" file="f1" line="2607"/>
+    <Argument name="height" type="_614" location="f1:2608" file="f1" line="2608"/>
+    <Argument name="stride" type="_614" location="f1:2609" file="f1" line="2609"/>
+  </Function>
+  <Function id="_414" name="cairo_image_surface_get_data" returns="_701" context="_1" location="f1:2612" file="f1" line="2612">
+    <Argument name="surface" type="_631" location="f1:2612" file="f1" line="2612"/>
+  </Function>
+  <Function id="_415" name="cairo_image_surface_get_format" returns="_113" context="_1" location="f1:2615" file="f1" line="2615">
+    <Argument name="surface" type="_631" location="f1:2615" file="f1" line="2615"/>
+  </Function>
+  <Function id="_416" name="cairo_image_surface_get_width" returns="_614" context="_1" location="f1:2618" file="f1" line="2618">
+    <Argument name="surface" type="_631" location="f1:2618" file="f1" line="2618"/>
+  </Function>
+  <Function id="_417" name="cairo_image_surface_get_height" returns="_614" context="_1" location="f1:2621" file="f1" line="2621">
+    <Argument name="surface" type="_631" location="f1:2621" file="f1" line="2621"/>
+  </Function>
+  <Function id="_418" name="cairo_image_surface_get_stride" returns="_614" context="_1" location="f1:2624" file="f1" line="2624">
+    <Argument name="surface" type="_631" location="f1:2624" file="f1" line="2624"/>
+  </Function>
+  <Function id="_419" name="cairo_image_surface_create_from_png" returns="_631" context="_1" location="f1:2629" file="f1" line="2629">
+    <Argument name="filename" type="_615" location="f1:2629" file="f1" line="2629"/>
+  </Function>
+  <Function id="_420" name="cairo_image_surface_create_from_png_stream" returns="_631" context="_1" location="f1:2632" file="f1" line="2632">
+    <Argument name="read_func" type="_115" location="f1:2632" file="f1" line="2632"/>
+    <Argument name="closure" type="_634" location="f1:2633" file="f1" line="2633"/>
+  </Function>
+  <Function id="_421" name="cairo_recording_surface_create" returns="_631" context="_1" location="f1:2640" file="f1" line="2640">
+    <Argument name="content" type="_111" location="f1:2640" file="f1" line="2640"/>
+    <Argument name="extents" type="_702" location="f1:2641" file="f1" line="2641"/>
+  </Function>
+  <Function id="_422" name="cairo_recording_surface_ink_extents" returns="_632" context="_1" location="f1:2644" file="f1" line="2644">
+    <Argument name="surface" type="_631" location="f1:2644" file="f1" line="2644"/>
+    <Argument name="x0" type="_640" location="f1:2645" file="f1" line="2645"/>
+    <Argument name="y0" type="_640" location="f1:2646" file="f1" line="2646"/>
+    <Argument name="width" type="_640" location="f1:2647" file="f1" line="2647"/>
+    <Argument name="height" type="_640" location="f1:2648" file="f1" line="2648"/>
+  </Function>
+  <Function id="_423" name="cairo_recording_surface_get_extents" returns="_94" context="_1" location="f1:2651" file="f1" line="2651">
+    <Argument name="surface" type="_631" location="f1:2651" file="f1" line="2651"/>
+    <Argument name="extents" type="_703" location="f1:2652" file="f1" line="2652"/>
+  </Function>
+  <Typedef id="_424" name="cairo_raster_source_acquire_func_t" type="_704" context="_1" location="f1:2681" file="f1" line="2681"/>
+  <Typedef id="_425" name="cairo_raster_source_release_func_t" type="_705" context="_1" location="f1:2700" file="f1" line="2700"/>
+  <Typedef id="_426" name="cairo_raster_source_snapshot_func_t" type="_706" context="_1" location="f1:2721" file="f1" line="2721"/>
+  <Typedef id="_427" name="cairo_raster_source_copy_func_t" type="_707" context="_1" location="f1:2739" file="f1" line="2739"/>
+  <Typedef id="_428" name="cairo_raster_source_finish_func_t" type="_708" context="_1" location="f1:2754" file="f1" line="2754"/>
+  <Function id="_429" name="cairo_pattern_create_raster_source" returns="_636" context="_1" location="f1:2758" file="f1" line="2758">
+    <Argument name="user_data" type="_634" location="f1:2758" file="f1" line="2758"/>
+    <Argument name="content" type="_111" location="f1:2759" file="f1" line="2759"/>
+    <Argument name="width" type="_614" location="f1:2760" file="f1" line="2760"/>
+    <Argument name="height" type="_614" location="f1:2760" file="f1" line="2760"/>
+  </Function>
+  <Function id="_430" name="cairo_raster_source_pattern_set_callback_data" returns="_632" context="_1" location="f1:2763" file="f1" line="2763">
+    <Argument name="pattern" type="_636" location="f1:2763" file="f1" line="2763"/>
+    <Argument name="data" type="_634" location="f1:2764" file="f1" line="2764"/>
+  </Function>
+  <Function id="_431" name="cairo_raster_source_pattern_get_callback_data" returns="_634" context="_1" location="f1:2767" file="f1" line="2767">
+    <Argument name="pattern" type="_636" location="f1:2767" file="f1" line="2767"/>
+  </Function>
+  <Function id="_432" name="cairo_raster_source_pattern_set_acquire" returns="_632" context="_1" location="f1:2770" file="f1" line="2770">
+    <Argument name="pattern" type="_636" location="f1:2770" file="f1" line="2770"/>
+    <Argument name="acquire" type="_424" location="f1:2771" file="f1" line="2771"/>
+    <Argument name="release" type="_425" location="f1:2772" file="f1" line="2772"/>
+  </Function>
+  <Function id="_433" name="cairo_raster_source_pattern_get_acquire" returns="_632" context="_1" location="f1:2775" file="f1" line="2775">
+    <Argument name="pattern" type="_636" location="f1:2775" file="f1" line="2775"/>
+    <Argument name="acquire" type="_709" location="f1:2776" file="f1" line="2776"/>
+    <Argument name="release" type="_710" location="f1:2777" file="f1" line="2777"/>
+  </Function>
+  <Function id="_434" name="cairo_raster_source_pattern_set_snapshot" returns="_632" context="_1" location="f1:2779" file="f1" line="2779">
+    <Argument name="pattern" type="_636" location="f1:2779" file="f1" line="2779"/>
+    <Argument name="snapshot" type="_426" location="f1:2780" file="f1" line="2780"/>
+  </Function>
+  <Function id="_435" name="cairo_raster_source_pattern_get_snapshot" returns="_426" context="_1" location="f1:2783" file="f1" line="2783">
+    <Argument name="pattern" type="_636" location="f1:2783" file="f1" line="2783"/>
+  </Function>
+  <Function id="_436" name="cairo_raster_source_pattern_set_copy" returns="_632" context="_1" location="f1:2786" file="f1" line="2786">
+    <Argument name="pattern" type="_636" location="f1:2786" file="f1" line="2786"/>
+    <Argument name="copy" type="_427" location="f1:2787" file="f1" line="2787"/>
+  </Function>
+  <Function id="_437" name="cairo_raster_source_pattern_get_copy" returns="_427" context="_1" location="f1:2790" file="f1" line="2790">
+    <Argument name="pattern" type="_636" location="f1:2790" file="f1" line="2790"/>
+  </Function>
+  <Function id="_438" name="cairo_raster_source_pattern_set_finish" returns="_632" context="_1" location="f1:2793" file="f1" line="2793">
+    <Argument name="pattern" type="_636" location="f1:2793" file="f1" line="2793"/>
+    <Argument name="finish" type="_428" location="f1:2794" file="f1" line="2794"/>
+  </Function>
+  <Function id="_439" name="cairo_raster_source_pattern_get_finish" returns="_428" context="_1" location="f1:2797" file="f1" line="2797">
+    <Argument name="pattern" type="_636" location="f1:2797" file="f1" line="2797"/>
+  </Function>
+  <Function id="_440" name="cairo_pattern_create_rgb" returns="_636" context="_1" location="f1:2802" file="f1" line="2802">
+    <Argument name="red" type="_637" location="f1:2802" file="f1" line="2802"/>
+    <Argument name="green" type="_637" location="f1:2802" file="f1" line="2802"/>
+    <Argument name="blue" type="_637" location="f1:2802" file="f1" line="2802"/>
+  </Function>
+  <Function id="_441" name="cairo_pattern_create_rgba" returns="_636" context="_1" location="f1:2805" file="f1" line="2805">
+    <Argument name="red" type="_637" location="f1:2805" file="f1" line="2805"/>
+    <Argument name="green" type="_637" location="f1:2805" file="f1" line="2805"/>
+    <Argument name="blue" type="_637" location="f1:2805" file="f1" line="2805"/>
+    <Argument name="alpha" type="_637" location="f1:2806" file="f1" line="2806"/>
+  </Function>
+  <Function id="_442" name="cairo_pattern_create_for_surface" returns="_636" context="_1" location="f1:2809" file="f1" line="2809">
+    <Argument name="surface" type="_631" location="f1:2809" file="f1" line="2809"/>
+  </Function>
+  <Function id="_443" name="cairo_pattern_create_linear" returns="_636" context="_1" location="f1:2812" file="f1" line="2812">
+    <Argument name="x0" type="_637" location="f1:2812" file="f1" line="2812"/>
+    <Argument name="y0" type="_637" location="f1:2812" file="f1" line="2812"/>
+    <Argument name="x1" type="_637" location="f1:2813" file="f1" line="2813"/>
+    <Argument name="y1" type="_637" location="f1:2813" file="f1" line="2813"/>
+  </Function>
+  <Function id="_444" name="cairo_pattern_create_radial" returns="_636" context="_1" location="f1:2816" file="f1" line="2816">
+    <Argument name="cx0" type="_637" location="f1:2816" file="f1" line="2816"/>
+    <Argument name="cy0" type="_637" location="f1:2816" file="f1" line="2816"/>
+    <Argument name="radius0" type="_637" location="f1:2816" file="f1" line="2816"/>
+    <Argument name="cx1" type="_637" location="f1:2817" file="f1" line="2817"/>
+    <Argument name="cy1" type="_637" location="f1:2817" file="f1" line="2817"/>
+    <Argument name="radius1" type="_637" location="f1:2817" file="f1" line="2817"/>
+  </Function>
+  <Function id="_445" name="cairo_pattern_create_mesh" returns="_636" context="_1" location="f1:2820" file="f1" line="2820"/>
+  <Function id="_446" name="cairo_pattern_reference" returns="_636" context="_1" location="f1:2823" file="f1" line="2823">
+    <Argument name="pattern" type="_636" location="f1:2823" file="f1" line="2823"/>
+  </Function>
+  <Function id="_447" name="cairo_pattern_destroy" returns="_632" context="_1" location="f1:2826" file="f1" line="2826">
+    <Argument name="pattern" type="_636" location="f1:2826" file="f1" line="2826"/>
+  </Function>
+  <Function id="_448" name="cairo_pattern_get_reference_count" returns="_633" context="_1" location="f1:2829" file="f1" line="2829">
+    <Argument name="pattern" type="_636" location="f1:2829" file="f1" line="2829"/>
+  </Function>
+  <Function id="_449" name="cairo_pattern_status" returns="_109" context="_1" location="f1:2832" file="f1" line="2832">
+    <Argument name="pattern" type="_636" location="f1:2832" file="f1" line="2832"/>
+  </Function>
+  <Function id="_450" name="cairo_pattern_get_user_data" returns="_634" context="_1" location="f1:2835" file="f1" line="2835">
+    <Argument name="pattern" type="_636" location="f1:2835" file="f1" line="2835"/>
+    <Argument name="key" type="_635" location="f1:2836" file="f1" line="2836"/>
+  </Function>
+  <Function id="_451" name="cairo_pattern_set_user_data" returns="_109" context="_1" location="f1:2839" file="f1" line="2839">
+    <Argument name="pattern" type="_636" location="f1:2839" file="f1" line="2839"/>
+    <Argument name="key" type="_635" location="f1:2840" file="f1" line="2840"/>
+    <Argument name="user_data" type="_634" location="f1:2841" file="f1" line="2841"/>
+    <Argument name="destroy" type="_105" location="f1:2842" file="f1" line="2842"/>
+  </Function>
+  <Enumeration id="_452" name="_cairo_pattern_type" context="_1" location="f1:2876" file="f1" line="2876" size="32" align="32">
+    <EnumValue name="CAIRO_PATTERN_TYPE_SOLID" init="0"/>
+    <EnumValue name="CAIRO_PATTERN_TYPE_SURFACE" init="1"/>
+    <EnumValue name="CAIRO_PATTERN_TYPE_LINEAR" init="2"/>
+    <EnumValue name="CAIRO_PATTERN_TYPE_RADIAL" init="3"/>
+    <EnumValue name="CAIRO_PATTERN_TYPE_MESH" init="4"/>
+    <EnumValue name="CAIRO_PATTERN_TYPE_RASTER_SOURCE" init="5"/>
+  </Enumeration>
+  <Typedef id="_453" name="cairo_pattern_type_t" type="_452" context="_1" location="f1:2883" file="f1" line="2883"/>
+  <Function id="_454" name="cairo_pattern_get_type" returns="_453" context="_1" location="f1:2886" file="f1" line="2886">
+    <Argument name="pattern" type="_636" location="f1:2886" file="f1" line="2886"/>
+  </Function>
+  <Function id="_455" name="cairo_pattern_add_color_stop_rgb" returns="_632" context="_1" location="f1:2889" file="f1" line="2889">
+    <Argument name="pattern" type="_636" location="f1:2889" file="f1" line="2889"/>
+    <Argument name="offset" type="_637" location="f1:2890" file="f1" line="2890"/>
+    <Argument name="red" type="_637" location="f1:2891" file="f1" line="2891"/>
+    <Argument name="green" type="_637" location="f1:2891" file="f1" line="2891"/>
+    <Argument name="blue" type="_637" location="f1:2891" file="f1" line="2891"/>
+  </Function>
+  <Function id="_456" name="cairo_pattern_add_color_stop_rgba" returns="_632" context="_1" location="f1:2894" file="f1" line="2894">
+    <Argument name="pattern" type="_636" location="f1:2894" file="f1" line="2894"/>
+    <Argument name="offset" type="_637" location="f1:2895" file="f1" line="2895"/>
+    <Argument name="red" type="_637" location="f1:2896" file="f1" line="2896"/>
+    <Argument name="green" type="_637" location="f1:2896" file="f1" line="2896"/>
+    <Argument name="blue" type="_637" location="f1:2896" file="f1" line="2896"/>
+    <Argument name="alpha" type="_637" location="f1:2897" file="f1" line="2897"/>
+  </Function>
+  <Function id="_457" name="cairo_mesh_pattern_begin_patch" returns="_632" context="_1" location="f1:2900" file="f1" line="2900">
+    <Argument name="pattern" type="_636" location="f1:2900" file="f1" line="2900"/>
+  </Function>
+  <Function id="_458" name="cairo_mesh_pattern_end_patch" returns="_632" context="_1" location="f1:2903" file="f1" line="2903">
+    <Argument name="pattern" type="_636" location="f1:2903" file="f1" line="2903"/>
+  </Function>
+  <Function id="_459" name="cairo_mesh_pattern_curve_to" returns="_632" context="_1" location="f1:2906" file="f1" line="2906">
+    <Argument name="pattern" type="_636" location="f1:2906" file="f1" line="2906"/>
+    <Argument name="x1" type="_637" location="f1:2907" file="f1" line="2907"/>
+    <Argument name="y1" type="_637" location="f1:2907" file="f1" line="2907"/>
+    <Argument name="x2" type="_637" location="f1:2908" file="f1" line="2908"/>
+    <Argument name="y2" type="_637" location="f1:2908" file="f1" line="2908"/>
+    <Argument name="x3" type="_637" location="f1:2909" file="f1" line="2909"/>
+    <Argument name="y3" type="_637" location="f1:2909" file="f1" line="2909"/>
+  </Function>
+  <Function id="_460" name="cairo_mesh_pattern_line_to" returns="_632" context="_1" location="f1:2912" file="f1" line="2912">
+    <Argument name="pattern" type="_636" location="f1:2912" file="f1" line="2912"/>
+    <Argument name="x" type="_637" location="f1:2913" file="f1" line="2913"/>
+    <Argument name="y" type="_637" location="f1:2913" file="f1" line="2913"/>
+  </Function>
+  <Function id="_461" name="cairo_mesh_pattern_move_to" returns="_632" context="_1" location="f1:2916" file="f1" line="2916">
+    <Argument name="pattern" type="_636" location="f1:2916" file="f1" line="2916"/>
+    <Argument name="x" type="_637" location="f1:2917" file="f1" line="2917"/>
+    <Argument name="y" type="_637" location="f1:2917" file="f1" line="2917"/>
+  </Function>
+  <Function id="_462" name="cairo_mesh_pattern_set_control_point" returns="_632" context="_1" location="f1:2920" file="f1" line="2920">
+    <Argument name="pattern" type="_636" location="f1:2920" file="f1" line="2920"/>
+    <Argument name="point_num" type="_633" location="f1:2921" file="f1" line="2921"/>
+    <Argument name="x" type="_637" location="f1:2922" file="f1" line="2922"/>
+    <Argument name="y" type="_637" location="f1:2922" file="f1" line="2922"/>
+  </Function>
+  <Function id="_463" name="cairo_mesh_pattern_set_corner_color_rgb" returns="_632" context="_1" location="f1:2925" file="f1" line="2925">
+    <Argument name="pattern" type="_636" location="f1:2925" file="f1" line="2925"/>
+    <Argument name="corner_num" type="_633" location="f1:2926" file="f1" line="2926"/>
+    <Argument name="red" type="_637" location="f1:2927" file="f1" line="2927"/>
+    <Argument name="green" type="_637" location="f1:2927" file="f1" line="2927"/>
+    <Argument name="blue" type="_637" location="f1:2927" file="f1" line="2927"/>
+  </Function>
+  <Function id="_464" name="cairo_mesh_pattern_set_corner_color_rgba" returns="_632" context="_1" location="f1:2930" file="f1" line="2930">
+    <Argument name="pattern" type="_636" location="f1:2930" file="f1" line="2930"/>
+    <Argument name="corner_num" type="_633" location="f1:2931" file="f1" line="2931"/>
+    <Argument name="red" type="_637" location="f1:2932" file="f1" line="2932"/>
+    <Argument name="green" type="_637" location="f1:2932" file="f1" line="2932"/>
+    <Argument name="blue" type="_637" location="f1:2932" file="f1" line="2932"/>
+    <Argument name="alpha" type="_637" location="f1:2933" file="f1" line="2933"/>
+  </Function>
+  <Function id="_465" name="cairo_pattern_set_matrix" returns="_632" context="_1" location="f1:2936" file="f1" line="2936">
+    <Argument name="pattern" type="_636" location="f1:2936" file="f1" line="2936"/>
+    <Argument name="matrix" type="_639" location="f1:2937" file="f1" line="2937"/>
+  </Function>
+  <Function id="_466" name="cairo_pattern_get_matrix" returns="_632" context="_1" location="f1:2940" file="f1" line="2940">
+    <Argument name="pattern" type="_636" location="f1:2940" file="f1" line="2940"/>
+    <Argument name="matrix" type="_670" location="f1:2941" file="f1" line="2941"/>
+  </Function>
+  <Enumeration id="_467" name="_cairo_extend" context="_1" location="f1:2968" file="f1" line="2968" size="32" align="32">
+    <EnumValue name="CAIRO_EXTEND_NONE" init="0"/>
+    <EnumValue name="CAIRO_EXTEND_REPEAT" init="1"/>
+    <EnumValue name="CAIRO_EXTEND_REFLECT" init="2"/>
+    <EnumValue name="CAIRO_EXTEND_PAD" init="3"/>
+  </Enumeration>
+  <Typedef id="_468" name="cairo_extend_t" type="_467" context="_1" location="f1:2973" file="f1" line="2973"/>
+  <Function id="_469" name="cairo_pattern_set_extend" returns="_632" context="_1" location="f1:2976" file="f1" line="2976">
+    <Argument name="pattern" type="_636" location="f1:2976" file="f1" line="2976"/>
+    <Argument name="extend" type="_468" location="f1:2976" file="f1" line="2976"/>
+  </Function>
+  <Function id="_470" name="cairo_pattern_get_extend" returns="_468" context="_1" location="f1:2979" file="f1" line="2979">
+    <Argument name="pattern" type="_636" location="f1:2979" file="f1" line="2979"/>
+  </Function>
+  <Enumeration id="_471" name="_cairo_filter" context="_1" location="f1:3001" file="f1" line="3001" size="32" align="32">
+    <EnumValue name="CAIRO_FILTER_FAST" init="0"/>
+    <EnumValue name="CAIRO_FILTER_GOOD" init="1"/>
+    <EnumValue name="CAIRO_FILTER_BEST" init="2"/>
+    <EnumValue name="CAIRO_FILTER_NEAREST" init="3"/>
+    <EnumValue name="CAIRO_FILTER_BILINEAR" init="4"/>
+    <EnumValue name="CAIRO_FILTER_GAUSSIAN" init="5"/>
+  </Enumeration>
+  <Typedef id="_472" name="cairo_filter_t" type="_471" context="_1" location="f1:3008" file="f1" line="3008"/>
+  <Function id="_473" name="cairo_pattern_set_filter" returns="_632" context="_1" location="f1:3011" file="f1" line="3011">
+    <Argument name="pattern" type="_636" location="f1:3011" file="f1" line="3011"/>
+    <Argument name="filter" type="_472" location="f1:3011" file="f1" line="3011"/>
+  </Function>
+  <Function id="_474" name="cairo_pattern_get_filter" returns="_472" context="_1" location="f1:3014" file="f1" line="3014">
+    <Argument name="pattern" type="_636" location="f1:3014" file="f1" line="3014"/>
+  </Function>
+  <Function id="_475" name="cairo_pattern_get_rgba" returns="_109" context="_1" location="f1:3017" file="f1" line="3017">
+    <Argument name="pattern" type="_636" location="f1:3017" file="f1" line="3017"/>
+    <Argument name="red" type="_640" location="f1:3018" file="f1" line="3018"/>
+    <Argument name="green" type="_640" location="f1:3018" file="f1" line="3018"/>
+    <Argument name="blue" type="_640" location="f1:3019" file="f1" line="3019"/>
+    <Argument name="alpha" type="_640" location="f1:3019" file="f1" line="3019"/>
+  </Function>
+  <Function id="_476" name="cairo_pattern_get_surface" returns="_109" context="_1" location="f1:3022" file="f1" line="3022">
+    <Argument name="pattern" type="_636" location="f1:3022" file="f1" line="3022"/>
+    <Argument name="surface" type="_711" location="f1:3023" file="f1" line="3023"/>
+  </Function>
+  <Function id="_477" name="cairo_pattern_get_color_stop_rgba" returns="_109" context="_1" location="f1:3027" file="f1" line="3027">
+    <Argument name="pattern" type="_636" location="f1:3027" file="f1" line="3027"/>
+    <Argument name="index" type="_614" location="f1:3028" file="f1" line="3028"/>
+    <Argument name="offset" type="_640" location="f1:3028" file="f1" line="3028"/>
+    <Argument name="red" type="_640" location="f1:3029" file="f1" line="3029"/>
+    <Argument name="green" type="_640" location="f1:3029" file="f1" line="3029"/>
+    <Argument name="blue" type="_640" location="f1:3030" file="f1" line="3030"/>
+    <Argument name="alpha" type="_640" location="f1:3030" file="f1" line="3030"/>
+  </Function>
+  <Function id="_478" name="cairo_pattern_get_color_stop_count" returns="_109" context="_1" location="f1:3033" file="f1" line="3033">
+    <Argument name="pattern" type="_636" location="f1:3033" file="f1" line="3033"/>
+    <Argument name="count" type="_679" location="f1:3034" file="f1" line="3034"/>
+  </Function>
+  <Function id="_479" name="cairo_pattern_get_linear_points" returns="_109" context="_1" location="f1:3037" file="f1" line="3037">
+    <Argument name="pattern" type="_636" location="f1:3037" file="f1" line="3037"/>
+    <Argument name="x0" type="_640" location="f1:3038" file="f1" line="3038"/>
+    <Argument name="y0" type="_640" location="f1:3038" file="f1" line="3038"/>
+    <Argument name="x1" type="_640" location="f1:3039" file="f1" line="3039"/>
+    <Argument name="y1" type="_640" location="f1:3039" file="f1" line="3039"/>
+  </Function>
+  <Function id="_480" name="cairo_pattern_get_radial_circles" returns="_109" context="_1" location="f1:3042" file="f1" line="3042">
+    <Argument name="pattern" type="_636" location="f1:3042" file="f1" line="3042"/>
+    <Argument name="x0" type="_640" location="f1:3043" file="f1" line="3043"/>
+    <Argument name="y0" type="_640" location="f1:3043" file="f1" line="3043"/>
+    <Argument name="r0" type="_640" location="f1:3043" file="f1" line="3043"/>
+    <Argument name="x1" type="_640" location="f1:3044" file="f1" line="3044"/>
+    <Argument name="y1" type="_640" location="f1:3044" file="f1" line="3044"/>
+    <Argument name="r1" type="_640" location="f1:3044" file="f1" line="3044"/>
+  </Function>
+  <Function id="_481" name="cairo_mesh_pattern_get_patch_count" returns="_109" context="_1" location="f1:3047" file="f1" line="3047">
+    <Argument name="pattern" type="_636" location="f1:3047" file="f1" line="3047"/>
+    <Argument name="count" type="_712" location="f1:3048" file="f1" line="3048"/>
+  </Function>
+  <Function id="_482" name="cairo_mesh_pattern_get_path" returns="_693" context="_1" location="f1:3051" file="f1" line="3051">
+    <Argument name="pattern" type="_636" location="f1:3051" file="f1" line="3051"/>
+    <Argument name="patch_num" type="_633" location="f1:3052" file="f1" line="3052"/>
+  </Function>
+  <Function id="_483" name="cairo_mesh_pattern_get_corner_color_rgba" returns="_109" context="_1" location="f1:3055" file="f1" line="3055">
+    <Argument name="pattern" type="_636" location="f1:3055" file="f1" line="3055"/>
+    <Argument name="patch_num" type="_633" location="f1:3056" file="f1" line="3056"/>
+    <Argument name="corner_num" type="_633" location="f1:3057" file="f1" line="3057"/>
+    <Argument name="red" type="_640" location="f1:3058" file="f1" line="3058"/>
+    <Argument name="green" type="_640" location="f1:3058" file="f1" line="3058"/>
+    <Argument name="blue" type="_640" location="f1:3059" file="f1" line="3059"/>
+    <Argument name="alpha" type="_640" location="f1:3059" file="f1" line="3059"/>
+  </Function>
+  <Function id="_484" name="cairo_mesh_pattern_get_control_point" returns="_109" context="_1" location="f1:3062" file="f1" line="3062">
+    <Argument name="pattern" type="_636" location="f1:3062" file="f1" line="3062"/>
+    <Argument name="patch_num" type="_633" location="f1:3063" file="f1" line="3063"/>
+    <Argument name="point_num" type="_633" location="f1:3064" file="f1" line="3064"/>
+    <Argument name="x" type="_640" location="f1:3065" file="f1" line="3065"/>
+    <Argument name="y" type="_640" location="f1:3065" file="f1" line="3065"/>
+  </Function>
+  <Function id="_485" name="cairo_matrix_init" returns="_632" context="_1" location="f1:3070" file="f1" line="3070">
+    <Argument name="matrix" type="_670" location="f1:3070" file="f1" line="3070"/>
+    <Argument name="xx" type="_637" location="f1:3071" file="f1" line="3071"/>
+    <Argument name="yx" type="_637" location="f1:3071" file="f1" line="3071"/>
+    <Argument name="xy" type="_637" location="f1:3072" file="f1" line="3072"/>
+    <Argument name="yy" type="_637" location="f1:3072" file="f1" line="3072"/>
+    <Argument name="x0" type="_637" location="f1:3073" file="f1" line="3073"/>
+    <Argument name="y0" type="_637" location="f1:3073" file="f1" line="3073"/>
+  </Function>
+  <Function id="_486" name="cairo_matrix_init_identity" returns="_632" context="_1" location="f1:3076" file="f1" line="3076">
+    <Argument name="matrix" type="_670" location="f1:3076" file="f1" line="3076"/>
+  </Function>
+  <Function id="_487" name="cairo_matrix_init_translate" returns="_632" context="_1" location="f1:3079" file="f1" line="3079">
+    <Argument name="matrix" type="_670" location="f1:3079" file="f1" line="3079"/>
+    <Argument name="tx" type="_637" location="f1:3080" file="f1" line="3080"/>
+    <Argument name="ty" type="_637" location="f1:3080" file="f1" line="3080"/>
+  </Function>
+  <Function id="_488" name="cairo_matrix_init_scale" returns="_632" context="_1" location="f1:3083" file="f1" line="3083">
+    <Argument name="matrix" type="_670" location="f1:3083" file="f1" line="3083"/>
+    <Argument name="sx" type="_637" location="f1:3084" file="f1" line="3084"/>
+    <Argument name="sy" type="_637" location="f1:3084" file="f1" line="3084"/>
+  </Function>
+  <Function id="_489" name="cairo_matrix_init_rotate" returns="_632" context="_1" location="f1:3087" file="f1" line="3087">
+    <Argument name="matrix" type="_670" location="f1:3087" file="f1" line="3087"/>
+    <Argument name="radians" type="_637" location="f1:3088" file="f1" line="3088"/>
+  </Function>
+  <Function id="_490" name="cairo_matrix_translate" returns="_632" context="_1" location="f1:3091" file="f1" line="3091">
+    <Argument name="matrix" type="_670" location="f1:3091" file="f1" line="3091"/>
+    <Argument name="tx" type="_637" location="f1:3091" file="f1" line="3091"/>
+    <Argument name="ty" type="_637" location="f1:3091" file="f1" line="3091"/>
+  </Function>
+  <Function id="_491" name="cairo_matrix_scale" returns="_632" context="_1" location="f1:3094" file="f1" line="3094">
+    <Argument name="matrix" type="_670" location="f1:3094" file="f1" line="3094"/>
+    <Argument name="sx" type="_637" location="f1:3094" file="f1" line="3094"/>
+    <Argument name="sy" type="_637" location="f1:3094" file="f1" line="3094"/>
+  </Function>
+  <Function id="_492" name="cairo_matrix_rotate" returns="_632" context="_1" location="f1:3097" file="f1" line="3097">
+    <Argument name="matrix" type="_670" location="f1:3097" file="f1" line="3097"/>
+    <Argument name="radians" type="_637" location="f1:3097" file="f1" line="3097"/>
+  </Function>
+  <Function id="_493" name="cairo_matrix_invert" returns="_109" context="_1" location="f1:3100" file="f1" line="3100">
+    <Argument name="matrix" type="_670" location="f1:3100" file="f1" line="3100"/>
+  </Function>
+  <Function id="_494" name="cairo_matrix_multiply" returns="_632" context="_1" location="f1:3103" file="f1" line="3103">
+    <Argument name="result" type="_670" location="f1:3103" file="f1" line="3103"/>
+    <Argument name="a" type="_639" location="f1:3104" file="f1" line="3104"/>
+    <Argument name="b" type="_639" location="f1:3105" file="f1" line="3105"/>
+  </Function>
+  <Function id="_495" name="cairo_matrix_transform_distance" returns="_632" context="_1" location="f1:3108" file="f1" line="3108">
+    <Argument name="matrix" type="_639" location="f1:3108" file="f1" line="3108"/>
+    <Argument name="dx" type="_640" location="f1:3109" file="f1" line="3109"/>
+    <Argument name="dy" type="_640" location="f1:3109" file="f1" line="3109"/>
+  </Function>
+  <Function id="_496" name="cairo_matrix_transform_point" returns="_632" context="_1" location="f1:3112" file="f1" line="3112">
+    <Argument name="matrix" type="_639" location="f1:3112" file="f1" line="3112"/>
+    <Argument name="x" type="_640" location="f1:3113" file="f1" line="3113"/>
+    <Argument name="y" type="_640" location="f1:3113" file="f1" line="3113"/>
+  </Function>
+  <Struct id="_497" name="_cairo_region" context="_1" location="f1:3130" file="f1" line="3130" incomplete="1"/>
+  <Typedef id="_498" name="cairo_region_t" type="_497" context="_1" location="f1:3130" file="f1" line="3130"/>
+  <Enumeration id="_499" name="_cairo_region_overlap" context="_1" location="f1:3143" file="f1" line="3143" size="32" align="32">
+    <EnumValue name="CAIRO_REGION_OVERLAP_IN" init="0"/>
+    <EnumValue name="CAIRO_REGION_OVERLAP_OUT" init="1"/>
+    <EnumValue name="CAIRO_REGION_OVERLAP_PART" init="2"/>
+  </Enumeration>
+  <Typedef id="_500" name="cairo_region_overlap_t" type="_499" context="_1" location="f1:3147" file="f1" line="3147"/>
+  <Function id="_501" name="cairo_region_create" returns="_713" context="_1" location="f1:3150" file="f1" line="3150"/>
+  <Function id="_502" name="cairo_region_create_rectangle" returns="_713" context="_1" location="f1:3153" file="f1" line="3153">
+    <Argument name="rectangle" type="_696" location="f1:3153" file="f1" line="3153"/>
+  </Function>
+  <Function id="_503" name="cairo_region_create_rectangles" returns="_713" context="_1" location="f1:3156" file="f1" line="3156">
+    <Argument name="rects" type="_696" location="f1:3156" file="f1" line="3156"/>
+    <Argument name="count" type="_614" location="f1:3157" file="f1" line="3157"/>
+  </Function>
+  <Function id="_504" name="cairo_region_copy" returns="_713" context="_1" location="f1:3160" file="f1" line="3160">
+    <Argument name="original" type="_714" location="f1:3160" file="f1" line="3160"/>
+  </Function>
+  <Function id="_505" name="cairo_region_reference" returns="_713" context="_1" location="f1:3163" file="f1" line="3163">
+    <Argument name="region" type="_713" location="f1:3163" file="f1" line="3163"/>
+  </Function>
+  <Function id="_506" name="cairo_region_destroy" returns="_632" context="_1" location="f1:3166" file="f1" line="3166">
+    <Argument name="region" type="_713" location="f1:3166" file="f1" line="3166"/>
+  </Function>
+  <Function id="_507" name="cairo_region_equal" returns="_94" context="_1" location="f1:3169" file="f1" line="3169">
+    <Argument name="a" type="_714" location="f1:3169" file="f1" line="3169"/>
+    <Argument name="b" type="_714" location="f1:3169" file="f1" line="3169"/>
+  </Function>
+  <Function id="_508" name="cairo_region_status" returns="_109" context="_1" location="f1:3172" file="f1" line="3172">
+    <Argument name="region" type="_714" location="f1:3172" file="f1" line="3172"/>
+  </Function>
+  <Function id="_509" name="cairo_region_get_extents" returns="_632" context="_1" location="f1:3175" file="f1" line="3175">
+    <Argument name="region" type="_714" location="f1:3175" file="f1" line="3175"/>
+    <Argument name="extents" type="_715" location="f1:3176" file="f1" line="3176"/>
+  </Function>
+  <Function id="_510" name="cairo_region_num_rectangles" returns="_614" context="_1" location="f1:3179" file="f1" line="3179">
+    <Argument name="region" type="_714" location="f1:3179" file="f1" line="3179"/>
+  </Function>
+  <Function id="_511" name="cairo_region_get_rectangle" returns="_632" context="_1" location="f1:3182" file="f1" line="3182">
+    <Argument name="region" type="_714" location="f1:3182" file="f1" line="3182"/>
+    <Argument name="nth" type="_614" location="f1:3183" file="f1" line="3183"/>
+    <Argument name="rectangle" type="_715" location="f1:3184" file="f1" line="3184"/>
+  </Function>
+  <Function id="_512" name="cairo_region_is_empty" returns="_94" context="_1" location="f1:3187" file="f1" line="3187">
+    <Argument name="region" type="_714" location="f1:3187" file="f1" line="3187"/>
+  </Function>
+  <Function id="_513" name="cairo_region_contains_rectangle" returns="_500" context="_1" location="f1:3190" file="f1" line="3190">
+    <Argument name="region" type="_714" location="f1:3190" file="f1" line="3190"/>
+    <Argument name="rectangle" type="_696" location="f1:3191" file="f1" line="3191"/>
+  </Function>
+  <Function id="_514" name="cairo_region_contains_point" returns="_94" context="_1" location="f1:3194" file="f1" line="3194">
+    <Argument name="region" type="_714" location="f1:3194" file="f1" line="3194"/>
+    <Argument name="x" type="_614" location="f1:3194" file="f1" line="3194"/>
+    <Argument name="y" type="_614" location="f1:3194" file="f1" line="3194"/>
+  </Function>
+  <Function id="_515" name="cairo_region_translate" returns="_632" context="_1" location="f1:3197" file="f1" line="3197">
+    <Argument name="region" type="_713" location="f1:3197" file="f1" line="3197"/>
+    <Argument name="dx" type="_614" location="f1:3197" file="f1" line="3197"/>
+    <Argument name="dy" type="_614" location="f1:3197" file="f1" line="3197"/>
+  </Function>
+  <Function id="_516" name="cairo_region_subtract" returns="_109" context="_1" location="f1:3200" file="f1" line="3200">
+    <Argument name="dst" type="_713" location="f1:3200" file="f1" line="3200"/>
+    <Argument name="other" type="_714" location="f1:3200" file="f1" line="3200"/>
+  </Function>
+  <Function id="_517" name="cairo_region_subtract_rectangle" returns="_109" context="_1" location="f1:3203" file="f1" line="3203">
+    <Argument name="dst" type="_713" location="f1:3203" file="f1" line="3203"/>
+    <Argument name="rectangle" type="_696" location="f1:3204" file="f1" line="3204"/>
+  </Function>
+  <Function id="_518" name="cairo_region_intersect" returns="_109" context="_1" location="f1:3207" file="f1" line="3207">
+    <Argument name="dst" type="_713" location="f1:3207" file="f1" line="3207"/>
+    <Argument name="other" type="_714" location="f1:3207" file="f1" line="3207"/>
+  </Function>
+  <Function id="_519" name="cairo_region_intersect_rectangle" returns="_109" context="_1" location="f1:3210" file="f1" line="3210">
+    <Argument name="dst" type="_713" location="f1:3210" file="f1" line="3210"/>
+    <Argument name="rectangle" type="_696" location="f1:3211" file="f1" line="3211"/>
+  </Function>
+  <Function id="_520" name="cairo_region_union" returns="_109" context="_1" location="f1:3214" file="f1" line="3214">
+    <Argument name="dst" type="_713" location="f1:3214" file="f1" line="3214"/>
+    <Argument name="other" type="_714" location="f1:3214" file="f1" line="3214"/>
+  </Function>
+  <Function id="_521" name="cairo_region_union_rectangle" returns="_109" context="_1" location="f1:3217" file="f1" line="3217">
+    <Argument name="dst" type="_713" location="f1:3217" file="f1" line="3217"/>
+    <Argument name="rectangle" type="_696" location="f1:3218" file="f1" line="3218"/>
+  </Function>
+  <Function id="_522" name="cairo_region_xor" returns="_109" context="_1" location="f1:3221" file="f1" line="3221">
+    <Argument name="dst" type="_713" location="f1:3221" file="f1" line="3221"/>
+    <Argument name="other" type="_714" location="f1:3221" file="f1" line="3221"/>
+  </Function>
+  <Function id="_523" name="cairo_region_xor_rectangle" returns="_109" context="_1" location="f1:3224" file="f1" line="3224">
+    <Argument name="dst" type="_713" location="f1:3224" file="f1" line="3224"/>
+    <Argument name="rectangle" type="_696" location="f1:3225" file="f1" line="3225"/>
+  </Function>
+  <Function id="_524" name="cairo_debug_reset_static_data" returns="_632" context="_1" location="f1:3229" file="f1" line="3229"/>
+  <FundamentalType id="_525" name="__int128" size="128" align="128"/>
+  <FundamentalType id="_526" name="unsigned __int128" size="128" align="128"/>
+  <Struct id="_527" name="__NSConstantString_tag" context="_1" location="f0:0" file="f0" line="0" members="_716 _717 _718 _719" size="256" align="64"/>
+  <Unimplemented id="_528" type_class="Vector"/>
+  <Unimplemented id="_529" type_class="Vector"/>
+  <Unimplemented id="_530" type_class="Vector"/>
+  <Unimplemented id="_531" type_class="Vector"/>
+  <Unimplemented id="_532" type_class="Vector"/>
+  <Unimplemented id="_533" type_class="Vector"/>
+  <Unimplemented id="_534" type_class="Vector"/>
+  <Unimplemented id="_535" type_class="Vector"/>
+  <Unimplemented id="_536" type_class="Vector"/>
+  <Unimplemented id="_537" type_class="Vector"/>
+  <Unimplemented id="_538" type_class="Vector"/>
+  <Unimplemented id="_539" type_class="Vector"/>
+  <Unimplemented id="_540" type_class="Vector"/>
+  <Unimplemented id="_541" type_class="Vector"/>
+  <Unimplemented id="_542" type_class="Vector"/>
+  <Unimplemented id="_543" type_class="Vector"/>
+  <Unimplemented id="_544" type_class="Vector"/>
+  <Unimplemented id="_545" type_class="Vector"/>
+  <Unimplemented id="_546" type_class="Vector"/>
+  <Unimplemented id="_547" type_class="Vector"/>
+  <Unimplemented id="_548" type_class="Vector"/>
+  <Unimplemented id="_549" type_class="Vector"/>
+  <Unimplemented id="_550" type_class="Vector"/>
+  <Unimplemented id="_551" type_class="Vector"/>
+  <Unimplemented id="_552" type_class="Vector"/>
+  <Unimplemented id="_553" type_class="Vector"/>
+  <Unimplemented id="_554" type_class="Vector"/>
+  <Unimplemented id="_555" type_class="Vector"/>
+  <FundamentalType id="_556" name="__SVInt8_t" size="0" align="128"/>
+  <FundamentalType id="_557" name="__SVInt16_t" size="0" align="128"/>
+  <FundamentalType id="_558" name="__SVInt32_t" size="0" align="128"/>
+  <FundamentalType id="_559" name="__SVInt64_t" size="0" align="128"/>
+  <FundamentalType id="_560" name="__SVUint8_t" size="0" align="128"/>
+  <FundamentalType id="_561" name="__SVUint16_t" size="0" align="128"/>
+  <FundamentalType id="_562" name="__SVUint32_t" size="0" align="128"/>
+  <FundamentalType id="_563" name="__SVUint64_t" size="0" align="128"/>
+  <FundamentalType id="_564" name="__SVFloat16_t" size="0" align="128"/>
+  <FundamentalType id="_565" name="__SVFloat32_t" size="0" align="128"/>
+  <FundamentalType id="_566" name="__SVFloat64_t" size="0" align="128"/>
+  <FundamentalType id="_567" name="__SVBfloat16_t" size="0" align="128"/>
+  <FundamentalType id="_568" name="__SVMfloat8_t" size="0" align="128"/>
+  <FundamentalType id="_569" name="__clang_svint8x2_t" size="0" align="128"/>
+  <FundamentalType id="_570" name="__clang_svint16x2_t" size="0" align="128"/>
+  <FundamentalType id="_571" name="__clang_svint32x2_t" size="0" align="128"/>
+  <FundamentalType id="_572" name="__clang_svint64x2_t" size="0" align="128"/>
+  <FundamentalType id="_573" name="__clang_svuint8x2_t" size="0" align="128"/>
+  <FundamentalType id="_574" name="__clang_svuint16x2_t" size="0" align="128"/>
+  <FundamentalType id="_575" name="__clang_svuint32x2_t" size="0" align="128"/>
+  <FundamentalType id="_576" name="__clang_svuint64x2_t" size="0" align="128"/>
+  <FundamentalType id="_577" name="__clang_svfloat16x2_t" size="0" align="128"/>
+  <FundamentalType id="_578" name="__clang_svfloat32x2_t" size="0" align="128"/>
+  <FundamentalType id="_579" name="__clang_svfloat64x2_t" size="0" align="128"/>
+  <FundamentalType id="_580" name="__clang_svbfloat16x2_t" size="0" align="128"/>
+  <FundamentalType id="_581" name="__clang_svmfloat8x2_t" size="0" align="128"/>
+  <FundamentalType id="_582" name="__clang_svint8x3_t" size="0" align="128"/>
+  <FundamentalType id="_583" name="__clang_svint16x3_t" size="0" align="128"/>
+  <FundamentalType id="_584" name="__clang_svint32x3_t" size="0" align="128"/>
+  <FundamentalType id="_585" name="__clang_svint64x3_t" size="0" align="128"/>
+  <FundamentalType id="_586" name="__clang_svuint8x3_t" size="0" align="128"/>
+  <FundamentalType id="_587" name="__clang_svuint16x3_t" size="0" align="128"/>
+  <FundamentalType id="_588" name="__clang_svuint32x3_t" size="0" align="128"/>
+  <FundamentalType id="_589" name="__clang_svuint64x3_t" size="0" align="128"/>
+  <FundamentalType id="_590" name="__clang_svfloat16x3_t" size="0" align="128"/>
+  <FundamentalType id="_591" name="__clang_svfloat32x3_t" size="0" align="128"/>
+  <FundamentalType id="_592" name="__clang_svfloat64x3_t" size="0" align="128"/>
+  <FundamentalType id="_593" name="__clang_svbfloat16x3_t" size="0" align="128"/>
+  <FundamentalType id="_594" name="__clang_svmfloat8x3_t" size="0" align="128"/>
+  <FundamentalType id="_595" name="__clang_svint8x4_t" size="0" align="128"/>
+  <FundamentalType id="_596" name="__clang_svint16x4_t" size="0" align="128"/>
+  <FundamentalType id="_597" name="__clang_svint32x4_t" size="0" align="128"/>
+  <FundamentalType id="_598" name="__clang_svint64x4_t" size="0" align="128"/>
+  <FundamentalType id="_599" name="__clang_svuint8x4_t" size="0" align="128"/>
+  <FundamentalType id="_600" name="__clang_svuint16x4_t" size="0" align="128"/>
+  <FundamentalType id="_601" name="__clang_svuint32x4_t" size="0" align="128"/>
+  <FundamentalType id="_602" name="__clang_svuint64x4_t" size="0" align="128"/>
+  <FundamentalType id="_603" name="__clang_svfloat16x4_t" size="0" align="128"/>
+  <FundamentalType id="_604" name="__clang_svfloat32x4_t" size="0" align="128"/>
+  <FundamentalType id="_605" name="__clang_svfloat64x4_t" size="0" align="128"/>
+  <FundamentalType id="_606" name="__clang_svbfloat16x4_t" size="0" align="128"/>
+  <FundamentalType id="_607" name="__clang_svmfloat8x4_t" size="0" align="128"/>
+  <FundamentalType id="_608" name="__SVBool_t" size="0" align="16"/>
+  <FundamentalType id="_609" name="__clang_svboolx2_t" size="0" align="16"/>
+  <FundamentalType id="_610" name="__clang_svboolx4_t" size="0" align="16"/>
+  <FundamentalType id="_611" name="__SVCount_t" size="0" align="16"/>
+  <FundamentalType id="_612" name="__mfp8" size="8" align="8"/>
+  <PointerType id="_613" type="_720" size="64" align="64"/>
+  <FundamentalType id="_614" name="int" size="32" align="32"/>
+  <PointerType id="_615" type="_720c" size="64" align="64"/>
+  <Field id="_616" name="xx" type="_637" context="_101" access="public" location="f1:193" file="f1" line="193" offset="0"/>
+  <Field id="_617" name="yx" type="_637" context="_101" access="public" location="f1:193" file="f1" line="193" offset="64"/>
+  <Field id="_618" name="xy" type="_637" context="_101" access="public" location="f1:194" file="f1" line="194" offset="128"/>
+  <Field id="_619" name="yy" type="_637" context="_101" access="public" location="f1:194" file="f1" line="194" offset="192"/>
+  <Field id="_620" name="x0" type="_637" context="_101" access="public" location="f1:195" file="f1" line="195" offset="256"/>
+  <Field id="_621" name="y0" type="_637" context="_101" access="public" location="f1:195" file="f1" line="195" offset="320"/>
+  <PointerType id="_622" type="_721" size="64" align="64"/>
+  <Field id="_623" name="unused" type="_614" context="_106" access="public" location="f1:247" file="f1" line="247" offset="0"/>
+  <PointerType id="_624" type="_722" size="64" align="64"/>
+  <PointerType id="_625" type="_723" size="64" align="64"/>
+  <Field id="_626" name="x" type="_614" context="_116" access="public" location="f1:490" file="f1" line="490" offset="0"/>
+  <Field id="_627" name="y" type="_614" context="_116" access="public" location="f1:490" file="f1" line="490" offset="32"/>
+  <Field id="_628" name="width" type="_614" context="_116" access="public" location="f1:491" file="f1" line="491" offset="64"/>
+  <Field id="_629" name="height" type="_614" context="_116" access="public" location="f1:491" file="f1" line="491" offset="96"/>
+  <PointerType id="_630" type="_96" size="64" align="64"/>
+  <PointerType id="_631" type="_98" size="64" align="64"/>
+  <FundamentalType id="_632" name="void" size="0" align="8"/>
+  <FundamentalType id="_633" name="unsigned int" size="32" align="32"/>
+  <PointerType id="_634" type="_632" size="64" align="64"/>
+  <PointerType id="_635" type="_107c" size="64" align="64"/>
+  <CvQualifiedType id="_107c" type="_107" const="1"/>
+  <PointerType id="_636" type="_104" size="64" align="64"/>
+  <FundamentalType id="_637" name="double" size="64" align="64"/>
+  <PointerType id="_638" type="_637c" size="64" align="64"/>
+  <CvQualifiedType id="_637c" type="_637" const="1"/>
+  <PointerType id="_639" type="_102c" size="64" align="64"/>
+  <CvQualifiedType id="_102c" type="_102" const="1"/>
+  <PointerType id="_640" type="_637" size="64" align="64"/>
+  <Field id="_641" name="x" type="_637" context="_196" access="public" location="f1:1012" file="f1" line="1012" offset="0"/>
+  <Field id="_642" name="y" type="_637" context="_196" access="public" location="f1:1012" file="f1" line="1012" offset="64"/>
+  <Field id="_643" name="width" type="_637" context="_196" access="public" location="f1:1012" file="f1" line="1012" offset="128"/>
+  <Field id="_644" name="height" type="_637" context="_196" access="public" location="f1:1012" file="f1" line="1012" offset="192"/>
+  <Field id="_645" name="status" type="_109" context="_198" access="public" location="f1:1027" file="f1" line="1027" offset="0"/>
+  <Field id="_646" name="rectangles" type="_703" context="_198" access="public" location="f1:1028" file="f1" line="1028" offset="64"/>
+  <Field id="_647" name="num_rectangles" type="_614" context="_198" access="public" location="f1:1029" file="f1" line="1029" offset="128"/>
+  <PointerType id="_648" type="_199" size="64" align="64"/>
+  <Field id="_649" name="index" type="_669" context="_208" access="public" location="f1:1118" file="f1" line="1118" offset="0"/>
+  <Field id="_650" name="x" type="_637" context="_208" access="public" location="f1:1119" file="f1" line="1119" offset="64"/>
+  <Field id="_651" name="y" type="_637" context="_208" access="public" location="f1:1120" file="f1" line="1120" offset="128"/>
+  <PointerType id="_652" type="_209" size="64" align="64"/>
+  <Field id="_653" name="num_bytes" type="_614" context="_212" access="public" location="f1:1150" file="f1" line="1150" offset="0"/>
+  <Field id="_654" name="num_glyphs" type="_614" context="_212" access="public" location="f1:1151" file="f1" line="1151" offset="32"/>
+  <PointerType id="_655" type="_213" size="64" align="64"/>
+  <Field id="_656" name="x_bearing" type="_637" context="_218" access="public" location="f1:1203" file="f1" line="1203" offset="0"/>
+  <Field id="_657" name="y_bearing" type="_637" context="_218" access="public" location="f1:1204" file="f1" line="1204" offset="64"/>
+  <Field id="_658" name="width" type="_637" context="_218" access="public" location="f1:1205" file="f1" line="1205" offset="128"/>
+  <Field id="_659" name="height" type="_637" context="_218" access="public" location="f1:1206" file="f1" line="1206" offset="192"/>
+  <Field id="_660" name="x_advance" type="_637" context="_218" access="public" location="f1:1207" file="f1" line="1207" offset="256"/>
+  <Field id="_661" name="y_advance" type="_637" context="_218" access="public" location="f1:1208" file="f1" line="1208" offset="320"/>
+  <Field id="_662" name="ascent" type="_637" context="_220" access="public" location="f1:1255" file="f1" line="1255" offset="0"/>
+  <Field id="_663" name="descent" type="_637" context="_220" access="public" location="f1:1256" file="f1" line="1256" offset="64"/>
+  <Field id="_664" name="height" type="_637" context="_220" access="public" location="f1:1257" file="f1" line="1257" offset="128"/>
+  <Field id="_665" name="max_x_advance" type="_637" context="_220" access="public" location="f1:1258" file="f1" line="1258" offset="192"/>
+  <Field id="_666" name="max_y_advance" type="_637" context="_220" access="public" location="f1:1259" file="f1" line="1259" offset="256"/>
+  <PointerType id="_667" type="_233" size="64" align="64"/>
+  <PointerType id="_668" type="_233c" size="64" align="64"/>
+  <CvQualifiedType id="_233c" type="_233" const="1"/>
+  <FundamentalType id="_669" name="long unsigned int" size="64" align="64"/>
+  <PointerType id="_670" type="_102" size="64" align="64"/>
+  <PointerType id="_671" type="_207" size="64" align="64"/>
+  <PointerType id="_672" type="_205c" size="64" align="64"/>
+  <CvQualifiedType id="_205c" type="_205" const="1"/>
+  <PointerType id="_673" type="_205" size="64" align="64"/>
+  <PointerType id="_674" type="_209c" size="64" align="64"/>
+  <CvQualifiedType id="_209c" type="_209" const="1"/>
+  <PointerType id="_675" type="_213c" size="64" align="64"/>
+  <CvQualifiedType id="_213c" type="_213" const="1"/>
+  <PointerType id="_676" type="_219" size="64" align="64"/>
+  <PointerType id="_677" type="_221" size="64" align="64"/>
+  <PointerType id="_678" type="_652" size="64" align="64"/>
+  <PointerType id="_679" type="_614" size="64" align="64"/>
+  <PointerType id="_680" type="_655" size="64" align="64"/>
+  <PointerType id="_681" type="_217" size="64" align="64"/>
+  <PointerType id="_682" type="_724" size="64" align="64"/>
+  <PointerType id="_683" type="_725" size="64" align="64"/>
+  <PointerType id="_684" type="_726" size="64" align="64"/>
+  <PointerType id="_685" type="_727" size="64" align="64"/>
+  <Struct id="_686" name="" context="_333" location="f1:2122" file="f1" line="2122" members="_728 _729" size="64" align="32"/>
+  <Field id="_687" name="header" type="_686" context="_333" access="public" location="f1:2125" file="f1" line="2125" offset="0"/>
+  <Struct id="_688" name="" context="_333" location="f1:2126" file="f1" line="2126" members="_730 _731" size="128" align="64"/>
+  <Field id="_689" name="point" type="_688" context="_333" access="public" location="f1:2128" file="f1" line="2128" offset="0"/>
+  <Field id="_690" name="status" type="_109" context="_335" access="public" location="f1:2153" file="f1" line="2153" offset="0"/>
+  <Field id="_691" name="data" type="_732" context="_335" access="public" location="f1:2154" file="f1" line="2154" offset="64"/>
+  <Field id="_692" name="num_data" type="_614" context="_335" access="public" location="f1:2155" file="f1" line="2155" offset="128"/>
+  <PointerType id="_693" type="_336" size="64" align="64"/>
+  <PointerType id="_694" type="_336c" size="64" align="64"/>
+  <CvQualifiedType id="_336c" type="_336" const="1"/>
+  <PointerType id="_695" type="_100" size="64" align="64"/>
+  <PointerType id="_696" type="_117c" size="64" align="64"/>
+  <CvQualifiedType id="_117c" type="_117" const="1"/>
+  <PointerType id="_697" type="_733" size="64" align="64"/>
+  <PointerType id="_698" type="_700" size="64" align="64"/>
+  <PointerType id="_699" type="_669" size="64" align="64"/>
+  <PointerType id="_700" type="_734c" size="64" align="64"/>
+  <PointerType id="_701" type="_734" size="64" align="64"/>
+  <PointerType id="_702" type="_197c" size="64" align="64"/>
+  <CvQualifiedType id="_197c" type="_197" const="1"/>
+  <PointerType id="_703" type="_197" size="64" align="64"/>
+  <PointerType id="_704" type="_735" size="64" align="64"/>
+  <PointerType id="_705" type="_736" size="64" align="64"/>
+  <PointerType id="_706" type="_737" size="64" align="64"/>
+  <PointerType id="_707" type="_738" size="64" align="64"/>
+  <PointerType id="_708" type="_739" size="64" align="64"/>
+  <PointerType id="_709" type="_424" size="64" align="64"/>
+  <PointerType id="_710" type="_425" size="64" align="64"/>
+  <PointerType id="_711" type="_631" size="64" align="64"/>
+  <PointerType id="_712" type="_633" size="64" align="64"/>
+  <PointerType id="_713" type="_498" size="64" align="64"/>
+  <PointerType id="_714" type="_498c" size="64" align="64"/>
+  <CvQualifiedType id="_498c" type="_498" const="1"/>
+  <PointerType id="_715" type="_117" size="64" align="64"/>
+  <Field id="_716" name="isa" type="_740" context="_527" access="public" offset="0"/>
+  <Field id="_717" name="flags" type="_614" context="_527" access="public" offset="64"/>
+  <Field id="_718" name="str" type="_615" context="_527" access="public" offset="128"/>
+  <Field id="_719" name="length" type="_741" context="_527" access="public" offset="192"/>
+  <CvQualifiedType id="_720c" type="_720" const="1"/>
+  <Field id="_728" name="type" type="_332" context="_686" access="public" location="f1:2123" file="f1" line="2123" offset="0"/>
+  <Field id="_729" name="length" type="_614" context="_686" access="public" location="f1:2124" file="f1" line="2124" offset="32"/>
+  <Field id="_730" name="x" type="_637" context="_688" access="public" location="f1:2127" file="f1" line="2127" offset="0"/>
+  <Field id="_731" name="y" type="_637" context="_688" access="public" location="f1:2127" file="f1" line="2127" offset="64"/>
+  <PointerType id="_732" type="_334" size="64" align="64"/>
+  <CvQualifiedType id="_734c" type="_734" const="1"/>
+  <PointerType id="_740" type="_614c" size="64" align="64"/>
+  <CvQualifiedType id="_614c" type="_614" const="1"/>
+  <FundamentalType id="_741" name="long int" size="64" align="64"/>
+  <FundamentalType id="_720" name="char" size="8" align="8"/>
+  <FunctionType id="_721" returns="_632">
+    <Argument type="_634"/>
+  </FunctionType>
+  <FunctionType id="_722" returns="_109">
+    <Argument type="_634"/>
+    <Argument type="_700"/>
+    <Argument type="_633"/>
+  </FunctionType>
+  <FunctionType id="_723" returns="_109">
+    <Argument type="_634"/>
+    <Argument type="_701"/>
+    <Argument type="_633"/>
+  </FunctionType>
+  <FunctionType id="_724" returns="_109">
+    <Argument type="_673"/>
+    <Argument type="_630"/>
+    <Argument type="_677"/>
+  </FunctionType>
+  <FunctionType id="_725" returns="_109">
+    <Argument type="_673"/>
+    <Argument type="_669"/>
+    <Argument type="_630"/>
+    <Argument type="_676"/>
+  </FunctionType>
+  <FunctionType id="_726" returns="_109">
+    <Argument type="_673"/>
+    <Argument type="_615"/>
+    <Argument type="_614"/>
+    <Argument type="_678"/>
+    <Argument type="_679"/>
+    <Argument type="_680"/>
+    <Argument type="_679"/>
+    <Argument type="_681"/>
+  </FunctionType>
+  <FunctionType id="_727" returns="_109">
+    <Argument type="_673"/>
+    <Argument type="_669"/>
+    <Argument type="_699"/>
+  </FunctionType>
+  <FunctionType id="_733" returns="_632">
+    <Argument type="_631"/>
+    <Argument type="_631"/>
+    <Argument type="_634"/>
+  </FunctionType>
+  <FundamentalType id="_734" name="unsigned char" size="8" align="8"/>
+  <FunctionType id="_735" returns="_631">
+    <Argument type="_636"/>
+    <Argument type="_634"/>
+    <Argument type="_631"/>
+    <Argument type="_696"/>
+  </FunctionType>
+  <FunctionType id="_736" returns="_632">
+    <Argument type="_636"/>
+    <Argument type="_634"/>
+    <Argument type="_631"/>
+  </FunctionType>
+  <FunctionType id="_737" returns="_109">
+    <Argument type="_636"/>
+    <Argument type="_634"/>
+  </FunctionType>
+  <FunctionType id="_738" returns="_109">
+    <Argument type="_636"/>
+    <Argument type="_634"/>
+    <Argument type="_742"/>
+  </FunctionType>
+  <FunctionType id="_739" returns="_632">
+    <Argument type="_636"/>
+    <Argument type="_634"/>
+  </FunctionType>
+  <PointerType id="_742" type="_104c" size="64" align="64"/>
+  <CvQualifiedType id="_104c" type="_104" const="1"/>
+  <File id="f0" name="&lt;builtin&gt;"/>
+  <File id="f1" name="/opt/local/include/cairo/cairo.h"/>
+</GCC_XML>

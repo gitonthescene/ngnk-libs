@@ -1,0 +1,80 @@
+type                                                                 | signature              | check       | call
+---------------------------------------------------------------------|------------------------|-------------|----------------------------------------
+CAIRO_98p cairo_surface_t Struct                                     | arr a;                 | TPTR(a,t1)  | (cairo_surface_t*)in->a.arr
+CAIRO_98pp cairo_surface_t Struct                                    |                        |             | &a
+CAIRO_96p cairo_t Struct                                             | arr a;                 | TPTR(a,t2)  | (cairo_t*)in->a.arr
+CAIRO_107cp cairo_user_data_key_t Struct                             | arr a;                 | TPTR(a,t3)  | (cairo_user_data_key_t*)in->a.arr
+CAIRO_632p void Argument                                             |                        |             | &a
+CAIRO_105 cairo_destroy_func_t PointerType                           |                        |             | &f1
+CAIRO_111 cairo_content_t Enumeration                                | C typ##a; L a;         | INT(a)      | (cairo_content_t)in->a
+CAIRO_131 cairo_operator_t Enumeration                               | C typ##a; L a;         | INT(a)      | (cairo_operator_t)in->a
+CAIRO_104p cairo_pattern_t Struct                                    | arr a;                 | TPTR(a,t4)  | (cairo_pattern_t*)in->a.arr
+CAIRO_637 double Argument                                            | arr a;                 | DOUBLE(a)   | *(double*)in->a.arr
+CAIRO_637cp double Argument                                          | arr a;                 | DOUBLE(a)   | (double*)in->a.arr
+CAIRO_637p double Argument                                           | arr a;                 | DOUBLE(a)   | (double*)in->a.arr
+CAIRO_139 cairo_antialias_t Enumeration                              | C typ##a; L a;         | INT(a)      | (cairo_antialias_t)in->a
+CAIRO_142 cairo_fill_rule_t Enumeration                              | C typ##a; L a;         | INT(a)      | (cairo_fill_rule_t)in->a
+CAIRO_94 cairo_bool_t FundamentalType                                | C typ##a; L a;         |             | (cairo_bool_t)in->a
+CAIRO_147 cairo_line_cap_t Enumeration                               | C typ##a; L a;         | INT(a)      | (cairo_line_cap_t)in->a
+CAIRO_150 cairo_line_join_t Enumeration                              | C typ##a; L a;         | INT(a)      | (cairo_line_join_t)in->a
+CAIRO_614 int Argument                                               | C typ##a; L a;         | INT(a)      | (int)in->a
+CAIRO_614p int Argument                                              |                        |             | &a
+CAIRO_102cp cairo_matrix_t Struct                                    | arr a;                 | TPTR(a,t5)  | (cairo_matrix_t*)in->a.arr
+CAIRO_102p cairo_matrix_t Struct                                     | arr a;                 | TPTR(a,t5)  | (cairo_matrix_t*)in->a.arr
+CAIRO_199p cairo_rectangle_list_t Struct                             | arr a;                 | TPTR(a,t6)  | (cairo_rectangle_list_t*)in->a.arr
+CAIRO_720cp char Argument                                            |                        |             | &a
+CAIRO_209p cairo_glyph_t Struct                                      | arr a;                 | TPTR(a,t7)  | (cairo_glyph_t*)in->a.arr
+CAIRO_209cp cairo_glyph_t Struct                                     | arr a;                 | TPTR(a,t7)  | (cairo_glyph_t*)in->a.arr
+CAIRO_209pp cairo_glyph_t Struct                                     |                        |             | &a
+CAIRO_213p cairo_text_cluster_t Struct                               | arr a;                 | TPTR(a,t8)  | (cairo_text_cluster_t*)in->a.arr
+CAIRO_213cp cairo_text_cluster_t Struct                              | arr a;                 | TPTR(a,t8)  | (cairo_text_cluster_t*)in->a.arr
+CAIRO_213pp cairo_text_cluster_t Struct                              |                        |             | &a
+CAIRO_233cp cairo_font_options_t Struct                              | arr a;                 | TPTR(a,t9)  | (cairo_font_options_t*)in->a.arr
+CAIRO_233p cairo_font_options_t Struct                               | arr a;                 | TPTR(a,t9)  | (cairo_font_options_t*)in->a.arr
+CAIRO_227 cairo_subpixel_order_t Enumeration                         | C typ##a; L a;         | INT(a)      | (cairo_subpixel_order_t)in->a
+CAIRO_229 cairo_hint_style_t Enumeration                             | C typ##a; L a;         | INT(a)      | (cairo_hint_style_t)in->a
+CAIRO_231 cairo_hint_metrics_t Enumeration                           | C typ##a; L a;         | INT(a)      | (cairo_hint_metrics_t)in->a
+CAIRO_223 cairo_font_slant_t Enumeration                             | C typ##a; L a;         | INT(a)      | (cairo_font_slant_t)in->a
+CAIRO_225 cairo_font_weight_t Enumeration                            | C typ##a; L a;         | INT(a)      | (cairo_font_weight_t)in->a
+CAIRO_207p cairo_font_face_t Struct                                  | arr a;                 | TPTR(a,t10) | (cairo_font_face_t*)in->a.arr
+CAIRO_205cp cairo_scaled_font_t Struct                               | arr a;                 | TPTR(a,t11) | (cairo_scaled_font_t*)in->a.arr
+CAIRO_205p cairo_scaled_font_t Struct                                | arr a;                 | TPTR(a,t11) | (cairo_scaled_font_t*)in->a.arr
+CAIRO_217 cairo_text_cluster_flags_t Enumeration                     | C typ##a; L a;         | INT(a)      | (cairo_text_cluster_flags_t)in->a
+CAIRO_217p cairo_text_cluster_flags_t Enumeration                    |                        |             | &a
+CAIRO_219p cairo_text_extents_t Struct                               | arr a;                 | TPTR(a,t12) | (cairo_text_extents_t*)in->a.arr
+CAIRO_221p cairo_font_extents_t Struct                               | arr a;                 | TPTR(a,t13) | (cairo_font_extents_t*)in->a.arr
+CAIRO_300 cairo_user_scaled_font_init_func_t PointerType             |                        |             | &f2
+CAIRO_301 cairo_user_scaled_font_render_glyph_func_t PointerType     |                        |             | &f3
+CAIRO_302 cairo_user_scaled_font_text_to_glyphs_func_t PointerType   |                        |             | &f4
+CAIRO_303 cairo_user_scaled_font_unicode_to_glyph_func_t PointerType |                        |             | &f5
+CAIRO_336cp cairo_path_t Struct                                      | arr a;                 | TPTR(a,t14) | (cairo_path_t*)in->a.arr
+CAIRO_336p cairo_path_t Struct                                       | arr a;                 | TPTR(a,t14) | (cairo_path_t*)in->a.arr
+CAIRO_109 cairo_status_t Enumeration                                 | C typ##a; L a;         | INT(a)      | (cairo_status_t)in->a
+CAIRO_100p cairo_device_t Struct                                     | arr a;                 | TPTR(a,t15) | (cairo_device_t*)in->a.arr
+CAIRO_113 cairo_format_t Enumeration                                 | C typ##a; L a;         | INT(a)      | (cairo_format_t)in->a
+CAIRO_117cp cairo_rectangle_int_t Struct                             | arr a;                 | TPTR(a,t16) | (cairo_rectangle_int_t*)in->a.arr
+CAIRO_117p cairo_rectangle_int_t Struct                              | arr a;                 | TPTR(a,t16) | (cairo_rectangle_int_t*)in->a.arr
+CAIRO_362 cairo_surface_observer_mode_t Enumeration                  | C typ##a; L a;         | INT(a)      | (cairo_surface_observer_mode_t)in->a
+CAIRO_364 cairo_surface_observer_callback_t PointerType              |                        |             | &f6
+CAIRO_114 cairo_write_func_t PointerType                             |                        |             | &f7
+CAIRO_734cpp unsigned char Argument                                  |                        |             | &a
+CAIRO_734cp unsigned char Argument                                   | arr a;                 | STRING(a)   | (unsigned char*)in->a.arr
+CAIRO_734p unsigned char Argument                                    | arr a;                 | STRING(a)   | (unsigned char*)in->a.arr
+CAIRO_669p long unsigned int Argument                                |                        |             | &a
+CAIRO_669 long unsigned int Argument                                 | arr a;                 | LONG(a)     | (long unsigned int)in->a
+CAIRO_115 cairo_read_func_t PointerType                              |                        |             | &f8
+CAIRO_197cp cairo_rectangle_t Struct                                 | arr a;                 | TPTR(a,t17) | (cairo_rectangle_t*)in->a.arr
+CAIRO_197p cairo_rectangle_t Struct                                  | arr a;                 | TPTR(a,t17) | (cairo_rectangle_t*)in->a.arr
+CAIRO_424 cairo_raster_source_acquire_func_t PointerType             |                        |             | &f9
+CAIRO_424p cairo_raster_source_acquire_func_t PointerType            |                        |             | &f10
+CAIRO_425 cairo_raster_source_release_func_t PointerType             |                        |             | &f11
+CAIRO_425p cairo_raster_source_release_func_t PointerType            |                        |             | &f12
+CAIRO_426 cairo_raster_source_snapshot_func_t PointerType            |                        |             | &f13
+CAIRO_427 cairo_raster_source_copy_func_t PointerType                |                        |             | &f14
+CAIRO_428 cairo_raster_source_finish_func_t PointerType              |                        |             | &f15
+CAIRO_633 unsigned int Argument                                      | C typ##a; L a;         |             | (unsigned int)in->a
+CAIRO_633p unsigned int Argument                                     |                        |             | &a
+CAIRO_468 cairo_extend_t Enumeration                                 | C typ##a; L a;         | INT(a)      | (cairo_extend_t)in->a
+CAIRO_472 cairo_filter_t Enumeration                                 | C typ##a; L a;         | INT(a)      | (cairo_filter_t)in->a
+CAIRO_498cp cairo_region_t Struct                                    | arr a;                 | TPTR(a,t18) | (cairo_region_t*)in->a.arr
+CAIRO_498p cairo_region_t Struct                                     | arr a;                 | TPTR(a,t18) | (cairo_region_t*)in->a.arr
