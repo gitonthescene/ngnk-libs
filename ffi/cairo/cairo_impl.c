@@ -13,14 +13,10 @@ K Fcairo_version_string(K x) {
  return KC((char*)r,SL(r));
  }
 
-K Fcairo_create(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_create_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_create_sig* in = chk_cairo_create_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
+K Fcairo_create(K x) {
  L r[2]; r[1] = KFFI_CAIRO_T;
- ((cairo_t**)r)[0] = cairo_create((cairo_surface_t*)in->target.arr);
- unref(xs); unref(x);
+ ((cairo_t**)r)[0] = cairo_create((cairo_surface_t*)((L*)x)[0]);
+ unref(x);
  char ret[SZ(arr)+1];ret[0]=1;
  *(arr*)(ret+1) = (arr){.hdr={.type=REF|7, .len=2}, .arr=r};
  return des_(ret,SZ(ret));
@@ -39,14 +35,10 @@ K Fcairo_reference(K x) {ref(x);
  return des_(ret,SZ(ret));
  }
 
-K Fcairo_destroy(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_destroy_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_destroy_sig* in = chk_cairo_destroy_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_destroy((cairo_t*)((L*)in->cr.arr)[0]);
- unref(xs); unref(x);
- return Ki(0);
+K Fcairo_destroy(K x) {
+ cairo_destroy((cairo_t*)((L*)x)[0]);
+ unref(x);
+ return Kv();
  }
 
 K Fcairo_get_reference_count(K x) {ref(x);
@@ -89,7 +81,7 @@ K Fcairo_save(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_save((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_restore(K x) {ref(x);
@@ -99,7 +91,7 @@ K Fcairo_restore(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_restore((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_push_group(K x) {ref(x);
@@ -109,7 +101,7 @@ K Fcairo_push_group(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_push_group((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_push_group_with_content(K x) {ref(x);
@@ -119,7 +111,7 @@ K Fcairo_push_group_with_content(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_push_group_with_content((cairo_t*)((L*)in->cr.arr)[0], (cairo_content_t)in->content);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_pop_group(K x) {ref(x);
@@ -142,7 +134,7 @@ K Fcairo_pop_group_to_source(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_pop_group_to_source((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_operator(K x) {ref(x);
@@ -152,7 +144,7 @@ K Fcairo_set_operator(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_operator((cairo_t*)((L*)in->cr.arr)[0], (cairo_operator_t)in->op);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_source(K x) {ref(x);
@@ -162,7 +154,7 @@ K Fcairo_set_source(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_source((cairo_t*)((L*)in->cr.arr)[0], (cairo_pattern_t*)((L*)in->source.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_source_rgb(K x) {ref(x);
@@ -172,7 +164,7 @@ K Fcairo_set_source_rgb(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_source_rgb((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->red.arr, *(double*)in->green.arr, *(double*)in->blue.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_source_rgba(K x) {ref(x);
@@ -182,7 +174,7 @@ K Fcairo_set_source_rgba(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_source_rgba((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->red.arr, *(double*)in->green.arr, *(double*)in->blue.arr, *(double*)in->alpha.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_source_surface(K x) {ref(x);
@@ -192,7 +184,7 @@ K Fcairo_set_source_surface(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_source_surface((cairo_t*)((L*)in->cr.arr)[0], (cairo_surface_t*)((L*)in->surface.arr)[0], *(double*)in->x.arr, *(double*)in->y.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_tolerance(K x) {ref(x);
@@ -202,7 +194,7 @@ K Fcairo_set_tolerance(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_tolerance((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->tolerance.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_antialias(K x) {ref(x);
@@ -212,7 +204,7 @@ K Fcairo_set_antialias(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_antialias((cairo_t*)((L*)in->cr.arr)[0], (cairo_antialias_t)in->antialias);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_fill_rule(K x) {ref(x);
@@ -222,7 +214,7 @@ K Fcairo_set_fill_rule(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_fill_rule((cairo_t*)((L*)in->cr.arr)[0], (cairo_fill_rule_t)in->fill_rule);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_line_width(K x) {ref(x);
@@ -232,7 +224,7 @@ K Fcairo_set_line_width(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_line_width((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->width.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_hairline(K x) {ref(x);
@@ -242,7 +234,7 @@ K Fcairo_set_hairline(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_hairline((cairo_t*)((L*)in->cr.arr)[0], (cairo_bool_t)in->set_hairline);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_line_cap(K x) {ref(x);
@@ -252,7 +244,7 @@ K Fcairo_set_line_cap(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_line_cap((cairo_t*)((L*)in->cr.arr)[0], (cairo_line_cap_t)in->line_cap);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_line_join(K x) {ref(x);
@@ -262,7 +254,7 @@ K Fcairo_set_line_join(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_line_join((cairo_t*)((L*)in->cr.arr)[0], (cairo_line_join_t)in->line_join);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_dash(K x) {ref(x);
@@ -272,7 +264,7 @@ K Fcairo_set_dash(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_dash((cairo_t*)((L*)in->cr.arr)[0], (double*)in->dashes.arr, (int)in->num_dashes, *(double*)in->offset.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_miter_limit(K x) {ref(x);
@@ -282,7 +274,7 @@ K Fcairo_set_miter_limit(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_miter_limit((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->limit.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_translate(K x) {ref(x);
@@ -292,7 +284,7 @@ K Fcairo_translate(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_translate((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->tx.arr, *(double*)in->ty.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_scale(K x) {ref(x);
@@ -302,7 +294,7 @@ K Fcairo_scale(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_scale((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->sx.arr, *(double*)in->sy.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_rotate(K x) {ref(x);
@@ -312,7 +304,7 @@ K Fcairo_rotate(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_rotate((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->angle.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_transform(K x) {ref(x);
@@ -322,7 +314,7 @@ K Fcairo_transform(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_transform((cairo_t*)((L*)in->cr.arr)[0], (cairo_matrix_t*)((L*)in->matrix.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_matrix(K x) {ref(x);
@@ -332,7 +324,7 @@ K Fcairo_set_matrix(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_matrix((cairo_t*)((L*)in->cr.arr)[0], (cairo_matrix_t*)((L*)in->matrix.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_identity_matrix(K x) {ref(x);
@@ -342,7 +334,7 @@ K Fcairo_identity_matrix(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_identity_matrix((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_user_to_device(K x) {ref(x);
@@ -352,7 +344,7 @@ K Fcairo_user_to_device(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_user_to_device((cairo_t*)((L*)in->cr.arr)[0], (double*)in->x.arr, (double*)in->y.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_user_to_device_distance(K x) {ref(x);
@@ -362,7 +354,7 @@ K Fcairo_user_to_device_distance(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_user_to_device_distance((cairo_t*)((L*)in->cr.arr)[0], (double*)in->dx.arr, (double*)in->dy.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_device_to_user(K x) {ref(x);
@@ -372,7 +364,7 @@ K Fcairo_device_to_user(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_device_to_user((cairo_t*)((L*)in->cr.arr)[0], (double*)in->x.arr, (double*)in->y.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_device_to_user_distance(K x) {ref(x);
@@ -382,7 +374,7 @@ K Fcairo_device_to_user_distance(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_device_to_user_distance((cairo_t*)((L*)in->cr.arr)[0], (double*)in->dx.arr, (double*)in->dy.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_new_path(K x) {ref(x);
@@ -392,7 +384,7 @@ K Fcairo_new_path(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_new_path((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_move_to(K x) {ref(x);
@@ -402,7 +394,7 @@ K Fcairo_move_to(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_move_to((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->x.arr, *(double*)in->y.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_new_sub_path(K x) {ref(x);
@@ -412,7 +404,7 @@ K Fcairo_new_sub_path(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_new_sub_path((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_line_to(K x) {ref(x);
@@ -422,7 +414,7 @@ K Fcairo_line_to(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_line_to((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->x.arr, *(double*)in->y.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_curve_to(K x) {ref(x);
@@ -432,7 +424,7 @@ K Fcairo_curve_to(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_curve_to((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->x1.arr, *(double*)in->y1.arr, *(double*)in->x2.arr, *(double*)in->y2.arr, *(double*)in->x3.arr, *(double*)in->y3.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_arc(K x) {ref(x);
@@ -442,7 +434,7 @@ K Fcairo_arc(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_arc((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->xc.arr, *(double*)in->yc.arr, *(double*)in->radius.arr, *(double*)in->angle1.arr, *(double*)in->angle2.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_arc_negative(K x) {ref(x);
@@ -452,7 +444,7 @@ K Fcairo_arc_negative(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_arc_negative((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->xc.arr, *(double*)in->yc.arr, *(double*)in->radius.arr, *(double*)in->angle1.arr, *(double*)in->angle2.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_rel_move_to(K x) {ref(x);
@@ -462,7 +454,7 @@ K Fcairo_rel_move_to(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_rel_move_to((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->dx.arr, *(double*)in->dy.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_rel_line_to(K x) {ref(x);
@@ -472,7 +464,7 @@ K Fcairo_rel_line_to(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_rel_line_to((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->dx.arr, *(double*)in->dy.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_rel_curve_to(K x) {ref(x);
@@ -482,7 +474,7 @@ K Fcairo_rel_curve_to(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_rel_curve_to((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->dx1.arr, *(double*)in->dy1.arr, *(double*)in->dx2.arr, *(double*)in->dy2.arr, *(double*)in->dx3.arr, *(double*)in->dy3.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_rectangle(K x) {ref(x);
@@ -492,17 +484,13 @@ K Fcairo_rectangle(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_rectangle((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->x.arr, *(double*)in->y.arr, *(double*)in->width.arr, *(double*)in->height.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
-K Fcairo_close_path(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_close_path_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_close_path_sig* in = chk_cairo_close_path_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_close_path((cairo_t*)((L*)in->cr.arr)[0]);
- unref(xs); unref(x);
- return Ki(0);
+K Fcairo_close_path(K x) {
+ cairo_close_path((cairo_t*)((L*)x)[0]);
+ unref(x);
+ return Kv();
  }
 
 K Fcairo_path_extents(K x) {ref(x);
@@ -512,7 +500,7 @@ K Fcairo_path_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_path_extents((cairo_t*)((L*)in->cr.arr)[0], (double*)in->x1.arr, (double*)in->y1.arr, (double*)in->x2.arr, (double*)in->y2.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_paint(K x) {ref(x);
@@ -522,7 +510,7 @@ K Fcairo_paint(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_paint((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_paint_with_alpha(K x) {ref(x);
@@ -532,7 +520,7 @@ K Fcairo_paint_with_alpha(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_paint_with_alpha((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->alpha.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_mask(K x) {ref(x);
@@ -542,7 +530,7 @@ K Fcairo_mask(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_mask((cairo_t*)((L*)in->cr.arr)[0], (cairo_pattern_t*)((L*)in->pattern.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_mask_surface(K x) {ref(x);
@@ -552,17 +540,13 @@ K Fcairo_mask_surface(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_mask_surface((cairo_t*)((L*)in->cr.arr)[0], (cairo_surface_t*)((L*)in->surface.arr)[0], *(double*)in->surface_x.arr, *(double*)in->surface_y.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
-K Fcairo_stroke(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_stroke_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_stroke_sig* in = chk_cairo_stroke_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_stroke((cairo_t*)((L*)in->cr.arr)[0]);
- unref(xs); unref(x);
- return Ki(0);
+K Fcairo_stroke(K x) {
+ cairo_stroke((cairo_t*)((L*)x)[0]);
+ unref(x);
+ return Kv();
  }
 
 K Fcairo_stroke_preserve(K x) {ref(x);
@@ -572,17 +556,13 @@ K Fcairo_stroke_preserve(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_stroke_preserve((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
-K Fcairo_fill(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_fill_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_fill_sig* in = chk_cairo_fill_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_fill((cairo_t*)((L*)in->cr.arr)[0]);
- unref(xs); unref(x);
- return Ki(0);
+K Fcairo_fill(K x) {
+ cairo_fill((cairo_t*)((L*)x)[0]);
+ unref(x);
+ return Kv();
  }
 
 K Fcairo_fill_preserve(K x) {ref(x);
@@ -592,7 +572,7 @@ K Fcairo_fill_preserve(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_fill_preserve((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_copy_page(K x) {ref(x);
@@ -602,7 +582,7 @@ K Fcairo_copy_page(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_copy_page((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_show_page(K x) {ref(x);
@@ -612,7 +592,7 @@ K Fcairo_show_page(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_show_page((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_in_stroke(K x) {ref(x);
@@ -652,7 +632,7 @@ K Fcairo_stroke_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_stroke_extents((cairo_t*)((L*)in->cr.arr)[0], (double*)in->x1.arr, (double*)in->y1.arr, (double*)in->x2.arr, (double*)in->y2.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_fill_extents(K x) {ref(x);
@@ -662,7 +642,7 @@ K Fcairo_fill_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_fill_extents((cairo_t*)((L*)in->cr.arr)[0], (double*)in->x1.arr, (double*)in->y1.arr, (double*)in->x2.arr, (double*)in->y2.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_reset_clip(K x) {ref(x);
@@ -672,7 +652,7 @@ K Fcairo_reset_clip(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_reset_clip((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_clip(K x) {ref(x);
@@ -682,7 +662,7 @@ K Fcairo_clip(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_clip((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_clip_preserve(K x) {ref(x);
@@ -692,7 +672,7 @@ K Fcairo_clip_preserve(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_clip_preserve((cairo_t*)((L*)in->cr.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_clip_extents(K x) {ref(x);
@@ -702,7 +682,7 @@ K Fcairo_clip_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_clip_extents((cairo_t*)((L*)in->cr.arr)[0], (double*)in->x1.arr, (double*)in->y1.arr, (double*)in->x2.arr, (double*)in->y2.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_copy_clip_rectangle_list(K x) {ref(x);
@@ -725,7 +705,7 @@ K Fcairo_rectangle_list_destroy(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_rectangle_list_destroy((cairo_rectangle_list_t*)((L*)in->rectangle_list.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_tag_begin(K x) {ref(x);
@@ -735,7 +715,7 @@ K Fcairo_tag_begin(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_tag_begin((cairo_t*)((L*)in->cr.arr)[0], (char*)in->tag_name.arr, (char*)in->attributes.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_tag_end(K x) {ref(x);
@@ -745,7 +725,7 @@ K Fcairo_tag_end(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_tag_end((cairo_t*)in->cr.arr, (char*)in->tag_name.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_glyph_allocate(K x) {ref(x);
@@ -768,7 +748,7 @@ K Fcairo_glyph_free(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_glyph_free((cairo_glyph_t*)((L*)in->glyphs.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_text_cluster_allocate(K x) {ref(x);
@@ -791,7 +771,7 @@ K Fcairo_text_cluster_free(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_text_cluster_free((cairo_text_cluster_t*)((L*)in->clusters.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_font_options_create(K x) {
@@ -823,7 +803,7 @@ K Fcairo_font_options_destroy(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_font_options_destroy((cairo_font_options_t*)((L*)in->options.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_font_options_status(K x) {ref(x);
@@ -843,7 +823,7 @@ K Fcairo_font_options_merge(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_font_options_merge((cairo_font_options_t*)((L*)in->options.arr)[0], (cairo_font_options_t*)((L*)in->other.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_font_options_equal(K x) {ref(x);
@@ -875,7 +855,7 @@ K Fcairo_font_options_set_antialias(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_font_options_set_antialias((cairo_font_options_t*)((L*)in->options.arr)[0], (cairo_antialias_t)in->antialias);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_font_options_get_antialias(K x) {ref(x);
@@ -895,7 +875,7 @@ K Fcairo_font_options_set_subpixel_order(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_font_options_set_subpixel_order((cairo_font_options_t*)((L*)in->options.arr)[0], (cairo_subpixel_order_t)in->subpixel_order);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_font_options_get_subpixel_order(K x) {ref(x);
@@ -915,7 +895,7 @@ K Fcairo_font_options_set_hint_style(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_font_options_set_hint_style((cairo_font_options_t*)((L*)in->options.arr)[0], (cairo_hint_style_t)in->hint_style);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_font_options_get_hint_style(K x) {ref(x);
@@ -935,7 +915,7 @@ K Fcairo_font_options_set_hint_metrics(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_font_options_set_hint_metrics((cairo_font_options_t*)((L*)in->options.arr)[0], (cairo_hint_metrics_t)in->hint_metrics);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_font_options_get_hint_metrics(K x) {ref(x);
@@ -965,7 +945,7 @@ K Fcairo_font_options_set_variations(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_font_options_set_variations((cairo_font_options_t*)((L*)in->options.arr)[0], (char*)in->variations.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_select_font_face(K x) {ref(x);
@@ -975,7 +955,7 @@ K Fcairo_select_font_face(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_select_font_face((cairo_t*)((L*)in->cr.arr)[0], (char*)in->family.arr, (cairo_font_slant_t)in->slant, (cairo_font_weight_t)in->weight);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_font_size(K x) {ref(x);
@@ -985,7 +965,7 @@ K Fcairo_set_font_size(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_font_size((cairo_t*)((L*)in->cr.arr)[0], *(double*)in->size.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_font_matrix(K x) {ref(x);
@@ -995,7 +975,7 @@ K Fcairo_set_font_matrix(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_font_matrix((cairo_t*)((L*)in->cr.arr)[0], (cairo_matrix_t*)((L*)in->matrix.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_get_font_matrix(K x) {ref(x);
@@ -1005,7 +985,7 @@ K Fcairo_get_font_matrix(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_get_font_matrix((cairo_t*)((L*)in->cr.arr)[0], (cairo_matrix_t*)((L*)in->matrix.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_font_options(K x) {ref(x);
@@ -1015,7 +995,7 @@ K Fcairo_set_font_options(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_font_options((cairo_t*)((L*)in->cr.arr)[0], (cairo_font_options_t*)((L*)in->options.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_get_font_options(K x) {ref(x);
@@ -1025,7 +1005,7 @@ K Fcairo_get_font_options(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_get_font_options((cairo_t*)((L*)in->cr.arr)[0], (cairo_font_options_t*)((L*)in->options.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_set_font_face(K x) {ref(x);
@@ -1035,7 +1015,7 @@ K Fcairo_set_font_face(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_font_face((cairo_t*)((L*)in->cr.arr)[0], (cairo_font_face_t*)((L*)in->font_face.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_get_font_face(K x) {ref(x);
@@ -1058,7 +1038,7 @@ K Fcairo_set_scaled_font(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_set_scaled_font((cairo_t*)((L*)in->cr.arr)[0], (cairo_scaled_font_t*)((L*)in->scaled_font.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_get_scaled_font(K x) {ref(x);
@@ -1081,7 +1061,7 @@ K Fcairo_show_text(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_show_text((cairo_t*)((L*)in->cr.arr)[0], (char*)in->utf8.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_show_glyphs(K x) {ref(x);
@@ -1091,7 +1071,7 @@ K Fcairo_show_glyphs(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_show_glyphs((cairo_t*)((L*)in->cr.arr)[0], (cairo_glyph_t*)((L*)in->glyphs.arr)[0], (int)in->num_glyphs);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_show_text_glyphs(K x) {ref(x);
@@ -1101,7 +1081,7 @@ K Fcairo_show_text_glyphs(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_show_text_glyphs((cairo_t*)((L*)in->cr.arr)[0], (char*)in->utf8.arr, (int)in->utf8_len, (cairo_glyph_t*)((L*)in->glyphs.arr)[0], (int)in->num_glyphs, (cairo_text_cluster_t*)((L*)in->clusters.arr)[0], (int)in->num_clusters, (cairo_text_cluster_flags_t)in->cluster_flags);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_text_path(K x) {ref(x);
@@ -1111,7 +1091,7 @@ K Fcairo_text_path(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_text_path((cairo_t*)((L*)in->cr.arr)[0], (char*)in->utf8.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_glyph_path(K x) {ref(x);
@@ -1121,7 +1101,7 @@ K Fcairo_glyph_path(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_glyph_path((cairo_t*)((L*)in->cr.arr)[0], (cairo_glyph_t*)((L*)in->glyphs.arr)[0], (int)in->num_glyphs);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_text_extents(K x) {ref(x);
@@ -1131,7 +1111,7 @@ K Fcairo_text_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_text_extents((cairo_t*)((L*)in->cr.arr)[0], (char*)in->utf8.arr, (cairo_text_extents_t*)in->extents.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_glyph_extents(K x) {ref(x);
@@ -1141,7 +1121,7 @@ K Fcairo_glyph_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_glyph_extents((cairo_t*)((L*)in->cr.arr)[0], (cairo_glyph_t*)((L*)in->glyphs.arr)[0], (int)in->num_glyphs, (cairo_text_extents_t*)((L*)in->extents.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_font_extents(K x) {ref(x);
@@ -1151,7 +1131,7 @@ K Fcairo_font_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_font_extents((cairo_t*)((L*)in->cr.arr)[0], (cairo_font_extents_t*)((L*)in->extents.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_font_face_reference(K x) {ref(x);
@@ -1174,7 +1154,7 @@ K Fcairo_font_face_destroy(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_font_face_destroy((cairo_font_face_t*)((L*)in->font_face.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_font_face_get_reference_count(K x) {ref(x);
@@ -1264,7 +1244,7 @@ K Fcairo_scaled_font_destroy(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_scaled_font_destroy((cairo_scaled_font_t*)((L*)in->scaled_font.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_scaled_font_get_reference_count(K x) {ref(x);
@@ -1328,7 +1308,7 @@ K Fcairo_scaled_font_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_scaled_font_extents((cairo_scaled_font_t*)((L*)in->scaled_font.arr)[0], (cairo_font_extents_t*)((L*)in->extents.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_scaled_font_text_extents(K x) {ref(x);
@@ -1338,7 +1318,7 @@ K Fcairo_scaled_font_text_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_scaled_font_text_extents((cairo_scaled_font_t*)((L*)in->scaled_font.arr)[0], (char*)in->utf8.arr, (cairo_text_extents_t*)((L*)in->extents.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_scaled_font_glyph_extents(K x) {ref(x);
@@ -1348,7 +1328,7 @@ K Fcairo_scaled_font_glyph_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_scaled_font_glyph_extents((cairo_scaled_font_t*)((L*)in->scaled_font.arr)[0], (cairo_glyph_t*)((L*)in->glyphs.arr)[0], (int)in->num_glyphs, (cairo_text_extents_t*)((L*)in->extents.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_scaled_font_text_to_glyphs(K x) {ref(x);
@@ -1386,7 +1366,7 @@ K Fcairo_scaled_font_get_font_matrix(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_scaled_font_get_font_matrix((cairo_scaled_font_t*)((L*)in->scaled_font.arr)[0], (cairo_matrix_t*)((L*)in->font_matrix.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_scaled_font_get_ctm(K x) {ref(x);
@@ -1396,7 +1376,7 @@ K Fcairo_scaled_font_get_ctm(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_scaled_font_get_ctm((cairo_scaled_font_t*)((L*)in->scaled_font.arr)[0], (cairo_matrix_t*)((L*)in->ctm.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_scaled_font_get_scale_matrix(K x) {ref(x);
@@ -1406,7 +1386,7 @@ K Fcairo_scaled_font_get_scale_matrix(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_scaled_font_get_scale_matrix((cairo_scaled_font_t*)((L*)in->scaled_font.arr)[0], (cairo_matrix_t*)((L*)in->scale_matrix.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_scaled_font_get_font_options(K x) {ref(x);
@@ -1416,7 +1396,7 @@ K Fcairo_scaled_font_get_font_options(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_scaled_font_get_font_options((cairo_scaled_font_t*)((L*)in->scaled_font.arr)[0], (cairo_font_options_t*)((L*)in->options.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_toy_font_face_create(K x) {ref(x);
@@ -1478,7 +1458,7 @@ K Fcairo_user_font_face_set_init_func(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_user_font_face_set_init_func((cairo_font_face_t*)((L*)in->font_face.arr)[0], f2);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_user_font_face_set_render_glyph_func(K x) {ref(x);
@@ -1488,7 +1468,7 @@ K Fcairo_user_font_face_set_render_glyph_func(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_user_font_face_set_render_glyph_func((cairo_font_face_t*)((L*)in->font_face.arr)[0], f3);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_user_font_face_set_render_color_glyph_func(K x) {ref(x);
@@ -1498,7 +1478,7 @@ K Fcairo_user_font_face_set_render_color_glyph_func(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_user_font_face_set_render_color_glyph_func((cairo_font_face_t*)((L*)in->font_face.arr)[0], f3);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_user_font_face_set_text_to_glyphs_func(K x) {ref(x);
@@ -1508,7 +1488,7 @@ K Fcairo_user_font_face_set_text_to_glyphs_func(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_user_font_face_set_text_to_glyphs_func((cairo_font_face_t*)((L*)in->font_face.arr)[0], f4);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_user_font_face_set_unicode_to_glyph_func(K x) {ref(x);
@@ -1518,7 +1498,7 @@ K Fcairo_user_font_face_set_unicode_to_glyph_func(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_user_font_face_set_unicode_to_glyph_func((cairo_font_face_t*)((L*)in->font_face.arr)[0], f5);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_user_font_face_get_init_func(K x) {ref(x);
@@ -1646,7 +1626,7 @@ K Fcairo_get_current_point(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_get_current_point((cairo_t*)((L*)in->cr.arr)[0], (double*)in->x.arr, (double*)in->y.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_get_fill_rule(K x) {ref(x);
@@ -1726,7 +1706,7 @@ K Fcairo_get_dash(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_get_dash((cairo_t*)((L*)in->cr.arr)[0], (double*)in->dashes.arr, (double*)in->offset.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_get_matrix(K x) {ref(x);
@@ -1736,7 +1716,7 @@ K Fcairo_get_matrix(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_get_matrix((cairo_t*)((L*)in->cr.arr)[0], (cairo_matrix_t*)((L*)in->matrix.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_get_target(K x) {ref(x);
@@ -1798,7 +1778,7 @@ K Fcairo_append_path(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_append_path((cairo_t*)((L*)in->cr.arr)[0], (cairo_path_t*)((L*)in->path.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_path_destroy(K x) {ref(x);
@@ -1808,16 +1788,12 @@ K Fcairo_path_destroy(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_path_destroy((cairo_path_t*)((L*)in->path.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
-K Fcairo_status(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_status_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_status_sig* in = chk_cairo_status_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_status_t r = cairo_status((cairo_t*)((L*)in->cr.arr)[0]);
- unref(xs); unref(x);
+K Fcairo_status(K x) {
+ cairo_status_t r = cairo_status((cairo_t*)((L*)x)[0]);
+ unref(x);
  return Ki(r);
  }
 
@@ -1881,7 +1857,7 @@ K Fcairo_device_release(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_device_release((cairo_device_t*)((L*)in->device.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_device_flush(K x) {ref(x);
@@ -1891,7 +1867,7 @@ K Fcairo_device_flush(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_device_flush((cairo_device_t*)((L*)in->device.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_device_finish(K x) {ref(x);
@@ -1901,7 +1877,7 @@ K Fcairo_device_finish(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_device_finish((cairo_device_t*)((L*)in->device.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_device_destroy(K x) {ref(x);
@@ -1911,7 +1887,7 @@ K Fcairo_device_destroy(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_device_destroy((cairo_device_t*)((L*)in->device.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_device_get_reference_count(K x) {ref(x);
@@ -1994,7 +1970,7 @@ K Fcairo_surface_unmap_image(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_unmap_image((cairo_surface_t*)((L*)in->surface.arr)[0], (cairo_surface_t*)((L*)in->image.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_create_for_rectangle(K x) {ref(x);
@@ -2212,17 +2188,13 @@ K Fcairo_surface_finish(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_finish((cairo_surface_t*)((L*)in->surface.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
-K Fcairo_surface_destroy(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_surface_destroy_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_surface_destroy_sig* in = chk_cairo_surface_destroy_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_surface_destroy((cairo_surface_t*)((L*)in->surface.arr)[0]);
- unref(xs); unref(x);
- return Ki(0);
+K Fcairo_surface_destroy(K x) {
+ cairo_surface_destroy((cairo_surface_t*)((L*)x)[0]);
+ unref(x);
+ return Kv();
  }
 
 K Fcairo_surface_get_device(K x) {ref(x);
@@ -2249,12 +2221,8 @@ K Fcairo_surface_get_reference_count(K x) {ref(x);
  }
 
 K Fcairo_surface_status(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_surface_status_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_surface_status_sig* in = chk_cairo_surface_status_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_status_t r = cairo_surface_status((cairo_surface_t*)((L*)in->surface.arr)[0]);
- unref(xs); unref(x);
+ cairo_status_t r = cairo_surface_status((cairo_surface_t*)((L*)x)[0]);
+ unref(x);
  return Ki(r);
  }
 
@@ -2332,7 +2300,7 @@ K Fcairo_surface_get_mime_data(K x) {ref(x);
  unsigned long length;
  cairo_surface_get_mime_data((cairo_surface_t*)((L*)in->surface.arr)[0], (char*)in->mime_type.arr, &data, &length);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_set_mime_data(K x) {ref(x);
@@ -2363,17 +2331,13 @@ K Fcairo_surface_get_font_options(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_get_font_options((cairo_surface_t*)((L*)in->surface.arr)[0], (cairo_font_options_t*)((L*)in->options.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
-K Fcairo_surface_flush(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_surface_flush_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_surface_flush_sig* in = chk_cairo_surface_flush_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_surface_flush((cairo_surface_t*)((L*)in->surface.arr)[0]);
- unref(xs); unref(x);
- return Ki(0);
+K Fcairo_surface_flush(K x) {
+ cairo_surface_flush((cairo_surface_t*)((L*)x)[0]);
+ unref(x);
+ return Kv();
  }
 
 K Fcairo_surface_mark_dirty(K x) {ref(x);
@@ -2383,7 +2347,7 @@ K Fcairo_surface_mark_dirty(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_mark_dirty((cairo_surface_t*)((L*)in->surface.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_mark_dirty_rectangle(K x) {ref(x);
@@ -2393,7 +2357,7 @@ K Fcairo_surface_mark_dirty_rectangle(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_mark_dirty_rectangle((cairo_surface_t*)((L*)in->surface.arr)[0], (int)in->x, (int)in->y, (int)in->width, (int)in->height);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_set_device_scale(K x) {ref(x);
@@ -2403,7 +2367,7 @@ K Fcairo_surface_set_device_scale(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_set_device_scale((cairo_surface_t*)((L*)in->surface.arr)[0], *(double*)in->x_scale.arr, *(double*)in->y_scale.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_get_device_scale(K x) {ref(x);
@@ -2413,7 +2377,7 @@ K Fcairo_surface_get_device_scale(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_get_device_scale((cairo_surface_t*)((L*)in->surface.arr)[0], (double*)in->x_scale.arr, (double*)in->y_scale.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_set_device_offset(K x) {ref(x);
@@ -2423,7 +2387,7 @@ K Fcairo_surface_set_device_offset(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_set_device_offset((cairo_surface_t*)((L*)in->surface.arr)[0], *(double*)in->x_offset.arr, *(double*)in->y_offset.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_get_device_offset(K x) {ref(x);
@@ -2433,7 +2397,7 @@ K Fcairo_surface_get_device_offset(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_get_device_offset((cairo_surface_t*)((L*)in->surface.arr)[0], (double*)in->x_offset.arr, (double*)in->y_offset.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_set_fallback_resolution(K x) {ref(x);
@@ -2443,7 +2407,7 @@ K Fcairo_surface_set_fallback_resolution(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_set_fallback_resolution((cairo_surface_t*)((L*)in->surface.arr)[0], *(double*)in->x_pixels_per_inch.arr, *(double*)in->y_pixels_per_inch.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_get_fallback_resolution(K x) {ref(x);
@@ -2453,7 +2417,7 @@ K Fcairo_surface_get_fallback_resolution(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_get_fallback_resolution((cairo_surface_t*)((L*)in->surface.arr)[0], (double*)in->x_pixels_per_inch.arr, (double*)in->y_pixels_per_inch.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_copy_page(K x) {ref(x);
@@ -2463,7 +2427,7 @@ K Fcairo_surface_copy_page(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_copy_page((cairo_surface_t*)((L*)in->surface.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_show_page(K x) {ref(x);
@@ -2473,7 +2437,7 @@ K Fcairo_surface_show_page(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_surface_show_page((cairo_surface_t*)((L*)in->surface.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_surface_has_show_text_glyphs(K x) {ref(x);
@@ -2510,7 +2474,7 @@ K Fcairo_image_surface_create_for_data(K x) {ref(x);
  cairo_image_surface_create_for_data_sig* in = chk_cairo_image_surface_create_for_data_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
 
- ref((K)in->data.arr); // LEAK!!  make sure it doesn't disappear.  Need garbage collection.
+ ref((K)in->data.arr);
  
  L r[2]; r[1] = KFFI_CAIRO_SURFACE_T;
  ((cairo_surface_t**)r)[0] = cairo_image_surface_create_for_data((unsigned char*)in->data.arr, (cairo_format_t)in->format, (int)in->width, (int)in->height, (int)in->stride);
@@ -2520,13 +2484,9 @@ K Fcairo_image_surface_create_for_data(K x) {ref(x);
  return des_(ret,SZ(ret));
  }
 
-K Fcairo_image_surface_get_data(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_image_surface_get_data_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_image_surface_get_data_sig* in = chk_cairo_image_surface_get_data_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- unsigned char* r = cairo_image_surface_get_data((cairo_surface_t*)((L*)in->surface.arr)[0]);
- unref(xs); unref(x);
+K Fcairo_image_surface_get_data(K x) {
+ unsigned char* r = cairo_image_surface_get_data((cairo_surface_t*)((L*)x)[0]);
+ unref(x);
  return KC((char*)r,SL((char*)r));
  }
 
@@ -2617,7 +2577,7 @@ K Fcairo_recording_surface_ink_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_recording_surface_ink_extents((cairo_surface_t*)((L*)in->surface.arr)[0], (double*)in->x0.arr, (double*)in->y0.arr, (double*)in->width.arr, (double*)in->height.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_recording_surface_get_extents(K x) {ref(x);
@@ -2652,7 +2612,7 @@ K Fcairo_raster_source_pattern_set_callback_data(K x) {ref(x);
  Z I data; // Not sure what to do.  Should this be a K object??
  cairo_raster_source_pattern_set_callback_data((cairo_pattern_t*)((L*)in->pattern.arr)[0], &data);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_raster_source_pattern_get_callback_data(K x) {ref(x);
@@ -2675,7 +2635,7 @@ K Fcairo_raster_source_pattern_set_acquire(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_raster_source_pattern_set_acquire((cairo_pattern_t*)((L*)in->pattern.arr)[0], f9, f11);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_raster_source_pattern_get_acquire(K x) {ref(x);
@@ -2685,7 +2645,7 @@ K Fcairo_raster_source_pattern_get_acquire(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_raster_source_pattern_get_acquire((cairo_pattern_t*)((L*)in->pattern.arr)[0], &f10, &f12);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_raster_source_pattern_set_snapshot(K x) {ref(x);
@@ -2695,7 +2655,7 @@ K Fcairo_raster_source_pattern_set_snapshot(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_raster_source_pattern_set_snapshot((cairo_pattern_t*)((L*)in->pattern.arr)[0], f13);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_raster_source_pattern_get_snapshot(K x) {ref(x);
@@ -2719,7 +2679,7 @@ K Fcairo_raster_source_pattern_set_copy(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_raster_source_pattern_set_copy((cairo_pattern_t*)((L*)in->pattern.arr)[0], f14);
  unref(xs); unref(x);
- return Ki(0);;
+ return Kv();;
  }
 
 K Fcairo_raster_source_pattern_get_copy(K x) {ref(x);
@@ -2743,7 +2703,7 @@ K Fcairo_raster_source_pattern_set_finish(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_raster_source_pattern_set_finish((cairo_pattern_t*)((L*)in->pattern.arr)[0], f15);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_raster_source_pattern_get_finish(K x) {ref(x);
@@ -2854,7 +2814,7 @@ K Fcairo_pattern_destroy(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_pattern_destroy((cairo_pattern_t*)((L*)in->pattern.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_pattern_get_reference_count(K x) {ref(x);
@@ -2918,7 +2878,7 @@ K Fcairo_pattern_add_color_stop_rgb(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_pattern_add_color_stop_rgb((cairo_pattern_t*)((L*)in->pattern.arr)[0], *(double*)in->offset.arr, *(double*)in->red.arr, *(double*)in->green.arr, *(double*)in->blue.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_pattern_add_color_stop_rgba(K x) {ref(x);
@@ -2928,7 +2888,7 @@ K Fcairo_pattern_add_color_stop_rgba(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_pattern_add_color_stop_rgba((cairo_pattern_t*)((L*)in->pattern.arr)[0], *(double*)in->offset.arr, *(double*)in->red.arr, *(double*)in->green.arr, *(double*)in->blue.arr, *(double*)in->alpha.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_mesh_pattern_begin_patch(K x) {ref(x);
@@ -2938,7 +2898,7 @@ K Fcairo_mesh_pattern_begin_patch(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_mesh_pattern_begin_patch((cairo_pattern_t*)((L*)in->pattern.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_mesh_pattern_end_patch(K x) {ref(x);
@@ -2948,7 +2908,7 @@ K Fcairo_mesh_pattern_end_patch(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_mesh_pattern_end_patch((cairo_pattern_t*)((L*)in->pattern.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_mesh_pattern_curve_to(K x) {ref(x);
@@ -2958,7 +2918,7 @@ K Fcairo_mesh_pattern_curve_to(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_mesh_pattern_curve_to((cairo_pattern_t*)((L*)in->pattern.arr)[0], *(double*)in->x1.arr, *(double*)in->y1.arr, *(double*)in->x2.arr, *(double*)in->y2.arr, *(double*)in->x3.arr, *(double*)in->y3.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_mesh_pattern_line_to(K x) {ref(x);
@@ -2968,7 +2928,7 @@ K Fcairo_mesh_pattern_line_to(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_mesh_pattern_line_to((cairo_pattern_t*)((L*)in->pattern.arr)[0], *(double*)in->x.arr, *(double*)in->y.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_mesh_pattern_move_to(K x) {ref(x);
@@ -2978,7 +2938,7 @@ K Fcairo_mesh_pattern_move_to(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_mesh_pattern_move_to((cairo_pattern_t*)((L*)in->pattern.arr)[0], *(double*)in->x.arr, *(double*)in->y.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_mesh_pattern_set_control_point(K x) {ref(x);
@@ -2988,7 +2948,7 @@ K Fcairo_mesh_pattern_set_control_point(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_mesh_pattern_set_control_point((cairo_pattern_t*)((L*)in->pattern.arr)[0], (unsigned int)in->point_num, *(double*)in->x.arr, *(double*)in->y.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_mesh_pattern_set_corner_color_rgb(K x) {ref(x);
@@ -2998,7 +2958,7 @@ K Fcairo_mesh_pattern_set_corner_color_rgb(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_mesh_pattern_set_corner_color_rgb((cairo_pattern_t*)((L*)in->pattern.arr)[0], (unsigned int)in->corner_num, *(double*)in->red.arr, *(double*)in->green.arr, *(double*)in->blue.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_mesh_pattern_set_corner_color_rgba(K x) {ref(x);
@@ -3008,7 +2968,7 @@ K Fcairo_mesh_pattern_set_corner_color_rgba(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_mesh_pattern_set_corner_color_rgba((cairo_pattern_t*)((L*)in->pattern.arr)[0], (unsigned int)in->corner_num, *(double*)in->red.arr, *(double*)in->green.arr, *(double*)in->blue.arr, *(double*)in->alpha.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_pattern_set_matrix(K x) {ref(x);
@@ -3018,7 +2978,7 @@ K Fcairo_pattern_set_matrix(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_pattern_set_matrix((cairo_pattern_t*)((L*)in->pattern.arr)[0], (cairo_matrix_t*)((L*)in->matrix.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_pattern_get_matrix(K x) {ref(x);
@@ -3028,7 +2988,7 @@ K Fcairo_pattern_get_matrix(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_pattern_get_matrix((cairo_pattern_t*)((L*)in->pattern.arr)[0], (cairo_matrix_t*)((L*)in->matrix.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_pattern_set_extend(K x) {ref(x);
@@ -3038,7 +2998,7 @@ K Fcairo_pattern_set_extend(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_pattern_set_extend((cairo_pattern_t*)((L*)in->pattern.arr)[0], (cairo_extend_t)in->extend);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_pattern_get_extend(K x) {ref(x);
@@ -3058,7 +3018,7 @@ K Fcairo_pattern_set_filter(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_pattern_set_filter((cairo_pattern_t*)((L*)in->pattern.arr)[0], (cairo_filter_t)in->filter);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_pattern_get_filter(K x) {ref(x);
@@ -3183,7 +3143,7 @@ K Fcairo_matrix_init(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_matrix_init((cairo_matrix_t*)((L*)in->matrix.arr)[0], *(double*)in->xx.arr, *(double*)in->yx.arr, *(double*)in->xy.arr, *(double*)in->yy.arr, *(double*)in->x0.arr, *(double*)in->y0.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_matrix_init_identity(K x) {ref(x);
@@ -3193,7 +3153,7 @@ K Fcairo_matrix_init_identity(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_matrix_init_identity((cairo_matrix_t*)((L*)in->matrix.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_matrix_init_translate(K x) {ref(x);
@@ -3203,7 +3163,7 @@ K Fcairo_matrix_init_translate(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_matrix_init_translate((cairo_matrix_t*)((L*)in->matrix.arr)[0], *(double*)in->tx.arr, *(double*)in->ty.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_matrix_init_scale(K x) {ref(x);
@@ -3213,7 +3173,7 @@ K Fcairo_matrix_init_scale(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_matrix_init_scale((cairo_matrix_t*)((L*)in->matrix.arr)[0], *(double*)in->sx.arr, *(double*)in->sy.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_matrix_init_rotate(K x) {ref(x);
@@ -3223,7 +3183,7 @@ K Fcairo_matrix_init_rotate(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_matrix_init_rotate((cairo_matrix_t*)((L*)in->matrix.arr)[0], *(double*)in->radians.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_matrix_translate(K x) {ref(x);
@@ -3233,7 +3193,7 @@ K Fcairo_matrix_translate(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_matrix_translate((cairo_matrix_t*)((L*)in->matrix.arr)[0], *(double*)in->tx.arr, *(double*)in->ty.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_matrix_scale(K x) {ref(x);
@@ -3243,7 +3203,7 @@ K Fcairo_matrix_scale(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_matrix_scale((cairo_matrix_t*)((L*)in->matrix.arr)[0], *(double*)in->sx.arr, *(double*)in->sy.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_matrix_rotate(K x) {ref(x);
@@ -3253,7 +3213,7 @@ K Fcairo_matrix_rotate(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_matrix_rotate((cairo_matrix_t*)((L*)in->matrix.arr)[0], *(double*)in->radians.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_matrix_invert(K x) {ref(x);
@@ -3273,7 +3233,7 @@ K Fcairo_matrix_multiply(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_matrix_multiply((cairo_matrix_t*)((L*)in->result.arr)[0], (cairo_matrix_t*)in->a.arr, (cairo_matrix_t*)in->b.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_matrix_transform_distance(K x) {ref(x);
@@ -3283,7 +3243,7 @@ K Fcairo_matrix_transform_distance(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_matrix_transform_distance((cairo_matrix_t*)((L*)in->matrix.arr)[0], (double*)in->dx.arr, (double*)in->dy.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_matrix_transform_point(K x) {ref(x);
@@ -3293,7 +3253,7 @@ K Fcairo_matrix_transform_point(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_matrix_transform_point((cairo_matrix_t*)((L*)in->matrix.arr)[0], (double*)in->x.arr, (double*)in->y.arr);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_region_create(K x) {
@@ -3364,7 +3324,7 @@ K Fcairo_region_destroy(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_region_destroy((cairo_region_t*)((L*)in->region.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_region_equal(K x) {ref(x);
@@ -3394,7 +3354,7 @@ K Fcairo_region_get_extents(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_region_get_extents((cairo_region_t*)((L*)in->region.arr)[0], (cairo_rectangle_int_t*)((L*)in->extents.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_region_num_rectangles(K x) {ref(x);
@@ -3414,7 +3374,7 @@ K Fcairo_region_get_rectangle(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_region_get_rectangle((cairo_region_t*)((L*)in->region.arr)[0], (int)in->nth, (cairo_rectangle_int_t*)((L*)in->rectangle.arr)[0]);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_region_is_empty(K x) {ref(x);
@@ -3454,7 +3414,7 @@ K Fcairo_region_translate(K x) {ref(x);
  if (!in) { unref(xs); unref(x); return 0; }
  cairo_region_translate((cairo_region_t*)((L*)in->region.arr)[0], (int)in->dx, (int)in->dy);
  unref(xs); unref(x);
- return Ki(0);
+ return Kv();
  }
 
 K Fcairo_region_subtract(K x) {ref(x);
@@ -3540,6 +3500,6 @@ K Fcairo_region_xor_rectangle(K x) {ref(x);
 K Fcairo_debug_reset_static_data(K x) {
  cairo_debug_reset_static_data();
  unref(x);
- return Ki(0);
+ return Kv();
  }
 

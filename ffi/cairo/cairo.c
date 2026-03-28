@@ -8,7 +8,18 @@ void loadcairo(K k) {
   KR("kairo.formatStrideForWidth", (void*)Fcairo_format_stride_for_width, 2);
   KR("kairo.imageSurfaceCreateForData", (void*)Fcairo_image_surface_create_for_data, 1);
   KR("kairo.imageSurfaceCreate", (void*)Fcairo_image_surface_create,1);
+  KR("kairo.surfaceStatus", Fcairo_surface_status, 1);
   KR("kairo.surfaceDestroy",     (void*)Fcairo_surface_destroy,     1);
   KR("kairo.create",     (void*)Fcairo_create,     1);
+  KR("kairo.status", (void*)Fcairo_status, 1);
   KR("kairo.destroy",     (void*)Fcairo_destroy,     1);
+  KR("kairo.rectangle", (void*)Fcairo_rectangle, 1);
+  KR("kairo.fill", (void*)Fcairo_fill, 1);
+  KR("kairo.stroke", (void*)Fcairo_stroke, 1);
+  KR("kairo.setSourceRGB", (void*)Fcairo_set_source_rgb, 1);
+  KR("kairo.setLineWidth", (void*)Fcairo_set_line_width, 1);
+  KR("kairo.surfaceFlush", (void*)Fcairo_surface_flush, 1);
+  KR("kairo.imageSurfaceGetData", (void*)Fcairo_image_surface_get_data, 1);
+  KR("kairo.arc", (void*)Fcairo_arc, 1);
+  KR("kairo.closePath", (void*)Fcairo_close_path, 1);
 }
