@@ -74,23 +74,15 @@ K Fcairo_set_user_data(K x) {ref(x);
  return Ki(r);
  }
 
-K Fcairo_save(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_save_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_save_sig* in = chk_cairo_save_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_save((cairo_t*)((L*)in->cr.arr)[0]);
- unref(xs); unref(x);
+K Fcairo_save(K x) {
+ cairo_save((cairo_t*)((L*)x)[0]);
+ unref(x);
  return Kv();
  }
 
-K Fcairo_restore(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_restore_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_restore_sig* in = chk_cairo_restore_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_restore((cairo_t*)((L*)in->cr.arr)[0]);
- unref(xs); unref(x);
+K Fcairo_restore(K x) {
+ cairo_restore((cairo_t*)((L*)x)[0]);
+ unref(x);
  return Kv();
  }
 
@@ -377,13 +369,9 @@ K Fcairo_device_to_user_distance(K x) {ref(x);
  return Kv();
  }
 
-K Fcairo_new_path(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_new_path_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_new_path_sig* in = chk_cairo_new_path_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_new_path((cairo_t*)((L*)in->cr.arr)[0]);
- unref(xs); unref(x);
+K Fcairo_new_path(K x) {
+ cairo_new_path((cairo_t*)((L*)x)[0]);
+ unref(x);
  return Kv();
  }
 
@@ -645,13 +633,9 @@ K Fcairo_fill_extents(K x) {ref(x);
  return Kv();
  }
 
-K Fcairo_reset_clip(K x) {ref(x);
- K xs = ser2(Ki(1),x);
- if( TK(xs)!=9 || NK(xs) != SZ(cairo_reset_clip_sig) + 1 ) { unref(xs); unref(x); return 0; }
- cairo_reset_clip_sig* in = chk_cairo_reset_clip_sig((char*)xs);
- if (!in) { unref(xs); unref(x); return 0; }
- cairo_reset_clip((cairo_t*)((L*)in->cr.arr)[0]);
- unref(xs); unref(x);
+K Fcairo_reset_clip(K x) {
+ cairo_reset_clip((cairo_t*)((L*)x)[0]);
+ unref(x);
  return Kv();
  }
 
@@ -1109,9 +1093,11 @@ K Fcairo_text_extents(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(cairo_text_extents_sig) + 1 ) { unref(xs); unref(x); return 0; }
  cairo_text_extents_sig* in = chk_cairo_text_extents_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- cairo_text_extents((cairo_t*)((L*)in->cr.arr)[0], (char*)in->utf8.arr, (cairo_text_extents_t*)in->extents.arr);
+ K r = KC(0,SZ(cairo_text_extents_t));
+ 
+ cairo_text_extents((cairo_t*)((L*)in->cr.arr)[0], (char*)in->utf8.arr, (cairo_text_extents_t*)r);
  unref(xs); unref(x);
- return Kv();
+ return r;
  }
 
 K Fcairo_glyph_extents(K x) {ref(x);

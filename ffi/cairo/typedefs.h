@@ -13,8 +13,8 @@ typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_reference_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_get_reference_count_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr key;} cairo_get_user_data_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr key;} cairo_set_user_data_sig;
-typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_save_sig;
-typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_restore_sig;
+//typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_save_sig;
+//typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_restore_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_push_group_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; C typcontent; L content;} cairo_push_group_with_content_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_pop_group_sig;
@@ -43,7 +43,7 @@ typedef struct __attribute__((packed)) {hdr lst;arr cr; arr x; arr y;} cairo_use
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr dx; arr dy;} cairo_user_to_device_distance_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr x; arr y;} cairo_device_to_user_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr dx; arr dy;} cairo_device_to_user_distance_sig;
-typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_new_path_sig;
+//typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_new_path_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr x; arr y;} cairo_move_to_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_new_sub_path_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr x; arr y;} cairo_line_to_sig;
@@ -71,7 +71,7 @@ typedef struct __attribute__((packed)) {hdr lst;arr cr; arr x; arr y;} cairo_in_
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr x; arr y;} cairo_in_clip_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr x1; arr y1; arr x2; arr y2;} cairo_stroke_extents_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr x1; arr y1; arr x2; arr y2;} cairo_fill_extents_sig;
-typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_reset_clip_sig;
+//typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_reset_clip_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_clip_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr;} cairo_clip_preserve_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr x1; arr y1; arr x2; arr y2;} cairo_clip_extents_sig;
@@ -115,7 +115,7 @@ typedef struct __attribute__((packed)) {hdr lst;arr cr; arr glyphs; C typnum_gly
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr utf8; C typutf8_len; L utf8_len; arr glyphs; C typnum_glyphs; L num_glyphs; arr clusters; C typnum_clusters; L num_clusters; C typcluster_flags; L cluster_flags;} cairo_show_text_glyphs_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr utf8;} cairo_text_path_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr glyphs; C typnum_glyphs; L num_glyphs;} cairo_glyph_path_sig;
-typedef struct __attribute__((packed)) {hdr lst;arr cr; arr utf8; arr extents;} cairo_text_extents_sig;
+typedef struct __attribute__((packed)) {hdr lst;arr cr; arr utf8;} cairo_text_extents_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr glyphs; C typnum_glyphs; L num_glyphs; arr extents;} cairo_glyph_extents_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr cr; arr extents;} cairo_font_extents_sig;
 typedef struct __attribute__((packed)) {hdr lst;arr font_face;} cairo_font_face_reference_sig;
