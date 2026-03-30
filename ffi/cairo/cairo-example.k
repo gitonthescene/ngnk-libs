@@ -82,18 +82,21 @@ arc:{kairo.arc ,[x],y}[cr]
 lt:{kairo.lineTo ,[x],y}[cr]
 mt:{kairo.moveTo ,[x],y}[cr]
 poly:{(,s;r):0 1_x;mt s;lt'r;}
+clr:{![256;x]%255}
 
-rgb (1.0;1.0;1.0)                              / set color to white
+rgb clr 0xffffff                               / set color to white
 rec (0.0;0.0;1.0*w;1.0*h)
 f[]                                            / fill background
-rgb (0.0;0.0;0.0)                              / default color black
+rgb clr 0x000000                               / default color black
 kairo.setLineWidth (cr;1.0)                    / default line width
 
-rgb (1.0;1.0;0.0)
+
+rgb clr 0x37c432
 arc (100.0;100.0;40.0;0.0;pi2)                 / draw a circle
 
-cp[];s[]
-rgb (0.0;0.0;0.0)
+cp[];f[]
+
+rgb clr 0x000000
 arc (100.0;100.0;20.0;0.0;0.75*pi2)            / draw a circle
 lt 100.0 100
 cp[];f[]
@@ -107,8 +110,8 @@ cp[];s[]
 
 (tx;ty;tw;th;;):kairo.textExtents (cr;t:"a b c\0")
 cairo.status kairo.status cr
-mt 100.0 160
-rgb (0.0;1.0;0.0)
+mt 100.0 135
+rgb clr 0x4a3018
 kairo.rotate[(cr;pi2*-0.125)]
 kairo.showText (cr;t)
 cairo.status kairo.status cr
