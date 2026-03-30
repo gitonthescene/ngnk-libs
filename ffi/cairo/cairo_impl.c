@@ -1093,7 +1093,7 @@ K Fcairo_text_extents(K x) {ref(x);
  if( TK(xs)!=9 || NK(xs) != SZ(cairo_text_extents_sig) + 1 ) { unref(xs); unref(x); return 0; }
  cairo_text_extents_sig* in = chk_cairo_text_extents_sig((char*)xs);
  if (!in) { unref(xs); unref(x); return 0; }
- K r = KC(0,SZ(cairo_text_extents_t));
+ K r = KF(0,SZ(cairo_text_extents_t)/SZ(double));
  
  cairo_text_extents((cairo_t*)((L*)in->cr.arr)[0], (char*)in->utf8.arr, (cairo_text_extents_t*)r);
  unref(xs); unref(x);

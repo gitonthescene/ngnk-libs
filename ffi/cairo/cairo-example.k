@@ -81,7 +81,7 @@ rec:{kairo.rectangle ,[x],y}[cr]
 arc:{kairo.arc ,[x],y}[cr]
 lt:{kairo.lineTo ,[x],y}[cr]
 mt:{kairo.moveTo ,[x],y}[cr]
-poly:{(,s;r):0 1_x;mt s;lt'r}
+poly:{(,s;r):0 1_x;mt s;lt'r;}
 
 rgb (1.0;1.0;1.0)                              / set color to white
 rec (0.0;0.0;1.0*w;1.0*h)
@@ -104,6 +104,14 @@ poly (0.0 190.0
      40.0 200.0)
 
 cp[];s[]
+
+(tx;ty;tw;th;;):kairo.textExtents (cr;t:"a b c\0")
+cairo.status kairo.status cr
+mt 100.0 160
+rgb (0.0;1.0;0.0)
+kairo.rotate[(cr;pi2*-0.125)]
+kairo.showText (cr;t)
+cairo.status kairo.status cr
 
 kairo.surfaceFlush surf
 
