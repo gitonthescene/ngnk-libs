@@ -45,20 +45,16 @@ sh[2]'p'rd'10#10+!5;
 `0:"\n\n -- random code --\n"
 `0:C:"@//1(*1?#:)\1-&(1|-_- 0.5*d),1+&d:1|=':{x}"
 
-/ render parse tree
-
-prstree:{ (T;D;L):+{$[`A~t:@y;((t;x;`);(`;x+1;*y)),,/o[x+1]'1_y;,(t;x;y)]}[0]`p@x
-  (D@(!#D)^1+w; L@:(!#L)^w; T@:(!#T)^w:&`A=T)}
-
-k:{$[`c~_@x;x;~`v~@x;`k@x;26=.x;"GAP";`k@x]}
-
-`0:"\n -- render parse tree --\n"
-(D;L;T):prstree C
-shw[k'L;p@D]
-
 / Nested lists are in effect trees
 / The lists themselves are the inner nodes
 
 `0:"\n -- render nested list as tree --\n"
 `0:`k@sexpr:(+;3;(-;2;8))
 shw/(`k';::)@'|{+{$[`A~@z;o[#y]/[y,,(x;z);z];y,,(x;z)]}[0;();x]} sexpr
+
+/ render parse tree considered as an sexpr
+k:{$[`c~_@x;x;~`v~@x;`k@x;26=.x;"GAP";`k@x]}
+
+`0:"\n -- render parse tree --\n"
+(P;L):sexpr2apt `p@C
+shw[k'L;P]
