@@ -50,7 +50,7 @@ sh[2]'p'rd'10#10+!5;
 prstree:{ (T;D;L):+{$[`A~t:@y;((t;x;`);(`;x+1;*y)),,/o[x+1]'1_y;,(t;x;y)]}[0]`p@x
   (D@(!#D)^1+w; L@:(!#L)^w; T@:(!#T)^w:&`A=T)}
 
-k:{$[`c~_@x;x;`k@x]}
+k:{$[`c~_@x;x;~`v~@x;`k@x;26=.x;"GAP";`k@x]}
 
 `0:"\n -- render parse tree --\n"
 (D;L;T):prstree C
