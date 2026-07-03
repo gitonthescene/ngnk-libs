@@ -88,3 +88,7 @@ shw:{(tr;lb):pad[pd]t2[pd:|/#'x]y
 / lazy aligning of interfaces.  Should fix t0
 shwv:{ (x;y):(::;(<g)@)@'(x;y)@\:g:<dfo y
   `0:t0[y;#'(y@)\'!#y],'"   ",/:x}
+
+/ convert s-expr to an Apter tree
+/ sexpr2apt[ (+;3;(-;2;8)) ] ~ (0 0 0 2 2;(+;3;-;2;8))
+sexpr2apt:{+{$[`A~@z;o[#y]/[y,,(x;z 0);1_z];y,,(x;z)]}[0;();x]}
